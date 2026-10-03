@@ -1,5 +1,6 @@
 {
   "desparasitado": true,
+  "edad": 7,
   "tamano": "grande",
   "color": "menta",
   "urgente": false,
@@ -22,7 +23,8 @@
   "energia": "media",
   "nombre": "Reo",
   "peso_kg": 35,
-  "orden": 500,
+  "orden": 2,
+  "edad_meses": 80,
   "es": {
     "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
     "historia": "Reo fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
@@ -39,12 +41,11 @@
     "/img/animales/reo3.jpg"
   ],
   "microchip": true,
+  "edad_unidad": "anos",
   "raza": {
     "es": "Pastor"
   },
   "cartilla": true,
   "id": "reo",
-  "vacunado": true,
-  "edad": 7,
-  "edad_unidad": "anos"
+  "vacunado": true
 }
