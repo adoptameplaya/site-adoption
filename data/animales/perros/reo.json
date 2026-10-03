@@ -1,0 +1,40 @@
+{
+  "desparasitado": true,
+  "tamano": "grande",
+  "color": "menta",
+  "urgente": false,
+  "esterilizado": true,
+  "en": {
+    "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
+    "historia": "Reo was a working security dog. When the company shut down, the dogs were left behind. We found him in very poor condition; he is much better now, but he still lives in a cage in the jungle, waiting for a family.",
+    "aviso": "He is a very powerful dog. You need to be aware of that and properly equipped to handle this kind of dog"
+  },
+  "sexo": "macho",
+  "energia": "media",
+  "nombre": "Reo",
+  "peso_kg": 35,
+  "orden": 500,
+  "edad_meses": 78,
+  "es": {
+    "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
+    "historia": "Reo fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
+    "aviso": "Es un perro con mucha fuerza. Hace falta ser consciente de ello y estar capacitado para manejar este tipo de perro.",
+    "caracter": [
+      "Caliñoso",
+      "Jugueton",
+      "Protector"
+    ]
+  },
+  "fotos": [
+    "/img/animales/reo1.jpg",
+    "/img/animales/reo3.jpg",
+    "/img/animales/reo3.jpg"
+  ],
+  "microchip": true,
+  "raza": {
+    "es": "Pastor "
+  },
+  "cartilla": true,
+  "id": "reo",
+  "vacunado": true
+}
