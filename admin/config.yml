@@ -18,10 +18,11 @@ publish_mode: simple
 media_folder: "img/animales"
 public_folder: "/img/animales"
 
+# Pas de bloc media_library : on veut le comportement natif de Decap, qui
+# commite les photos dans le dépôt via media_folder ci-dessus. Déclarer
+# « name: default » le fait chercher une bibliothèque externe inexistante.
 # Les photos sont recadrées en carré par le site : viser un cadrage centré
 # sur la tête. 700×700 suffit largement.
-media_library:
-  name: default
 
 collections:
   - name: peludos
