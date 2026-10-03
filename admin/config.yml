@@ -7,7 +7,7 @@
 
 backend:
   name: github
-  repo: REEMPLAZAR/REEMPLAZAR        # usuario-o-organizacion/nombre-del-repo
+  repo: adoptameplaya/site-adoption
   branch: main
   base_url: https://refuge-adoption.netlify.app   # domaine qui héberge le proxy OAuth
   auth_endpoint: api/auth
