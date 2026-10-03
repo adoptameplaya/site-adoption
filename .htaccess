@@ -1,0 +1,44 @@
+# =========================================================
+# Réglages Apache / LiteSpeed (O2switch). Ce fichier n'est utilisé que
+# sur l'hébergement ; il est copié tel quel par build-preprod.py.
+# =========================================================
+Options -Indexes
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# Tout passe en HTTPS (le cookie de connexion de l'admin l'exige).
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Adresses propres pour l'authentification et la traduction.
+RewriteRule ^api/auth/?$      api/auth.php      [L,QSA]
+RewriteRule ^api/callback/?$  api/callback.php  [L,QSA]
+RewriteRule ^api/traducir/?$  api/traducir.php  [L,QSA]
+
+# Le dossier .git et les fichiers de travail ne sont jamais servis.
+RewriteRule ^(\.git|\.github|herramientas)(/|$) - [F,L]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Les fiches changent à chaque publication depuis l'admin : jamais de cache.
+  <FilesMatch "\.json$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # Les photos portent un nom unique : elles peuvent rester en cache.
+  <FilesMatch "\.(jpe?g|png|webp|svg|woff2)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Le manifeste de déploiement n'a rien à faire en public.
+<Files ".deploy-manifest.json">
+  Require all denied
+</Files>

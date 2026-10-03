@@ -1,104 +1,88 @@
-# Guía para actualizar el sitio
+# Cómo cambiar los animales del sitio
 
-Esta guía es para el refugio. No necesitas saber programar: casi todo se cambia
-en **dos archivos de texto** dentro de la carpeta `data`.
-
-Ábrelos con cualquier editor de texto (TextEdit en Mac, Bloc de notas en Windows,
-o Visual Studio Code). Guarda siempre en formato **texto plano**, no en Word.
+Esta guía es para el refugio. No hace falta saber de computadoras: se hace desde
+el celular o la compu, en una página con el mismo aspecto que la ficha del sitio.
 
 ---
 
-## Regla de oro
+## Entrar
 
-Los archivos `.json` son quisquillosos con la puntuación:
+1. Abre **adoptameplaya.org/admin** (la dirección exacta te la da quien
+   administra el sitio).
+2. Toca **Entrar con GitHub** e inicia sesión con tu cuenta.
+3. Verás las tarjetas de **Perros** y de **Gatos**.
 
-- Cada dato va entre **comillas dobles**: `"Milo"` ✅ · `'Milo'` ❌
-- Cada línea termina en **coma**, menos la última de cada bloque.
-- Si borras una llave `{` o un corchete `[` de más, el sitio deja de cargar.
-
-**Antes de tocar nada, haz una copia del archivo.** Si algo se rompe, la
-recuperas y listo. También puedes pegar el archivo en https://jsonlint.com
-para que te diga si tiene un error y en qué línea.
+Si te dice que tu cuenta no tiene permiso, pídele a quien administra el sitio
+que te invite como colaborador del refugio.
 
 ---
 
-## Publicar un animal nuevo
+## Añadir un animal nuevo
 
-En `data/animales.json`, copia un bloque completo (desde `{` hasta `}`), pégalo
-antes del `]` final, pon una coma entre los dos bloques y cambia los datos.
+1. Elige **Perros** o **Gatos** y toca **Añadir un perro / Añadir un gato**.
+2. Se abre una ficha igual a la del sitio. Solo **rellena los campos**:
+   - **Fotos:** toca el círculo y elige las fotos del celular. Se reducen solas.
+     La primera es la que sale en la portada y en la tarjeta: mejor una donde
+     se vea bien la cara. Para cambiar la principal, toca otra foto.
+   - **Nombre, resumen y su historia.**
+   - **Sexo, edad, peso, tamaño y energía.** En la edad escribe el número y
+     elige *años* o *meses*.
+   - **Carácter:** toca las palabras que lo describan. Si falta alguna,
+     escríbela en «Otro rasgo».
+   - **Aviso importante:** solo si hay algo que el adoptante deba saber antes
+     de decidir (por ejemplo, que es un perro muy fuerte). Sale en rojo.
+   - **Salud:** ya vienen marcados esterilizado, vacunas, desparasitado y
+     cartilla. Quita lo que aún no esté hecho y marca **microchip** si lo tiene.
+3. Toca **Publicar**.
 
-Qué significa cada campo:
+Escribe **solo en español**. El inglés se traduce solo.
 
-| Campo | Qué poner |
-|---|---|
-| `id` | Un apodo corto, sin espacios ni acentos. Debe ser distinto al de los demás. |
-| `nombre` | El nombre como se ve en la página. |
-| `especie` | `perro` o `gato`. |
-| `sexo` | `macho` o `hembra`. |
-| `edad_meses` | La edad **en meses**. Un año = 12, dos años = 24. La página lo convierte sola. |
-| `peso_kg` | Sólo el número. |
-| `tamano` | `chico`, `mediano` o `grande`. |
-| `color` | El color del recuadro: `arena`, `lavanda`, `coral`, `turquesa` o `menta`. |
-| `foto` | La ruta de la foto, por ejemplo `img/animales/nina.jpg`. |
-| `urgente` | `true` le pone la etiqueta roja «lleva mucho esperando». `false` la quita. |
-| `esterilizado`, `vacunado`, `desparasitado` | `true` o `false`. |
-| `convive` | `true` o `false` para niños, perros y gatos. **Esto alimenta los filtros de búsqueda**, contéstalo con cuidado. |
-| `cuota` | Sólo el número, en pesos. |
-| `es` / `en` | El texto en español y en inglés: `resumen` (una línea), `historia` (el párrafo largo) y `caracter` (dos o tres palabras). |
-
-### Las fotos
-
-- Cuadradas, mínimo 1000 × 1000 píxeles.
-- El animal centrado, mirando a la cámara si se puede.
-- Guárdalas en `img/animales/` con el mismo `id` del animal: `nina.jpg`.
-- Menos de 400 KB cada una, para que la página cargue rápido en celular.
-
-Los dibujos que dicen **«foto pendiente»** son provisionales. Mientras aparezcan,
-es que a ese animal todavía le falta su foto real.
+En unos minutos la ficha aparece en el sitio. La ventana te avisa cuando ya está
+lista para publicarse.
 
 ---
 
-## Cuando un animal ya fue adoptado
+## Cambiar o quitar un animal
 
-Borra su bloque completo de `animales.json`, desde su `{` hasta su `}`, y cuida
-que no quede una coma suelta antes del `]` final.
-
-Acuérdate de bajar el número de `en_refugio` en `data/config.json`
-y de subir el de `adoptados`.
+- **Cambiar:** en su tarjeta toca **Editar**, haz el cambio y toca **Guardar**.
+- **Quitar** (por ejemplo, cuando lo adoptan): toca el icono de la papelera de
+  su tarjeta y confirma. Desaparece del sitio.
 
 ---
 
-## Cambiar datos del refugio
+## Sobre el inglés
 
-Todo está en `data/config.json`: dirección, horarios, teléfono, WhatsApp,
-redes sociales, CLABE, enlaces de PayPal y Mercado Pago, cifras, montos de
-padrinazgo y lista de necesidades.
+Al publicar, lo que escribiste se traduce al inglés automáticamente. No tienes
+que hacer nada. Si quieres revisarlo, abre **«Versión en inglés»** al final de la
+ficha y corrige lo que quieras: lo que corrijas a mano ya no se vuelve a traducir
+solo.
 
-**El WhatsApp se escribe sin `+` ni espacios**, con la clave del país y el 1 de
-celular: `5219841234567`. Si este número está mal, **ninguna solicitud llega**.
-Es lo primero que hay que revisar si dejan de escribirte.
-
-Para quitar un medio de donación de la página, cambia su `activo` a `false`.
-
----
-
-## Después de guardar
-
-1. Recarga la página en el navegador.
-2. Si no ves el cambio, abre el sitio con **Cmd + Shift + R** (Mac) o
-   **Ctrl + F5** (Windows) para forzar la recarga.
-3. Si la página aparece vacía o sin animales, es que el archivo `.json` tiene un
-   error de puntuación: recupera tu copia de respaldo.
+Si el servicio de traducción no está disponible ese día, el panel te avisa y la
+ficha se publica igual: en inglés se verá el texto en español hasta que se
+corrija.
 
 ---
 
-## Lo que este sitio **no** hace
+## Consejos para las fotos
 
-- No guarda ningún dato: las solicitudes llegan a tu WhatsApp y viven ahí.
-- No cobra ni procesa pagos: los botones de donación mandan a PayPal y
-  Mercado Pago, que son quienes cobran.
-- No manda correos automáticos.
+- Cuadradas o casi, con el animal centrado y mirando a la cámara.
+- Hasta 6 fotos por animal.
+- No hace falta reducirlas ni renombrarlas: el panel lo hace.
 
-Esto está declarado en el aviso de privacidad. Si algún día se agrega un
-formulario que sí guarde datos, o una herramienta de estadísticas, hay que
-actualizar ese aviso.
+---
+
+## Si algo no funciona
+
+- **La ventana de GitHub no se abre:** tu navegador la bloqueó. Permite las
+  ventanas emergentes para esta página y vuelve a intentar.
+- **«No se pudo guardar»:** no se pierde nada de lo que escribiste. Vuelve a tocar
+  **Publicar**. Si sigue fallando, avisa a quien administra el sitio.
+- **La ficha no aparece después de varios minutos:** avisa a quien administra el
+  sitio.
+
+---
+
+## Otros datos del sitio
+
+El WhatsApp, las cuentas para donaciones, los textos de «Apoyarnos» y demás datos
+del refugio no se cambian desde este panel: pídeselo a quien administra el sitio.

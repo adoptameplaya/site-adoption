@@ -58,7 +58,7 @@ const dinero = n => `$${num(n)} MXN`;
 /* L'âge est un nombre plus une unité : 4 meses, 7 anos. edad_texto ne sert
    plus qu'aux approximations qu'aucun nombre ne peut dire, comme « 6-7 años ». */
 function edadTexto(animal) {
-  const fijo = animal?.edad_texto?.[IDIOMA];
+  const fijo = animal?.edad_texto?.[IDIOMA] || animal?.edad_texto?.es;
   if (fijo) return fijo;
   const n = Number(animal?.edad) || 0;
   if (!n) return t('ficha.bebe');
@@ -75,6 +75,13 @@ function enlaceWA(mensaje) {
 
 const esc = s => String(s).replace(/[&<>"']/g, c =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+/* El refugio escribe solo en español; el inglés lo traduce el panel al publicar
+   y puede faltar si el servicio de traducción no respondió ese día. Un texto en
+   español vale más que un hueco en la ficha. */
+const txt = (a, campo) => a?.[IDIOMA]?.[campo] || a?.es?.[campo] || '';
+const caracter = a => (a?.[IDIOMA]?.caracter?.length ? a[IDIOMA].caracter : a?.es?.caracter) || [];
+const razaTxt = a => a?.raza?.[IDIOMA] || a?.raza?.es || '';
 
 /* =========================================================
    Hero — la tira de cápsulas
@@ -103,7 +110,7 @@ function coincide(a) {
   if (filtros.tamano.size && !filtros.tamano.has(a.tamano)) return false;
   if (filtros.energia.size && !filtros.energia.has(a.energia)) return false;
   if (filtros.q) {
-    const heno = [a.nombre, a[IDIOMA]?.resumen, ...(a[IDIOMA]?.caracter || [])].join(' ').toLowerCase();
+    const heno = [a.nombre, txt(a, 'resumen'), ...caracter(a)].join(' ').toLowerCase();
     if (!heno.includes(filtros.q)) return false;
   }
   return true;
@@ -124,7 +131,7 @@ function tarjeta(a) {
       </span>
       <span class="tarjeta__nombre">${esc(a.nombre)}</span>
       <span class="tarjeta__meta">${esc(meta)}</span>
-      <span class="tarjeta__resumen">${esc(a[IDIOMA]?.resumen || '')}</span>
+      <span class="tarjeta__resumen">${esc(txt(a, 'resumen'))}</span>
       <span class="tarjeta__pie">
         <span class="tarjeta__ver">${esc(t('cat.ver'))}</span>
         <span class="tarjeta__flecha"><svg aria-hidden="true"><use href="#i-flecha"></use></svg></span>
@@ -210,26 +217,26 @@ function pintarFicha(a) {
         <h3 id="ficha-nombre">${esc(a.nombre)}</h3>
         ${a.urgente ? `<span class="tarjeta__urgente" style="position:static">${esc(t('cat.urgente'))}</span>` : ''}
       </div>
-      ${a.raza?.[IDIOMA] ? `<p class="ficha__raza">${esc(a.raza[IDIOMA])}</p>` : ''}
-      <p class="ficha__resumen">${esc(a[IDIOMA]?.resumen || '')}</p>
+      ${razaTxt(a) ? `<p class="ficha__raza">${esc(razaTxt(a))}</p>` : ''}
+      <p class="ficha__resumen">${esc(txt(a, 'resumen'))}</p>
 
       <div class="datos">
         <div class="dato"><div class="dato__k">${esc(t('ficha.sexo'))}</div><div class="dato__v">${esc(t(a.sexo === 'macho' ? 'ficha.macho' : 'ficha.hembra'))}</div></div>
         <div class="dato"><div class="dato__k">${esc(t('ficha.edad'))}</div><div class="dato__v">${esc(edadTexto(a))}</div></div>
-        <div class="dato"><div class="dato__k">${esc(t('ficha.peso'))}</div><div class="dato__v">${a.peso_kg} kg</div></div>
+        ${a.peso_kg > 0 ? `<div class="dato"><div class="dato__k">${esc(t('ficha.peso'))}</div><div class="dato__v">${num(a.peso_kg)} kg</div></div>` : ''}
         <div class="dato"><div class="dato__k">${esc(t('ficha.tamano'))}</div><div class="dato__v">${esc(t('cat.' + a.tamano))}</div></div>
         <div class="dato"><div class="dato__k">${esc(t('ficha.energia'))}</div><div class="dato__v">${esc(t('cat.e_' + a.energia))}</div></div>
       </div>
 
       <div class="etiquetas">
-        ${(a[IDIOMA]?.caracter || []).map(c => `<span class="etiqueta">${esc(c)}</span>`).join('')}
+        ${caracter(a).map(c => `<span class="etiqueta">${esc(c)}</span>`).join('')}
       </div>
 
-      <p class="ficha__historia">${esc(a[IDIOMA]?.historia || '')}</p>
+      <p class="ficha__historia">${esc(txt(a, 'historia'))}</p>
 
-      ${a[IDIOMA]?.aviso ? `<div class="aviso-animal">
+      ${txt(a, 'aviso') ? `<div class="aviso-animal">
         <h4><svg aria-hidden="true"><use href="#i-alerta"></use></svg>${esc(t('ficha.aviso'))}</h4>
-        <p>${esc(a[IDIOMA].aviso)}</p>
+        <p>${esc(txt(a, 'aviso'))}</p>
       </div>` : ''}
 
       ${salud.length ? `<div class="salud">

@@ -6,6 +6,19 @@ par le refuge vivent dans deux fichiers JSON.
 
 ---
 
+## Administration et déploiement
+
+Les fiches d'animaux se gèrent depuis `/admin/` (formulaire sur mesure, en
+espagnol, traduction anglaise automatique). Le site est construit par
+`build-preprod.py` puis publié sur O2switch par GitHub Actions
+(`.github/workflows/desplegar.yml`, `deploy-ftp.py`).
+
+- Mise en place complète : [ADMIN.md](ADMIN.md)
+- Guide à remettre au refuge (espagnol) : [GUIA-REFUGIO.md](GUIA-REFUGIO.md)
+- Tester le panel en local sans rien publier : `herramientas/servidor-prueba.py`
+
+---
+
 ## Voir le site en local
 
 Double-clic sur `servir.command`, ou :

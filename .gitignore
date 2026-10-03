@@ -8,3 +8,7 @@ dist/
 .DS_Store
 **/.DS_Store
 /data/animales.json
+
+# Secrets du serveur : créés à la main, jamais versionnés
+api/secrets.php
+secrets-*.php

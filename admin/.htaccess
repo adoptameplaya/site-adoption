@@ -1,0 +1,9 @@
+# Le panel ne s'indexe pas, ne se met pas en cache, et ne peut charger
+# que ses propres scripts : même si une faille s'y glissait un jour,
+# rien d'extérieur ne pourrait s'y exécuter ni recevoir le token GitHub.
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow"
+  Header always set Cache-Control "no-store"
+  Header always set X-Frame-Options "DENY"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://avatars.githubusercontent.com https://raw.githubusercontent.com; connect-src 'self' https://api.github.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+</IfModule>

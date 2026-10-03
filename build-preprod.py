@@ -9,6 +9,14 @@ Différences avec le site final :
   - les fichiers de travail (.md, servir.command, ce script) sont exclus
 
 Usage : python3 build-preprod.py
+
+Variables d'environnement :
+  MODO     preprod (défaut) | produccion
+  DESTINO  netlify (défaut) | o2switch
+           o2switch ajoute api/ (PHP) et .htaccess, et ne produit ni
+           _redirects ni _headers, qui ne servent qu'à Netlify.
+  SITE_URL adresse publique (https://adoptameplaya.org) : réglée dans le
+           canonical, dans la config du secours Decap
 """
 import json, os, re, shutil, unicodedata, zipfile
 from pathlib import Path
@@ -18,12 +26,23 @@ from pathlib import Path
 MODO = os.environ.get("MODO", "preprod").strip().lower()
 PREPROD = MODO != "produccion"
 
+# netlify = ancien hébergement ; o2switch = hébergement définitif (PHP + .htaccess).
+DESTINO = os.environ.get("DESTINO", "netlify").strip().lower()
+O2 = DESTINO == "o2switch"
+SITE_URL = os.environ.get("SITE_URL", "").strip().rstrip("/")
+
 RACINE = Path(__file__).parent.resolve()
 DIST   = RACINE / "dist"
 BUILD  = DIST / "preprod"
 ZIP    = DIST / "refugio-preprod.zip"
 
 A_COPIER = ["index.html", "aviso-de-privacidad.html", "gracias.html", "cuestionario.html", "admin", "css", "js", "data", "img", "formularios"]
+if O2:
+    A_COPIER += ["api", ".htaccess"]
+
+# Jamais dans le site publié : les secrets posés à la main sur le serveur,
+# et les scories de macOS.
+IGNORES = shutil.ignore_patterns("secrets.php", "secrets-*.php", ".DS_Store")
 
 
 def preparer():
@@ -34,9 +53,25 @@ def preparer():
         src = RACINE / nom
         dst = BUILD / nom
         if src.is_dir():
-            shutil.copytree(src, dst)
+            shutil.copytree(src, dst, ignore=IGNORES)
         else:
             shutil.copy2(src, dst)
+
+
+def ajustar_url():
+    """Règle l'adresse publique là où elle est écrite en dur."""
+    if not SITE_URL:
+        return
+    cfg = BUILD / "admin" / "decap" / "config.yml"
+    if cfg.is_file():
+        t = re.sub(r"(?m)^(\s*base_url:\s*).*$", lambda m: m.group(1) + SITE_URL, cfg.read_text(encoding="utf-8"))
+        cfg.write_text(t, encoding="utf-8")
+    for page in BUILD.glob("*.html"):
+        t = page.read_text(encoding="utf-8")
+        n = t.replace("https://ejemplo.org", SITE_URL)
+        if n != t:
+            page.write_text(n, encoding="utf-8")
+    print(f"  adresse publique réglée : {SITE_URL}")
 
 
 def nombre_seguro(nombre):
@@ -238,9 +273,12 @@ def fichiers_netlify():
     except Exception:
         sha = "?"
     (BUILD / "version.txt").write_text(
-        f"commit={sha or '?'}\nmode={'preprod' if PREPROD else 'produccion'}\n"
+        f"commit={sha or '?'}\nmode={'preprod' if PREPROD else 'produccion'}\ndestino={DESTINO}\n"
         f"construit={__import__('datetime').datetime.utcnow().isoformat(timespec='seconds')}Z\n"
     )
+
+    if O2:
+        return   # sur O2switch, c'est le .htaccess qui fait ce travail
 
     # Decap appelle ces deux chemins pour l'authentification GitHub.
     (BUILD / "_redirects").write_text(
@@ -271,9 +309,10 @@ if __name__ == "__main__":
     if PREPROD:
         noindex()
         bandeau()
+    ajustar_url()
     fichiers_netlify()
     verifier_formularios()
-    print(f"  mode : {'préprod (noindex + bandeau)' if PREPROD else 'PRODUCTION'}")
+    print(f"  mode : {'préprod (noindex + bandeau)' if PREPROD else 'PRODUCTION'} · destino : {DESTINO}")
     chemin = zipper()
     poids = chemin.stat().st_size / 1024
     with zipfile.ZipFile(chemin) as z:
