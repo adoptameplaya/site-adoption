@@ -1,0 +1,54 @@
+# Construye el sitio y lo deja listo en la rama ¬´despliegue¬ª.
+#
+# Es el servidor (O2switch) quien viene a buscarlo cada pocos minutos
+# (herramientas/actualizar-servidor.sh, desde una tarea cron). As√≠ no hace
+# falta ninguna contrase√±a ni secreto: O2switch no ofrece FTP cifrado a las
+# direcciones de GitHub, y un FTP sin cifrar expondr√≠a la contrase√±a.
+#
+# La rama ¬´despliegue¬ª se reescribe entera en cada construcci√≥n (una sola
+# confirmaci√≥n, sin historial acumulado). No dispara este mismo workflow.
+name: Construir el sitio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Una construcci√≥n a la vez: dos fichas guardadas seguidas se encadenan.
+concurrency:
+  group: construir
+  cancel-in-progress: false
+
+permissions:
+  contents: write      # para escribir en la rama ¬´despliegue¬ª
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Construir el sitio
+        env:
+          DESTINO: o2switch
+          # "preprod" (aviso de demo + noindex) hasta el lanzamiento.
+          # Para pasar a producci√≥n: Settings ‚Üí Variables ‚Üí MODO = produccion
+          MODO: ${{ vars.MODO || 'preprod' }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: python3 build-preprod.py
+
+      - name: Publicar en la rama ¬´despliegue¬ª
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -eu
+          test -f dist/preprod/index.html   # nunca publicar una construcci√≥n vac√≠a
+          cd dist/preprod
+          git init -q -b despliegue
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -f
+          git commit -q -m "Sitio construido desde ${GITHUB_SHA}"
+          git push -q --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" despliegue
+          echo "Rama ¬´despliegue¬ª actualizada (${GITHUB_SHA})."
