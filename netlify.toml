@@ -1,0 +1,24 @@
+# =========================================================
+# Construction du site sur Netlify, à partir du dépôt GitHub.
+# Ce fichier est lu AVANT le build. Celui qui se retrouve dans
+# dist/preprod est généré et ne concerne que le site publié.
+# =========================================================
+
+[build]
+  command = "python3 build-preprod.py"
+  publish = "dist/preprod"
+  functions = "netlify/functions"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+# Decap appelle /api/auth et /api/callback
+[[redirects]]
+  from = "/api/auth"
+  to = "/.netlify/functions/auth"
+  status = 200
+
+[[redirects]]
+  from = "/api/callback"
+  to = "/.netlify/functions/callback"
+  status = 200

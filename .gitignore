@@ -1,0 +1,9 @@
+# Produits de build
+dist/
+
+# Sauvegardes locales
+.respaldos/
+
+# macOS
+.DS_Store
+**/.DS_Store

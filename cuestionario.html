@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Cuestionario de adopción | Adopta Me Playa</title>
+<link rel="icon" href="img/ui/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=45">
+</head>
+<body class="cue-body">
+
+<header class="barra">
+  <div class="contenedor barra__fila">
+    <a class="marca" href="index.html">
+      <img class="marca__logo" src="img/ui/logo.png" alt="" width="58" height="58">
+      <span>
+        <span class="marca__nombre" data-refugio="nombre">Adopta Me Playa</span>
+        <span class="marca__lugar" data-i18n="marca.lugar"></span>
+      </span>
+    </a>
+    <div class="barra__acciones" style="margin-left:auto">
+      <div class="idioma" role="group" aria-label="Idioma / Language">
+        <button type="button" data-idioma="es" aria-pressed="true">ES</button>
+        <button type="button" data-idioma="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- barre de progression : sur 44 questions, savoir où on en est change tout -->
+<div class="cue-progreso" id="cue-progreso" hidden>
+  <div class="contenedor">
+    <div class="cue-progreso__barra"><span id="cue-barra"></span></div>
+    <p class="cue-progreso__txt" id="cue-progreso-txt"></p>
+  </div>
+</div>
+
+<main class="seccion">
+  <div class="contenedor cue-ancho">
+    <p class="epigrafe" data-i18n="sol.epigrafe"></p>
+    <h1 class="cue-titulo" data-i18n="cue.titulo"></h1>
+    <p class="seccion__intro" id="cue-intro"></p>
+
+    <div id="cue-no-disponible" class="aviso-animal" hidden>
+      <h4><svg aria-hidden="true"><use href="#i-alerta"></use></svg><span data-i18n="cue.sin_t"></span></h4>
+      <p data-i18n="cue.sin_d"></p>
+      <p style="margin-top:16px"><a class="btn" id="cue-wa-sin" href="#" target="_blank" rel="noopener"><span data-i18n="wa.flotante"></span></a></p>
+    </div>
+
+    <form class="pedido cue-form" id="cue-form" method="POST" novalidate hidden>
+      <input type="hidden" name="_subject" value="">
+      <input type="hidden" name="_autoresponse" value="">
+      <input type="hidden" name="_next" value="">
+      <input type="hidden" name="_template" value="box">
+      <input type="hidden" name="name" value="">
+      <input type="hidden" name="Animal" value="">
+      <input type="hidden" name="Cuestionario" value="">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="campos cue-cabecera">
+        <p class="campo">
+          <label for="cue-animal" data-i18n="cue.animal"></label>
+          <input id="cue-animal" data-i18n-attr="placeholder:cue.animal_ph">
+        </p>
+        <p class="campo">
+          <label for="cue-fecha" data-i18n="cue.fecha"></label>
+          <input id="cue-fecha" type="date">
+        </p>
+      </div>
+
+      <div id="cue-secciones"></div>
+
+      <fieldset class="bloque cue-acuerdo">
+        <legend data-i18n="cue.acuerdo_t"></legend>
+        <p class="cue-declaracion" data-i18n="cue.declaracion"></p>
+        <label class="casilla"><input type="checkbox" id="cue-acepto" required><span data-i18n="cue.acepto"></span></label>
+        <div class="campos" style="margin-top:18px">
+          <p class="campo">
+            <label for="cue-email" data-i18n="cue.email"></label>
+            <input id="cue-email" type="email" required placeholder=" ">
+            <span class="ayuda" data-i18n="cue.email_ayuda"></span>
+          </p>
+          <p class="campo">
+            <label for="cue-lugar" data-i18n="cue.lugar"></label>
+            <input id="cue-lugar" placeholder=" ">
+          </p>
+        </div>
+      </fieldset>
+
+      <div class="enviar">
+        <button class="btn btn--grande" type="submit" id="cue-enviar">
+          <svg aria-hidden="true"><use href="#i-sobre"></use></svg><span data-i18n="cue.enviar"></span>
+        </button>
+        <span class="enviar__nota" data-i18n="sol.privacidad"></span>
+      </div>
+
+      <div class="pedido__estado oculto" id="cue-estado" role="alert"></div>
+
+      <p class="cue-pdf"><a id="cue-pdf" href="#" data-i18n="cue.pdf"></a></p>
+    </form>
+  </div>
+</main>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-sobre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 7.3 5.2a2 2 0 0 0 2.4 0L20.5 7"/></symbol>
+<symbol id="i-alerta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.9 18.2A1.9 1.9 0 0 0 3.5 21h17a1.9 1.9 0 0 0 1.6-2.8L13.7 3.9a1.9 1.9 0 0 0-3.4 0"/><path d="M12 9v4.5M12 17.4v.1"/></symbol>
+</defs></svg>
+
+<script src="js/i18n.js?v=45"></script>
+<script src="js/cuestionario.js?v=45"></script>
+</body>
+</html>

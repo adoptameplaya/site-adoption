@@ -1,0 +1,399 @@
+{
+  "animales": [
+    {
+      "id": "sheruk",
+      "nombre": "Sheruk",
+      "raza": {
+        "es": "Pastor holandés",
+        "en": "Dutch Shepherd"
+      },
+      "especie": "perro",
+      "sexo": "macho",
+      "edad_meses": 78,
+      "edad_texto": {
+        "es": "6-7 años",
+        "en": "6-7 years"
+      },
+      "peso_kg": 32,
+      "tamano": "grande",
+      "energia": "media",
+      "color": "arena",
+      "foto": "img/animales/sheruk.jpg",
+      "fotos": [
+        "img/animales/sheruk.jpg",
+        "img/animales/sheruk-2.jpg",
+        "img/animales/sheruk-3.jpg"
+      ],
+      "urgente": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": true,
+      "es": {
+        "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
+        "historia": "Sheruk fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
+        "aviso": "Es un perro con mucha fuerza. Hace falta ser consciente de ello y estar capacitado para manejar este tipo de perro.",
+        "caracter": [
+          "Protector",
+          "Tranquilo",
+          "Cariñoso"
+        ]
+      },
+      "en": {
+        "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
+        "historia": "Sheruk was a working security dog. When the company shut down, the dogs were left behind. We found him in very poor condition; he is much better now, but he still lives in a cage in the jungle, waiting for a family.",
+        "aviso": "He is a very powerful dog. You need to be aware of that and properly equipped to handle this kind of dog.",
+        "caracter": [
+          "Protective",
+          "Calm",
+          "Affectionate"
+        ]
+      }
+    },
+    {
+      "id": "milo",
+      "nombre": "Milo",
+      "especie": "gato",
+      "sexo": "macho",
+      "edad_meses": 24,
+      "peso_kg": 4,
+      "tamano": "chico",
+      "energia": "baja",
+      "color": "arena",
+      "foto": "img/animales/milo.jpg",
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "convive": {
+        "ninos": true,
+        "perros": true,
+        "gatos": false
+      },
+      "es": {
+        "resumen": "Tranquilo, dormilón y experto en encontrar el único rayo de sol de la casa.",
+        "historia": "Milo llegó al refugio en una caja de cartón afuera de una tienda de la Avenida 30. Tenía tres meses y un resfriado que casi se lo lleva. Hoy pesa cuatro kilos, ronronea en cuanto lo cargas y se lleva bien con los perros del refugio. Con otros gatos prefiere mantener su distancia, así que estaría mejor como gato único o con mucha paciencia en la presentación.",
+        "caracter": [
+          "Cariñoso",
+          "Tranquilo",
+          "Faldero"
+        ]
+      },
+      "en": {
+        "resumen": "Calm, sleepy, and an expert at finding the one sunbeam in the house.",
+        "historia": "Milo arrived at the shelter in a cardboard box outside a shop on Avenida 30. He was three months old with a cold that nearly killed him. Today he weighs four kilos, purrs the moment you pick him up, and gets along with the shelter dogs. With other cats he prefers his distance, so he would do best as an only cat, or with a very patient introduction.",
+        "caracter": [
+          "Affectionate",
+          "Calm",
+          "Lap cat"
+        ]
+      },
+      "foto_origen": "unsplash",
+      "foto_id": "photo-1596854372745-0906a0593bca",
+      "_foto_nota": "PROVISIONAL — photo de banque d'images, ce n'est PAS l'animal réel. À remplacer par la vraie photo du refuge.",
+      "cartilla": true
+    },
+    {
+      "id": "coco",
+      "nombre": "Coco",
+      "especie": "perro",
+      "sexo": "hembra",
+      "edad_meses": 14,
+      "peso_kg": 12,
+      "tamano": "mediano",
+      "energia": "alta",
+      "color": "lavanda",
+      "foto": "img/animales/coco.jpg",
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "convive": {
+        "ninos": true,
+        "perros": true,
+        "gatos": true
+      },
+      "es": {
+        "resumen": "Pura energía. Necesita una familia que camine, corra o al menos salga dos veces al día.",
+        "historia": "Coco apareció siguiendo a un repartidor por la Colonia Ejido, flaquita y con sarna. Se recuperó en dos meses y desde entonces no ha parado de mover la cola. Aprende rapidísimo: ya sabe sentarse, dar la pata y esperar antes de cruzar la calle. Es sociable con todo el mundo, perros, gatos y niños incluidos, pero se aburre si la dejan sola muchas horas.",
+        "caracter": [
+          "Enérgica",
+          "Sociable",
+          "Obediente"
+        ]
+      },
+      "en": {
+        "resumen": "Pure energy. Needs a family that walks, runs, or at least gets out twice a day.",
+        "historia": "Coco turned up following a delivery driver through Colonia Ejido, skinny and with mange. She recovered in two months and has not stopped wagging since. She learns fast: she already sits, gives her paw, and waits before crossing the street. She is social with everyone, dogs, cats and children included, but she gets bored if left alone for long hours.",
+        "caracter": [
+          "Energetic",
+          "Social",
+          "Quick learner"
+        ]
+      },
+      "foto_origen": "unsplash",
+      "foto_id": "photo-1660088294311-22b48dde998d",
+      "_foto_nota": "PROVISIONAL — photo de banque d'images, ce n'est PAS l'animal réel. À remplacer par la vraie photo du refuge.",
+      "cartilla": true
+    },
+    {
+      "id": "rocky",
+      "nombre": "Rocky",
+      "especie": "perro",
+      "sexo": "macho",
+      "edad_meses": 60,
+      "peso_kg": 9,
+      "tamano": "chico",
+      "energia": "baja",
+      "color": "coral",
+      "foto": "img/animales/rocky.jpg",
+      "urgente": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "convive": {
+        "ninos": true,
+        "perros": false,
+        "gatos": true
+      },
+      "es": {
+        "resumen": "Lleva dos años esperando. Es tranquilo, limpio y sólo quiere un sillón y una persona.",
+        "historia": "A Rocky lo dejaron amarrado afuera del refugio cuando su familia se fue de Playa. Es el que más tiempo lleva con nosotros y el que menos ruido hace. No pelea, no ladra de noche y camina perfecto con correa. Con otros perros machos se pone tenso, así que preferimos que sea el único perro de la casa. Con gatos y con niños es un pan.",
+        "caracter": [
+          "Tranquilo",
+          "Limpio",
+          "Fiel"
+        ]
+      },
+      "en": {
+        "resumen": "Two years waiting. Quiet, house-clean, and he only wants a couch and a person.",
+        "historia": "Rocky was left tied outside the shelter when his family moved away from Playa. He has been with us the longest and makes the least noise. He does not fight, does not bark at night, and walks perfectly on a leash. He tenses up around other male dogs, so we would rather he be the only dog in the house. With cats and children he is a sweetheart.",
+        "caracter": [
+          "Quiet",
+          "House-clean",
+          "Loyal"
+        ]
+      },
+      "foto_origen": "unsplash",
+      "foto_id": "photo-1636772611113-d44a76913388",
+      "_foto_nota": "PROVISIONAL — photo de banque d'images, ce n'est PAS l'animal réel. À remplacer par la vraie photo du refuge.",
+      "cartilla": true
+    },
+    {
+      "id": "luna",
+      "nombre": "Luna",
+      "especie": "gato",
+      "sexo": "hembra",
+      "edad_meses": 8,
+      "peso_kg": 3,
+      "tamano": "chico",
+      "energia": "media",
+      "color": "turquesa",
+      "foto": "img/animales/luna.jpg",
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "convive": {
+        "ninos": true,
+        "perros": false,
+        "gatos": true
+      },
+      "es": {
+        "resumen": "Curiosa y platicadora. Te sigue de cuarto en cuarto contándote su día.",
+        "historia": "Luna nació debajo de una palapa en la playa y llegó al refugio con sus tres hermanos. Ellos ya encontraron casa; ella se quedó porque es la más tímida los primeros diez minutos. Pasado ese rato no te suelta. Necesita hogar con protecciones en ventanas y balcones: es escaladora profesional y aquí vivimos en pisos altos.",
+        "caracter": [
+          "Curiosa",
+          "Juguetona",
+          "Platicadora"
+        ]
+      },
+      "en": {
+        "resumen": "Curious and talkative. She follows you room to room telling you about her day.",
+        "historia": "Luna was born under a palapa on the beach and came to the shelter with three siblings. They have all found homes; she stayed behind because she is the shyest for the first ten minutes. After that she will not leave your side. She needs a home with screened windows and balconies: she is a professional climber and this town is full of high floors.",
+        "caracter": [
+          "Curious",
+          "Playful",
+          "Talkative"
+        ]
+      },
+      "foto_origen": "unsplash",
+      "foto_id": "photo-1631307494857-fa85ac2c6c38",
+      "_foto_nota": "PROVISIONAL — photo de banque d'images, ce n'est PAS l'animal réel. À remplacer par la vraie photo du refuge.",
+      "cartilla": true
+    },
+    {
+      "id": "canela",
+      "nombre": "Canela",
+      "especie": "perro",
+      "sexo": "hembra",
+      "edad_meses": 84,
+      "peso_kg": 22,
+      "tamano": "grande",
+      "energia": "baja",
+      "color": "arena",
+      "foto": "img/animales/canela.jpg",
+      "urgente": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "convive": {
+        "ninos": true,
+        "perros": true,
+        "gatos": false
+      },
+      "es": {
+        "resumen": "Siete años, paso lento y cero drama. La compañera perfecta para una casa tranquila.",
+        "historia": "Canela llegó atropellada en la carretera federal. Perdió movilidad en una pata trasera pero camina, sube escaleras y disfruta sus paseos cortos. Los perros grandes y mayores son los últimos en ser adoptados, y ella es de las que menos molestan: duerme casi todo el día y sólo pide que la rasquen detrás de la oreja.",
+        "caracter": [
+          "Serena",
+          "Agradecida",
+          "Buena con niños"
+        ]
+      },
+      "en": {
+        "resumen": "Seven years old, slow pace, zero drama. The perfect companion for a quiet house.",
+        "historia": "Canela arrived after being hit on the federal highway. She lost some mobility in a back leg but she walks, climbs stairs, and enjoys her short outings. Big older dogs are the last to be adopted, and she is one of the easiest: she sleeps most of the day and only asks to be scratched behind the ear.",
+        "caracter": [
+          "Serene",
+          "Grateful",
+          "Good with kids"
+        ]
+      },
+      "foto_origen": "unsplash",
+      "foto_id": "photo-1619590694371-7eed5838e880",
+      "_foto_nota": "PROVISIONAL — photo de banque d'images, ce n'est PAS l'animal réel. À remplacer par la vraie photo du refuge.",
+      "cartilla": true
+    },
+    {
+      "id": "tuna",
+      "nombre": "Tuna",
+      "especie": "gato",
+      "sexo": "macho",
+      "edad_meses": 4,
+      "peso_kg": 2,
+      "tamano": "chico",
+      "energia": "alta",
+      "color": "menta",
+      "foto": "img/animales/tuna.jpg",
+      "urgente": false,
+      "esterilizado": false,
+      "vacunado": true,
+      "desparasitado": true,
+      "convive": {
+        "ninos": true,
+        "perros": true,
+        "gatos": true
+      },
+      "es": {
+        "resumen": "Cuatro meses de puro motor. Se adopta en pareja con otro gatito, no solo.",
+        "historia": "Tuna es el más chico del refugio y el más ruidoso. Come, juega, se cae, se levanta y vuelve a empezar. A los gatitos de su edad no los damos solos: se adoptan en pareja o con otro gato ya en casa, porque un cachorro solo se aburre y se vuelve destructivo. Su esterilización está incluida y se agenda a los seis meses.",
+        "caracter": [
+          "Travieso",
+          "Valiente",
+          "Comelón"
+        ]
+      },
+      "en": {
+        "resumen": "Four months of pure engine. Adopted in pairs with another kitten, never alone.",
+        "historia": "Tuna is the smallest cat in the shelter and the loudest. He eats, plays, falls over, gets up and starts again. We do not rehome kittens his age on their own: they go in pairs, or to a home that already has a cat, because a lone kitten gets bored and turns destructive. His neuter is included and scheduled at six months.",
+        "caracter": [
+          "Mischievous",
+          "Brave",
+          "Big appetite"
+        ]
+      },
+      "foto_origen": "unsplash",
+      "foto_id": "photo-1560114928-40f1f1eb26a0",
+      "_foto_nota": "PROVISIONAL — photo de banque d'images, ce n'est PAS l'animal réel. À remplacer par la vraie photo du refuge.",
+      "cartilla": true
+    },
+    {
+      "id": "bruno",
+      "nombre": "Bruno",
+      "especie": "perro",
+      "sexo": "macho",
+      "edad_meses": 30,
+      "peso_kg": 28,
+      "tamano": "grande",
+      "energia": "media",
+      "color": "lavanda",
+      "foto": "img/animales/bruno.jpg",
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "convive": {
+        "ninos": false,
+        "perros": true,
+        "gatos": false
+      },
+      "es": {
+        "resumen": "Grandote, fuerte y muy noble. Necesita patio bardeado y una mano con experiencia.",
+        "historia": "Bruno fue perro de vigilancia en una obra y se quedó cuando la obra terminó. Es noble pero mide su fuerza mal: de la emoción tumba a quien se le pone enfrente, por eso pedimos hogar sin niños pequeños. Con otros perros es excelente. Requiere patio bardeado de verdad, no reja baja, porque salta.",
+        "caracter": [
+          "Noble",
+          "Fuerte",
+          "Guardián"
+        ]
+      },
+      "en": {
+        "resumen": "Big, strong and very good-natured. Needs a properly walled yard and an experienced hand.",
+        "historia": "Bruno was a guard dog on a construction site and stayed behind when the site closed. He is gentle but does not know his own strength: out of sheer excitement he knocks people over, which is why we ask for a home without small children. With other dogs he is excellent. He needs a real walled yard, not a low fence, because he jumps.",
+        "caracter": [
+          "Good-natured",
+          "Strong",
+          "Watchful"
+        ]
+      },
+      "foto_origen": "unsplash",
+      "foto_id": "photo-1532934066-274478b07d25",
+      "_foto_nota": "PROVISIONAL — photo de banque d'images, ce n'est PAS l'animal réel. À remplacer par la vraie photo du refuge.",
+      "cartilla": true
+    },
+    {
+      "id": "frida",
+      "nombre": "Frida",
+      "especie": "perro",
+      "sexo": "hembra",
+      "edad_meses": 6,
+      "peso_kg": 7,
+      "tamano": "mediano",
+      "energia": "alta",
+      "color": "coral",
+      "foto": "img/animales/frida.jpg",
+      "urgente": false,
+      "esterilizado": false,
+      "vacunado": true,
+      "desparasitado": true,
+      "convive": {
+        "ninos": true,
+        "perros": true,
+        "gatos": true
+      },
+      "es": {
+        "resumen": "Cachorra en plena edad de morder todo. Va a crecer: calcula unos 18 kilos.",
+        "historia": "Frida nació en el refugio, hija de una perrita rescatada preñada de la calle. Es la más lista de la camada y la primera en llegar a la puerta cuando alguien entra. Está en plena etapa de mordisquear cables y zapatos, así que buscamos familia con tiempo y paciencia para educarla ahora, no en un año. Su esterilización está incluida.",
+        "caracter": [
+          "Lista",
+          "Juguetona",
+          "Sociable"
+        ]
+      },
+      "en": {
+        "resumen": "A puppy in full chewing season. She will grow: expect around 18 kilos.",
+        "historia": "Frida was born at the shelter to a street dog rescued while pregnant. She is the smartest of the litter and the first at the gate whenever someone arrives. She is deep in the cable-and-shoe-chewing stage, so we are looking for a family with the time and patience to train her now, not in a year. Her spay is included.",
+        "caracter": [
+          "Smart",
+          "Playful",
+          "Social"
+        ]
+      },
+      "foto_origen": "unsplash",
+      "foto_id": "photo-1507146426996-ef05306b995a",
+      "_foto_nota": "PROVISIONAL — photo de banque d'images, ce n'est PAS l'animal réel. À remplacer par la vraie photo du refuge.",
+      "cartilla": true
+    }
+  ]
+}

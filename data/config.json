@@ -1,0 +1,130 @@
+{
+  "_leeme": "TODOS los valores marcados REEMPLAZAR son provisionales. Cambialos por los datos reales del refugio antes de publicar.",
+  "refugio": {
+    "nombre": "Adopta Me Playa",
+    "nombre_corto": "Adopta Me",
+    "_nombre_nota": "REEMPLAZAR por el nombre real del refugio",
+    "ciudad": "Playa del Carmen",
+    "estado": "Quintana Roo",
+    "pais": "México",
+    "direccion": "Calle 34 Norte, Colonia Ejido, Playa del Carmen, Q. Roo",
+    "_direccion_nota": "REEMPLAZAR por la direccion real",
+    "codigo_postal": "77712",
+    "mapa_url": "https://maps.google.com/?q=Playa+del+Carmen+Quintana+Roo",
+    "horarios": {
+      "es": "Visitas con cita previa · Lunes a sábado, 10:00 – 17:00",
+      "en": "Visits by appointment · Monday to Saturday, 10:00 – 17:00"
+    },
+    "fundado": "2016",
+    "_nota_ocultos": "direccion, codigo_postal, mapa_url et horarios ne sont plus affichés depuis le 2026-10-02 (demande du refuge). Conservés ici au cas où."
+  },
+  "contacto": {
+    "whatsapp": "17142248714",
+    "_whatsapp_nota": "Numéro réel du refuge. Format international sans + ni espaces pour wa.me.",
+    "whatsapp_visible": "+1 (714) 224 8714",
+    "email": "adoptameplaya@gmail.com",
+    "_email_nota": "Adresse réelle du refuge. Reçoit aussi les demandes du formulaire."
+  },
+  "redes": {
+    "facebook": "https://www.facebook.com/profile.php?id=61594293778768",
+    "instagram": "",
+    "tiktok": "",
+    "_nota": "Laisser vide une réseau non fourni : l'icône disparaît au lieu de pointer vers l'accueil du réseau."
+  },
+  "donaciones": {
+    "spei": {
+      "activo": true,
+      "banco": "BBVA México",
+      "titular": "Adopta Me Playa A.C.",
+      "clabe": "012180001234567890",
+      "_clabe_nota": "REEMPLAZAR por la CLABE real de 18 digitos",
+      "cuenta": "0123456789",
+      "_titular_nota": "REEMPLAZAR par la raison sociale exacte du compte bancaire du refuge."
+    },
+    "paypal": {
+      "activo": true,
+      "url": "https://paypal.me/",
+      "_nota": "REEMPLAZAR por el enlace PayPal.me real"
+    },
+    "wise": {
+      "activo": true,
+      "url": "",
+      "_nota": "REEMPLAZAR : lien de paiement Wise du refuge (wise.com/pay/me/...). Tant que c'est vide, le bloc renvoie vers le mail du refuge."
+    },
+    "mercadopago": {
+      "activo": true,
+      "url": "https://mpago.la/",
+      "_nota": "REEMPLAZAR por el link de pago o QR de Mercado Pago"
+    },
+    "recibo_deducible": true
+  },
+  "padrinazgo": {
+    "_nota": "PLUS AFFICHÉ depuis le 2026-10-02 : le refuge a retiré l'apadrinamiento de la page. Conservé au cas où il reviendrait."
+  },
+  "lista_deseos": [
+    {
+      "es": "Croquetas para cachorro y adulto",
+      "en": "Puppy and adult dry food"
+    },
+    {
+      "es": "Toallas y cobijas usadas (limpias)",
+      "en": "Used towels and blankets (clean)"
+    },
+    {
+      "es": "Antipulgas y desparasitantes",
+      "en": "Flea treatment and dewormers"
+    },
+    {
+      "es": "Transportadoras y correas",
+      "en": "Carriers and leashes"
+    },
+    {
+      "es": "Cloro, jabón y bolsas de basura",
+      "en": "Bleach, soap and trash bags"
+    }
+  ],
+  "cifras": {
+    "adoptados": 1240,
+    "esterilizados": 3100,
+    "en_refugio": 47,
+    "_nota": "PLUS AFFICHÉ sur la page depuis le 2026-10-02 : les chiffres clés ont été remplacés par la mosaïque de photos. Conservé au cas où le refuge voudrait les réafficher."
+  },
+  "adopcion": {
+    "donacion_sugerida": 500,
+    "_donacion_nota": "Montant unique suggéré, affiché sur toutes les fiches. Remplace l'ancienne « cuota de recuperación » par animal.",
+    "moneda": "MXN",
+    "incluye": {
+      "es": [
+        "Esterilización",
+        "Vacunas al día",
+        "Desparasitación",
+        "Prueba de enfermedades"
+      ],
+      "en": [
+        "Spay / neuter",
+        "Up-to-date vaccines",
+        "Deworming",
+        "Disease testing"
+      ]
+    },
+    "_incluye_nota": "Microchip retiré le 2026-10-02 (le refuge ne le fournit pas)."
+  },
+  "solicitud": {
+    "_leeme": "Le mini-formulaire du site poste ici. FormSubmit renvoie au visiteur le PDF correspondant à l'espèce choisie, et notifie le refuge.",
+    "endpoint": "https://formsubmit.co/adoptameplaya@gmail.com",
+    "_endpoint_nota": "SANS /ajax/ et SANS _captcha=false : FormSubmit désactive l'auto-réponse dans ces deux cas (documenté sur formsubmit.co). Le visiteur passe donc par un reCAPTCHA puis revient sur gracias.html. Après activation, remplacer l'adresse par l'alias fourni par FormSubmit pour ne pas exposer le mail dans le code source.",
+    "formularios": {
+      "perro": {
+        "es": "formularios/Cuestionario_Adopcion_Perro_ES.pdf",
+        "en": "formularios/Adoption_Questionnaire_Dog_EN.pdf"
+      },
+      "gato": {
+        "es": "",
+        "en": ""
+      }
+    },
+    "_formularios_nota": "Chemin du PDF envoyé par l'auto-réponse, par espèce ET par langue du site. Les deux formulaires chien sont en place. Ceux pour les chats sont vides tant que le refuge ne les a pas finalisés : dans ce cas l'auto-réponse annonce un envoi manuel au lieu de donner un lien mort.",
+    "url_base": "",
+    "_url_base_nota": "Laisser vide : le lien du mail est construit sur le domaine depuis lequel la page est ouverte, donc il suit automatiquement Netlify puis le domaine définitif. Ne remplir que pour forcer un domaine."
+  }
+}

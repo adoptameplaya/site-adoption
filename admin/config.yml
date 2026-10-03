@@ -1,0 +1,100 @@
+# =========================================================
+# Espace d'administration — Decap CMS
+# Le refuge ajoute, modifie et supprime les fiches depuis /admin/
+# Chaque enregistrement crée un commit dans le dépôt GitHub,
+# ce qui déclenche automatiquement la reconstruction du site.
+# =========================================================
+
+backend:
+  name: github
+  repo: REEMPLAZAR/REEMPLAZAR        # usuario-o-organizacion/nombre-del-repo
+  branch: main
+  base_url: https://refuge-adoption.netlify.app   # domaine qui héberge le proxy OAuth
+  auth_endpoint: api/auth
+
+locale: es
+publish_mode: simple
+
+media_folder: "img/animales"
+public_folder: "/img/animales"
+
+# Les photos sont recadrées en carré par le site : viser un cadrage centré
+# sur la tête. 700×700 suffit largement.
+media_library:
+  name: default
+
+collections:
+  - name: peludos
+    label: Peludos
+    files:
+      - name: lista
+        label: Peludos en adopción
+        file: data/animales.json
+        format: json
+        description: >
+          Añade, modifica o quita un peludo. Los cambios aparecen en el sitio
+          unos minutos después de guardar.
+        fields:
+          - name: animales
+            label: Peludos
+            label_singular: peludo
+            widget: list
+            summary: "{{fields.nombre}} · {{fields.especie}}"
+            collapsed: true
+            fields:
+              - { name: id, label: "Identificador (sin espacios ni acentos, ej: sheruk)", widget: string, pattern: ['^[a-z0-9-]+$', 'Solo minúsculas, números y guiones'] }
+              - { name: nombre, label: Nombre, widget: string }
+              - { name: especie, label: Especie, widget: select, options: [{label: Perro, value: perro}, {label: Gato, value: gato}] }
+              - { name: sexo, label: Sexo, widget: select, options: [{label: Macho, value: macho}, {label: Hembra, value: hembra}] }
+
+              - name: raza
+                label: Raza (opcional)
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - { name: es, label: "Español", widget: string, required: false }
+                  - { name: en, label: "Inglés", widget: string, required: false }
+
+              - { name: edad_meses, label: Edad en meses, widget: number, value_type: int, min: 0, max: 300, hint: "Se convierte sola en años en la ficha" }
+              - name: edad_texto
+                label: Edad escrita a mano (opcional)
+                widget: object
+                required: false
+                collapsed: true
+                hint: "Úsalo solo para aproximaciones, por ejemplo 6-7 años"
+                fields:
+                  - { name: es, label: "Español", widget: string, required: false }
+                  - { name: en, label: "Inglés", widget: string, required: false }
+
+              - { name: peso_kg, label: Peso en kilos, widget: number, value_type: int, min: 0, max: 120 }
+              - { name: tamano, label: Tamaño, widget: select, options: [{label: Chico, value: chico}, {label: Mediano, value: mediano}, {label: Grande, value: grande}] }
+              - { name: energia, label: Nivel de energía, widget: select, options: [{label: Baja, value: baja}, {label: Media, value: media}, {label: Alta, value: alta}] }
+              - { name: color, label: Color de su cápsula en la portada, widget: select, options: [arena, lavanda, coral, turquesa, menta] }
+
+              - { name: fotos, label: Fotos, widget: list, field: { name: foto, label: Foto, widget: image }, hint: "La primera es el retrato principal. Encuadra la cara." }
+
+              - { name: urgente, label: "Lleva mucho esperando", widget: boolean, default: false }
+              - { name: esterilizado, label: Esterilizado, widget: boolean, default: true }
+              - { name: vacunado, label: Vacunas al día, widget: boolean, default: true }
+              - { name: desparasitado, label: Desparasitado, widget: boolean, default: true }
+              - { name: cartilla, label: Cartilla de vacunación, widget: boolean, default: true }
+              - { name: microchip, label: Microchip, widget: boolean, default: false }
+
+              - name: es
+                label: "Textos en español"
+                widget: object
+                fields:
+                  - { name: resumen, label: "Resumen (una o dos frases, sale en la tarjeta)", widget: text }
+                  - { name: historia, label: Su historia, widget: text }
+                  - { name: aviso, label: "Aviso importante (opcional, sale en rojo)", widget: text, required: false }
+                  - { name: caracter, label: "Carácter (3 palabras)", widget: list, field: { name: palabra, label: Palabra, widget: string } }
+
+              - name: en
+                label: "Textos en inglés"
+                widget: object
+                fields:
+                  - { name: resumen, label: Summary, widget: text }
+                  - { name: historia, label: Their story, widget: text }
+                  - { name: aviso, label: "Important warning (optional)", widget: text, required: false }
+                  - { name: caracter, label: "Character (3 words)", widget: list, field: { name: word, label: Word, widget: string } }
