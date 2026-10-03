@@ -34,5 +34,6 @@
       "Loyal"
     ]
   },
-  "edad_anos": 5
+  "edad": 5,
+  "edad_unidad": "anos"
 }

@@ -34,9 +34,6 @@
       "Social"
     ]
   },
-  "edad_anos": 0,
-  "edad_texto": {
-    "es": "6 meses",
-    "en": "6 months"
-  }
+  "edad": 6,
+  "edad_unidad": "meses"
 }

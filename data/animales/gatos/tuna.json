@@ -34,9 +34,6 @@
       "Big appetite"
     ]
   },
-  "edad_anos": 0,
-  "edad_texto": {
-    "es": "4 meses",
-    "en": "4 months"
-  }
+  "edad": 4,
+  "edad_unidad": "meses"
 }

@@ -34,5 +34,6 @@
       "Watchful"
     ]
   },
-  "edad_anos": 2
+  "edad": 2,
+  "edad_unidad": "anos"
 }

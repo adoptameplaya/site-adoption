@@ -34,5 +34,6 @@
       "Good with kids"
     ]
   },
-  "edad_anos": 7
+  "edad": 7,
+  "edad_unidad": "anos"
 }

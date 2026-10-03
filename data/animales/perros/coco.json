@@ -34,5 +34,6 @@
       "Quick learner"
     ]
   },
-  "edad_anos": 1
+  "edad": 1,
+  "edad_unidad": "anos"
 }

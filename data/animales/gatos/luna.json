@@ -34,9 +34,6 @@
       "Talkative"
     ]
   },
-  "edad_anos": 0,
-  "edad_texto": {
-    "es": "8 meses",
-    "en": "8 months"
-  }
+  "edad": 8,
+  "edad_unidad": "meses"
 }

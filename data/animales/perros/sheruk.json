@@ -6,7 +6,8 @@
     "es": "Pastor holandés",
     "en": "Dutch Shepherd"
   },
-  "edad_anos": 6,
+  "edad": 7,
+  "edad_unidad": "anos",
   "sexo": "macho",
   "edad_texto": {
     "es": "6-7 años",

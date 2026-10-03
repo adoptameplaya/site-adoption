@@ -187,7 +187,9 @@ window.TEXTOS = {
     "cue.wa_ayuda": "Un mensaje corto para que lo veamos enseguida. Opcional.",
     "cue.wa_msg": "Hola, acabo de enviar el cuestionario de adopción{animal}. Soy {nombre}.",
     "cue.wa_msg_animal": " para {animal}",
-    "ficha.bebe": "Menos de 1 año"
+    "ficha.bebe": "Menos de 1 año",
+    "ficha.mes": "1 mes",
+    "ficha.meses": "{n} meses"
   },
 
   en: {
@@ -374,6 +376,8 @@ window.TEXTOS = {
     "cue.wa_ayuda": "A short message so we see it right away. Optional.",
     "cue.wa_msg": "Hi, I have just sent the adoption questionnaire{animal}. My name is {nombre}.",
     "cue.wa_msg_animal": " for {animal}",
-    "ficha.bebe": "Under 1 year"
+    "ficha.bebe": "Under 1 year",
+    "ficha.mes": "1 month",
+    "ficha.meses": "{n} months"
   }
 };
