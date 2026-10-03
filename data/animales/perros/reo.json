@@ -4,6 +4,10 @@
   "color": "menta",
   "urgente": false,
   "esterilizado": true,
+  "edad_texto": {
+    "es": "6 / 7 años",
+    "en": "6 / 7 years"
+  },
   "en": {
     "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
     "historia": "Reo was a working security dog. When the company shut down, the dogs were left behind. We found him in very poor condition; he is much better now, but he still lives in a cage in the jungle, waiting for a family.",
