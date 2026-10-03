@@ -1,0 +1,32 @@
+{
+  "desparasitado": true,
+  "tamano": "chico",
+  "color": "turquesa",
+  "urgente": false,
+  "esterilizado": true,
+  "en": {
+    "resumen": "thstrhtr",
+    "historia": "She was abandoned in an empty lot with his siblings and had a very serious eye infection. She has fully recovered and can now see perfectly."
+  },
+  "sexo": "hembra",
+  "energia": "media",
+  "nombre": "Tigresa",
+  "peso_kg": 0,
+  "orden": 1,
+  "edad_meses": 3,
+  "es": {
+    "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenía una infección muy grave en los ojos. Ya se recuperó por completo y ahora ve perfectamente.",
+    "caracter": [
+      "Juguetona ",
+      "Cariñosa"
+    ],
+    "resumen": "fgwn sn"
+  },
+  "fotos": [
+    "/img/animales/capture-d’écran-2026-10-03-à-05.13.08.png"
+  ],
+  "microchip": false,
+  "cartilla": false,
+  "id": "tigresa",
+  "vacunado": false
+}
