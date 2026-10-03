@@ -1,101 +1,171 @@
 # =========================================================
 # Espace d'administration — Decap CMS
-# Le refuge ajoute, modifie et supprime les fiches depuis /admin/
-# Chaque enregistrement crée un commit dans le dépôt GitHub,
-# ce qui déclenche automatiquement la reconstruction du site.
+#
+# Une fiche = un fichier, rangée par espèce. Le site, lui, ne lit qu'un
+# seul animales.json : le build l'assemble à partir de ces fichiers.
+# L'espèce est déduite du dossier, il n'y a donc pas de champ à choisir.
+#
+# Chaque enregistrement crée un commit sur GitHub, ce qui déclenche
+# automatiquement la reconstruction du site.
 # =========================================================
 
 backend:
   name: github
   repo: adoptameplaya/site-adoption
   branch: main
-  base_url: https://refuge-adoption.netlify.app   # domaine qui héberge le proxy OAuth
+  base_url: https://refuge-adoption.netlify.app
   auth_endpoint: api/auth
 
 locale: es
 publish_mode: simple
 
+# Pas de bloc media_library : on veut le comportement natif de Decap, qui
+# commite les photos dans le dépôt. Viser un cadrage centré sur la tête,
+# 700×700 suffit largement — le site recadre en carré.
 media_folder: "img/animales"
 public_folder: "/img/animales"
 
-# Pas de bloc media_library : on veut le comportement natif de Decap, qui
-# commite les photos dans le dépôt via media_folder ci-dessus. Déclarer
-# « name: default » le fait chercher une bibliothèque externe inexistante.
-# Les photos sont recadrées en carré par le site : viser un cadrage centré
-# sur la tête. 700×700 suffit largement.
-
 collections:
-  - name: peludos
-    label: Peludos
-    files:
-      - name: lista
-        label: Peludos en adopción
-        file: data/animales.json
-        format: json
-        description: >
-          Añade, modifica o quita un peludo. Los cambios aparecen en el sitio
-          unos minutos después de guardar.
+  - name: perros
+    label: Perros
+    label_singular: perro
+    folder: data/animales/perros
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{fields.id}}"
+    identifier_field: nombre
+    summary: "{{nombre}}"
+    sortable_fields: [orden, nombre, edad_meses]
+    description: >
+      Los perros en adopción. Al crear una ficha, se publica sola en unos minutos.
+    fields:
+      - { name: orden, label: "Orden de aparición (menor = primero)", widget: number, value_type: int, default: 500, hint: "Deja huecos (10, 20, 30…) para poder intercalar después" }
+      - { name: id, label: "Identificador (sin espacios ni acentos, ej: sheruk)", widget: string, pattern: ['^[a-z0-9-]+$', 'Solo minúsculas, números y guiones'] }
+      - { name: nombre, label: Nombre, widget: string }
+      - { name: sexo, label: Sexo, widget: select, options: [{label: Macho, value: macho}, {label: Hembra, value: hembra}] }
+
+      - name: raza
+        label: Raza (opcional)
+        widget: object
+        required: false
+        collapsed: true
         fields:
-          - name: animales
-            label: Peludos
-            label_singular: peludo
-            widget: list
-            summary: "{{fields.nombre}} · {{fields.especie}}"
-            collapsed: true
-            fields:
-              - { name: id, label: "Identificador (sin espacios ni acentos, ej: sheruk)", widget: string, pattern: ['^[a-z0-9-]+$', 'Solo minúsculas, números y guiones'] }
-              - { name: nombre, label: Nombre, widget: string }
-              - { name: especie, label: Especie, widget: select, options: [{label: Perro, value: perro}, {label: Gato, value: gato}] }
-              - { name: sexo, label: Sexo, widget: select, options: [{label: Macho, value: macho}, {label: Hembra, value: hembra}] }
+          - { name: es, label: "Español", widget: string, required: false }
+          - { name: en, label: "Inglés", widget: string, required: false }
 
-              - name: raza
-                label: Raza (opcional)
-                widget: object
-                required: false
-                collapsed: true
-                fields:
-                  - { name: es, label: "Español", widget: string, required: false }
-                  - { name: en, label: "Inglés", widget: string, required: false }
+      - { name: edad_meses, label: Edad en meses, widget: number, value_type: int, min: 0, max: 300, hint: "Se convierte sola en años en la ficha" }
+      - name: edad_texto
+        label: Edad escrita a mano (opcional)
+        widget: object
+        required: false
+        collapsed: true
+        hint: "Úsalo solo para aproximaciones, por ejemplo 6-7 años"
+        fields:
+          - { name: es, label: "Español", widget: string, required: false }
+          - { name: en, label: "Inglés", widget: string, required: false }
 
-              - { name: edad_meses, label: Edad en meses, widget: number, value_type: int, min: 0, max: 300, hint: "Se convierte sola en años en la ficha" }
-              - name: edad_texto
-                label: Edad escrita a mano (opcional)
-                widget: object
-                required: false
-                collapsed: true
-                hint: "Úsalo solo para aproximaciones, por ejemplo 6-7 años"
-                fields:
-                  - { name: es, label: "Español", widget: string, required: false }
-                  - { name: en, label: "Inglés", widget: string, required: false }
+      - { name: peso_kg, label: Peso en kilos, widget: number, value_type: int, min: 0, max: 120 }
+      - { name: tamano, label: Tamaño, widget: select, options: [{label: Chico, value: chico}, {label: Mediano, value: mediano}, {label: Grande, value: grande}] }
+      - { name: energia, label: Nivel de energía, widget: select, options: [{label: Baja, value: baja}, {label: Media, value: media}, {label: Alta, value: alta}] }
+      - { name: color, label: Color de su cápsula en la portada, widget: select, options: [arena, lavanda, coral, turquesa, menta] }
 
-              - { name: peso_kg, label: Peso en kilos, widget: number, value_type: int, min: 0, max: 120 }
-              - { name: tamano, label: Tamaño, widget: select, options: [{label: Chico, value: chico}, {label: Mediano, value: mediano}, {label: Grande, value: grande}] }
-              - { name: energia, label: Nivel de energía, widget: select, options: [{label: Baja, value: baja}, {label: Media, value: media}, {label: Alta, value: alta}] }
-              - { name: color, label: Color de su cápsula en la portada, widget: select, options: [arena, lavanda, coral, turquesa, menta] }
+      - { name: fotos, label: Fotos, widget: list, field: { name: foto, label: Foto, widget: image }, hint: "La primera es el retrato principal. Encuadra la cara." }
 
-              - { name: fotos, label: Fotos, widget: list, field: { name: foto, label: Foto, widget: image }, hint: "La primera es el retrato principal. Encuadra la cara." }
+      - { name: urgente, label: "Lleva mucho esperando", widget: boolean, default: false }
+      - { name: esterilizado, label: Esterilizado, widget: boolean, default: true }
+      - { name: vacunado, label: Vacunas al día, widget: boolean, default: true }
+      - { name: desparasitado, label: Desparasitado, widget: boolean, default: true }
+      - { name: cartilla, label: Cartilla de vacunación, widget: boolean, default: true }
+      - { name: microchip, label: Microchip, widget: boolean, default: false }
 
-              - { name: urgente, label: "Lleva mucho esperando", widget: boolean, default: false }
-              - { name: esterilizado, label: Esterilizado, widget: boolean, default: true }
-              - { name: vacunado, label: Vacunas al día, widget: boolean, default: true }
-              - { name: desparasitado, label: Desparasitado, widget: boolean, default: true }
-              - { name: cartilla, label: Cartilla de vacunación, widget: boolean, default: true }
-              - { name: microchip, label: Microchip, widget: boolean, default: false }
+      - name: es
+        label: "Textos en español"
+        widget: object
+        fields:
+          - { name: resumen, label: "Resumen (una o dos frases, sale en la tarjeta)", widget: text }
+          - { name: historia, label: Su historia, widget: text }
+          - { name: aviso, label: "Aviso importante (opcional, sale en rojo)", widget: text, required: false }
+          - { name: caracter, label: "Carácter (3 palabras)", widget: list, field: { name: palabra, label: Palabra, widget: string } }
 
-              - name: es
-                label: "Textos en español"
-                widget: object
-                fields:
-                  - { name: resumen, label: "Resumen (una o dos frases, sale en la tarjeta)", widget: text }
-                  - { name: historia, label: Su historia, widget: text }
-                  - { name: aviso, label: "Aviso importante (opcional, sale en rojo)", widget: text, required: false }
-                  - { name: caracter, label: "Carácter (3 palabras)", widget: list, field: { name: palabra, label: Palabra, widget: string } }
+      - name: en
+        label: "Textos en inglés"
+        widget: object
+        fields:
+          - { name: resumen, label: Summary, widget: text }
+          - { name: historia, label: "Their story", widget: text }
+          - { name: aviso, label: "Important warning (optional)", widget: text, required: false }
+          - { name: caracter, label: "Character (3 words)", widget: list, field: { name: word, label: Word, widget: string } }
 
-              - name: en
-                label: "Textos en inglés"
-                widget: object
-                fields:
-                  - { name: resumen, label: Summary, widget: text }
-                  - { name: historia, label: Their story, widget: text }
-                  - { name: aviso, label: "Important warning (optional)", widget: text, required: false }
-                  - { name: caracter, label: "Character (3 words)", widget: list, field: { name: word, label: Word, widget: string } }
+  - name: gatos
+    label: Gatos
+    label_singular: gato
+    folder: data/animales/gatos
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{fields.id}}"
+    identifier_field: nombre
+    summary: "{{nombre}}"
+    sortable_fields: [orden, nombre, edad_meses]
+    description: >
+      Los gatos en adopción. Al crear una ficha, se publica sola en unos minutos.
+    fields:
+      - { name: orden, label: "Orden de aparición (menor = primero)", widget: number, value_type: int, default: 500, hint: "Deja huecos (10, 20, 30…) para poder intercalar después" }
+      - { name: id, label: "Identificador (sin espacios ni acentos, ej: sheruk)", widget: string, pattern: ['^[a-z0-9-]+$', 'Solo minúsculas, números y guiones'] }
+      - { name: nombre, label: Nombre, widget: string }
+      - { name: sexo, label: Sexo, widget: select, options: [{label: Macho, value: macho}, {label: Hembra, value: hembra}] }
+
+      - name: raza
+        label: Raza (opcional)
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - { name: es, label: "Español", widget: string, required: false }
+          - { name: en, label: "Inglés", widget: string, required: false }
+
+      - { name: edad_meses, label: Edad en meses, widget: number, value_type: int, min: 0, max: 300, hint: "Se convierte sola en años en la ficha" }
+      - name: edad_texto
+        label: Edad escrita a mano (opcional)
+        widget: object
+        required: false
+        collapsed: true
+        hint: "Úsalo solo para aproximaciones, por ejemplo 6-7 años"
+        fields:
+          - { name: es, label: "Español", widget: string, required: false }
+          - { name: en, label: "Inglés", widget: string, required: false }
+
+      - { name: peso_kg, label: Peso en kilos, widget: number, value_type: int, min: 0, max: 120 }
+      - { name: tamano, label: Tamaño, widget: select, options: [{label: Chico, value: chico}, {label: Mediano, value: mediano}, {label: Grande, value: grande}] }
+      - { name: energia, label: Nivel de energía, widget: select, options: [{label: Baja, value: baja}, {label: Media, value: media}, {label: Alta, value: alta}] }
+      - { name: color, label: Color de su cápsula en la portada, widget: select, options: [arena, lavanda, coral, turquesa, menta] }
+
+      - { name: fotos, label: Fotos, widget: list, field: { name: foto, label: Foto, widget: image }, hint: "La primera es el retrato principal. Encuadra la cara." }
+
+      - { name: urgente, label: "Lleva mucho esperando", widget: boolean, default: false }
+      - { name: esterilizado, label: Esterilizado, widget: boolean, default: true }
+      - { name: vacunado, label: Vacunas al día, widget: boolean, default: true }
+      - { name: desparasitado, label: Desparasitado, widget: boolean, default: true }
+      - { name: cartilla, label: Cartilla de vacunación, widget: boolean, default: true }
+      - { name: microchip, label: Microchip, widget: boolean, default: false }
+
+      - name: es
+        label: "Textos en español"
+        widget: object
+        fields:
+          - { name: resumen, label: "Resumen (una o dos frases, sale en la tarjeta)", widget: text }
+          - { name: historia, label: Su historia, widget: text }
+          - { name: aviso, label: "Aviso importante (opcional, sale en rojo)", widget: text, required: false }
+          - { name: caracter, label: "Carácter (3 palabras)", widget: list, field: { name: palabra, label: Palabra, widget: string } }
+
+      - name: en
+        label: "Textos en inglés"
+        widget: object
+        fields:
+          - { name: resumen, label: Summary, widget: text }
+          - { name: historia, label: "Their story", widget: text }
+          - { name: aviso, label: "Important warning (optional)", widget: text, required: false }
+          - { name: caracter, label: "Character (3 words)", widget: list, field: { name: word, label: Word, widget: string } }

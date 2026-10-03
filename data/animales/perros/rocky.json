@@ -1,0 +1,38 @@
+{
+  "orden": 40,
+  "id": "rocky",
+  "nombre": "Rocky",
+  "sexo": "macho",
+  "edad_meses": 60,
+  "peso_kg": 9,
+  "tamano": "chico",
+  "energia": "baja",
+  "color": "coral",
+  "fotos": [
+    "img/animales/rocky.jpg"
+  ],
+  "urgente": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Lleva dos años esperando. Es tranquilo, limpio y sólo quiere un sillón y una persona.",
+    "historia": "A Rocky lo dejaron amarrado afuera del refugio cuando su familia se fue de Playa. Es el que más tiempo lleva con nosotros y el que menos ruido hace. No pelea, no ladra de noche y camina perfecto con correa. Con otros perros machos se pone tenso, así que preferimos que sea el único perro de la casa. Con gatos y con niños es un pan.",
+    "caracter": [
+      "Tranquilo",
+      "Limpio",
+      "Fiel"
+    ]
+  },
+  "en": {
+    "resumen": "Two years waiting. Quiet, house-clean, and he only wants a couch and a person.",
+    "historia": "Rocky was left tied outside the shelter when his family moved away from Playa. He has been with us the longest and makes the least noise. He does not fight, does not bark at night, and walks perfectly on a leash. He tenses up around other male dogs, so we would rather he be the only dog in the house. With cats and children he is a sweetheart.",
+    "caracter": [
+      "Quiet",
+      "House-clean",
+      "Loyal"
+    ]
+  }
+}

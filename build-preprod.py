@@ -39,6 +39,41 @@ def preparer():
             shutil.copy2(src, dst)
 
 
+def ensamblar_animales():
+    """Une fiche = un fichier, pour que l'admin offre une vraie liste par espèce.
+    Le site, lui, ne lit qu'un seul animales.json : on l'assemble ici.
+
+    L'espèce vient du dossier, pas d'un champ : impossible de se tromper.
+    L'ordre vient du champ « orden », croissant, puis du nom.
+    """
+    import json
+    animales = []
+    for carpeta, especie in (("perros", "perro"), ("gatos", "gato")):
+        origen = RACINE / "data" / "animales" / carpeta
+        if not origen.is_dir():
+            continue
+        for ruta in sorted(origen.glob("*.json")):
+            with open(ruta, encoding="utf-8") as f:
+                a = json.load(f)
+            a["especie"] = especie
+            a.setdefault("orden", 999)
+            animales.append(a)
+
+    animales.sort(key=lambda a: (a.get("orden", 999), a.get("nombre", "")))
+    perros = sum(1 for a in animales if a["especie"] == "perro")
+    print(f"  fiches assemblées : {len(animales)} ({perros} chiens, {len(animales)-perros} chats)")
+
+    destino = BUILD / "data"
+    destino.mkdir(parents=True, exist_ok=True)
+    with open(destino / "animales.json", "w", encoding="utf-8") as f:
+        json.dump({"animales": animales}, f, ensure_ascii=False, indent=2)
+
+    # les fiches individuelles n'ont rien à faire sur le site publié
+    sueltas = destino / "animales"
+    if sueltas.is_dir():
+        shutil.rmtree(sueltas)
+
+
 def noindex():
     """Balise meta sur les deux pages HTML."""
     balise = '<meta name="robots" content="noindex,nofollow">\n'
@@ -175,6 +210,7 @@ def zipper():
 
 if __name__ == "__main__":
     preparer()
+    ensamblar_animales()
     if PREPROD:
         noindex()
         bandeau()

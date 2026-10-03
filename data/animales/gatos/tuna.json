@@ -1,0 +1,38 @@
+{
+  "orden": 70,
+  "id": "tuna",
+  "nombre": "Tuna",
+  "sexo": "macho",
+  "edad_meses": 4,
+  "peso_kg": 2,
+  "tamano": "chico",
+  "energia": "alta",
+  "color": "menta",
+  "fotos": [
+    "img/animales/tuna.jpg"
+  ],
+  "urgente": false,
+  "esterilizado": false,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Cuatro meses de puro motor. Se adopta en pareja con otro gatito, no solo.",
+    "historia": "Tuna es el más chico del refugio y el más ruidoso. Come, juega, se cae, se levanta y vuelve a empezar. A los gatitos de su edad no los damos solos: se adoptan en pareja o con otro gato ya en casa, porque un cachorro solo se aburre y se vuelve destructivo. Su esterilización está incluida y se agenda a los seis meses.",
+    "caracter": [
+      "Travieso",
+      "Valiente",
+      "Comelón"
+    ]
+  },
+  "en": {
+    "resumen": "Four months of pure engine. Adopted in pairs with another kitten, never alone.",
+    "historia": "Tuna is the smallest cat in the shelter and the loudest. He eats, plays, falls over, gets up and starts again. We do not rehome kittens his age on their own: they go in pairs, or to a home that already has a cat, because a lone kitten gets bored and turns destructive. His neuter is included and scheduled at six months.",
+    "caracter": [
+      "Mischievous",
+      "Brave",
+      "Big appetite"
+    ]
+  }
+}

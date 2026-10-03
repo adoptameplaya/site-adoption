@@ -1,0 +1,50 @@
+{
+  "orden": 10,
+  "id": "sheruk",
+  "nombre": "Sheruk",
+  "raza": {
+    "es": "Pastor holandés",
+    "en": "Dutch Shepherd"
+  },
+  "sexo": "macho",
+  "edad_meses": 78,
+  "edad_texto": {
+    "es": "6-7 años",
+    "en": "6-7 years"
+  },
+  "peso_kg": 32,
+  "tamano": "grande",
+  "energia": "media",
+  "color": "arena",
+  "fotos": [
+    "img/animales/sheruk.jpg",
+    "img/animales/sheruk-2.jpg",
+    "img/animales/sheruk-3.jpg"
+  ],
+  "urgente": false,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": true,
+  "es": {
+    "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
+    "historia": "Sheruk fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
+    "aviso": "Es un perro con mucha fuerza. Hace falta ser consciente de ello y estar capacitado para manejar este tipo de perro.",
+    "caracter": [
+      "Protector",
+      "Tranquilo",
+      "Cariñoso"
+    ]
+  },
+  "en": {
+    "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
+    "historia": "Sheruk was a working security dog. When the company shut down, the dogs were left behind. We found him in very poor condition; he is much better now, but he still lives in a cage in the jungle, waiting for a family.",
+    "aviso": "He is a very powerful dog. You need to be aware of that and properly equipped to handle this kind of dog.",
+    "caracter": [
+      "Protective",
+      "Calm",
+      "Affectionate"
+    ]
+  }
+}

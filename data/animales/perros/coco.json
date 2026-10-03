@@ -1,0 +1,38 @@
+{
+  "orden": 30,
+  "id": "coco",
+  "nombre": "Coco",
+  "sexo": "hembra",
+  "edad_meses": 14,
+  "peso_kg": 12,
+  "tamano": "mediano",
+  "energia": "alta",
+  "color": "lavanda",
+  "fotos": [
+    "img/animales/coco.jpg"
+  ],
+  "urgente": false,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pura energía. Necesita una familia que camine, corra o al menos salga dos veces al día.",
+    "historia": "Coco apareció siguiendo a un repartidor por la Colonia Ejido, flaquita y con sarna. Se recuperó en dos meses y desde entonces no ha parado de mover la cola. Aprende rapidísimo: ya sabe sentarse, dar la pata y esperar antes de cruzar la calle. Es sociable con todo el mundo, perros, gatos y niños incluidos, pero se aburre si la dejan sola muchas horas.",
+    "caracter": [
+      "Enérgica",
+      "Sociable",
+      "Obediente"
+    ]
+  },
+  "en": {
+    "resumen": "Pure energy. Needs a family that walks, runs, or at least gets out twice a day.",
+    "historia": "Coco turned up following a delivery driver through Colonia Ejido, skinny and with mange. She recovered in two months and has not stopped wagging since. She learns fast: she already sits, gives her paw, and waits before crossing the street. She is social with everyone, dogs, cats and children included, but she gets bored if left alone for long hours.",
+    "caracter": [
+      "Energetic",
+      "Social",
+      "Quick learner"
+    ]
+  }
+}
