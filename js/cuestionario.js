@@ -233,8 +233,8 @@ function aplicarTraduccion() {
 async function iniciar() {
   try {
     [CONFIG, CUESTIONARIO] = await Promise.all([
-      fetch('data/config.json?v=45').then(r => r.json()),
-      fetch('data/cuestionario.json?v=45').then(r => r.json())
+      fetch('data/config.json?v=46').then(r => r.json()),
+      fetch('data/cuestionario.json?v=46').then(r => r.json())
     ]);
   } catch (err) {
     console.error('[cuestionario]', err);

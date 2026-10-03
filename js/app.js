@@ -55,11 +55,13 @@ const num = n => new Intl.NumberFormat(IDIOMA === 'en' ? 'en-US' : 'es-MX').form
 /* Siempre con el sufijo MXN: en Playa mucha gente lee "$" como dólares. */
 const dinero = n => `$${num(n)} MXN`;
 
-function edadTexto(meses, animal) {
+/* L'âge se saisit en années. Pour un animal de moins d'un an, on laisse
+   0 et on écrit l'âge à la main dans edad_texto (« 4 meses ») — sinon la
+   fiche afficherait « 0 años », ce qui ne veut rien dire. */
+function edadTexto(anos, animal) {
   const fijo = animal?.edad_texto?.[IDIOMA];
   if (fijo) return fijo;
-  if (meses < 12) return t('ficha.meses', { n: meses });
-  const anos = Math.round(meses / 12);
+  if (!anos) return t('ficha.bebe');
   return anos === 1 ? t('ficha.ano') : t('ficha.anos', { n: anos });
 }
 
@@ -107,7 +109,7 @@ function coincide(a) {
 function tarjeta(a) {
   const meta = [
     t(a.sexo === 'macho' ? 'ficha.macho' : 'ficha.hembra'),
-    edadTexto(a.edad_meses, a),
+    edadTexto(a.edad_anos, a),
     t('cat.' + a.tamano)
   ].join(' · ');
 
@@ -210,7 +212,7 @@ function pintarFicha(a) {
 
       <div class="datos">
         <div class="dato"><div class="dato__k">${esc(t('ficha.sexo'))}</div><div class="dato__v">${esc(t(a.sexo === 'macho' ? 'ficha.macho' : 'ficha.hembra'))}</div></div>
-        <div class="dato"><div class="dato__k">${esc(t('ficha.edad'))}</div><div class="dato__v">${esc(edadTexto(a.edad_meses, a))}</div></div>
+        <div class="dato"><div class="dato__k">${esc(t('ficha.edad'))}</div><div class="dato__v">${esc(edadTexto(a.edad_anos, a))}</div></div>
         <div class="dato"><div class="dato__k">${esc(t('ficha.peso'))}</div><div class="dato__v">${a.peso_kg} kg</div></div>
         <div class="dato"><div class="dato__k">${esc(t('ficha.tamano'))}</div><div class="dato__v">${esc(t('cat.' + a.tamano))}</div></div>
         <div class="dato"><div class="dato__k">${esc(t('ficha.energia'))}</div><div class="dato__v">${esc(t('cat.e_' + a.energia))}</div></div>
@@ -595,8 +597,8 @@ function repintar() {
 async function iniciar() {
   try {
     const [cfg, ani] = await Promise.all([
-      fetch('data/config.json?v=45').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
-      fetch('data/animales.json?v=45').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      fetch('data/config.json?v=46').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      fetch('data/animales.json?v=46').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
     ]);
     CONFIG = cfg;
     // Decap écrit { "animales": [...] } ; on accepte aussi l'ancien tableau nu.

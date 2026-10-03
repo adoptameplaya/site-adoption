@@ -3,7 +3,6 @@
   "id": "milo",
   "nombre": "Milo",
   "sexo": "macho",
-  "edad_meses": 24,
   "peso_kg": 4,
   "tamano": "chico",
   "energia": "baja",
@@ -34,5 +33,6 @@
       "Calm",
       "Lap cat"
     ]
-  }
+  },
+  "edad_anos": 2
 }

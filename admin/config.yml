@@ -37,7 +37,7 @@ collections:
     slug: "{{fields.id}}"
     identifier_field: nombre
     summary: "{{nombre}}"
-    sortable_fields: [orden, nombre, edad_meses]
+    sortable_fields: [orden, nombre, edad_anos]
     description: >
       Los perros en adopción. Al crear una ficha, se publica sola en unos minutos.
     fields:
@@ -55,13 +55,13 @@ collections:
           - { name: es, label: "Español", widget: string, required: false }
           - { name: en, label: "Inglés", widget: string, required: false }
 
-      - { name: edad_meses, label: Edad en meses, widget: number, value_type: int, min: 0, max: 300, hint: "Se convierte sola en años en la ficha" }
+      - { name: edad_anos, label: "Edad en años", widget: number, value_type: int, min: 0, max: 30, hint: "Si tiene menos de un año, pon 0 y escribe la edad abajo (ej: 4 meses)" }
       - name: edad_texto
-        label: Edad escrita a mano (opcional)
+        label: "Edad escrita a mano (opcional)"
         widget: object
         required: false
         collapsed: true
-        hint: "Úsalo solo para aproximaciones, por ejemplo 6-7 años"
+        hint: "Obligatorio para cachorros de menos de un año. También para aproximaciones, por ejemplo 6-7 años"
         fields:
           - { name: es, label: "Español", widget: string, required: false }
           - { name: en, label: "Inglés", widget: string, required: false }
@@ -109,7 +109,7 @@ collections:
     slug: "{{fields.id}}"
     identifier_field: nombre
     summary: "{{nombre}}"
-    sortable_fields: [orden, nombre, edad_meses]
+    sortable_fields: [orden, nombre, edad_anos]
     description: >
       Los gatos en adopción. Al crear una ficha, se publica sola en unos minutos.
     fields:
@@ -127,13 +127,13 @@ collections:
           - { name: es, label: "Español", widget: string, required: false }
           - { name: en, label: "Inglés", widget: string, required: false }
 
-      - { name: edad_meses, label: Edad en meses, widget: number, value_type: int, min: 0, max: 300, hint: "Se convierte sola en años en la ficha" }
+      - { name: edad_anos, label: "Edad en años", widget: number, value_type: int, min: 0, max: 30, hint: "Si tiene menos de un año, pon 0 y escribe la edad abajo (ej: 4 meses)" }
       - name: edad_texto
-        label: Edad escrita a mano (opcional)
+        label: "Edad escrita a mano (opcional)"
         widget: object
         required: false
         collapsed: true
-        hint: "Úsalo solo para aproximaciones, por ejemplo 6-7 años"
+        hint: "Obligatorio para cachorros de menos de un año. También para aproximaciones, por ejemplo 6-7 años"
         fields:
           - { name: es, label: "Español", widget: string, required: false }
           - { name: en, label: "Inglés", widget: string, required: false }

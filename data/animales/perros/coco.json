@@ -3,7 +3,6 @@
   "id": "coco",
   "nombre": "Coco",
   "sexo": "hembra",
-  "edad_meses": 14,
   "peso_kg": 12,
   "tamano": "mediano",
   "energia": "alta",
@@ -34,5 +33,6 @@
       "Social",
       "Quick learner"
     ]
-  }
+  },
+  "edad_anos": 1
 }

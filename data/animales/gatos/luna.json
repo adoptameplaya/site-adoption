@@ -3,7 +3,6 @@
   "id": "luna",
   "nombre": "Luna",
   "sexo": "hembra",
-  "edad_meses": 8,
   "peso_kg": 3,
   "tamano": "chico",
   "energia": "media",
@@ -34,5 +33,10 @@
       "Playful",
       "Talkative"
     ]
+  },
+  "edad_anos": 0,
+  "edad_texto": {
+    "es": "8 meses",
+    "en": "8 months"
   }
 }

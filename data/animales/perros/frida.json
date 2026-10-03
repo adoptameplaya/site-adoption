@@ -3,7 +3,6 @@
   "id": "frida",
   "nombre": "Frida",
   "sexo": "hembra",
-  "edad_meses": 6,
   "peso_kg": 7,
   "tamano": "mediano",
   "energia": "alta",
@@ -34,5 +33,10 @@
       "Playful",
       "Social"
     ]
+  },
+  "edad_anos": 0,
+  "edad_texto": {
+    "es": "6 meses",
+    "en": "6 months"
   }
 }

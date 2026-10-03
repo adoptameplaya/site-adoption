@@ -3,7 +3,6 @@
   "id": "canela",
   "nombre": "Canela",
   "sexo": "hembra",
-  "edad_meses": 84,
   "peso_kg": 22,
   "tamano": "grande",
   "energia": "baja",
@@ -34,5 +33,6 @@
       "Grateful",
       "Good with kids"
     ]
-  }
+  },
+  "edad_anos": 7
 }

@@ -3,7 +3,6 @@
   "id": "tuna",
   "nombre": "Tuna",
   "sexo": "macho",
-  "edad_meses": 4,
   "peso_kg": 2,
   "tamano": "chico",
   "energia": "alta",
@@ -34,5 +33,10 @@
       "Brave",
       "Big appetite"
     ]
+  },
+  "edad_anos": 0,
+  "edad_texto": {
+    "es": "4 meses",
+    "en": "4 months"
   }
 }

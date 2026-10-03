@@ -62,7 +62,6 @@ window.TEXTOS = {
     "ficha.hembra": "Hembra",
     "ficha.anos": "{n} años",
     "ficha.ano": "1 año",
-    "ficha.meses": "{n} meses",
     "ficha.salud": "Sale en adopción con",
     "ficha.esterilizado": "Esterilizado",
     "ficha.esterilizado_pendiente": "Esterilización incluida, se agenda por edad",
@@ -187,7 +186,8 @@ window.TEXTOS = {
     "cue.wa_boton": "Avisarnos por WhatsApp",
     "cue.wa_ayuda": "Un mensaje corto para que lo veamos enseguida. Opcional.",
     "cue.wa_msg": "Hola, acabo de enviar el cuestionario de adopción{animal}. Soy {nombre}.",
-    "cue.wa_msg_animal": " para {animal}"
+    "cue.wa_msg_animal": " para {animal}",
+    "ficha.bebe": "Menos de 1 año"
   },
 
   en: {
@@ -249,7 +249,6 @@ window.TEXTOS = {
     "ficha.hembra": "Female",
     "ficha.anos": "{n} years",
     "ficha.ano": "1 year",
-    "ficha.meses": "{n} months",
     "ficha.salud": "Goes home with",
     "ficha.esterilizado": "Spayed / neutered",
     "ficha.esterilizado_pendiente": "Surgery included, scheduled by age",
@@ -374,6 +373,7 @@ window.TEXTOS = {
     "cue.wa_boton": "Let us know on WhatsApp",
     "cue.wa_ayuda": "A short message so we see it right away. Optional.",
     "cue.wa_msg": "Hi, I have just sent the adoption questionnaire{animal}. My name is {nombre}.",
-    "cue.wa_msg_animal": " for {animal}"
+    "cue.wa_msg_animal": " for {animal}",
+    "ficha.bebe": "Under 1 year"
   }
 };

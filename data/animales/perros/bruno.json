@@ -3,7 +3,6 @@
   "id": "bruno",
   "nombre": "Bruno",
   "sexo": "macho",
-  "edad_meses": 30,
   "peso_kg": 28,
   "tamano": "grande",
   "energia": "media",
@@ -34,5 +33,6 @@
       "Strong",
       "Watchful"
     ]
-  }
+  },
+  "edad_anos": 2
 }

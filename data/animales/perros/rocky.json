@@ -3,7 +3,6 @@
   "id": "rocky",
   "nombre": "Rocky",
   "sexo": "macho",
-  "edad_meses": 60,
   "peso_kg": 9,
   "tamano": "chico",
   "energia": "baja",
@@ -34,5 +33,6 @@
       "House-clean",
       "Loyal"
     ]
-  }
+  },
+  "edad_anos": 5
 }
