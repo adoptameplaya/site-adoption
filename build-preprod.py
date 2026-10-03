@@ -10,7 +10,7 @@ Différences avec le site final :
 
 Usage : python3 build-preprod.py
 """
-import json, os, re, shutil, zipfile
+import json, os, re, shutil, unicodedata, zipfile
 from pathlib import Path
 
 # preprod = bandeau de démo + noindex ; produccion = site public.
@@ -39,6 +39,62 @@ def preparer():
             shutil.copy2(src, dst)
 
 
+def nombre_seguro(nombre):
+    """Ramène un nom de fichier à l'ASCII, accents aplatis, sans espaces.
+
+    Une photo téléversée depuis un Mac s'appelle « capture d'écran … .png ».
+    Entre la normalisation Unicode de macOS (NFD) et celle du navigateur
+    (NFC), le dépôt et le disque finissent avec deux noms différents, et le
+    site publie un lien mort. On normalise donc à la publication.
+    """
+    import unicodedata
+    base, punto, ext = nombre.rpartition(".")
+    base = base or nombre
+    plano = unicodedata.normalize("NFKD", base)
+    plano = "".join(c for c in plano if not unicodedata.combining(c))
+    plano = re.sub(r"[^A-Za-z0-9._-]+", "-", plano).strip("-.") or "foto"
+    return f"{plano.lower()}.{ext.lower()}" if punto else plano.lower()
+
+
+def sanear_fotos(animales):
+    """Renomme dans le site publié toute photo au nom non ASCII, et signale
+    celles qui manquent — mieux vaut un avertissement au build qu'un 404."""
+    medios = BUILD / "img" / "animales"
+    renombradas, ausentes = 0, []
+
+    disponibles = {}
+    if medios.is_dir():
+        for p in medios.iterdir():
+            if p.is_file():
+                disponibles[unicodedata.normalize("NFC", p.name)] = p
+
+    for a in animales:
+        nuevas = []
+        for ruta in a.get("fotos", []):
+            archivo = unicodedata.normalize("NFC", ruta.rsplit("/", 1)[-1])
+            p = disponibles.get(archivo)
+            if p is None:
+                ausentes.append((a.get("nombre"), ruta))
+                continue
+            seguro = nombre_seguro(p.name)
+            if seguro != p.name:
+                destino = medios / seguro
+                p.rename(destino)
+                disponibles[unicodedata.normalize("NFC", seguro)] = destino
+                disponibles.pop(archivo, None)
+                renombradas += 1
+            nuevas.append(f"/img/animales/{seguro}")
+        a["fotos"] = nuevas
+
+    if renombradas:
+        print(f"  photos renommées pour le web : {renombradas}")
+    for nombre, ruta in ausentes:
+        print(f"  ⚠ photo introuvable, retirée de la fiche {nombre} : {ruta}")
+    sin_foto = [a.get("nombre") for a in animales if not a.get("fotos")]
+    if sin_foto:
+        print(f"  ⚠ fiches sans aucune photo : {', '.join(sin_foto)}")
+
+
 def ensamblar_animales():
     """Une fiche = un fichier, pour que l'admin offre une vraie liste par espèce.
     Le site, lui, ne lit qu'un seul animales.json : on l'assemble ici.
@@ -60,6 +116,7 @@ def ensamblar_animales():
             animales.append(a)
 
     animales.sort(key=lambda a: (a.get("orden", 999), a.get("nombre", "")))
+    sanear_fotos(animales)
     perros = sum(1 for a in animales if a["especie"] == "perro")
     print(f"  fiches assemblées : {len(animales)} ({perros} chiens, {len(animales)-perros} chats)")
 
