@@ -1,5 +1,6 @@
 {
   "desparasitado": true,
+  "edad": 3,
   "tamano": "chico",
   "color": "turquesa",
   "urgente": false,
@@ -12,7 +13,7 @@
   "energia": "media",
   "nombre": "Tigresa",
   "peso_kg": 0,
-  "orden": 1,
+  "orden": 10,
   "edad_meses": 3,
   "es": {
     "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenía una infección muy grave en los ojos. Ya se recuperó por completo y ahora ve perfectamente.",
@@ -26,6 +27,7 @@
     "/img/animales/capture-d’écran-2026-10-03-à-05.13.08.png"
   ],
   "microchip": false,
+  "edad_unidad": "meses",
   "cartilla": false,
   "id": "tigresa",
   "vacunado": false
