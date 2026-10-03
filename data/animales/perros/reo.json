@@ -5,8 +5,8 @@
   "urgente": false,
   "esterilizado": true,
   "edad_texto": {
-    "es": "6 / 7 años",
-    "en": "6 / 7 years"
+    "es": "6-7 años",
+    "en": "6-7 years"
   },
   "en": {
     "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
@@ -18,7 +18,7 @@
   "nombre": "Reo",
   "peso_kg": 35,
   "orden": 500,
-  "edad_meses": 78,
+  "edad_meses": 80,
   "es": {
     "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
     "historia": "Reo fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
