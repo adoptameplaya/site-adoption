@@ -137,6 +137,19 @@ def fichiers_netlify():
 
     (BUILD / "robots.txt").write_text(robots)
 
+    # Marqueur de build : permet de vérifier depuis l'extérieur quelle
+    # version est réellement en ligne, et quand elle a été construite.
+    import subprocess
+    try:
+        sha = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=RACINE,
+                             capture_output=True, text=True).stdout.strip()
+    except Exception:
+        sha = "?"
+    (BUILD / "version.txt").write_text(
+        f"commit={sha or '?'}\nmode={'preprod' if PREPROD else 'produccion'}\n"
+        f"construit={__import__('datetime').datetime.utcnow().isoformat(timespec='seconds')}Z\n"
+    )
+
     # Decap appelle ces deux chemins pour l'authentification GitHub.
     (BUILD / "_redirects").write_text(
         "/api/auth      /.netlify/functions/auth      200\n"
