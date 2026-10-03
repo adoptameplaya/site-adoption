@@ -115,43 +115,40 @@ def verifier_formularios():
 
 
 def fichiers_netlify():
-    """robots.txt et en-têtes, adaptés au mode.
+    """robots.txt, _redirects et _headers du site publié.
 
-    Ce netlify.toml est celui du SITE PUBLIÉ (dossier dist/preprod). Il ne
-    décrit pas la construction : celle-ci est pilotée par le netlify.toml
-    à la racine du dépôt, que Netlify lit avant de lancer le build.
+    On n'écrit PAS de netlify.toml ici : celui de la racine du dépôt décrit
+    déjà la construction, et en avoir deux rendait les redirections
+    silencieusement inopérantes. Les fichiers _redirects et _headers posés
+    dans le dossier publié, eux, sont sans ambiguïté.
     """
     if PREPROD:
         robots = ("# Préprod : rien ne doit être indexé tant que les données sont fictives.\n"
                   "User-agent: *\n"
                   "Disallow: /\n")
-        cabeceras = ("# Ceinture et bretelles : robots.txt seul ne suffit pas toujours.\n"
-                     "[[headers]]\n"
-                     '  for = "/*"\n'
-                     "  [headers.values]\n"
-                     '    X-Robots-Tag = "noindex, nofollow"\n')
+        cabeceras = ("/*\n"
+                     "  X-Robots-Tag: noindex, nofollow\n")
     else:
         robots = ("User-agent: *\n"
                   "Allow: /\n"
                   "Disallow: /admin/\n")
-        cabeceras = ("# L'espace d'administration ne doit jamais être indexé.\n"
-                     "[[headers]]\n"
-                     '  for = "/admin/*"\n'
-                     "  [headers.values]\n"
-                     '    X-Robots-Tag = "noindex, nofollow"\n')
+        cabeceras = ("/admin/*\n"
+                     "  X-Robots-Tag: noindex, nofollow\n")
 
     (BUILD / "robots.txt").write_text(robots)
-    (BUILD / "netlify.toml").write_text(
-        "# Fichier du site publié. La construction est décrite à la racine du dépôt.\n"
-        "[build]\n"
-        '  publish = "."\n\n'
-        + cabeceras +
-        "\n# Les JSON changent souvent, ils ne doivent pas rester en cache :\n"
-        "# une fiche modifiée dans l'admin doit apparaître tout de suite.\n"
-        "[[headers]]\n"
-        '  for = "/data/*"\n'
-        "  [headers.values]\n"
-        '    Cache-Control = "public, max-age=0, must-revalidate"\n'
+
+    # Decap appelle ces deux chemins pour l'authentification GitHub.
+    (BUILD / "_redirects").write_text(
+        "/api/auth      /.netlify/functions/auth      200\n"
+        "/api/callback  /.netlify/functions/callback  200\n"
+    )
+
+    (BUILD / "_headers").write_text(
+        cabeceras +
+        "\n# Les JSON changent à chaque modification faite dans l'admin :\n"
+        "# ils ne doivent jamais rester en cache.\n"
+        "/data/*\n"
+        "  Cache-Control: public, max-age=0, must-revalidate\n"
     )
 
 
