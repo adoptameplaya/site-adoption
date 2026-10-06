@@ -1,13 +1,40 @@
 {
-  "desparasitado": true,
+  "orden": 2,
+  "id": "reo",
+  "nombre": "Reo",
+  "raza": {
+    "es": "Pastor"
+  },
   "edad": 7,
-  "tamano": "grande",
-  "color": "menta",
-  "urgente": false,
-  "esterilizado": true,
+  "edad_unidad": "anos",
+  "sexo": "macho",
   "edad_texto": {
     "es": "6-7 años",
     "en": "6-7 years"
+  },
+  "peso_kg": 35,
+  "tamano": "grande",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/reo3.jpg",
+    "/img/animales/reo2.jpg",
+    "/img/animales/reo-ysen7.jpg"
+  ],
+  "urgente": false,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": true,
+  "es": {
+    "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
+    "historia": "Reo fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
+    "aviso": "Es un perro con mucha fuerza. Hace falta ser consciente de ello y estar capacitado para manejar este tipo de perro.",
+    "caracter": [
+      "Cariñoso",
+      "Juguetón",
+      "Protector"
+    ]
   },
   "en": {
     "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
@@ -19,33 +46,6 @@
       "Protective"
     ]
   },
-  "sexo": "macho",
-  "energia": "media",
-  "nombre": "Reo",
-  "peso_kg": 35,
-  "orden": 2,
-  "edad_meses": 80,
-  "es": {
-    "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
-    "historia": "Reo fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
-    "aviso": "Es un perro con mucha fuerza. Hace falta ser consciente de ello y estar capacitado para manejar este tipo de perro.",
-    "caracter": [
-      "Cariñoso",
-      "Juguetón",
-      "Protector"
-    ]
-  },
-  "fotos": [
-    "/img/animales/reo2.jpg",
-    "/img/animales/reo1.jpg",
-    "/img/animales/reo3.jpg"
-  ],
-  "microchip": true,
-  "edad_unidad": "anos",
-  "raza": {
-    "es": "Pastor"
-  },
-  "cartilla": true,
-  "id": "reo",
-  "vacunado": true
+  "color": "menta",
+  "edad_meses": 80
 }
