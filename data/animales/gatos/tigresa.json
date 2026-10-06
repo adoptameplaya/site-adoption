@@ -1,10 +1,30 @@
 {
-  "desparasitado": true,
+  "orden": 10,
+  "id": "tigresa",
+  "nombre": "Tigresa",
   "edad": 3,
+  "edad_unidad": "meses",
+  "sexo": "hembra",
+  "peso_kg": 0,
   "tamano": "chico",
-  "color": "turquesa",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/tigresa-1.png"
+  ],
   "urgente": false,
   "esterilizado": true,
+  "vacunado": false,
+  "desparasitado": true,
+  "cartilla": false,
+  "microchip": false,
+  "es": {
+    "resumen": "lista para darte mucho amor",
+    "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenía una infección muy grave en los ojos. Ya se recuperó por completo y ahora ve perfectamente.",
+    "caracter": [
+      "Juguetona",
+      "Cariñosa"
+    ]
+  },
   "en": {
     "resumen": "thstrhtr",
     "historia": "She was abandoned in an empty lot with his siblings and had a very serious eye infection. She has fully recovered and can now see perfectly.",
@@ -13,25 +33,5 @@
       "Affectionate"
     ]
   },
-  "sexo": "hembra",
-  "energia": "media",
-  "nombre": "Tigresa",
-  "peso_kg": 0,
-  "orden": 10,
-  "es": {
-    "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenía una infección muy grave en los ojos. Ya se recuperó por completo y ahora ve perfectamente.",
-    "caracter": [
-      "Juguetona",
-      "Cariñosa"
-    ],
-    "resumen": "fgwn sn"
-  },
-  "fotos": [
-    "/img/animales/tigresa-1.png"
-  ],
-  "microchip": false,
-  "edad_unidad": "meses",
-  "cartilla": false,
-  "id": "tigresa",
-  "vacunado": false
+  "color": "turquesa"
 }
