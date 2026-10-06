@@ -1,6 +1,6 @@
 # Cómo cambiar los animales del sitio
 
-Esta guía es para el refugio. No hace falta saber de computadoras: se hace desde
+Esta guía es para la asociación. No hace falta saber de computadoras: se hace desde
 el celular o la compu, en una página con el mismo aspecto que la ficha del sitio.
 
 ---
@@ -13,7 +13,7 @@ el celular o la compu, en una página con el mismo aspecto que la ficha del siti
 3. Verás las tarjetas de **Perros** y de **Gatos**.
 
 Si te dice que tu cuenta no tiene permiso, pídele a quien administra el sitio
-que te invite como colaborador del refugio.
+que te invite como colaborador de la asociación.
 
 ---
 
@@ -21,12 +21,15 @@ que te invite como colaborador del refugio.
 
 1. Elige **Perros** o **Gatos** y toca **Añadir un perro / Añadir un gato**.
 2. Se abre una ficha igual a la del sitio. Solo **rellena los campos**:
-   - **Fotos:** toca el círculo y elige las fotos del celular. Se reducen solas.
+   - **Fotos:** toca la foto grande y elige las fotos del celular. Se reducen solas.
      La primera es la que sale en la portada y en la tarjeta: mejor una donde
-     se vea bien la cara. Para cambiar la principal, toca otra foto.
+     se vea bien la cara. Para cambiar la principal, toca otra miniatura.
+     Quien visita el sitio ve la foto a todo el ancho y puede **deslizar** para
+     ver las demás (hasta 6 por animal).
    - **Nombre, resumen y su historia.**
-   - **Sexo, edad, peso, tamaño y energía.** En la edad escribe el número y
-     elige *años* o *meses*.
+   - **Sexo y edad.** En la edad escribe el número y elige *años* o *meses*.
+     **Solo para los perros:** también peso, tamaño y nivel de energía. Los
+     gatos únicamente llevan sexo y edad.
    - **Carácter:** toca las palabras que lo describan. Si falta alguna,
      escríbela en «Otro rasgo».
    - **Aviso importante:** solo si hay algo que el adoptante deba saber antes
@@ -45,8 +48,20 @@ lista para publicarse.
 ## Cambiar o quitar un animal
 
 - **Cambiar:** en su tarjeta toca **Editar**, haz el cambio y toca **Guardar**.
-- **Quitar** (por ejemplo, cuando lo adoptan): toca el icono de la papelera de
-  su tarjeta y confirma. Desaparece del sitio.
+- **Cuando lo adoptan:** abre su ficha con **Editar**, marca **«Ya fue adoptado/a»**
+  y toca **Guardar**. La ficha **sigue en el sitio**, pasa al final de la lista con
+  una etiqueta verde «Adoptado/a», y quien la abre ve que ya encontró familia. Ya
+  no sale en la portada ni se puede elegir en el formulario de adopción.
+- **Quitar del todo** (por ejemplo, una ficha creada por error): toca el icono de
+  la papelera de su tarjeta y confirma. Desaparece del sitio.
+
+---
+
+## Donativo sugerido
+
+Cada ficha muestra el donativo sugerido por especie: **de $500 a $1,000 MXN** para
+los perros y **de $400 a $800 MXN** para los gatos. Esas cifras no se cambian desde
+el panel: pídeselo a quien administra el sitio.
 
 ---
 
@@ -85,4 +100,4 @@ corrija.
 ## Otros datos del sitio
 
 El WhatsApp, las cuentas para donaciones, los textos de «Apoyarnos» y demás datos
-del refugio no se cambian desde este panel: pídeselo a quien administra el sitio.
+de la asociación no se cambian desde este panel: pídeselo a quien administra el sitio.

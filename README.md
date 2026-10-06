@@ -1,8 +1,8 @@
-# Refugio Playa del Carmen — site d'adoption
+# Adopta Me Playa — site d'adoption
 
-Site vitrine bilingue (ES-MX / EN) pour un refuge animalier de Playa del Carmen.
+Site vitrine bilingue (ES-MX / EN) pour une association de protection animale de Playa del Carmen.
 **HTML / CSS / JS statique, zéro build, zéro dépendance.** Les contenus éditables
-par le refuge vivent dans deux fichiers JSON.
+par l'association vivent dans deux fichiers JSON.
 
 ---
 
@@ -14,7 +14,7 @@ espagnol, traduction anglaise automatique). Le site est construit par
 (`.github/workflows/desplegar.yml`, `deploy-ftp.py`).
 
 - Mise en place complète : [ADMIN.md](ADMIN.md)
-- Guide à remettre au refuge (espagnol) : [GUIA-REFUGIO.md](GUIA-REFUGIO.md)
+- Guide à remettre à l'association (espagnol) : [GUIA-ASOCIACION.md](GUIA-ASOCIACION.md)
 - Tester le panel en local sans rien publier : `herramientas/servidor-prueba.py`
 
 ---
@@ -43,7 +43,7 @@ aviso-de-privacidad.html    Mention légale (LFPDPPP)
 css/style.css               Design system complet
 js/i18n.js                  Textes d'interface ES / EN
 js/app.js                   Logique (filtres, fiche, formulaire, dons)
-data/config.json            ← infos du refuge (à remplir)
+data/config.json            ← infos de l'association (à remplir)
 data/animales.json          ← les animaux (à remplir)
 img/animales/*.svg          Illustrations provisoires
 img/ui/favicon.svg
@@ -58,7 +58,7 @@ Tout est marqué `REEMPLAZAR` dans `data/config.json`.
 
 | Champ | Où | Note |
 |---|---|---|
-| Nom du refuge | `refugio.nombre` | apparaît partout, y compris `<title>` |
+| Nom de l'association | `refugio.nombre` | apparaît partout, y compris `<title>` |
 | Adresse, CP, lien Maps | `refugio.direccion`, `mapa_url` | |
 | **Numéro WhatsApp** | `contacto.whatsapp` | format international **sans `+` ni espaces** : `52` + `1` + indicatif + numéro → `5219841234567` |
 | Téléphone, e-mail | `contacto.*` | |
@@ -66,7 +66,7 @@ Tout est marqué `REEMPLAZAR` dans `data/config.json`.
 | **CLABE** (18 chiffres), banque, titulaire | `donaciones.spei` | |
 | Lien PayPal.me | `donaciones.paypal.url` | |
 | Lien Mercado Pago | `donaciones.mercadopago.url` | |
-| Chiffres du refuge | `cifras` | adoptions, stérilisations, animaux présents |
+| Chiffres de l'association | `cifras` | adoptions, stérilisations, animaux présents |
 | Montants de parrainage | `padrinazgo` | |
 | Liste de besoins | `lista_deseos` | |
 
@@ -121,7 +121,7 @@ structuré et ouvre `wa.me` avec le texte pré-rempli. **Rien n'est stocké** :
 c'est ce que dit l'avis de confidentialité, ne pas ajouter de tracker sans le
 mettre à jour.
 
-Si le refuge préfère un jour recevoir les demandes par e-mail, la bascule est
+Si l'association préfère un jour recevoir les demandes par e-mail, la bascule est
 localisée : la fonction `conectarFormulario()` dans `js/app.js`, dernière ligne
 (`window.open(enlaceWA(...))`).
 
@@ -177,7 +177,7 @@ pas le dossier de travail. Il diffère du site final sur trois points :
 
 - **`noindex` triple** : `robots.txt`, en-tête `X-Robots-Tag` via `netlify.toml`,
   et balise `<meta name="robots">` sur les deux pages. Indispensable tant que la
-  page affiche une CLABE fictive au nom d'un refuge qui existe vraiment.
+  page affiche une CLABE fictive au nom d'une association qui existe vraiment.
 - **Bandeau « sitio de demostración »** en haut de page, bilingue, injecté par
   `js/demo.js`. Ce fichier n'existe que dans le build.
 - **Fichiers de travail exclus** : les `.md`, `servir.command` et le script de

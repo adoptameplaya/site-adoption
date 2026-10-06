@@ -7,7 +7,7 @@ require __DIR__ . '/_comun.php';
 $cliente = secreto('github_client_id');
 if ($cliente === '') {
     http_response_code(500);
-    exit('Falta github_client_id en api/secrets.php.');
+    exit('Falta github_client_id: crea el archivo de secretos (ver api/secrets.example.php).');
 }
 
 /* Estado aleatorio: impide que alguien fabrique una respuesta de GitHub. */

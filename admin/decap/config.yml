@@ -75,6 +75,7 @@ collections:
       - { name: fotos, label: Fotos, widget: list, field: { name: foto, label: Foto, widget: image }, hint: "La primera es el retrato principal. Encuadra la cara." }
 
       - { name: urgente, label: "Lleva mucho esperando", widget: boolean, default: false }
+      - { name: adoptado, label: "Ya fue adoptado/a (la ficha sigue visible, marcada como adoptada)", widget: boolean, default: false }
       - { name: esterilizado, label: Esterilizado, widget: boolean, default: true }
       - { name: vacunado, label: Vacunas al día, widget: boolean, default: true }
       - { name: desparasitado, label: Desparasitado, widget: boolean, default: true }
@@ -140,14 +141,12 @@ collections:
           - { name: es, label: "Español", widget: string, required: false }
           - { name: en, label: "Inglés", widget: string, required: false }
 
-      - { name: peso_kg, label: Peso en kilos, widget: number, value_type: int, min: 0, max: 120 }
-      - { name: tamano, label: Tamaño, widget: select, options: [{label: Chico, value: chico}, {label: Mediano, value: mediano}, {label: Grande, value: grande}] }
-      - { name: energia, label: Nivel de energía, widget: select, options: [{label: Baja, value: baja}, {label: Media, value: media}, {label: Alta, value: alta}] }
       - { name: color, label: Color de su cápsula en la portada, widget: select, options: [arena, lavanda, coral, turquesa, menta] }
 
       - { name: fotos, label: Fotos, widget: list, field: { name: foto, label: Foto, widget: image }, hint: "La primera es el retrato principal. Encuadra la cara." }
 
       - { name: urgente, label: "Lleva mucho esperando", widget: boolean, default: false }
+      - { name: adoptado, label: "Ya fue adoptado/a (la ficha sigue visible, marcada como adoptada)", widget: boolean, default: false }
       - { name: esterilizado, label: Esterilizado, widget: boolean, default: true }
       - { name: vacunado, label: Vacunas al día, widget: boolean, default: true }
       - { name: desparasitado, label: Desparasitado, widget: boolean, default: true }

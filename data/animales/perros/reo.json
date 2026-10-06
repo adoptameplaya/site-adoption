@@ -3,7 +3,8 @@
   "id": "reo",
   "nombre": "Reo",
   "raza": {
-    "es": "Pastor"
+    "es": "Pastor",
+    "en": "Shepherd"
   },
   "edad": 7,
   "edad_unidad": "anos",

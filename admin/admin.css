@@ -1,5 +1,5 @@
 /* =========================================================
-   Panel del refugio — se apoya en css/style.css (mismos colores,
+   Panel de la asociación — se apoya en css/style.css (mismos colores,
    mismas formas) y solo añade lo que el sitio público no tiene.
    La ficha del editor reutiliza las clases de la ficha real: lo que
    se ve aquí es lo que verá el visitante.
@@ -62,25 +62,25 @@
 
 .ed__foto{
   display:block;margin:0 auto;padding:0;border:0;background:none;cursor:pointer;
-  width:min(100%,300px);aspect-ratio:1;position:relative;
+  width:100%;aspect-ratio:4/3;max-height:min(62vh,520px);position:relative;
 }
-.ed__foto img{width:100%;height:100%;object-fit:cover;border-radius:50%;border:var(--borde);background:var(--crema-2)}
+.ed__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block;background:var(--crema-2)}
 .ed__foto img[hidden]{display:none}
 .ed__foto::after{
-  content:"";position:absolute;right:6px;bottom:8px;width:48px;height:48px;border-radius:50%;
+  content:"";position:absolute;right:14px;bottom:14px;width:48px;height:48px;border-radius:50%;
   background:var(--naranja) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23241B12' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8.5A2.5 2.5 0 0 1 6.5 6H8l1.3-2h5.4L16 6h1.5A2.5 2.5 0 0 1 20 8.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 16.5z'/%3E%3Ccircle cx='12' cy='12.5' r='3.4'/%3E%3C/svg%3E") center/26px no-repeat;
   border:var(--borde);
 }
 .ed__foto-vacia{
   position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:8px;
-  border:3px dashed var(--tinta-40);border-radius:50%;background:var(--crema-2);
+  border:3px dashed var(--tinta-40);border-radius:0;background:var(--crema-2);
   font-family:var(--display);font-weight:800;color:var(--tinta-60);
 }
 .ed__foto-vacia svg{width:44px;height:44px}
 .ed__foto img:not([hidden])~.ed__foto-vacia{display:none}
-.ed__foto.ed__arrastre img,.ed__foto.ed__arrastre .ed__foto-vacia{box-shadow:0 0 0 6px rgba(245,166,60,.7)}
+.ed__foto.ed__arrastre img,.ed__foto.ed__arrastre .ed__foto-vacia{box-shadow:inset 0 0 0 6px rgba(245,166,60,.8)}
 
-.ed__galeria{padding-bottom:6px;flex-wrap:wrap}
+.ed__galeria{padding:16px 16px 6px;flex-wrap:wrap}
 .ed__mini{position:relative;flex:none}
 .ed__mini .galeria__v{display:block}
 .ed__mini-x{
@@ -93,7 +93,7 @@
   display:grid;place-items:center;border-style:dashed;background:transparent;color:var(--tinta-60);
 }
 .ed__mas svg{width:24px;height:24px}
-.ed__ayuda{font-size:.84rem;font-weight:600;color:var(--tinta-60);text-align:center;max-width:52ch;margin:14px auto 0;padding-bottom:22px}
+.ed__ayuda{font-size:.84rem;font-weight:600;color:var(--tinta-60);text-align:center;max-width:52ch;margin:10px auto 0;padding:0 16px 20px}
 .ed__det-cuerpo .ed__ayuda{text-align:left;margin:0;padding:0}
 
 /* campos «fantasma»: se parecen al texto de la ficha, pero se ve que se escriben */
@@ -243,3 +243,23 @@
 }
 .panel__aviso[hidden]{display:none}
 .panel__aviso--error{background:var(--alerta)}
+
+.ed__chip-check--adoptado input:checked+span{background:var(--menta);color:var(--tinta)}
+
+/* ---- Versión en inglés, escrita a mano ---- */
+.ed__ingles{border-color:var(--tinta);background:var(--blanco)}
+.ed__ingles summary span[data-estado="falta"]{color:var(--alerta);font-weight:800}
+.ed__ingles summary span[data-estado="ok"]{color:#2C6E3B;font-weight:800}
+.ed__ingles .campo>label span{font-weight:600;color:var(--tinta-60);margin-left:.4em}
+.ed__orig{
+  margin:0;padding:8px 12px;font-size:.86rem;font-weight:600;line-height:1.45;color:var(--tinta-60);
+  background:rgba(245,166,60,.14);border-left:4px solid var(--naranja);border-radius:0 var(--r-xs) var(--r-xs) 0;
+  white-space:pre-wrap;
+}
+.ed__orig::before{content:"Español · ";font-weight:800;color:var(--tinta)}
+.ed__orig[hidden],.ed__ingles .campo[hidden]{display:none}
+.ed__rasgo-en{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.9rem}
+.ed__rasgo-en input{
+  width:11ch;padding:6px 10px;border:2px solid var(--tinta);border-radius:999px;background:var(--blanco);outline:none;font-weight:700;
+}
+.ed__rasgo-en input:focus{box-shadow:0 0 0 4px rgba(245,166,60,.55)}

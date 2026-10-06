@@ -316,11 +316,7 @@ p{margin:0}
 }
 .ficha__cerrar svg{width:20px;height:20px}
 .ficha__cuerpo{overflow-y:auto;padding:0}
-.ficha__marco{position:relative;padding:30px 30px 0;background:var(--arena-2)}
-.ficha__marco img{
-  width:min(100%,300px);height:auto;margin-inline:auto;aspect-ratio:1;object-fit:cover;
-  border-radius:50%;border:var(--borde);background:var(--crema-2);
-}
+.ficha__marco{position:relative;padding:0;background:var(--arena-2);border-bottom:var(--borde)}
 .ficha__texto{padding:26px clamp(20px,4vw,34px) clamp(20px,4vw,34px)}
 .ficha__titulo{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px}
 .ficha__titulo h3{font-size:clamp(1.9rem,4vw,2.6rem)}
@@ -542,7 +538,6 @@ p{margin:0}
   .capsula:nth-child(5){display:none}
   .capsula__nombre{font-size:.8rem;padding:3px 10px;bottom:-50px}
 
-  .ficha__marco{padding:22px 22px 0}
   .btn{width:100%}
   .hero__botones{flex-direction:column;align-items:stretch}
   .enviar .btn{width:100%}
@@ -767,3 +762,73 @@ p{margin:0}
 .gracias__wa{margin-top:26px;padding-top:24px;border-top:2px dashed var(--tinta-40)}
 .gracias__wa .btn{margin-top:14px}
 .gracias__wa p{font-size:.92rem;margin-top:10px}
+
+
+/* =========================================================
+   Fiche — carrousel de photos pleine largeur
+   Le doigt fait défiler (scroll-snap natif) ; flèches, points et
+   touches ← → pour les autres. Le cadrage reste en haut de l'image,
+   là où se trouve presque toujours la tête de l'animal.
+   ========================================================= */
+.carrusel{position:relative}
+.carrusel__pista{
+  display:flex;overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;scrollbar-width:none;
+}
+.carrusel__pista::-webkit-scrollbar{display:none}
+.carrusel__pista:focus-visible{outline:3px solid var(--naranja);outline-offset:-6px}
+.carrusel__dia{
+  flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;
+  aspect-ratio:4/3;max-height:min(62vh,560px);background:var(--arena-2);
+}
+.carrusel__dia img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block}
+
+.carrusel__flecha{
+  position:absolute;top:50%;translate:0 -50%;z-index:2;
+  width:48px;height:48px;border-radius:50%;border:var(--borde);
+  background:var(--blanco);cursor:pointer;display:grid;place-items:center;padding:0;
+  transition:transform .12s ease,opacity .2s ease;
+}
+.carrusel__flecha:hover{transform:scale(1.07)}
+.carrusel__flecha[disabled]{opacity:0;pointer-events:none}
+.carrusel__flecha svg{width:20px;height:20px}
+.carrusel__flecha--ant{left:12px}
+.carrusel__flecha--ant svg{transform:scaleX(-1)}
+.carrusel__flecha--sig{right:12px}
+
+.carrusel__puntos{
+  position:absolute;left:0;right:0;bottom:12px;z-index:2;
+  display:flex;justify-content:center;gap:8px;pointer-events:none;
+}
+.carrusel__punto{
+  pointer-events:auto;width:14px;height:14px;padding:0;border-radius:50%;
+  border:2px solid var(--tinta);background:var(--blanco);cursor:pointer;
+}
+.carrusel__punto[aria-current="true"]{background:var(--naranja);transform:scale(1.25)}
+
+@media (max-width:520px){
+  .carrusel__dia{aspect-ratio:1/1}
+  .carrusel__flecha{width:42px;height:42px}
+}
+
+/* ---- Animal déjà adopté : la fiche reste en ligne, avec un marquage clair ---- */
+.tarjeta__adoptado,.carrusel__adoptado{
+  position:absolute;top:10px;left:10px;z-index:2;
+  background:var(--menta);color:var(--tinta);border:2px solid var(--tinta);
+  border-radius:999px;padding:3px 12px;font-size:.74rem;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+.carrusel__adoptado{top:14px;left:14px;font-size:.82rem;padding:5px 15px}
+.es-adoptado .tarjeta__marco img{filter:grayscale(.6) brightness(.98)}
+.es-adoptado .tarjeta__resumen{opacity:.75}
+
+.ficha__adoptado{
+  display:grid;gap:10px;justify-items:start;margin-top:26px;padding:20px 22px;
+  background:var(--menta);border:2px solid var(--tinta);border-radius:var(--r-md);
+}
+.ficha__adoptado h4{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:800;font-size:1.25rem;margin:0}
+.ficha__adoptado h4 svg{width:24px;height:24px;flex:none}
+.ficha__adoptado p{font-weight:700;color:var(--tinta-60)}
+
+/* Les filtres taille / énergie disparaissent quand « Chats » est choisi. */
+.filtros__grupo[hidden]{display:none}

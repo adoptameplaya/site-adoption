@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#FFF7EA">
-<title>Panel del refugio · Adopta Me Playa</title>
+<title>Panel de la asociación · Adopta Me Playa</title>
 <link rel="icon" href="../img/ui/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css?v=47">
-<link rel="stylesheet" href="admin.css?v=1">
+<link rel="stylesheet" href="../css/style.css?v=49">
+<link rel="stylesheet" href="admin.css?v=2">
 </head>
 <body class="panel">
 
@@ -35,7 +35,7 @@
     <a class="marca" href="#">
       <img class="marca__logo" src="../img/ui/logo.png" alt="" width="58" height="58">
       <span>
-        <span class="marca__nombre">Panel del refugio</span>
+        <span class="marca__nombre">Panel de la asociación</span>
         <span class="marca__lugar">Adopta Me Playa</span>
       </span>
     </a>
@@ -58,11 +58,11 @@
   <section id="vista-entrada" class="panel__centro" hidden>
     <div class="panel__tarjeta">
       <img src="../img/ui/logo.png" alt="" width="96" height="96">
-      <h1>Panel del refugio</h1>
+      <h1>Panel de la asociación</h1>
       <p>Aquí se añaden, se cambian y se quitan los animales del sitio.</p>
       <button class="btn btn--grande" type="button" id="entrar">Entrar con GitHub</button>
       <p class="panel__nota" id="entrada-error" role="alert" hidden></p>
-      <p class="panel__nota">Necesitas una cuenta de GitHub a la que se haya dado acceso al refugio. Si no entras, pídele a quien administra el sitio que te invite.</p>
+      <p class="panel__nota">Necesitas una cuenta de GitHub a la que se haya dado acceso a la asociación. Si no entras, pídele a quien administra el sitio que te invite.</p>
     </div>
   </section>
 
@@ -103,6 +103,7 @@
             <div class="ficha__titulo">
               <input class="ed__nombre" id="f-nombre" type="text" maxlength="40" placeholder="Nombre" aria-label="Nombre">
               <label class="ed__chip-check"><input type="checkbox" id="f-urgente"><span>Lleva mucho esperando</span></label>
+              <label class="ed__chip-check ed__chip-check--adoptado"><input type="checkbox" id="f-adoptado"><span>Ya fue adoptado/a</span></label>
             </div>
           </div>
           <input class="ed__ghost ed__raza" id="f-raza" type="text" maxlength="60" placeholder="Raza (opcional): Pastor holandés, mestizo…" aria-label="Raza">
@@ -123,18 +124,18 @@
                 <select id="f-unidad" class="dato__v" aria-label="Unidad de edad"><option value="anos">años</option><option value="meses">meses</option></select>
               </div>
             </div>
-            <div class="dato ed__campo" data-campo="peso">
+            <div class="dato ed__campo" data-campo="peso" data-solo="perros">
               <label class="dato__k" for="f-peso">Peso</label>
               <div class="ed__duo">
                 <input id="f-peso" class="dato__v" type="number" inputmode="decimal" min="0" max="120" step="0.5" placeholder="0">
                 <span class="dato__v">kg</span>
               </div>
             </div>
-            <div class="dato ed__campo" data-campo="tamano">
+            <div class="dato ed__campo" data-campo="tamano" data-solo="perros">
               <label class="dato__k" for="f-tamano">Tamaño</label>
               <select id="f-tamano" class="dato__v"><option value="">Elige…</option><option value="chico">Chico</option><option value="mediano">Mediano</option><option value="grande">Grande</option></select>
             </div>
-            <div class="dato ed__campo" data-campo="energia">
+            <div class="dato ed__campo" data-campo="energia" data-solo="perros">
               <label class="dato__k" for="f-energia">Energía</label>
               <select id="f-energia" class="dato__v"><option value="">Elige…</option><option value="baja">Baja</option><option value="media">Media</option><option value="alta">Alta</option></select>
             </div>
@@ -150,7 +151,7 @@
           </div>
 
           <div class="ed__campo" data-campo="historia">
-            <textarea class="ed__ghost ed__historia" id="f-historia" rows="6" maxlength="1500" placeholder="Su historia: cómo llegó al refugio, cómo es, qué necesita…" aria-label="Historia"></textarea>
+            <textarea class="ed__ghost ed__historia" id="f-historia" rows="6" maxlength="1500" placeholder="Su historia: cómo llegó con nosotros, cómo es, qué necesita…" aria-label="Historia"></textarea>
           </div>
 
           <div class="aviso-animal ed__aviso">
@@ -170,16 +171,30 @@
           </div>
 
           <details class="ed__det ed__ingles" id="ed-ingles">
-            <summary><svg aria-hidden="true"><use href="#i-globo"></use></svg>Versión en inglés <span id="ed-ingles-estado">se traduce sola al publicar</span></summary>
+            <summary><svg aria-hidden="true"><use href="#i-globo"></use></svg>Versión en inglés <span id="ed-ingles-estado"></span></summary>
             <div class="ed__det-cuerpo">
-              <p class="ed__ayuda">No tienes que hacer nada aquí. Al publicar, lo que escribiste arriba se traduce automáticamente. Entra solo si quieres corregir una frase: lo que cambies a mano ya no se vuelve a traducir.</p>
-              <div class="campo"><label for="e-raza">Raza</label><input id="e-raza" type="text" maxlength="60"></div>
-              <div class="campo"><label for="e-resumen">Resumen</label><textarea id="e-resumen" rows="2" maxlength="260"></textarea></div>
-              <div class="campo"><label for="e-historia">Historia</label><textarea id="e-historia" rows="5" maxlength="1800"></textarea></div>
-              <div class="campo"><label for="e-aviso">Aviso importante</label><textarea id="e-aviso" rows="2" maxlength="480"></textarea></div>
-              <div class="campo"><label>Carácter</label><div class="etiquetas" id="e-rasgos"></div></div>
-              <button class="btn btn--claro" type="button" id="ed-traducir">Traducir ahora para revisar</button>
-              <p class="ed__ayuda" id="ed-traducir-estado" role="status"></p>
+              <p class="ed__ayuda" id="ed-ingles-manual">Escribe aquí lo mismo que arriba, pero en inglés. Debajo de cada campo ves el texto en español para traducirlo. Si dejas algo vacío, la versión inglesa del sitio mostrará ese texto en español.</p>
+              <p class="ed__ayuda" id="ed-ingles-auto" hidden>No tienes que hacer nada aquí. Al publicar, lo que escribiste arriba se traduce automáticamente. Entra solo si quieres corregir una frase: lo que cambies a mano ya no se vuelve a traducir.</p>
+
+              <div class="campo" data-en-campo="resumen"><label for="e-resumen">Summary <span>(resumen)</span></label>
+                <p class="ed__orig" data-orig="resumen"></p>
+                <textarea id="e-resumen" rows="2" maxlength="260" placeholder="Resumen en inglés"></textarea></div>
+              <div class="campo" data-en-campo="historia"><label for="e-historia">Story <span>(historia)</span></label>
+                <p class="ed__orig" data-orig="historia"></p>
+                <textarea id="e-historia" rows="5" maxlength="1800" placeholder="Historia en inglés"></textarea></div>
+              <div class="campo" data-en-campo="raza" hidden><label for="e-raza">Breed <span>(raza)</span></label>
+                <p class="ed__orig" data-orig="raza"></p>
+                <input id="e-raza" type="text" maxlength="60"></div>
+              <div class="campo" data-en-campo="aviso" hidden><label for="e-aviso">Important warning <span>(aviso)</span></label>
+                <p class="ed__orig" data-orig="aviso"></p>
+                <textarea id="e-aviso" rows="2" maxlength="480"></textarea></div>
+              <div class="campo" data-en-campo="edadTexto" hidden><label for="e-edadtexto">Approximate age <span>(edad escrita a mano)</span></label>
+                <p class="ed__orig" data-orig="edadTexto"></p>
+                <input id="e-edadtexto" type="text" maxlength="30"></div>
+              <div class="campo"><label>Character <span>(carácter)</span></label><div class="etiquetas" id="e-rasgos"></div></div>
+
+              <button class="btn btn--claro" type="button" id="ed-traducir" hidden>Traducir ahora para revisar</button>
+              <p class="ed__ayuda" id="ed-traducir-estado" role="status" hidden></p>
             </div>
           </details>
 
@@ -231,6 +246,6 @@
 <div class="panel__aviso" id="aviso" role="status" aria-live="polite" hidden></div>
 
 <script src="config.js?v=1"></script>
-<script src="admin.js?v=1"></script>
+<script src="admin.js?v=2"></script>
 </body>
 </html>

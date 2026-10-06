@@ -1,11 +1,11 @@
 /* =========================================================
-   Panel del refugio — alta, edición y baja de fichas.
+   Panel de la asociación — alta, edición y baja de fichas.
 
    Sin dependencias. Habla directamente con la API de GitHub usando el
    token que entrega el inicio de sesión. Cada publicación es UN solo
    commit (la ficha y sus fotos), que lanza la reconstrucción del sitio.
 
-   El refugio escribe en español. El inglés se traduce solo al publicar
+   La asociación escribe en español. El inglés se traduce solo al publicar
    (api/traducir.php); si el servicio no está disponible, la ficha se
    publica igual y el sitio muestra el español en inglés.
    ========================================================= */
@@ -22,6 +22,7 @@ const dormir = ms => new Promise(ok => setTimeout(ok, ms));
 /* ?dev solo funciona en localhost: apunta el panel a un GitHub simulado. */
 const DEV = ['localhost', '127.0.0.1'].includes(location.hostname) && new URLSearchParams(location.search).has('dev');
 const CFG = Object.assign({ repo: '', rama: 'main' }, window.ADMIN_CONFIG);
+const TRADUCCION_AUTO = CFG.traduccionAuto === true || (DEV && new URLSearchParams(location.search).has('traduccion'));
 const API = DEV ? `${location.origin}/mock/github` : 'https://api.github.com';
 const URL_AUTH = '/api/auth';
 const URL_TRADUCIR = DEV ? '/mock/traducir' : '/api/traducir';
@@ -62,7 +63,7 @@ const RASGOS = [
 ];
 
 const SALUD = ['esterilizado', 'vacunado', 'desparasitado', 'cartilla', 'microchip'];
-/* La ficha tipo del refugio: todo hecho salvo el microchip, que se marca caso por caso. */
+/* La ficha tipo de la asociación: todo hecho salvo el microchip, que se marca caso por caso. */
 const SALUD_INICIAL = { esterilizado: true, vacunado: true, desparasitado: true, cartilla: true, microchip: false };
 const CAMPOS_TXT = ['raza', 'resumen', 'historia', 'aviso', 'edadTexto'];
 
@@ -161,7 +162,7 @@ const REPO = () => `/repos/${CFG.repo}`;
 async function verificarSesion() {
   const [u, repo] = await Promise.all([gh('/user'), gh(REPO())]);
   if (repo.permissions && !repo.permissions.push) {
-    const e = new Error(`La cuenta ${u.login} no tiene permiso para modificar el sitio. Pide que te inviten como colaborador del refugio.`);
+    const e = new Error(`La cuenta ${u.login} no tiene permiso para modificar el sitio. Pide que te inviten como colaborador de la asociación.`);
     e.status = 403; e.sinPermiso = true;
     throw e;
   }
@@ -241,7 +242,9 @@ async function traducir(textos) {
   });
   const d = await r.json().catch(() => ({}));
   if (!r.ok || !d.ok || !Array.isArray(d.textos) || d.textos.length !== textos.length) {
-    throw new Error(d.error || `El servicio de traducción respondió ${r.status}`);
+    const e = new Error(d.error || `El servicio de traducción respondió ${r.status}`);
+    e.status = r.status;
+    throw e;
   }
   return d.textos;
 }
@@ -249,6 +252,7 @@ async function traducir(textos) {
 /* Lo que hay que traducir: el español que cambió (o nunca se tradujo) y
    que nadie ha corregido a mano en inglés. */
 function pendientes() {
+  if (!TRADUCCION_AUTO) return [];
   const out = [];
   for (const c of CAMPOS_TXT) {
     const es = st.es[c].trim();
@@ -350,9 +354,10 @@ function carta(f) {
   const foto = (d.fotos && d.fotos[0]) || d.foto || '';
   const meta = [d.sexo === 'macho' ? 'Macho' : d.sexo === 'hembra' ? 'Hembra' : '', edadES(d),
     d.tamano ? d.tamano[0].toUpperCase() + d.tamano.slice(1) : ''].filter(Boolean).join(' · ');
-  return `<li><article class="tarjeta carta">
+  return `<li class="${d.adoptado ? 'es-adoptado' : ''}"><article class="tarjeta carta">
     <span class="tarjeta__marco">
-      ${d.urgente ? '<span class="tarjeta__urgente">Urgente</span>' : ''}
+      ${d.adoptado ? `<span class="tarjeta__adoptado">${d.sexo === 'hembra' ? 'Adoptada' : 'Adoptado'}</span>`
+        : (d.urgente ? '<span class="tarjeta__urgente">Urgente</span>' : '')}
       ${foto ? `<img src="${esc(srcFoto(foto))}" data-ruta="${esc(foto)}" alt="" loading="lazy" width="300" height="300">` : '<span class="carta__sin-foto">Sin foto</span>'}
     </span>
     <span class="tarjeta__nombre">${esc(d.nombre)}</span>
@@ -373,7 +378,7 @@ function estadoNuevo(especie) {
   return {
     nuevo: true, especie, id: '', original: null, sucio: false,
     orden: ordenes.length ? Math.min(...ordenes) - 10 : 10,
-    nombre: '', sexo: '', edad: '', unidad: 'anos', peso: '', tamano: '', energia: '', urgente: false,
+    nombre: '', sexo: '', edad: '', unidad: 'anos', peso: '', tamano: '', energia: '', urgente: false, adoptado: false,
     salud: { ...SALUD_INICIAL },
     es: { raza: '', resumen: '', historia: '', aviso: '', edadTexto: '' },
     en: { raza: '', resumen: '', historia: '', aviso: '', edadTexto: '' },
@@ -391,7 +396,7 @@ function estadoDesde(f) {
     nombre: d.nombre || '', sexo: d.sexo || '',
     edad: Number(d.edad) ? String(d.edad) : '', unidad: d.edad_unidad === 'meses' ? 'meses' : 'anos',
     peso: d.peso_kg ? String(d.peso_kg) : '', tamano: d.tamano || '', energia: d.energia || '',
-    urgente: !!d.urgente
+    urgente: !!d.urgente, adoptado: !!d.adoptado
   });
   for (const k of SALUD) s.salud[k] = !!d[k];
 
@@ -434,6 +439,9 @@ function rellenarForm() {
   $('#f-tamano').value = st.tamano;
   $('#f-energia').value = st.energia;
   $('#f-urgente').checked = st.urgente;
+  $('#f-adoptado').checked = st.adoptado;
+  /* Los gatos no llevan peso, tamano ni energia: solo sexo y edad. */
+  $$('[data-solo="perros"]').forEach(el => { el.hidden = st.especie !== 'perros'; });
   for (const k of SALUD) $(`#f-${k}`).checked = st.salud[k];
   $('#f-raza').value = st.es.raza;
   $('#f-resumen').value = st.es.resumen;
@@ -442,7 +450,10 @@ function rellenarForm() {
   $('#f-edadtexto').value = st.es.edadTexto;
   $('#f-rasgo-otro').value = '';
   $$('.ed__campo--error').forEach(el => el.classList.remove('ed__campo--error'));
-  $('#ed-ingles').open = false;
+  $('#ed-ingles').open = !TRADUCCION_AUTO;     // a mano: abierta ; automática: cerrada
+  $('#ed-ingles-manual').hidden = TRADUCCION_AUTO;
+  $('#ed-ingles-auto').hidden = !TRADUCCION_AUTO;
+  $('#ed-traducir').hidden = !TRADUCCION_AUTO;
   pintarFotos();
   pintarRasgos();
   pintarIngles();
@@ -457,6 +468,7 @@ function leerForm() {
   st.tamano = $('#f-tamano').value;
   st.energia = $('#f-energia').value;
   st.urgente = $('#f-urgente').checked;
+  st.adoptado = $('#f-adoptado').checked;
   for (const k of SALUD) st.salud[k] = $(`#f-${k}`).checked;
   st.es.raza = $('#f-raza').value;
   st.es.resumen = $('#f-resumen').value;
@@ -570,10 +582,45 @@ function pintarIngles() {
   $('#e-resumen').value = st.en.resumen;
   $('#e-historia').value = st.en.historia;
   $('#e-aviso').value = st.en.aviso;
-  $('#e-rasgos').innerHTML = st.rasgos.map(r =>
-    `<span class="etiqueta">${esc(r.propio ? (r.en || r.es + ' …') : RASGOS[r.k][2])}</span>`).join('') || '<span class="ayuda">Sin rasgos</span>';
-  const n = pendientes().length;
-  $('#ed-ingles-estado').textContent = !n ? 'al día' : n === 1 ? '1 texto se traducirá al publicar' : `${n} textos se traducirán al publicar`;
+  $('#e-edadtexto').value = st.en.edadTexto;
+  /* Rasgos de la lista: su inglés ya está hecho. Rasgos propios: se escribe su inglés aquí. */
+  $('#e-rasgos').innerHTML = st.rasgos.map((r, i) => r.propio
+    ? `<label class="ed__rasgo-en"><span>${esc(r.es)} →</span><input type="text" data-en-rasgo="${i}" maxlength="24" value="${esc(r.en || '')}" placeholder="en inglés"></label>`
+    : `<span class="etiqueta">${esc(RASGOS[r.k][2])}</span>`).join('') || '<span class="ayuda">Sin rasgos</span>';
+  estadoIngles();
+}
+
+const ETQ_EN = { raza: 'la raza', resumen: 'el resumen', historia: 'la historia', aviso: 'el aviso', edadTexto: 'la edad' };
+
+/* Qué falta en inglés (solo cuenta lo que ya tiene texto en español). */
+function faltaIngles() {
+  const out = [];
+  for (const c of CAMPOS_TXT) if (st.es[c].trim() && !st.en[c].trim()) out.push(ETQ_EN[c]);
+  if (st.rasgos.some(r => r.propio && !(r.en || '').trim())) out.push('el carácter');
+  return out;
+}
+
+/* Lo que depende del español y puede cambiar al escribir: no toca los campos ingleses
+   (así no se pierde el cursor). */
+function estadoIngles() {
+  for (const c of ['raza', 'aviso', 'edadTexto']) {
+    const caja = document.querySelector(`[data-en-campo="${c}"]`);
+    if (caja) caja.hidden = !st.es[c].trim();
+  }
+  for (const c of CAMPOS_TXT) {
+    const o = document.querySelector(`[data-orig="${c}"]`);
+    if (o) { o.textContent = st.es[c]; o.hidden = !st.es[c].trim(); }
+  }
+  const el = $('#ed-ingles-estado');
+  if (TRADUCCION_AUTO) {
+    const n = pendientes().length;
+    el.textContent = !n ? 'al día' : n === 1 ? '1 texto se traducirá al publicar' : `${n} textos se traducirán al publicar`;
+    el.dataset.estado = '';
+  } else {
+    const f = faltaIngles();
+    el.textContent = f.length ? `· falta ${f.length > 1 ? f.slice(0, -1).join(', ') + ' y ' + f.at(-1) : f[0]}` : '· completa ✓';
+    el.dataset.estado = f.length ? 'falta' : 'ok';
+  }
 }
 
 /* =========================================================
@@ -585,8 +632,10 @@ function validar() {
   if (!st.fotos.length) falta.push(['fotos', 'al menos una foto']);
   if (!st.sexo) falta.push(['sexo', 'el sexo']);
   if (st.edad === '' && !st.es.edadTexto.trim()) falta.push(['edad', 'la edad']);
-  if (!st.tamano) falta.push(['tamano', 'el tamaño']);
-  if (!st.energia) falta.push(['energia', 'el nivel de energía']);
+  if (st.especie === 'perros') {
+    if (!st.tamano) falta.push(['tamano', 'el tamaño']);
+    if (!st.energia) falta.push(['energia', 'el nivel de energía']);
+  }
   if (!st.es.resumen.trim()) falta.push(['resumen', 'el resumen']);
   if (!st.es.historia.trim()) falta.push(['historia', 'su historia']);
 
@@ -615,7 +664,7 @@ function idUnico() {
 function construirJSON(id, rutasFotos) {
   const o = st.original || {};
   const conocidas = new Set(['orden', 'id', 'nombre', 'raza', 'edad', 'edad_unidad', 'sexo', 'edad_texto', 'peso_kg',
-    'tamano', 'energia', 'fotos', 'foto', 'urgente', ...SALUD, 'es', 'en', 'especie']);
+    'tamano', 'energia', 'fotos', 'foto', 'urgente', 'adoptado', ...SALUD, 'es', 'en', 'especie']);
   const extra = Object.fromEntries(Object.entries(o).filter(([k]) => !conocidas.has(k)));
 
   const t = c => st.es[c].trim();
@@ -637,11 +686,14 @@ function construirJSON(id, rutasFotos) {
     edad_unidad: st.unidad,
     sexo: st.sexo,
     ...(t('edadTexto') ? { edad_texto: bilingue('edadTexto') } : {}),
-    peso_kg: Number.isFinite(peso) ? peso : 0,
-    tamano: st.tamano,
-    energia: st.energia,
+    ...(st.especie === 'perros' ? {
+      peso_kg: Number.isFinite(peso) ? peso : 0,
+      tamano: st.tamano,
+      energia: st.energia
+    } : {}),
     fotos: rutasFotos,
     urgente: !!st.urgente,
+    ...(st.adoptado ? { adoptado: true } : {}),
     ...Object.fromEntries(SALUD.map(k => [k, !!st.salud[k]])),
     es: {
       resumen: t('resumen'),
@@ -690,20 +742,33 @@ async function publicar() {
   const rutaJson = `data/animales/${st.especie}/${id}.json`;
 
   prog.abrir(esNueva ? `Publicando a ${nombre}` : `Guardando a ${nombre}`,
-    ['Traduciendo al inglés', 'Preparando las fotos', 'Guardando la ficha', 'Publicando en el sitio']);
+    [TRADUCCION_AUTO ? 'Traduciendo al inglés' : 'Comprobando el inglés', 'Preparando las fotos', 'Guardando la ficha', 'Publicando en el sitio']);
   $('#ed-publicar').disabled = true;
   let sha = '';
 
   try {
     /* 1. traducción — si falla, se decide con el usuario, no se bloquea */
     prog.paso(0, 'curso');
-    if (pendientes().length) {
+    if (!TRADUCCION_AUTO) {
+      const f = faltaIngles();
+      prog.paso(0, 'ok', f.length ? `Inglés incompleto (falta ${f.join(', ')}): se mostrará en español` : 'Versión en inglés completa');
+    } else if (pendientes().length) {
+      let sinTraduccion = null;
       try {
         await traducirPendientes();
         prog.paso(0, 'ok');
       } catch (err) {
+        if (err.status === 503) {
+          /* Traducción sin configurar (aún no hay clave): no es un fallo, se publica en español
+             y el sitio mostrará ese texto en la versión inglesa. Sin preguntar. */
+          prog.paso(0, 'ok', 'Sin traducción automática (aún no activada)');
+        } else {
+          sinTraduccion = err;
+        }
+      }
+      if (sinTraduccion) {
         prog.paso(0, 'error', 'Traducción no disponible');
-        const seguir = confirm(`No se pudo traducir al inglés (${err.message.replace(/\.$/, '')}).\n\n¿Publicar igualmente? La versión en inglés mostrará el texto en español.`);
+        const seguir = confirm(`No se pudo traducir al inglés (${sinTraduccion.message.replace(/\.$/, '')}).\n\n¿Publicar igualmente? La versión en inglés mostrará el texto en español.`);
         if (!seguir) { $('#dlg-progreso').close(); $('#ed-publicar').disabled = false; return; }
       }
     } else {
@@ -767,7 +832,7 @@ function fallo(e) {
   if (li) li.dataset.e = 'error';
   const permiso = e.status === 403 || e.status === 404;
   prog.nota(permiso
-    ? 'GitHub no te deja guardar en este sitio. Revisa que tu cuenta tenga acceso de escritura al refugio.'
+    ? 'GitHub no te deja guardar en este sitio. Revisa que tu cuenta tenga acceso de escritura al sitio de la asociación.'
     : `No se pudo guardar: ${e.message}. No se perdió nada de lo que escribiste; inténtalo de nuevo.`);
   prog.cerrable();
 }
@@ -858,12 +923,18 @@ function conectar() {
     if (!st) return;
     st.sucio = true;
     e.target.closest('.ed__campo')?.classList.remove('ed__campo--error');
-    const en = { 'e-raza': 'raza', 'e-resumen': 'resumen', 'e-historia': 'historia', 'e-aviso': 'aviso' }[e.target.id];
-    if (en) { st.en[en] = e.target.value; st.manual[en] = true; pintarIngles(); return; }
+    if (e.target.dataset.enRasgo !== undefined) {
+      const r = st.rasgos[Number(e.target.dataset.enRasgo)];
+      if (r) { r.en = e.target.value; r.enBase = r.es; }
+      estadoIngles();
+      return;
+    }
+    const en = { 'e-raza': 'raza', 'e-resumen': 'resumen', 'e-historia': 'historia', 'e-aviso': 'aviso', 'e-edadtexto': 'edadTexto' }[e.target.id];
+    if (en) { st.en[en] = e.target.value; st.manual[en] = true; estadoIngles(); return; }
     if (e.target.id === 'f-rasgo-otro') return;
     leerForm();
     if (e.target.id === 'f-sexo') pintarRasgos();
-    pintarIngles();
+    estadoIngles();
   });
   $('#ed-form').addEventListener('keydown', e => {
     if (e.key !== 'Enter' || e.target.tagName !== 'INPUT') return;

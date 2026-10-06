@@ -5,9 +5,6 @@
   "edad": 3,
   "edad_unidad": "meses",
   "sexo": "macho",
-  "peso_kg": 0,
-  "tamano": "chico",
-  "energia": "alta",
   "fotos": [
     "/img/animales/lucien-gs925.jpg"
   ],
@@ -27,6 +24,8 @@
     ]
   },
   "en": {
+    "resumen": "Ready for your family",
+    "historia": "He was abandoned in an empty lot along with his siblings and had a very serious eye infection. He has made a full recovery and can now see perfectly.",
     "caracter": [
       "Playful",
       "Affectionate",

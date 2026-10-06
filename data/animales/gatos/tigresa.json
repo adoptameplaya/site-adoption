@@ -5,9 +5,6 @@
   "edad": 3,
   "edad_unidad": "meses",
   "sexo": "hembra",
-  "peso_kg": 0,
-  "tamano": "chico",
-  "energia": "media",
   "fotos": [
     "/img/animales/tigresa-1.png"
   ],
@@ -26,8 +23,8 @@
     ]
   },
   "en": {
-    "resumen": "thstrhtr",
-    "historia": "She was abandoned in an empty lot with his siblings and had a very serious eye infection. She has fully recovered and can now see perfectly.",
+    "resumen": "Ready to give you lots of love",
+    "historia": "She was abandoned in an empty lot together with her siblings and had a very serious eye infection. She has made a full recovery and can now see perfectly.",
     "caracter": [
       "Playful",
       "Affectionate"

@@ -76,12 +76,24 @@ function enlaceWA(mensaje) {
 const esc = s => String(s).replace(/[&<>"']/g, c =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-/* El refugio escribe solo en español; el inglés lo traduce el panel al publicar
+/* La asociación escribe solo en español; el inglés lo traduce el panel al publicar
    y puede faltar si el servicio de traducción no respondió ese día. Un texto en
    español vale más que un hueco en la ficha. */
 const txt = (a, campo) => a?.[IDIOMA]?.[campo] || a?.es?.[campo] || '';
 const caracter = a => (a?.[IDIOMA]?.caracter?.length ? a[IDIOMA].caracter : a?.es?.caracter) || [];
 const razaTxt = a => a?.raza?.[IDIOMA] || a?.raza?.es || '';
+const adoptadoTxt = a => t(a.sexo === 'hembra' ? 'cat.adoptada' : 'cat.adoptado');
+
+/* Donativo sugerido por especie : config.adopcion.donacion_sugerida.perro / .gato
+   = { min, max }. Un número suelto (formato antiguo) vale para las dos especies. */
+function rangoDonacion(especie) {
+  const d = CONFIG?.adopcion?.donacion_sugerida;
+  const r = (d && typeof d === 'object') ? d[especie] : { min: d, max: d };
+  const min = Number(r?.min);
+  if (!Number.isFinite(min)) return '';
+  const max = Number(r.max ?? r.min);
+  return min === max ? dinero(min) : `$${num(min)} – $${num(max)} MXN`;
+}
 
 /* =========================================================
    Hero — la tira de cápsulas
@@ -93,7 +105,7 @@ function fotoPrincipal(a) {
 
 function pintarTira() {
   const cont = $('#tira');
-  cont.innerHTML = ANIMALES.slice(0, 5).map(a => `
+  cont.innerHTML = ANIMALES.filter(a => !a.adoptado).slice(0, 5).map(a => `
     <a class="capsula" href="#adoptar" data-abrir="${a.id}">
       <img class="capsula__foto" src="${esc(fotoPrincipal(a))}" alt="${esc(a.nombre)}" loading="eager" width="160" height="160">
       <span class="capsula__nombre">${esc(a.nombre)}</span>
@@ -120,13 +132,14 @@ function tarjeta(a) {
   const meta = [
     t(a.sexo === 'macho' ? 'ficha.macho' : 'ficha.hembra'),
     edadTexto(a),
-    t('cat.' + a.tamano)
-  ].join(' · ');
+    a.tamano ? t('cat.' + a.tamano) : ''
+  ].filter(Boolean).join(' · ');
 
-  return `<li>
+  return `<li class="${a.adoptado ? 'es-adoptado' : ''}">
     <button class="tarjeta" type="button" data-abrir="${a.id}">
       <span class="tarjeta__marco">
-        ${a.urgente ? `<span class="tarjeta__urgente">${esc(t('cat.urgente'))}</span>` : ''}
+        ${a.adoptado ? `<span class="tarjeta__adoptado">${esc(adoptadoTxt(a))}</span>`
+          : (a.urgente ? `<span class="tarjeta__urgente">${esc(t('cat.urgente'))}</span>` : '')}
         <img src="${esc(fotoPrincipal(a))}" alt="${esc(a.nombre)}" loading="lazy" width="300" height="300">
       </span>
       <span class="tarjeta__nombre">${esc(a.nombre)}</span>
@@ -151,6 +164,18 @@ function pintarRejilla() {
     : `<li class="vacio"><h3>${esc(t('cat.vacio_t'))}</h3><p>${esc(t('cat.vacio_d'))}</p></li>`;
 }
 
+/* Los gatos no tienen tamaño ni energía en su ficha : con «Gatos» elegido,
+   esos dos filtros se ocultan (y se vacían) en vez de dejar la rejilla vacía. */
+function actualizarFiltrosEspecie() {
+  const soloGatos = filtros.especie === 'gato';
+  $$('.filtros__grupo').forEach(g => { g.hidden = soloGatos; });
+  if (soloGatos) {
+    filtros.tamano.clear();
+    filtros.energia.clear();
+    $$('[data-filtro="tamano"],[data-filtro="energia"]').forEach(b => b.setAttribute('aria-pressed', 'false'));
+  }
+}
+
 function conectarFiltros() {
   $$('[data-filtro]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -160,6 +185,7 @@ function conectarFiltros() {
         filtros.especie = valor;
         $$('[data-filtro="especie"]').forEach(b =>
           b.setAttribute('aria-pressed', String(b.dataset.valor === valor)));
+        actualizarFiltrosEspecie();
       } else {
         const set = filtros[filtro];
         const activo = !set.has(valor);
@@ -183,6 +209,7 @@ function conectarFiltros() {
     $('#buscar').value = '';
     $$('[data-filtro]').forEach(b =>
       b.setAttribute('aria-pressed', String(b.dataset.filtro === 'especie' && b.dataset.valor === 'todos')));
+    actualizarFiltrosEspecie();
     pintarRejilla();
   });
 }
@@ -204,29 +231,46 @@ function pintarFicha(a) {
   if (a.cartilla) salud.push(t('ficha.cartilla'));
   if (a.microchip) salud.push(t('ficha.microchip'));
 
+  /* Les chats n'ont ni poids, ni taille, ni énergie : seules les tuiles renseignées s'affichent. */
+  const dato = (clave, valor) =>
+    `<div class="dato"><div class="dato__k">${esc(t(clave))}</div><div class="dato__v">${esc(valor)}</div></div>`;
+  const datos = [
+    dato('ficha.sexo', t(a.sexo === 'macho' ? 'ficha.macho' : 'ficha.hembra')),
+    dato('ficha.edad', edadTexto(a)),
+    a.peso_kg > 0 ? dato('ficha.peso', `${num(a.peso_kg)} kg`) : '',
+    a.tamano ? dato('ficha.tamano', t('cat.' + a.tamano)) : '',
+    a.energia ? dato('ficha.energia', t('cat.e_' + a.energia)) : ''
+  ].join('');
+
+  const fotos = (a.fotos && a.fotos.length ? a.fotos : (a.foto ? [a.foto] : []));
+  const varias = fotos.length > 1;
+  const flecha = (dir, clave) => `<button type="button" class="carrusel__flecha carrusel__flecha--${dir < 0 ? 'ant' : 'sig'}" data-carrusel="${dir}" aria-label="${esc(t(clave))}">
+      <svg aria-hidden="true"><use href="#i-flecha"></use></svg></button>`;
+
   $('#ficha-cuerpo').innerHTML = `
     <div class="ficha__marco">
-      <img id="ficha-foto" src="${esc(fotoPrincipal(a))}" alt="${esc(a.nombre)}" width="300" height="300">
-      ${(a.fotos?.length > 1) ? `<div class="galeria" role="group" aria-label="${esc(t('ficha.fotos'))}">
-        ${a.fotos.map((f, i) => `<button type="button" class="galeria__v" data-foto="${esc(f)}" aria-pressed="${i === 0}">
-          <img src="${esc(f)}" alt="" loading="lazy" width="64" height="64"></button>`).join('')}
-      </div>` : ''}
+      <div class="carrusel" role="group" aria-roledescription="carrusel" aria-label="${esc(t('ficha.fotos'))}">
+        <div class="carrusel__pista" id="ficha-pista" tabindex="0">
+          ${fotos.map((f, i) => `<div class="carrusel__dia" role="group" aria-label="${esc(t('ficha.foto_n', { n: i + 1, total: fotos.length }))}">
+            <img src="${esc(f)}" alt="${esc(a.nombre)}"${i ? ' loading="lazy"' : ''} width="880" height="660"></div>`).join('')}
+        </div>
+        ${varias ? `${flecha(-1, 'ficha.ant')}${flecha(1, 'ficha.sig')}
+        <div class="carrusel__puntos" role="group">
+          ${fotos.map((_, i) => `<button type="button" class="carrusel__punto" data-ir="${i}" aria-current="${i === 0}"
+            aria-label="${esc(t('ficha.foto_n', { n: i + 1, total: fotos.length }))}"></button>`).join('')}
+        </div>` : ''}
+        ${a.adoptado ? `<span class="carrusel__adoptado">${esc(adoptadoTxt(a))}</span>` : ''}
+      </div>
     </div>
     <div class="ficha__texto">
       <div class="ficha__titulo">
         <h3 id="ficha-nombre">${esc(a.nombre)}</h3>
-        ${a.urgente ? `<span class="tarjeta__urgente" style="position:static">${esc(t('cat.urgente'))}</span>` : ''}
+        ${(a.urgente && !a.adoptado) ? `<span class="tarjeta__urgente" style="position:static">${esc(t('cat.urgente'))}</span>` : ''}
       </div>
       ${razaTxt(a) ? `<p class="ficha__raza">${esc(razaTxt(a))}</p>` : ''}
       <p class="ficha__resumen">${esc(txt(a, 'resumen'))}</p>
 
-      <div class="datos">
-        <div class="dato"><div class="dato__k">${esc(t('ficha.sexo'))}</div><div class="dato__v">${esc(t(a.sexo === 'macho' ? 'ficha.macho' : 'ficha.hembra'))}</div></div>
-        <div class="dato"><div class="dato__k">${esc(t('ficha.edad'))}</div><div class="dato__v">${esc(edadTexto(a))}</div></div>
-        ${a.peso_kg > 0 ? `<div class="dato"><div class="dato__k">${esc(t('ficha.peso'))}</div><div class="dato__v">${num(a.peso_kg)} kg</div></div>` : ''}
-        <div class="dato"><div class="dato__k">${esc(t('ficha.tamano'))}</div><div class="dato__v">${esc(t('cat.' + a.tamano))}</div></div>
-        <div class="dato"><div class="dato__k">${esc(t('ficha.energia'))}</div><div class="dato__v">${esc(t('cat.e_' + a.energia))}</div></div>
-      </div>
+      <div class="datos">${datos}</div>
 
       <div class="etiquetas">
         ${caracter(a).map(c => `<span class="etiqueta">${esc(c)}</span>`).join('')}
@@ -246,17 +290,45 @@ function pintarFicha(a) {
         </ul>
       </div>` : ''}
 
-      <div class="ficha__pie">
-        <span class="cuota">${esc(t('ficha.cuota'))}<strong>${esc(dinero(CONFIG.adopcion?.donacion_sugerida ?? 0))}</strong></span>
+      ${a.adoptado ? `<div class="ficha__adoptado">
+        <h4><svg aria-hidden="true"><use href="#i-corazon"></use></svg>${esc(t('ficha.adoptado_t', { nombre: a.nombre }))}</h4>
+        <p>${esc(t('ficha.adoptado_d'))}</p>
+        <a class="btn" href="#adoptar" data-cerrar>${esc(t('ficha.ver_otros'))}</a>
+      </div>` : `<div class="ficha__pie">
+        <span class="cuota">${esc(t('ficha.cuota'))}<strong>${esc(rangoDonacion(a.especie))}</strong></span>
         <a class="btn" href="#solicitud" data-elegir="${a.id}">${esc(t('ficha.adoptar', { nombre: a.nombre }))}</a>
         <a class="btn btn--claro" target="_blank" rel="noopener" href="${esc(enlaceWA(t('wa.pregunta', { nombre: a.nombre })))}">
           <svg aria-hidden="true"><use href="#i-wa"></use></svg>${esc(t('ficha.preguntar'))}
         </a>
-      </div>
+      </div>`}
     </div>`;
 
   const dlg = $('#ficha');
   if (!dlg.open) { dlg.showModal(); $('#ficha-cuerpo').scrollTop = 0; }
+  marcarPunto();
+}
+
+/* ---- Carrusel de fotos de la ficha : desliza con el dedo (scroll-snap), flechas, puntos, teclado ---- */
+function fotoActual() {
+  const pista = $('#ficha-pista');
+  return pista ? Math.round(pista.scrollLeft / (pista.clientWidth || 1)) : 0;
+}
+
+function irAFoto(i) {
+  const pista = $('#ficha-pista');
+  if (!pista) return;
+  const n = pista.children.length;
+  const destino = Math.max(0, Math.min(n - 1, i));
+  const reducido = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  pista.scrollTo({ left: destino * pista.clientWidth, behavior: reducido ? 'auto' : 'smooth' });
+}
+
+function marcarPunto() {
+  const i = fotoActual();
+  $$('.carrusel__punto').forEach((p, k) => p.setAttribute('aria-current', String(k === i)));
+  const n = $('#ficha-pista')?.children.length || 0;
+  $('.carrusel__flecha--ant')?.toggleAttribute('disabled', i <= 0);
+  $('.carrusel__flecha--sig')?.toggleAttribute('disabled', i >= n - 1);
 }
 
 function conectarFicha() {
@@ -275,13 +347,23 @@ function conectarFicha() {
       if (elegido) { $('#p-animal').value = elegido.nombre; sincronizarEspecie(); }
       dlg.close();
     }
+    if (e.target.closest('[data-cerrar]')) dlg.close();
   });
 
-  $('#ficha-cuerpo').addEventListener('click', e => {
-    const v = e.target.closest('[data-foto]');
-    if (!v) return;
-    $('#ficha-foto').src = v.dataset.foto;
-    $$('.galeria__v').forEach(b => b.setAttribute('aria-pressed', String(b === v)));
+  const cuerpo = $('#ficha-cuerpo');
+  cuerpo.addEventListener('click', e => {
+    const flecha = e.target.closest('[data-carrusel]');
+    if (flecha) { irAFoto(fotoActual() + Number(flecha.dataset.carrusel)); return; }
+    const punto = e.target.closest('[data-ir]');
+    if (punto) irAFoto(Number(punto.dataset.ir));
+  });
+  /* scroll ne remonte pas : écouteur en capture sur le conteneur de la fiche */
+  cuerpo.addEventListener('scroll', e => { if (e.target.id === 'ficha-pista') marcarPunto(); }, true);
+
+  dlg.addEventListener('keydown', e => {
+    if (!$('#ficha-pista') || e.target.closest('input,textarea,select')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); irAFoto(fotoActual() + 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); irAFoto(fotoActual() - 1); }
   });
 
   $('#ficha-cerrar').addEventListener('click', () => dlg.close());
@@ -297,7 +379,7 @@ function llenarSelectAnimales() {
   const sel = $('#p-animal');
   const previo = sel.value;
   sel.innerHTML = `<option value="">${esc(t('sol.animal_cualquiera'))}</option>` +
-    ANIMALES.map(a => `<option value="${esc(a.nombre)}">${esc(a.nombre)} — ${esc(t(a.especie === 'gato' ? 'cat.gato' : 'cat.perro'))}</option>`).join('');
+    ANIMALES.filter(a => !a.adoptado).map(a => `<option value="${esc(a.nombre)}">${esc(a.nombre)} — ${esc(t(a.especie === 'gato' ? 'cat.gato' : 'cat.perro'))}</option>`).join('');
   if (previo) sel.value = previo;
 }
 
@@ -529,7 +611,7 @@ function pintarRefugio() {
 
   const ld = {
     '@context': 'https://schema.org',
-    '@type': 'AnimalShelter',
+    '@type': 'NGO',
     name: r.nombre,
     address: {
       '@type': 'PostalAddress',
@@ -613,6 +695,7 @@ async function iniciar() {
     CONFIG = cfg;
     // Decap écrit { "animales": [...] } ; on accepte aussi l'ancien tableau nu.
     ANIMALES = Array.isArray(ani) ? ani : (ani.animales || []);
+    ANIMALES.sort((a, b) => Number(!!a.adoptado) - Number(!!b.adoptado));
   } catch (err) {
     console.error('[refugio] datos no cargados:', err);
     const aviso = () => {
