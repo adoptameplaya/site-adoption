@@ -1,0 +1,36 @@
+{
+  "orden": -8,
+  "id": "lucien",
+  "nombre": "LUCIEN",
+  "edad": 3,
+  "edad_unidad": "meses",
+  "sexo": "macho",
+  "peso_kg": 0,
+  "tamano": "chico",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/lucien-gs925.jpg"
+  ],
+  "urgente": false,
+  "esterilizado": true,
+  "vacunado": false,
+  "desparasitado": true,
+  "cartilla": false,
+  "microchip": false,
+  "es": {
+    "resumen": "listo para tu familia",
+    "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenia una infección muy grave en los ojos. Ya se recupero por completo y ahora ve perfectamente.",
+    "caracter": [
+      "Juguetón",
+      "Cariñoso",
+      "Activo"
+    ]
+  },
+  "en": {
+    "caracter": [
+      "Playful",
+      "Affectionate",
+      "Active"
+    ]
+  }
+}
