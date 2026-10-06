@@ -482,9 +482,16 @@ function leerForm() {
    ========================================================= */
 function pintarFotos() {
   const img = $('#ed-foto-img');
+  const fondo = $('#ed-foto-fondo');
   const principal = st.fotos[0];
   img.hidden = !principal;
-  if (principal) { img.src = principal.url; img.dataset.ruta = principal.ruta || ''; delete img.dataset.intento; }
+  fondo.hidden = !principal;
+  if (principal) {
+    img.onload = ajustarFotoEditor;
+    img.src = principal.url; img.dataset.ruta = principal.ruta || ''; delete img.dataset.intento;
+    fondo.src = principal.url;
+    if (img.complete) ajustarFotoEditor();
+  }
 
   $('#ed-galeria').innerHTML = st.fotos.map((f, i) => `
     <div class="ed__mini">
@@ -495,6 +502,16 @@ function pintarFotos() {
     </div>`).join('') + (st.fotos.length && st.fotos.length < MAX_FOTOS
       ? '<button type="button" class="galeria__v ed__mas" id="ed-mas" aria-label="Añadir más fotos"><svg aria-hidden="true"><use href="#i-mas"></use></svg></button>' : '');
 }
+
+/* Misma regla que en el sitio: la foto se ve ENTERA sobre un fondo desenfocado cuando sus
+   proporciones se alejan del cuadro (más de un 20 %); si casi encaja, llena el cuadro. */
+function ajustarFotoEditor() {
+  const marco = $('#ed-foto'), img = $('#ed-foto-img');
+  if (!marco || !img.naturalWidth || !marco.clientHeight) return;
+  const cuadro = marco.clientWidth / marco.clientHeight;
+  marco.classList.toggle('ed__foto--entera', Math.abs(img.naturalWidth / img.naturalHeight / cuadro - 1) > 0.2);
+}
+window.addEventListener('resize', () => { if (VISTA === 'editor') ajustarFotoEditor(); });
 
 /* Reduce la foto antes de subirla: una foto de móvil pesa 4-8 MB y el sitio
    solo necesita ~1400 px. Respeta la orientación EXIF. */

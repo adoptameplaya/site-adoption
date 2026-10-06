@@ -252,7 +252,8 @@ function pintarFicha(a) {
       <div class="carrusel" role="group" aria-roledescription="carrusel" aria-label="${esc(t('ficha.fotos'))}">
         <div class="carrusel__pista" id="ficha-pista" tabindex="0">
           ${fotos.map((f, i) => `<div class="carrusel__dia" role="group" aria-label="${esc(t('ficha.foto_n', { n: i + 1, total: fotos.length }))}">
-            <img src="${esc(f)}" alt="${esc(a.nombre)}"${i ? ' loading="lazy"' : ''} width="880" height="660"></div>`).join('')}
+            <img class="carrusel__fondo" src="${esc(f)}" alt="" aria-hidden="true"${i ? ' loading="lazy"' : ''}>
+            <img class="carrusel__foto" src="${esc(f)}" alt="${esc(a.nombre)}"${i ? ' loading="lazy"' : ''} width="880" height="660"></div>`).join('')}
         </div>
         ${varias ? `${flecha(-1, 'ficha.ant')}${flecha(1, 'ficha.sig')}
         <div class="carrusel__puntos" role="group">
@@ -306,6 +307,21 @@ function pintarFicha(a) {
   const dlg = $('#ficha');
   if (!dlg.open) { dlg.showModal(); $('#ficha-cuerpo').scrollTop = 0; }
   marcarPunto();
+  $$('.carrusel__foto').forEach(img => {
+    if (img.complete) ajustarFoto(img);
+    else img.addEventListener('load', () => ajustarFoto(img), { once: true });
+  });
+}
+
+/* Una foto nunca se recorta de más : si sus proporciones se alejan del cuadro (más de un 20 %),
+   se muestra ENTERA sobre un fondo desenfocado hecho con la misma imagen. Si casi encaja,
+   llena el cuadro (el recorte es mínimo). */
+function ajustarFoto(img) {
+  const dia = img.closest('.carrusel__dia');
+  if (!dia || !img.naturalWidth || !dia.clientHeight) return;
+  const cuadro = dia.clientWidth / dia.clientHeight;
+  const foto = img.naturalWidth / img.naturalHeight;
+  dia.classList.toggle('carrusel__dia--entera', Math.abs(foto / cuadro - 1) > 0.2);
 }
 
 /* ---- Carrusel de fotos de la ficha : desliza con el dedo (scroll-snap), flechas, puntos, teclado ---- */
@@ -366,6 +382,7 @@ function conectarFicha() {
     if (e.key === 'ArrowLeft')  { e.preventDefault(); irAFoto(fotoActual() - 1); }
   });
 
+  window.addEventListener('resize', () => $$('.carrusel__foto').forEach(ajustarFoto));
   $('#ficha-cerrar').addEventListener('click', () => dlg.close());
   dlg.addEventListener('close', () => { animalEnFicha = null; });
   dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });

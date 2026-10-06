@@ -263,3 +263,15 @@
   width:11ch;padding:6px 10px;border:2px solid var(--tinta);border-radius:999px;background:var(--blanco);outline:none;font-weight:700;
 }
 .ed__rasgo-en input:focus{box-shadow:0 0 0 4px rgba(245,166,60,.55)}
+
+/* foto principal : entera sobre fondo desenfocado cuando no encaja en el cuadro */
+.ed__foto{overflow:hidden}
+.ed__foto .ed__foto-fondo{
+  position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;
+  filter:blur(22px) saturate(1.15) brightness(.96);opacity:0;transition:opacity .2s ease;
+}
+.ed__foto--entera .ed__foto-fondo{opacity:1}
+.ed__foto #ed-foto-img{position:relative;z-index:1;background:transparent}
+.ed__foto--entera #ed-foto-img{object-fit:contain}
+.ed__foto::after{z-index:2}
+.ed__foto-vacia{z-index:1}
