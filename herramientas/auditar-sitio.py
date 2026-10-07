@@ -228,7 +228,10 @@ if A.repo:
     k_es, k_en = set(re.findall(r'^\s+"([^"]+)":', es_b, re.M)), set(re.findall(r'^\s+"([^"]+)":', en_b, re.M))
     (ok if k_es == k_en else bad)(f"traductions ES/EN : {len(k_es)} / {len(k_en)} clés" + ("" if k_es == k_en else f" · écart : {sorted(k_es ^ k_en)}"))
     ap_ = (R / "aviso-de-privacidad.html").read_text(encoding="utf-8")
-    if re.search(r"armando un mensaje de WhatsApp|no tiene base de datos|no guarda nada", ap_): bad("avis de confidentialité périmé : il décrit un envoi par WhatsApp et dit que rien n'est enregistré, alors que le formulaire passe par FormSubmit (e-mail) et que le panel écrit dans GitHub")
+    if re.search(r"armando un mensaje de WhatsApp|no tiene base de datos", ap_): bad("avis de confidentialité périmé : il reprend l'ancien texte du modèle (envoi par WhatsApp, « aucune base de données »)")
+    else:
+        faltan = [n for n in ("FormSubmit", "GitHub", "O2switch", "Google Fonts") if n not in ap_]
+        (bad if faltan else ok)("avis de confidentialité : cite les vrais circuits (FormSubmit, GitHub, O2switch, Google Fonts)" if not faltan else f"avis de confidentialité : ne cite pas {', '.join(faltan)}")
 
 # ───────────────────────────── bilan
 print("\n" + "═" * 62)
