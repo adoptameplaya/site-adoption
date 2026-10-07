@@ -84,6 +84,13 @@ const caracter = a => (a?.[IDIOMA]?.caracter?.length ? a[IDIOMA].caracter : a?.e
 const razaTxt = a => a?.raza?.[IDIOMA] || a?.raza?.es || '';
 const adoptadoTxt = a => t(a.sexo === 'hembra' ? 'cat.adoptada' : 'cat.adoptado');
 
+/* Tampon « ADOPTADO » : encre rouge, double cadre, posé en travers de la photo.
+   L'inclinaison varie un peu d'un animal à l'autre (de -10° à -16°), comme un vrai tampon donné à la main. */
+const giroSello = a => -(10 + [...String(a.id || a.nombre)].reduce((n, c) => n + c.charCodeAt(0), 0) % 7);
+const selloAdoptado = a => `<span class="sello" style="--giro:${giroSello(a)}deg">
+  <span class="sello__palabra">${esc(adoptadoTxt(a))}</span>
+  <span class="sello__sub" aria-hidden="true">${esc(CONFIG?.refugio?.nombre || 'Adopta Me Playa')}</span></span>`;
+
 /* Donativo sugerido por especie : config.adopcion.donacion_sugerida.perro / .gato
    = { min, max }. Un número suelto (formato antiguo) vale para las dos especies. */
 function rangoDonacion(especie) {
@@ -138,7 +145,7 @@ function tarjeta(a) {
   return `<li class="${a.adoptado ? 'es-adoptado' : ''}">
     <button class="tarjeta" type="button" data-abrir="${a.id}">
       <span class="tarjeta__marco">
-        ${a.adoptado ? `<span class="tarjeta__adoptado">${esc(adoptadoTxt(a))}</span>`
+        ${a.adoptado ? selloAdoptado(a)
           : (a.urgente ? `<span class="tarjeta__urgente">${esc(t('cat.urgente'))}</span>` : '')}
         <img src="${esc(fotoPrincipal(a))}" alt="${esc(a.nombre)}" loading="lazy" width="300" height="300">
       </span>
@@ -260,7 +267,7 @@ function pintarFicha(a) {
           ${fotos.map((_, i) => `<button type="button" class="carrusel__punto" data-ir="${i}" aria-current="${i === 0}"
             aria-label="${esc(t('ficha.foto_n', { n: i + 1, total: fotos.length }))}"></button>`).join('')}
         </div>` : ''}
-        ${a.adoptado ? `<span class="carrusel__adoptado">${esc(adoptadoTxt(a))}</span>` : ''}
+        ${a.adoptado ? selloAdoptado(a) : ''}
       </div>
     </div>
     <div class="ficha__texto">

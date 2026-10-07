@@ -830,13 +830,31 @@ p{margin:0}
 }
 
 /* ---- Animal déjà adopté : la fiche reste en ligne, avec un marquage clair ---- */
-.tarjeta__adoptado,.carrusel__adoptado{
-  position:absolute;top:10px;left:10px;z-index:2;
-  background:var(--menta);color:var(--tinta);border:2px solid var(--tinta);
-  border-radius:999px;padding:3px 12px;font-size:.74rem;font-weight:800;
-  letter-spacing:.06em;text-transform:uppercase;
+/* Tampon « ADOPTADO » : encre rouge irrégulière (filtre #tinta-sello défini dans index.html),
+   double cadre, incliné, posé au centre de la photo. Sans effet sur les clics. */
+.tarjeta__marco,.carrusel{container-type:inline-size}
+.sello{
+  --tinta-sello:#a91f18;
+  position:absolute;left:50%;top:50%;z-index:3;pointer-events:none;
+  transform:translate(-50%,-50%) rotate(var(--giro,-13deg));
+  display:grid;justify-items:center;gap:.14em;
+  font-size:min(13cqw,40px);   /* repli : la taille suit la largeur de la photo */
+  padding:.16em .5em .2em;
+  font-family:var(--display);font-weight:800;line-height:1;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--tinta-sello);border:.13em double var(--tinta-sello);border-radius:.22em;
+  opacity:.96;filter:url(#tinta-sello) drop-shadow(0 0 .05em rgba(255,255,255,.7));
+  white-space:nowrap;
 }
-.carrusel__adoptado{top:14px;left:14px;font-size:.82rem;padding:5px 15px}
+.sello__palabra{font-size:1em}
+.sello__sub{
+  font-size:.2em;font-weight:800;letter-spacing:.3em;
+  width:100%;text-align:center;border-top:.18em solid var(--tinta-sello);padding-top:.5em;margin-top:.1em;
+}
+.carrusel .sello{font-size:min(10cqw,3.6rem)}
+@media (prefers-reduced-motion:no-preference){
+  .carrusel .sello{animation:sello-golpe .38s cubic-bezier(.2,1.5,.4,1) both}
+  @keyframes sello-golpe{from{scale:1.7;opacity:0}to{scale:1;opacity:.96}}
+}
 .es-adoptado .tarjeta__marco img{filter:grayscale(.6) brightness(.98)}
 .es-adoptado .tarjeta__resumen{opacity:.75}
 

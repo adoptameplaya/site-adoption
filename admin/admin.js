@@ -356,7 +356,7 @@ function carta(f) {
     d.tamano ? d.tamano[0].toUpperCase() + d.tamano.slice(1) : ''].filter(Boolean).join(' · ');
   return `<li class="${d.adoptado ? 'es-adoptado' : ''}"><article class="tarjeta carta">
     <span class="tarjeta__marco">
-      ${d.adoptado ? `<span class="tarjeta__adoptado">${d.sexo === 'hembra' ? 'Adoptada' : 'Adoptado'}</span>`
+      ${d.adoptado ? `<span class="sello" style="--giro:${-(10 + [...String(d.id || d.nombre || '')].reduce((n, c) => n + c.charCodeAt(0), 0) % 7)}deg"><span class="sello__palabra">${d.sexo === 'hembra' ? 'Adoptada' : 'Adoptado'}</span><span class="sello__sub" aria-hidden="true">Adopta Me Playa</span></span>`
         : (d.urgente ? '<span class="tarjeta__urgente">Urgente</span>' : '')}
       ${foto ? `<img src="${esc(srcFoto(foto))}" data-ruta="${esc(foto)}" alt="" loading="lazy" width="300" height="300">` : '<span class="carta__sin-foto">Sin foto</span>'}
     </span>

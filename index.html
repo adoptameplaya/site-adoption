@@ -24,12 +24,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=56">
+<link rel="stylesheet" href="css/style.css?v=58">
 </head>
 <body>
 
 <!-- Iconos -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="tinta-sello" x="-6%" y="-10%" width="112%" height="120%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="onda"/>
+<feDisplacementMap in="SourceGraphic" in2="onda" scale="2.2" xChannelSelector="R" yChannelSelector="G" result="borde"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="11" result="grano"/>
+<feColorMatrix in="grano" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -12 0 0 0 9.3" result="manchas"/>
+<feComposite in="borde" in2="manchas" operator="in"/>
+</filter>
 <symbol id="i-huella" viewBox="0 0 24 24"><path fill="currentColor" d="M5.6 12.4c1.4 0 2.5-1.5 2.5-3.3S7 5.8 5.6 5.8 3.1 7.3 3.1 9.1s1.1 3.3 2.5 3.3m12.8 0c1.4 0 2.5-1.5 2.5-3.3s-1.1-3.3-2.5-3.3-2.5 1.5-2.5 3.3 1.1 3.3 2.5 3.3M9.9 9.3c1.4 0 2.6-1.6 2.6-3.6S11.3 2.1 9.9 2.1 7.3 3.7 7.3 5.7s1.2 3.6 2.6 3.6m4.2 0c1.4 0 2.6-1.6 2.6-3.6s-1.2-3.6-2.6-3.6-2.6 1.6-2.6 3.6 1.2 3.6 2.6 3.6m-2.1 1.9c-2.9 0-6.4 3.4-6.4 6.6 0 2.3 1.6 3.6 3.6 3.6 1.3 0 2.1-.5 2.8-.5s1.5.5 2.8.5c2 0 3.6-1.3 3.6-3.6 0-3.2-3.5-6.6-6.4-6.6"/></symbol>
 <symbol id="i-perro" viewBox="0 0 24 24"><ellipse fill="currentColor" cx="4.9" cy="10.4" rx="2.6" ry="5.4" transform="rotate(-14 4.9 10.4)"/><ellipse fill="currentColor" cx="19.1" cy="10.4" rx="2.6" ry="5.4" transform="rotate(14 19.1 10.4)"/><path fill="currentColor" fill-rule="evenodd" d="M12 4.6c-4.1 0-7.4 3.3-7.4 7.4 0 4.4 3.3 9.4 7.4 9.4s7.4-5 7.4-9.4c0-4.1-3.3-7.4-7.4-7.4Zm-2.9 6.2a1.25 1.6 0 1 0 0 3.2 1.25 1.6 0 1 0 0-3.2Zm5.8 0a1.25 1.6 0 1 0 0 3.2 1.25 1.6 0 1 0 0-3.2ZM12 15.6c-1.2 0-2.1.6-2.1 1.4s.9 1.4 2.1 1.4 2.1-.6 2.1-1.4-.9-1.4-2.1-1.4Z"/></symbol>
 <symbol id="i-gato" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.5 2.3 7.3 7h9.4l3.8-4.7c.5-.7 1.7-.3 1.7.7v8.5c0 5.2-4.6 9.4-10.2 9.4S1.8 16.7 1.8 11.5V3c0-1 1.2-1.4 1.7-.7ZM9 10.6a1.25 1.6 0 1 0 0 3.2 1.25 1.6 0 1 0 0-3.2Zm6 0a1.25 1.6 0 1 0 0 3.2 1.25 1.6 0 1 0 0-3.2Zm-3.5 5.2h2.2L12 17.5l-1.1-1.7Z"/></symbol>
@@ -349,6 +356,6 @@
 </a>
 
 <script src="js/i18n.js?v=52"></script>
-<script src="js/app.js?v=54"></script>
+<script src="js/app.js?v=55"></script>
 </body>
 </html>
