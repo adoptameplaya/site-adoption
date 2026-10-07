@@ -6,7 +6,8 @@
   "edad_unidad": "anos",
   "sexo": "hembra",
   "edad_texto": {
-    "es": "1.4 años"
+    "es": "1.4 años",
+    "en": "1.4 years"
   },
   "peso_kg": 14,
   "tamano": "mediano",
