@@ -7,10 +7,10 @@
     "ciudad": "Playa del Carmen",
     "estado": "Quintana Roo",
     "pais": "México",
-    "direccion": "Calle 34 Norte, Colonia Ejido, Playa del Carmen, Q. Roo",
-    "_direccion_nota": "REEMPLAZAR por la direccion real",
-    "codigo_postal": "77712",
-    "mapa_url": "https://maps.google.com/?q=Playa+del+Carmen+Quintana+Roo",
+    "direccion": "",
+    "_direccion_nota": "Vacío a propósito : la dirección del modelo de demostración era inventada. Rellenar solo con la dirección real y si la asociación quiere mostrarla (el sitio no la usa hoy).",
+    "codigo_postal": "",
+    "mapa_url": "",
     "horarios": {
       "es": "Visitas con cita previa · Lunes a sábado, 10:00 – 17:00",
       "en": "Visits by appointment · Monday to Saturday, 10:00 – 17:00"

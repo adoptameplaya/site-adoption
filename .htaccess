@@ -7,6 +7,11 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
+# www.adoptameplaya.org -> adoptameplaya.org, en une seule redirection (HTTPS compris) :
+# une seule adresse pour Google, et pas de contenu dupliqué.
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
 # Tout passe en HTTPS (le cookie de connexion de l'admin l'exige).
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https

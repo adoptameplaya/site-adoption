@@ -840,3 +840,9 @@ p{margin:0}
 
 /* Les filtres taille / énergie disparaissent quand « Chats » est choisi. */
 .filtros__grupo[hidden]{display:none}
+
+/* Pantallas táctiles : zonas de pulsación de 40 px mínimo (selector de idioma, botones «Copiar») */
+@media (pointer:coarse){
+  .idioma button{min-height:40px;padding-inline:14px}
+  .copiar{min-height:40px;padding-inline:16px}
+}

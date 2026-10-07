@@ -69,6 +69,8 @@ def ajustar_url():
     for page in BUILD.glob("*.html"):
         t = page.read_text(encoding="utf-8")
         n = t.replace("https://ejemplo.org", SITE_URL)
+        # Facebook, WhatsApp… exigen una dirección ABSOLUTA para la imagen de vista previa del enlace
+        n = n.replace('content="img/ui/og.jpg"', f'content="{SITE_URL}/img/ui/og.jpg"')
         if n != t:
             page.write_text(n, encoding="utf-8")
     print(f"  adresse publique réglée : {SITE_URL}")
@@ -185,12 +187,12 @@ def bandeau():
         "/* Bandeau de préprod. Ce fichier n'existe que dans la version de démonstration. */\n"
         "Object.assign(window.TEXTOS.es, {\n"
         '  "demo.t": "Sitio de demostración.",\n'
-        '  "demo.d": "Los animales, el nombre del refugio y los datos bancarios son de ejemplo. '
+        '  "demo.d": "Los animales, el nombre de la asociación y los datos bancarios son de ejemplo. '
         'Nada de esta página es real todavía."\n'
         "});\n"
         "Object.assign(window.TEXTOS.en, {\n"
         '  "demo.t": "Demo site.",\n'
-        '  "demo.d": "The animals, the shelter name and the bank details are placeholders. '
+        '  "demo.d": "The animals, the association name and the bank details are placeholders. '
         'Nothing on this page is real yet."\n'
         "});\n"
     )
@@ -258,7 +260,8 @@ def fichiers_netlify():
     else:
         robots = ("User-agent: *\n"
                   "Allow: /\n"
-                  "Disallow: /admin/\n")
+                  "Disallow: /admin/\n"
+                  + (f"\nSitemap: {SITE_URL}/sitemap.xml\n" if SITE_URL else ""))
         cabeceras = ("/admin/*\n"
                      "  X-Robots-Tag: noindex, nofollow\n")
 
@@ -295,6 +298,68 @@ def fichiers_netlify():
     )
 
 
+def sitemap():
+    """Production seulement : une carte du site pour Google. Les fiches s'ouvrent dans une fenêtre
+    de la page d'accueil (pas d'adresse propre) ; l'avis de confidentialité est en noindex, il n'a
+    donc pas sa place ici."""
+    if PREPROD or not SITE_URL:
+        return
+    hoy = __import__("datetime").date.today().isoformat()
+    (BUILD / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f'  <url><loc>{SITE_URL}/</loc><lastmod>{hoy}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>\n'
+        '</urlset>\n', encoding="utf-8")
+
+
+# Animaux de la démonstration : leurs fiches ne doivent jamais partir en production.
+FICHES_EXEMPLE = {"coco", "rocky", "canela", "bruno", "frida"}
+# Restes du modèle de démonstration : nom, adresse et e-mail inventés.
+RESTES_MODELE = ("Patitas del Caribe", "patitasdelcaribe", "Calle 34 Norte", "ejemplo.org", "PENDIENTE-LEGAL")
+
+
+def verificar_produccion():
+    """MODO=produccion : refuse de construire tant qu'il reste des données de démonstration.
+
+    Une fausse CLABE publiée peut faire virer de l'argent au mauvais endroit : mieux vaut un build
+    qui échoue (le site reste sur sa version précédente) qu'un site faux en ligne.
+    FORZAR_PRODUCCION=1 désactive ce contrôle, à n'utiliser qu'en connaissance de cause."""
+    if PREPROD or os.environ.get("FORZAR_PRODUCCION") == "1":
+        return
+    problemas = []
+    if not SITE_URL:
+        problemas.append("SITE_URL n'est pas définie (adresse canonique, sitemap, image de partage)")
+
+    cfg = json.loads((BUILD / "data" / "config.json").read_text(encoding="utf-8"))
+    d = cfg.get("donaciones", {})
+    sp = d.get("spei", {})
+    if sp.get("activo") and (str(sp.get("clabe", "")).endswith("1234567890") or sp.get("cuenta") == "0123456789"):
+        problemas.append("don par virement : la CLABE / le compte affichés sont ceux de la démonstration")
+    for clave, patron in (("paypal", r"https://paypal\.me/?"), ("mercadopago", r"https://mpago\.la/?")):
+        m = d.get(clave, {})
+        if m.get("activo") and (not m.get("url") or re.fullmatch(patron, m["url"])):
+            problemas.append(f"don {clave} : lien vide ou sans identifiant (à renseigner, ou « activo »: false)")
+
+    animales = json.loads((BUILD / "data" / "animales.json").read_text(encoding="utf-8"))["animales"]
+    ejemplo = sorted(a["nombre"] for a in animales if a.get("id") in FICHES_EXEMPLE)
+    if ejemplo:
+        problemas.append("fiches d'exemple encore présentes : " + ", ".join(ejemplo))
+
+    for pagina in sorted(BUILD.glob("*.html")):
+        texto = pagina.read_text(encoding="utf-8")
+        for resto in RESTES_MODELE:
+            if resto in texto:
+                problemas.append(f"{pagina.name} contient « {resto} »" +
+                                 (" : compléter la raison sociale et le domicile du responsable, puis retirer cette marque"
+                                  if resto == "PENDIENTE-LEGAL" else " (reste du modèle de démonstration)"))
+    if problemas:
+        print("\n✗ PRODUCTION REFUSÉE : le site contient encore des données de démonstration.")
+        for p in problemas:
+            print("   -", p)
+        raise SystemExit("\nCorriger ces points (ou FORZAR_PRODUCCION=1 pour passer outre), puis relancer.")
+    print("  ✓ contrôle de production : aucune donnée de démonstration détectée")
+
+
 def zipper():
     with zipfile.ZipFile(ZIP, "w", zipfile.ZIP_DEFLATED) as z:
         for chemin in sorted(BUILD.rglob("*")):
@@ -311,7 +376,9 @@ if __name__ == "__main__":
         bandeau()
     ajustar_url()
     fichiers_netlify()
+    sitemap()
     verifier_formularios()
+    verificar_produccion()
     print(f"  mode : {'préprod (noindex + bandeau)' if PREPROD else 'PRODUCTION'} · destino : {DESTINO}")
     chemin = zipper()
     poids = chemin.stat().st_size / 1024
