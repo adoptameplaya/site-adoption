@@ -195,9 +195,26 @@ de recherche.
 | `.htaccess` | HTTPS forcé, adresses `/api/…`, cache (les JSON ne sont jamais mis en cache) |
 | `admin/.htaccess` | en-têtes de sécurité du panel : seuls ses propres scripts peuvent s'y exécuter |
 | `data/cuestionario.json` | questions d'adoption **chiens (44) et chats (36)**, ES et EN. Pas modifiable depuis le panel : se change dans ce fichier. Le build refuse un numéro en double ou une traduction manquante. Types : `texto`, `largo`, `sino` |
+| `formularios/*.pdf` | les 4 PDF remplissables (chien/chat × ES/EN) joints à l'e-mail automatique. Ceux des chats sont **générés** depuis `data/cuestionario.json` (voir ci-dessous) |
+| `herramientas/crear-pdf-cuestionario.py`, `herramientas/fuentes/`, `herramientas/sello-adopta-me.png` | générateur de ces PDF, polices Poppins (licence SIL OFL) et sello du logo |
 | `herramientas/servir-vista-previa.py` | sert `dist/preprod` sur http://127.0.0.1:8124 pour vérifier le site avant publication |
 | `.sitio-adoptameplaya` (dans le dossier web) | marque « ce dossier est géré par le script » |
 | `herramientas/desplegar-por-ftp.yml.ejemplo`, `deploy-ftp.py` | **non utilisés** : variante FTP, pour un autre hébergeur qui accepterait FTPS |
+
+## Régénérer les PDF du questionnaire
+
+Si une question change dans `data/cuestionario.json`, les PDF ne se mettent pas à jour tout seuls. Il faut
+[ReportLab](https://pypi.org/project/reportlab/) et Pillow, **dans un environnement temporaire** (rien d'autre
+dans le projet n'en dépend ; versions testées : ReportLab 5.0.1, Pillow 11.3.0) :
+
+```bash
+python3 -m venv /tmp/pdf && /tmp/pdf/bin/pip install reportlab pillow
+for l in es en; do /tmp/pdf/bin/python herramientas/crear-pdf-cuestionario.py --especie gato --lang $l \
+  --salida formularios/$([ $l = es ] && echo Cuestionario_Adopcion_Gato_ES || echo Adoption_Questionnaire_Cat_EN).pdf; done
+```
+
+Le même outil, lancé avec `--especie perro`, retrouve **à l'identique** (au pixel près) les PDF des chiens.
+La sortie est reproductible : sans changement de questions, le fichier généré est identique octet pour octet.
 
 ## Secours : Decap CMS
 

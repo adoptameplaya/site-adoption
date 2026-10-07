@@ -128,11 +128,11 @@
         "en": "formularios/Adoption_Questionnaire_Dog_EN.pdf"
       },
       "gato": {
-        "es": "",
-        "en": ""
+        "es": "formularios/Cuestionario_Adopcion_Gato_ES.pdf",
+        "en": "formularios/Adoption_Questionnaire_Cat_EN.pdf"
       }
     },
-    "_formularios_nota": "Chemin du PDF envoyé par l'auto-réponse, par espèce ET par langue du site. Les deux PDF chien sont en place. Pour les chats il n'y a pas de PDF : l'auto-réponse renvoie alors seulement au questionnaire en ligne (data/cuestionario.json), et le lien « PDF » est masqué sur la page. Si ni PDF ni questionnaire en ligne n'existent, l'auto-réponse annonce un envoi manuel.",
+    "_formularios_nota": "Chemin du PDF envoyé par l'auto-réponse, par espèce ET par langue du site. Les 4 PDF (chien/chat × ES/EN) sont en place. Ils sont remplissables et se régénèrent depuis data/cuestionario.json avec herramientas/crear-pdf-cuestionario.py (voir ADMIN.md). Si un chemin est vide, la page n'affiche pas le lien PDF et l'auto-réponse renvoie seulement au questionnaire en ligne.",
     "url_base": "",
     "_url_base_nota": "Laisser vide : le lien du mail est construit sur le domaine depuis lequel la page est ouverte, donc il suit automatiquement Netlify puis le domaine définitif. Ne remplir que pour forcer un domaine."
   }

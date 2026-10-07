@@ -257,6 +257,7 @@ def verifier_cuestionario():
         errores, numeros = [], []
         for lang in ("es", "en"):
             if not bloque.get("intro", {}).get(lang): errores.append(f"intro {lang} vide")
+            if "intro_pdf" in bloque and not bloque["intro_pdf"].get(lang): errores.append(f"intro_pdf {lang} vide")
         for s in secciones:
             for lang in ("es", "en"):
                 if not s.get(lang): errores.append(f"section « {s.get('id')} » sans {lang}")

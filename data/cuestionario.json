@@ -340,6 +340,10 @@
       "es": "Gracias por querer darle un hogar. Responde con calma y sinceridad: no hay respuestas buenas o malas, solo nos ayudan a conocerte un poco más y a asegurarnos de que el gatito estará en un lugar seguro, física y moralmente. Al final te pedimos fotos y videos de tu hogar: podrás mandárnoslos por WhatsApp en cuanto envíes el cuestionario.",
       "en": "Thank you for wanting to give a home to one of our animals. Take your time and answer honestly: there are no right or wrong answers, they simply help us get to know you a little better and make sure the kitten will be in a safe place, physically and emotionally. At the end we ask for photos and videos of your home: you can send them to us on WhatsApp as soon as you submit the questionnaire."
     },
+    "intro_pdf": {
+      "es": "Gracias por querer darle un hogar. Responde con calma y sinceridad: no hay respuestas buenas o malas, solo nos ayudan a conocerte un poco más y a asegurarnos de que el gatito estará en un lugar seguro, física y moralmente. Al final te pedimos fotos y videos de tu hogar: mándanoslos por WhatsApp junto con el cuestionario.",
+      "en": "Thank you for wanting to give a home to one of our animals. Take your time and answer honestly: there are no right or wrong answers, they simply help us get to know you a little better and make sure the kitten will be in a safe place, physically and emotionally. At the end we ask for photos and videos of your home: please send them to us on WhatsApp together with the questionnaire."
+    },
     "secciones": [
       {
         "id": "basica",
