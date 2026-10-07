@@ -19,7 +19,8 @@
   "fotos": [
     "/img/animales/reo3.jpg",
     "/img/animales/reo2.jpg",
-    "/img/animales/reo-ysen7.jpg"
+    "/img/animales/reo-ysen7.jpg",
+    "/img/animales/reo-zfxhg.jpg"
   ],
   "urgente": false,
   "esterilizado": true,
@@ -34,7 +35,8 @@
     "caracter": [
       "Cariñoso",
       "Juguetón",
-      "Protector"
+      "Protector",
+      "Leal"
     ]
   },
   "en": {
@@ -44,7 +46,8 @@
     "caracter": [
       "Affectionate",
       "Playful",
-      "Protective"
+      "Protective",
+      "Loyal"
     ]
   },
   "color": "menta",
