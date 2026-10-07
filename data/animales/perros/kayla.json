@@ -1,0 +1,48 @@
+{
+  "orden": -38,
+  "id": "kayla",
+  "nombre": "KAYLA",
+  "edad": 1,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "edad_texto": {
+    "es": "1.4 años"
+  },
+  "peso_kg": 14,
+  "tamano": "mediano",
+  "energia": "baja",
+  "fotos": [
+    "/img/animales/kayla-qikeq.jpg",
+    "/img/animales/kayla-ljxok.jpg",
+    "/img/animales/kayla-rwf5n.jpg",
+    "/img/animales/kayla-02ld5.jpg",
+    "/img/animales/kayla-wvdrz.jpg",
+    "/img/animales/kayla-avxgt.jpg"
+  ],
+  "urgente": false,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Un poco tímida al principio, pero muy sonriente una vez que se siente cómoda.",
+    "historia": "Fue abandonada sin motivo, por lo que perdió un poco la confianza en las personas, pero ahora se encuentra en un hogar temporal y ha aprendido a confiar de nuevo. Dale una oportunidad y verás que, una vez que se siente segura, es una perrita increíble que te dará muchísimo amor.",
+    "caracter": [
+      "Tranquila",
+      "Cariñosa",
+      "Juguetona",
+      "Tímida"
+    ]
+  },
+  "en": {
+    "resumen": "A bit shy at first, but very smiley once she feels comfortable.",
+    "historia": "She was abandoned for no reason, which caused her to lose some trust in people, but she is now in a foster home and has learned to trust again. Give her a chance, and you’ll see that once she feels safe, she is an amazing little dog who will give you so much love.",
+    "caracter": [
+      "Calm",
+      "Affectionate",
+      "Playful",
+      "Shy"
+    ]
+  }
+}
