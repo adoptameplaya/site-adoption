@@ -37,7 +37,9 @@
     "caracter": [
       "Protector",
       "Tranquilo",
-      "Cariñoso"
+      "Cariñoso",
+      "Leal",
+      "Obediente"
     ]
   },
   "en": {
@@ -47,7 +49,9 @@
     "caracter": [
       "Protective",
       "Calm",
-      "Affectionate"
+      "Affectionate",
+      "Loyal",
+      "Obedient"
     ]
   },
   "color": "arena"
