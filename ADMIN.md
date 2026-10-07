@@ -194,6 +194,8 @@ de recherche.
 | `/home/cupa8096/secrets-adoptameplaya.php` | **créé à la main**, hors dépôt et hors dossier web |
 | `.htaccess` | HTTPS forcé, adresses `/api/…`, cache (les JSON ne sont jamais mis en cache) |
 | `admin/.htaccess` | en-têtes de sécurité du panel : seuls ses propres scripts peuvent s'y exécuter |
+| `data/cuestionario.json` | questions d'adoption **chiens (44) et chats (36)**, ES et EN. Pas modifiable depuis le panel : se change dans ce fichier. Le build refuse un numéro en double ou une traduction manquante. Types : `texto`, `largo`, `sino` |
+| `herramientas/servir-vista-previa.py` | sert `dist/preprod` sur http://127.0.0.1:8124 pour vérifier le site avant publication |
 | `.sitio-adoptameplaya` (dans le dossier web) | marque « ce dossier est géré par le script » |
 | `herramientas/desplegar-por-ftp.yml.ejemplo`, `deploy-ftp.py` | **non utilisés** : variante FTP, pour un autre hébergeur qui accepterait FTPS |
 

@@ -433,6 +433,11 @@ function enlaceCuestionarioWeb(especie, animal) {
   return u.href;
 }
 
+/* Espèces dont le questionnaire en ligne existe (rempli par iniciar). Tant
+   qu'on ne sait pas, on suppose qu'il existe : la page elle-même renvoie
+   vers WhatsApp s'il était vide. */
+const CUESTIONARIO_WEB = {};
+
 function textoAutoRespuesta(nombre, especie, animal) {
   const enlace = enlaceFormulario(especie);
   /* Lien wa.me cliquable plutôt qu'un numéro à recopier : le questionnaire
@@ -446,7 +451,9 @@ function textoAutoRespuesta(nombre, especie, animal) {
     whatsapp: CONFIG.contacto?.whatsapp_visible || '',
     enlace_web: enlaceCuestionarioWeb(especie, animal)
   };
-  return t(enlace ? 'sol.auto_con' : 'sol.auto_sin', vars);
+  /* PDF + web → auto_con ; web seul (cas des chats) → auto_web ; rien → auto_sin */
+  const hayWeb = CUESTIONARIO_WEB[especie] !== false;
+  return t(enlace ? 'sol.auto_con' : (hayWeb ? 'sol.auto_web' : 'sol.auto_sin'), vars);
 }
 
 function conectarPedido() {
@@ -728,6 +735,10 @@ async function iniciar() {
     aplicarTraduccion();
     return;
   }
+
+  fetch('data/cuestionario.json?v=47').then(r => r.json()).then(q => {
+    for (const esp of ['perro', 'gato']) CUESTIONARIO_WEB[esp] = !!q[esp]?.secciones?.length;
+  }).catch(() => {});
 
   aplicarTraduccion();
   pintarRefugio();

@@ -234,13 +234,42 @@ def verifier_formularios():
     for especie, langues in formularios.items():
         for lang, ruta in langues.items():
             if not ruta:
-                print(f"  · {especie}/{lang} : pas de formulaire → l'auto-réponse annoncera un envoi manuel")
+                print(f"  · {especie}/{lang} : pas de PDF → l'auto-réponse ne renvoie qu'au questionnaire en ligne")
             elif not (BUILD / ruta).exists():
                 raise SystemExit(f"ERREUR : config.json référence {ruta} pour {especie}/{lang}, "
                                  f"mais le fichier est absent du build.")
             else:
                 ko = (BUILD / ruta).stat().st_size / 1024
                 print(f"  · {especie}/{lang} : {ruta} ({ko:.0f} Ko)")
+
+
+def verifier_cuestionario():
+    """Le questionnaire se modifie à la main dans data/cuestionario.json : une
+    question sans traduction ou un numéro en double ne se voit qu'à l'envoi."""
+    import json
+    datos = json.load(open(BUILD / "data" / "cuestionario.json"))
+    for especie in ("perro", "gato"):
+        bloque = datos.get(especie, {})
+        secciones = bloque.get("secciones", [])
+        if not secciones:
+            print(f"  · questionnaire {especie} : vide → la page renvoie vers WhatsApp")
+            continue
+        errores, numeros = [], []
+        for lang in ("es", "en"):
+            if not bloque.get("intro", {}).get(lang): errores.append(f"intro {lang} vide")
+        for s in secciones:
+            for lang in ("es", "en"):
+                if not s.get(lang): errores.append(f"section « {s.get('id')} » sans {lang}")
+            for q in s.get("preguntas", []):
+                numeros.append(q.get("n"))
+                if q.get("tipo") not in ("texto", "largo", "sino"): errores.append(f"question {q.get('n')} : tipo « {q.get('tipo')} » inconnu")
+                for lang in ("es", "en"):
+                    if not str(q.get(lang, "")).strip(): errores.append(f"question {q.get('n')} sans {lang}")
+        if numeros != list(range(1, len(numeros) + 1)):
+            errores.append(f"numéros de questions non consécutifs à partir de 1 : {numeros}")
+        if errores:
+            raise SystemExit(f"ERREUR : data/cuestionario.json ({especie}) : " + " ; ".join(errores))
+        print(f"  · questionnaire {especie} : {len(numeros)} questions, {len(secciones)} sections, ES/EN complets")
 
 
 def fichiers_netlify():
@@ -378,6 +407,7 @@ if __name__ == "__main__":
     fichiers_netlify()
     sitemap()
     verifier_formularios()
+    verifier_cuestionario()
     verificar_produccion()
     print(f"  mode : {'préprod (noindex + bandeau)' if PREPROD else 'PRODUCTION'} · destino : {DESTINO}")
     chemin = zipper()

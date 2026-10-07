@@ -132,7 +132,7 @@
         "en": ""
       }
     },
-    "_formularios_nota": "Chemin du PDF envoyé par l'auto-réponse, par espèce ET par langue du site. Les deux formulaires chien sont en place. Ceux pour les chats sont vides tant que l'association ne les a pas finalisés : dans ce cas l'auto-réponse annonce un envoi manuel au lieu de donner un lien mort.",
+    "_formularios_nota": "Chemin du PDF envoyé par l'auto-réponse, par espèce ET par langue du site. Les deux PDF chien sont en place. Pour les chats il n'y a pas de PDF : l'auto-réponse renvoie alors seulement au questionnaire en ligne (data/cuestionario.json), et le lien « PDF » est masqué sur la page. Si ni PDF ni questionnaire en ligne n'existent, l'auto-réponse annonce un envoi manuel.",
     "url_base": "",
     "_url_base_nota": "Laisser vide : le lien du mail est construit sur le domaine depuis lequel la page est ouverte, donc il suit automatiquement Netlify puis le domaine définitif. Ne remplir que pour forcer un domaine."
   }

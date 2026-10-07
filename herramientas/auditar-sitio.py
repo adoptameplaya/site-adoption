@@ -205,11 +205,20 @@ if wi.get("activo") and not wi.get("url"): warn("Wise activé sans lien : le blo
 if not C.get("redes", {}).get("instagram"): info("pas d'Instagram renseigné (l'icône est masquée)")
 if not C.get("redes", {}).get("facebook"): warn("pas de Facebook renseigné")
 form = C.get("solicitud", {}).get("formularios", {})
-for esp, langs in form.items():
-    for lg, ruta in langs.items():
-        if not ruta: warn(f"formulaire {esp}/{lg} : pas de PDF → la demande d'adoption pour un {esp} reçoit une réponse « on vous l'envoie »")
 gq = json.loads(texto(get("/data/cuestionario.json")[2]))
-if str(gq.get("gato", {}).get("_nota", "")).startswith("EN ATTENTE"): warn("questionnaire web pour les CHATS : pas encore fourni par l'association")
+for esp, langs in form.items():
+    hay_web = bool(gq.get(esp, {}).get("secciones"))
+    for lg, ruta in langs.items():
+        if ruta: continue
+        if hay_web: info(f"formulaire {esp}/{lg} : pas de PDF, le questionnaire en ligne suffit (lien PDF masqué, e-mail automatique vers la page web)")
+        else: warn(f"formulaire {esp}/{lg} : ni PDF ni questionnaire en ligne → la demande d'adoption reçoit une réponse « on vous l'envoie »")
+for esp in ("perro", "gato"):
+    bq = gq.get(esp, {})
+    qs = [q for s_ in bq.get("secciones", []) for q in s_.get("preguntas", [])]
+    if not qs: warn(f"questionnaire web {esp} : vide (la page renvoie vers WhatsApp)"); continue
+    falta = [q["n"] for q in qs if not q.get("es") or not q.get("en")]
+    if falta or [q["n"] for q in qs] != list(range(1, len(qs) + 1)): bad(f"questionnaire {esp} : questions sans traduction ou numérotation cassée ({falta})")
+    else: ok(f"questionnaire {esp} : {len(qs)} questions, ES/EN complets, numérotation continue")
 info(f"don suggéré : {C.get('adopcion', {}).get('donacion_sugerida')}")
 info(f"WhatsApp : {C.get('contacto', {}).get('whatsapp_visible')} · e-mail : {C.get('contacto', {}).get('email')} · fondée : {C.get('refugio', {}).get('fundado')}")
 

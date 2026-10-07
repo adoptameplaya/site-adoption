@@ -336,11 +336,269 @@
     ]
   },
   "gato": {
-    "_nota": "EN ATTENTE : l'association n'a pas encore finalisé le questionnaire chat. Tant que secciones est vide, la page renvoie vers le contact WhatsApp.",
     "intro": {
-      "es": "",
-      "en": ""
+      "es": "Gracias por querer darle un hogar. Responde con calma y sinceridad: no hay respuestas buenas o malas, solo nos ayudan a conocerte un poco más y a asegurarnos de que el gatito estará en un lugar seguro, física y moralmente. Al final te pedimos fotos y videos de tu hogar: podrás mandárnoslos por WhatsApp en cuanto envíes el cuestionario.",
+      "en": "Thank you for wanting to give a home to one of our animals. Take your time and answer honestly: there are no right or wrong answers, they simply help us get to know you a little better and make sure the kitten will be in a safe place, physically and emotionally. At the end we ask for photos and videos of your home: you can send them to us on WhatsApp as soon as you submit the questionnaire."
     },
-    "secciones": []
+    "secciones": [
+      {
+        "id": "basica",
+        "es": "Información básica",
+        "en": "Basic information",
+        "preguntas": [
+          {
+            "n": 1,
+            "tipo": "texto",
+            "es": "Nombre completo",
+            "en": "Full name"
+          },
+          {
+            "n": 2,
+            "tipo": "texto",
+            "es": "Edad",
+            "en": "Age"
+          },
+          {
+            "n": 3,
+            "tipo": "texto",
+            "es": "Dirección",
+            "en": "Address"
+          },
+          {
+            "n": 4,
+            "tipo": "texto",
+            "es": "Teléfono / WhatsApp",
+            "en": "Phone / WhatsApp"
+          },
+          {
+            "n": 5,
+            "tipo": "largo",
+            "es": "Ocupación, tuya y de tu pareja o de quien vive contigo",
+            "en": "Occupation, yours and your partner's or whoever lives with you"
+          },
+          {
+            "n": 6,
+            "tipo": "largo",
+            "es": "Horario de trabajo (entrada y salida) de los dos",
+            "en": "Work schedule (start and end times) for both of you"
+          }
+        ]
+      },
+      {
+        "id": "hogar",
+        "es": "Sobre el hogar",
+        "en": "About your home",
+        "preguntas": [
+          {
+            "n": 7,
+            "tipo": "texto",
+            "es": "¿Vives en casa propia, rentada o con familiares?",
+            "en": "Do you own your home, rent, or live with relatives?"
+          },
+          {
+            "n": 8,
+            "tipo": "texto",
+            "es": "¿Vives en casa o en departamento?",
+            "en": "Do you live in a house or an apartment?"
+          },
+          {
+            "n": 9,
+            "tipo": "largo",
+            "es": "¿Tienes patio, jardín o azotea? ¿Está seguro y cercado? Después de enviar el cuestionario, mándanos por WhatsApp fotos de tu cerca y de tus ventanas, por favor.",
+            "en": "Do you have a yard, garden or rooftop? Is it safe and fenced? After sending the questionnaire, please send us photos of your fence and your windows on WhatsApp."
+          },
+          {
+            "n": 10,
+            "tipo": "largo",
+            "es": "Menciona 5 cosas que tendrás listas antes de la llegada de tu nuevo compañero.",
+            "en": "Name 5 things you will have ready before your new companion arrives."
+          },
+          {
+            "n": 11,
+            "tipo": "largo",
+            "es": "¿Cuántas personas viven contigo? ¿Hay niños? ¿De qué edades?",
+            "en": "How many people live with you? Are there children? What ages?"
+          },
+          {
+            "n": 12,
+            "tipo": "sino",
+            "es": "¿Todas las personas que viven contigo saben de la posible llegada de la mascota?",
+            "en": "Does everyone who lives with you know that a pet may be joining the home?"
+          },
+          {
+            "n": 13,
+            "tipo": "sino",
+            "es": "¿Algún miembro de la familia tiene alergia a perros o gatos?",
+            "en": "Is anyone in your family allergic to dogs or cats?"
+          },
+          {
+            "n": 14,
+            "tipo": "sino",
+            "es": "En caso de renta, ¿tu contrato permite mascotas?",
+            "en": "If you rent, does your lease allow pets?"
+          }
+        ]
+      },
+      {
+        "id": "experiencia",
+        "es": "Experiencia y manejo",
+        "en": "Experience and handling",
+        "preguntas": [
+          {
+            "n": 15,
+            "tipo": "largo",
+            "es": "¿Has tenido mascotas antes? ¿Cuáles? ¿Qué pasó con ellas?",
+            "en": "Have you had pets before? Which ones? What happened to them?"
+          },
+          {
+            "n": 16,
+            "tipo": "largo",
+            "es": "¿Actualmente tienes otras mascotas? Especifica cuáles y cómo se llevan con otros animales.",
+            "en": "Do you currently have other pets? Specify which ones and how they get along with other animals."
+          },
+          {
+            "n": 17,
+            "tipo": "largo",
+            "es": "Menciona algunas enfermedades exclusivas de los felinos y cuéntanos cómo puedes evitar que tu gato se contagie.",
+            "en": "Name some diseases that only affect felines and tell us how you can prevent your cat from catching them."
+          },
+          {
+            "n": 18,
+            "tipo": "largo",
+            "es": "¿Conoces los gastos aproximados de una mascota (alimento, vacunas, desparasitación, veterinario)?",
+            "en": "Do you know the approximate costs of a pet (food, vaccines, deworming, vet)?"
+          },
+          {
+            "n": 19,
+            "tipo": "largo",
+            "es": "¿Qué tipo de alimentación consideras adecuada? ¿De qué marca?",
+            "en": "What kind of food do you consider appropriate? Which brand?"
+          },
+          {
+            "n": 20,
+            "tipo": "largo",
+            "es": "¿Dónde irá al baño?",
+            "en": "Where will the cat go to the toilet?"
+          },
+          {
+            "n": 21,
+            "tipo": "largo",
+            "es": "¿Dónde dormirá?",
+            "en": "Where will the cat sleep?"
+          }
+        ]
+      },
+      {
+        "id": "salud",
+        "es": "Salud y cuidados",
+        "en": "Health and care",
+        "preguntas": [
+          {
+            "n": 22,
+            "tipo": "texto",
+            "es": "¿Cuentas con un veterinario de confianza? ¿Cuál?",
+            "en": "Do you have a trusted veterinarian? Which one?"
+          },
+          {
+            "n": 23,
+            "tipo": "sino",
+            "es": "¿Estás dispuesto/a a cubrir emergencias médicas inesperadas?",
+            "en": "Are you willing to cover unexpected medical emergencies?"
+          },
+          {
+            "n": 24,
+            "tipo": "largo",
+            "es": "¿Tienes un plan en caso de gastos veterinarios mayores?",
+            "en": "Do you have a plan in case of major veterinary expenses?"
+          }
+        ]
+      },
+      {
+        "id": "responsabilidad",
+        "es": "Responsabilidad y compromiso",
+        "en": "Responsibility and commitment",
+        "preguntas": [
+          {
+            "n": 25,
+            "tipo": "largo",
+            "es": "¿Por qué quieres adoptar?",
+            "en": "Why do you want to adopt?"
+          },
+          {
+            "n": 26,
+            "tipo": "largo",
+            "es": "¿Dónde estará la mascota durante el día y la noche?",
+            "en": "Where will the pet stay during the day and at night?"
+          },
+          {
+            "n": 27,
+            "tipo": "texto",
+            "es": "¿Cuántas horas al día pasará sola?",
+            "en": "How many hours a day will the pet be alone?"
+          },
+          {
+            "n": 28,
+            "tipo": "largo",
+            "es": "¿En qué parte de la casa estará mientras esté sola?",
+            "en": "Which part of the home will it be in while it is alone?"
+          },
+          {
+            "n": 29,
+            "tipo": "largo",
+            "es": "¿Qué harás con tu mascota si tienes que mudarte, cambiar de trabajo o viajar?",
+            "en": "What will you do with your pet if you have to move, change jobs or travel?"
+          },
+          {
+            "n": 30,
+            "tipo": "largo",
+            "es": "¿Qué harás con tu mascota en caso de que te separes de tu pareja?",
+            "en": "What will you do with your pet if you and your partner separate?"
+          },
+          {
+            "n": 31,
+            "tipo": "sino",
+            "es": "¿Estás de acuerdo en que el gato NUNCA saldrá a la calle?",
+            "en": "Do you agree that the cat will NEVER go outside onto the street?"
+          }
+        ]
+      },
+      {
+        "id": "pedimos",
+        "es": "Lo que te pedimos",
+        "en": "What we ask of you",
+        "preguntas": [
+          {
+            "n": 32,
+            "tipo": "sino",
+            "es": "¿Te comprometes a mandarnos por WhatsApp fotos y videos del hogar donde vivirá la mascota?",
+            "en": "Do you commit to sending us photos and videos of the home where the pet will live, on WhatsApp?"
+          },
+          {
+            "n": 33,
+            "tipo": "sino",
+            "es": "¿Te comprometes a tener todo lo necesario para recibir al gatito (arenero, arena, alimento, comederos, transportadora y juguetes) y a mandarnos una foto de todo esto antes de la entrega?",
+            "en": "Do you commit to having everything needed to welcome the kitten (litter box, litter, food, bowls, carrier and toys) and to sending us a photo of it all before the handover?"
+          },
+          {
+            "n": 34,
+            "tipo": "sino",
+            "es": "¿Te comprometes a mandarnos foto del carnet con sus vacunas, conforme les corresponda?",
+            "en": "Do you commit to sending us a photo of its vaccination card as each vaccine falls due?"
+          },
+          {
+            "n": 35,
+            "tipo": "sino",
+            "es": "¿Te comprometes a darnos un reporte mensual del estado de salud del gatito, por WhatsApp o Messenger, durante los primeros 6 meses?",
+            "en": "Do you commit to giving us a monthly report on the kitten's health, on WhatsApp or Messenger, for the first 6 months?"
+          },
+          {
+            "n": 36,
+            "tipo": "sino",
+            "es": "Sabemos que eres una persona responsable y que vas a considerar a la mascota parte de la familia. Aun así, en caso de cualquier emergencia, ¿te comprometes a ponerte en contacto con nosotros para ver si podemos apoyarte o, en último caso, recibirla de vuelta?",
+            "en": "We know you are a responsible person and will treat the pet as part of the family. Even so, in case of any emergency, do you commit to contacting us so we can see whether we can support you or, as a last resort, take the pet back?"
+          }
+        ]
+      }
+    ]
   }
 }
