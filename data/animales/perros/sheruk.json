@@ -16,11 +16,13 @@
   "peso_kg": 32,
   "tamano": "grande",
   "energia": "media",
-  "color": "arena",
   "fotos": [
-    "img/animales/sheruk.jpg",
-    "img/animales/sheruk-2.jpg",
-    "img/animales/sheruk-3.jpg"
+    "/img/animales/sheruk-d7j5c.jpg",
+    "/img/animales/sheruk-2.jpg",
+    "/img/animales/sheruk.jpg",
+    "/img/animales/sheruk-3.jpg",
+    "/img/animales/sheruk-977np.jpg",
+    "/img/animales/sheruk-4ski3.jpg"
   ],
   "urgente": false,
   "esterilizado": true,
@@ -47,5 +49,6 @@
       "Calm",
       "Affectionate"
     ]
-  }
+  },
+  "color": "arena"
 }
