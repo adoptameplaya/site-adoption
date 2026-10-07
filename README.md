@@ -63,7 +63,6 @@ Tout est marqué `REEMPLAZAR` dans `data/config.json`.
 | **Numéro WhatsApp** | `contacto.whatsapp` | format international **sans `+` ni espaces** : `52` + `1` + indicatif + numéro → `5219841234567` |
 | Téléphone, e-mail | `contacto.*` | |
 | Facebook / Instagram | `redes.*` | laisser `""` masque l'icône |
-| **CLABE** (18 chiffres), banque, titulaire | `donaciones.spei` | |
 | Lien PayPal.me | `donaciones.paypal.url` | |
 | Lien Mercado Pago | `donaciones.mercadopago.url` | |
 | Chiffres de l'association | `cifras` | adoptions, stérilisations, animaux présents |
@@ -157,7 +156,6 @@ publication = la racine. Prévoir un domaine et un certificat HTTPS.
 - Fiche animale : ouverture, fermeture (bouton, clic en dehors, `Échap`), pré-sélection de l'animal dans le formulaire.
 - Formulaire : blocage sur champs manquants, génération du message WhatsApp complet.
 - Bascule ES/EN sur toute la page, y compris contenus JSON et liens WhatsApp.
-- Copie de la CLABE dans le presse-papier.
 - Responsive 375 / 768 / 1360 px, focus clavier visible, `prefers-reduced-motion` respecté.
 
 **À valider dans un vrai navigateur** : le navigateur intégré à l'outil de
@@ -177,7 +175,7 @@ pas le dossier de travail. Il diffère du site final sur trois points :
 
 - **`noindex` triple** : `robots.txt`, en-tête `X-Robots-Tag` via `netlify.toml`,
   et balise `<meta name="robots">` sur les deux pages. Indispensable tant que la
-  page affiche une CLABE fictive au nom d'une association qui existe vraiment.
+  page affiche des liens de don fictifs au nom d'une association qui existe vraiment.
 - **Bandeau « sitio de demostración »** en haut de page, bilingue, injecté par
   `js/demo.js`. Ce fichier n'existe que dans le build.
 - **Fichiers de travail exclus** : les `.md`, `servir.command` et le script de

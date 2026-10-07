@@ -351,7 +351,7 @@ RESTES_MODELE = ("Patitas del Caribe", "patitasdelcaribe", "Calle 34 Norte", "ej
 def verificar_produccion():
     """MODO=produccion : refuse de construire tant qu'il reste des données de démonstration.
 
-    Une fausse CLABE publiée peut faire virer de l'argent au mauvais endroit : mieux vaut un build
+    Un faux lien de don publié peut envoyer l'argent au mauvais endroit : mieux vaut un build
     qui échoue (le site reste sur sa version précédente) qu'un site faux en ligne.
     FORZAR_PRODUCCION=1 désactive ce contrôle, à n'utiliser qu'en connaissance de cause."""
     if PREPROD or os.environ.get("FORZAR_PRODUCCION") == "1":
@@ -362,9 +362,6 @@ def verificar_produccion():
 
     cfg = json.loads((BUILD / "data" / "config.json").read_text(encoding="utf-8"))
     d = cfg.get("donaciones", {})
-    sp = d.get("spei", {})
-    if sp.get("activo") and (str(sp.get("clabe", "")).endswith("1234567890") or sp.get("cuenta") == "0123456789"):
-        problemas.append("don par virement : la CLABE / le compte affichés sont ceux de la démonstration")
     for clave, patron in (("paypal", r"https://paypal\.me/?"), ("mercadopago", r"https://mpago\.la/?")):
         m = d.get(clave, {})
         if m.get("activo") and (not m.get("url") or re.fullmatch(patron, m["url"])):

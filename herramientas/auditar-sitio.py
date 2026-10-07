@@ -195,9 +195,6 @@ for a in animales:
 sec("7. Configuration affichée au public")
 s, h, b = get("/data/config.json"); C = json.loads(b)
 d = C.get("donaciones", {})
-sp = d.get("spei", {})
-if sp.get("activo") and (sp.get("clabe", "").endswith("1234567890") or sp.get("cuenta") == "0123456789"):
-    bad(f"CLABE / compte bancaire FACTICES affichés ({sp.get('clabe')}) : un donateur pourrait virer de l'argent au mauvais endroit")
 pp = d.get("paypal", {}); mp = d.get("mercadopago", {}); wi = d.get("wise", {})
 if pp.get("activo") and re.fullmatch(r"https://paypal\.me/?", pp.get("url", "")): bad("PayPal : lien sans identifiant (https://paypal.me/) → mène à la page d'accueil de PayPal")
 if mp.get("activo") and re.fullmatch(r"https://mpago\.la/?", mp.get("url", "")): bad("Mercado Pago : lien sans identifiant (https://mpago.la/)")

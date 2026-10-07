@@ -32,15 +32,6 @@
     "_nota": "Laisser vide une réseau non fourni : l'icône disparaît au lieu de pointer vers l'accueil du réseau."
   },
   "donaciones": {
-    "spei": {
-      "activo": true,
-      "banco": "BBVA México",
-      "titular": "Adopta Me Playa A.C.",
-      "clabe": "012180001234567890",
-      "_clabe_nota": "REEMPLAZAR por la CLABE real de 18 digitos",
-      "cuenta": "0123456789",
-      "_titular_nota": "REEMPLAZAR par la raison sociale exacte du compte bancaire de l'association."
-    },
     "paypal": {
       "activo": true,
       "url": "https://paypal.me/",
@@ -55,8 +46,7 @@
       "activo": true,
       "url": "https://mpago.la/",
       "_nota": "REEMPLAZAR por el link de pago o QR de Mercado Pago"
-    },
-    "recibo_deducible": true
+    }
   },
   "padrinazgo": {
     "_nota": "PLUS AFFICHÉ depuis le 2026-10-02 : l'association a retiré l'apadrinamiento de la page. Conservé au cas où il reviendrait."

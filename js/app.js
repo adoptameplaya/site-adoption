@@ -523,31 +523,6 @@ function pintarApoyo() {
   const d = CONFIG.donaciones || {};
   const bloques = [];
 
-  if (d.spei?.activo) {
-    const filas = [
-      ['ap.banco', d.spei.banco],
-      ['ap.titular', d.spei.titular],
-      ['ap.clabe', d.spei.clabe]
-    ];
-    bloques.push(`
-      <article class="medio">
-        <span class="medio__icono" style="background:var(--turquesa)"><svg aria-hidden="true"><use href="#i-banco"></use></svg></span>
-        <h3>${esc(t('ap.spei_t'))}</h3>
-        <p>${esc(t('ap.spei_d'))}</p>
-        <div class="medio__cuerpo">
-          ${filas.map(([k, v]) => `
-            <div class="dato-copia">
-              <div class="dato-copia__k">${esc(t(k))}</div>
-              <div class="dato-copia__fila">
-                <span class="dato-copia__v">${esc(v || '—')}</span>
-                <button class="copiar" type="button" data-copiar="${esc(v || '')}">${esc(t('ap.copiar'))}</button>
-              </div>
-            </div>`).join('')}
-        </div>
-        ${d.recibo_deducible ? `<p style="font-size:.86rem">${esc(t('ap.deducible'))}</p>` : ''}
-      </article>`);
-  }
-
   if (d.paypal?.activo) {
     bloques.push(`
       <article class="medio">
@@ -589,25 +564,6 @@ function pintarApoyo() {
   $('#wa-voluntario').href = enlaceWA(t('wa.voluntario'));
   $('#wa-hogar').href = enlaceWA(t('wa.hogar'));
   $('#wa-flotante').href = enlaceWA(t('wa.general'));
-}
-
-function conectarCopiar() {
-  document.addEventListener('click', async e => {
-    const btn = e.target.closest('[data-copiar]');
-    if (!btn) return;
-    try {
-      await navigator.clipboard.writeText(btn.dataset.copiar);
-    } catch {
-      const ta = document.createElement('textarea');
-      ta.value = btn.dataset.copiar;
-      document.body.append(ta); ta.select();
-      document.execCommand('copy'); ta.remove();
-    }
-    const antes = btn.textContent;
-    btn.textContent = t('ap.copiado');
-    btn.dataset.copiado = 'si';
-    setTimeout(() => { btn.textContent = antes; delete btn.dataset.copiado; }, 1800);
-  });
 }
 
 /* =========================================================
@@ -750,7 +706,6 @@ async function iniciar() {
   conectarFiltros();
   conectarFicha();
   conectarPedido();
-  conectarCopiar();
   conectarInterfaz();
 }
 
