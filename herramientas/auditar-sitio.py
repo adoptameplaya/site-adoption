@@ -196,9 +196,19 @@ sec("7. Configuration affichée au public")
 s, h, b = get("/data/config.json"); C = json.loads(b)
 d = C.get("donaciones", {})
 pp = d.get("paypal", {}); mp = d.get("mercadopago", {}); wi = d.get("wise", {})
-if pp.get("activo") and re.fullmatch(r"https://paypal\.me/?", pp.get("url", "")): bad("PayPal : lien sans identifiant (https://paypal.me/) → mène à la page d'accueil de PayPal")
-if mp.get("activo") and re.fullmatch(r"https://mpago\.la/?", mp.get("url", "")): bad("Mercado Pago : lien sans identifiant (https://mpago.la/)")
-if wi.get("activo") and not wi.get("url"): warn("Wise activé sans lien : le bloc renvoie vers l'e-mail de l'association")
+def clabe_valide(c):
+    if not re.fullmatch(r"\d{18}", str(c)): return False
+    pesos = [3, 7, 1] * 6
+    return (10 - sum((int(x) * pesos[i]) % 10 for i, x in enumerate(c[:17])) % 10) % 10 == int(c[17])
+if pp.get("activo"):
+    if not pp.get("url") or re.fullmatch(r"https://paypal\.me/?", pp["url"]): bad("PayPal : lien vide ou sans identifiant → mène à la page d'accueil de PayPal")
+    else: ok(f"PayPal : {pp['url']}")
+if mp.get("activo"):
+    if clabe_valide(mp.get("clabe", "")) and mp.get("titular"): ok(f"Mercado Pago : CLABE valide (clé de contrôle), bénéficiaire « {mp['titular']} »")
+    else: bad("Mercado Pago : CLABE absente/invalide ou bénéficiaire manquant")
+if wi.get("activo"):
+    if wi.get("url"): ok(f"Wise : {wi['url']}")
+    else: warn("Wise activé sans lien : le bloc renvoie vers l'e-mail de l'association")
 if not C.get("redes", {}).get("instagram"): info("pas d'Instagram renseigné (l'icône est masquée)")
 if not C.get("redes", {}).get("facebook"): warn("pas de Facebook renseigné")
 form = C.get("solicitud", {}).get("formularios", {})

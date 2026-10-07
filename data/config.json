@@ -1,14 +1,15 @@
 {
-  "_leeme": "TODOS los valores marcados REEMPLAZAR son provisionales. Cambialos por los datos reales de la asociación antes de publicar.",
+  "_leeme": "Datos de la asociación. Los valores marcados REEMPLAZAR (si queda alguno) son provisionales y deben cambiarse antes de pasar a producción.",
   "refugio": {
     "nombre": "Adopta Me Playa",
     "nombre_corto": "Adopta Me",
-    "_nombre_nota": "REEMPLAZAR por el nombre real de la asociación",
+    "razon_social": "Adoptameplaya A.C.",
+    "_nombre_nota": "Nom d'usage : Adopta Me Playa. Raison sociale (avis de confidentialité, JSON-LD) : Adoptameplaya A.C.",
     "ciudad": "Playa del Carmen",
     "estado": "Quintana Roo",
     "pais": "México",
-    "direccion": "",
-    "_direccion_nota": "Vacío a propósito : la dirección del modelo de demostración era inventada. Rellenar solo con la dirección real y si la asociación quiere mostrarla (el sitio no la usa hoy).",
+    "direccion": "Centro, Playa del Carmen, Quintana Roo",
+    "_direccion_nota": "Domicile communiqué par l'association le 2026-10-07 (sans rue ni numéro). Utilisé dans l'avis de confidentialité ; le site ne l'affiche pas ailleurs. Une adresse complète (rue, numéro, code postal) serait préférable pour l'avis.",
     "codigo_postal": "",
     "mapa_url": "",
     "horarios": {
@@ -34,18 +35,20 @@
   "donaciones": {
     "paypal": {
       "activo": true,
-      "url": "https://paypal.me/",
-      "_nota": "REEMPLAZAR por el enlace PayPal.me real"
+      "url": "https://paypal.me/liatrovati",
+      "_nota": "Vérifié le 2026-10-07 : la page affiche « Lia Trovati @liatrovati »."
     },
     "wise": {
       "activo": true,
-      "url": "",
-      "_nota": "REEMPLAZAR : lien de paiement Wise de l'association (wise.com/pay/me/...). Tant que c'est vide, le bloc renvoie vers le mail de l'association."
+      "url": "https://wise.com/pay/me/liat38",
+      "_nota": "Wisetag @liat38. Vérifié le 2026-10-07 : la page affiche « Lia trovati @liat38 »."
     },
     "mercadopago": {
       "activo": true,
-      "url": "https://mpago.la/",
-      "_nota": "REEMPLAZAR por el link de pago o QR de Mercado Pago"
+      "banco": "Mercado Pago",
+      "titular": "Lia Trovati",
+      "clabe": "722969010631336756",
+      "_nota": "Virement vers une CLABE Mercado Pago (code banque 722). Clé de contrôle vérifiée le 2026-10-07. Pas de lien de paiement."
     }
   },
   "padrinazgo": {
@@ -53,8 +56,8 @@
   },
   "lista_deseos": [
     {
-      "es": "Croquetas para cachorro y adulto",
-      "en": "Puppy and adult dry food"
+      "es": "Croquetas para cachorro y gatito (marca específica)",
+      "en": "Puppy and kitten dry food (specific brand)"
     },
     {
       "es": "Toallas y cobijas usadas (limpias)",
@@ -69,8 +72,8 @@
       "en": "Carriers and leashes"
     },
     {
-      "es": "Cloro, jabón y bolsas de basura",
-      "en": "Bleach, soap and trash bags"
+      "es": "Cloro, jabón y bolsas para popó",
+      "en": "Bleach, soap and poop bags"
     }
   ],
   "cifras": {

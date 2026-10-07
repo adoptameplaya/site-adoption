@@ -545,12 +545,25 @@ function pintarApoyo() {
   }
 
   if (d.mercadopago?.activo) {
+    const filas = [
+      ['ap.beneficiario', d.mercadopago.titular, false],
+      ['ap.clabe', d.mercadopago.clabe, true]
+    ];
     bloques.push(`
       <article class="medio">
         <span class="medio__icono" style="background:var(--coral)"><svg aria-hidden="true"><use href="#i-cartera"></use></svg></span>
         <h3>${esc(t('ap.mp_t'))}</h3>
         <p class="medio__cuerpo">${esc(t('ap.mp_d'))}</p>
-        <a class="btn btn--bloque" target="_blank" rel="noopener" href="${esc(d.mercadopago.url)}">${esc(t('ap.mp_b'))}</a>
+        <div class="medio__datos">
+          ${filas.map(([k, v, copiable]) => `
+            <div class="dato-copia">
+              <div class="dato-copia__k">${esc(t(k))}</div>
+              <div class="dato-copia__fila">
+                <span class="dato-copia__v">${esc(v || '—')}</span>
+                ${copiable ? `<button class="copiar" type="button" data-copiar="${esc(v || '')}">${esc(t('ap.copiar'))}</button>` : ''}
+              </div>
+            </div>`).join('')}
+        </div>
       </article>`);
   }
 
@@ -564,6 +577,25 @@ function pintarApoyo() {
   $('#wa-voluntario').href = enlaceWA(t('wa.voluntario'));
   $('#wa-hogar').href = enlaceWA(t('wa.hogar'));
   $('#wa-flotante').href = enlaceWA(t('wa.general'));
+}
+
+function conectarCopiar() {
+  document.addEventListener('click', async e => {
+    const btn = e.target.closest('[data-copiar]');
+    if (!btn) return;
+    try {
+      await navigator.clipboard.writeText(btn.dataset.copiar);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = btn.dataset.copiar;
+      document.body.append(ta); ta.select();
+      document.execCommand('copy'); ta.remove();
+    }
+    const antes = btn.textContent;
+    btn.textContent = t('ap.copiado');
+    btn.dataset.copiado = 'si';
+    setTimeout(() => { btn.textContent = antes; delete btn.dataset.copiado; }, 1800);
+  });
 }
 
 /* =========================================================
@@ -593,6 +625,7 @@ function pintarRefugio() {
     '@context': 'https://schema.org',
     '@type': 'NGO',
     name: r.nombre,
+    legalName: r.razon_social,
     address: {
       '@type': 'PostalAddress',
       addressLocality: r.ciudad,
@@ -705,6 +738,7 @@ async function iniciar() {
 
   conectarFiltros();
   conectarFicha();
+  conectarCopiar();
   conectarPedido();
   conectarInterfaz();
 }

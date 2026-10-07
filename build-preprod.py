@@ -348,6 +348,15 @@ FICHES_EXEMPLE = {"coco", "rocky", "canela", "bruno", "frida"}
 RESTES_MODELE = ("Patitas del Caribe", "patitasdelcaribe", "Calle 34 Norte", "ejemplo.org", "PENDIENTE-LEGAL")
 
 
+def clabe_valide(clabe):
+    """CLABE bancaire mexicaine : 18 chiffres, le dernier est une clé de contrôle (poids 3-7-1)."""
+    if not re.fullmatch(r"\d{18}", str(clabe)):
+        return False
+    pesos = [3, 7, 1] * 6
+    total = sum((int(c) * pesos[i]) % 10 for i, c in enumerate(clabe[:17]))
+    return (10 - total % 10) % 10 == int(clabe[17])
+
+
 def verificar_produccion():
     """MODO=produccion : refuse de construire tant qu'il reste des données de démonstration.
 
@@ -362,10 +371,18 @@ def verificar_produccion():
 
     cfg = json.loads((BUILD / "data" / "config.json").read_text(encoding="utf-8"))
     d = cfg.get("donaciones", {})
-    for clave, patron in (("paypal", r"https://paypal\.me/?"), ("mercadopago", r"https://mpago\.la/?")):
-        m = d.get(clave, {})
-        if m.get("activo") and (not m.get("url") or re.fullmatch(patron, m["url"])):
-            problemas.append(f"don {clave} : lien vide ou sans identifiant (à renseigner, ou « activo »: false)")
+    pp = d.get("paypal", {})
+    if pp.get("activo") and (not pp.get("url") or re.fullmatch(r"https://paypal\.me/?", pp["url"])):
+        problemas.append("don paypal : lien vide ou sans identifiant (à renseigner, ou « activo »: false)")
+    mp = d.get("mercadopago", {})
+    if mp.get("activo"):
+        if not clabe_valide(mp.get("clabe", "")):
+            problemas.append("don Mercado Pago : CLABE absente ou invalide (18 chiffres, clé de contrôle)")
+        if not mp.get("titular"):
+            problemas.append("don Mercado Pago : bénéficiaire absent")
+    wi = d.get("wise", {})
+    if wi.get("activo") and not wi.get("url"):
+        problemas.append("don wise : lien vide (à renseigner, ou « activo »: false)")
 
     animales = json.loads((BUILD / "data" / "animales.json").read_text(encoding="utf-8"))["animales"]
     ejemplo = sorted(a["nombre"] for a in animales if a.get("id") in FICHES_EXEMPLE)
