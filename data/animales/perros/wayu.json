@@ -1,0 +1,45 @@
+{
+  "orden": -28,
+  "id": "wayu",
+  "nombre": "WAYU",
+  "edad": 1,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "edad_texto": {
+    "es": "1.4 años",
+    "en": "1.4 years"
+  },
+  "peso_kg": 20,
+  "tamano": "grande",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/wayu-3e0p5.jpg",
+    "/img/animales/wayu-qql2g.jpg",
+    "/img/animales/wayu-mt8aj.jpg",
+    "/img/animales/wayu-tjl91.jpg"
+  ],
+  "urgente": false,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Una segunda oportunidad para un gran compañero",
+    "historia": "Fue adoptado a los 2 meses y feliz durante 1 año... hasta que un viaje des sus dueños lo devolvió al refugio sin culpa suya. Wayu ya sabe lo que es tener un hogar solo le falta una familia que se quede para siempre. Serás tu  escribinos?",
+    "caracter": [
+      "Sociable",
+      "Noble",
+      "Protector"
+    ]
+  },
+  "en": {
+    "resumen": "A second chance for a loyal friend",
+    "historia": "He was adopted at two months old and was happy for a year... until a trip his owners took led to him being returned to the shelter—through no fault of his own. Wayu already knows what it’s like to have a home; all he needs now is a family that will stay with him forever. Could it be you? Write to us!",
+    "caracter": [
+      "Sociable",
+      "Noble",
+      "Protective"
+    ]
+  }
+}
