@@ -1,0 +1,43 @@
+{
+  "orden": -48,
+  "id": "charly",
+  "nombre": "CHARLY",
+  "edad": 7,
+  "edad_unidad": "meses",
+  "sexo": "macho",
+  "peso_kg": 10,
+  "tamano": "chico",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/charly-k48ht.jpg",
+    "/img/animales/charly-rpe3q.jpg",
+    "/img/animales/charly-8rj8s.jpg",
+    "/img/animales/charly-w7bnl.jpg"
+  ],
+  "urgente": false,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "un cachorro con todo la energía, se lleva bien con perros y gatos",
+    "historia": "Fue abandonado a muy joven en una caja de tenis, ahora está a salvo en un hogar temporal y convive con gatos y perros. Es un cachorro que simplemente quiere crecer rodeado de amigos y de una familia que lo quiera para siempre.",
+    "caracter": [
+      "Juguetón",
+      "Sociable",
+      "Enérgico",
+      "Travieso"
+    ]
+  },
+  "en": {
+    "resumen": "A high-energy puppy; gets along well with dogs and cats.",
+    "historia": "He was abandoned at a very young age in a shoebox; he is now safe in a foster home and lives alongside cats and dogs. He is a puppy who simply wants to grow up with friends and a family that will love him forever.",
+    "caracter": [
+      "Playful",
+      "Sociable",
+      "Energetic",
+      "Mischievous"
+    ]
+  }
+}
