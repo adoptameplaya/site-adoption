@@ -1,0 +1,37 @@
+{
+  "orden": -208,
+  "id": "virgilio",
+  "nombre": "VIRGILIO",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 0,
+  "tamano": "mediano",
+  "energia": "",
+  "fotos": [
+    "/img/animales/virgilio-lx8rr.jpg",
+    "/img/animales/virgilio-ikqjo.jpg",
+    "/img/animales/virgilio-dty8p.jpg",
+    "/img/animales/virgilio-3077w.jpg",
+    "/img/animales/virgilio-ttklg.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": [
+      "Juguetón"
+    ]
+  },
+  "en": {
+    "caracter": [
+      "Playful"
+    ]
+  }
+}
