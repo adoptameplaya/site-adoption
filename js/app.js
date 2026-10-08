@@ -25,7 +25,7 @@ function t(clave, vars = {}) {
 
 function varsGlobales() {
   return {
-    refugio: CONFIG?.refugio?.nombre || '',
+    refugio: CONFIG?.refugio?.nombre ?? 'Adopta Me Playa',
     ano: CONFIG?.refugio?.fundado || ''
   };
 }
@@ -34,8 +34,10 @@ function aplicarTraduccion() {
   const v = varsGlobales();
   document.documentElement.lang = t('html.lang');
 
-  $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n, v); });
-  $$('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml, v); });
+  /* On n'écrit que ce qui change : en espagnol le build a déjà posé ces textes, les toucher
+     de nouveau ferait repeindre la page pour rien. */
+  $$('[data-i18n]').forEach(el => { const x = t(el.dataset.i18n, v); if (el.textContent !== x) el.textContent = x; });
+  $$('[data-i18n-html]').forEach(el => { const x = t(el.dataset.i18nHtml, v); if (el.innerHTML !== x) el.innerHTML = x; });
   $$('[data-i18n-attr]').forEach(el => {
     el.dataset.i18nAttr.split('|').forEach(par => {
       const [attr, clave] = par.split(':');
@@ -674,6 +676,10 @@ function repintar() {
    Arranque
    ========================================================= */
 async function iniciar() {
+  /* 1re traduction tout de suite : elle ne dépend que de js/i18n.js, pas des fichiers de données (qui
+     demandent deux allers-retours réseau). Le visiteur anglophone voit son texte aussitôt. */
+  aplicarTraduccion();
+  document.documentElement.classList.remove('pre-en');
   try {
     const [cfg, ani] = await Promise.all([
       fetch('data/config.json?v=47').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
@@ -696,7 +702,7 @@ async function iniciar() {
     $('#rejilla').replaceWith(aviso());
     $('#conteo').textContent = t('err.datos_t');
     aplicarTraduccion();
-    document.documentElement.classList.remove('pre-en');
+    document.documentElement.classList.remove('pre-en', 'pre-en-datos');
     return;
   }
 
@@ -715,7 +721,7 @@ async function iniciar() {
   conectarFicha();
   conectarPedido();
   conectarInterfaz();
-  document.documentElement.classList.remove('pre-en');
+  document.documentElement.classList.remove('pre-en', 'pre-en-datos');
 }
 
 document.addEventListener('DOMContentLoaded', iniciar);

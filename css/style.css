@@ -853,8 +853,10 @@ p{margin:0}
 .ficha__adoptado p{font-weight:700;color:var(--tinta-60)}
 
 /* Visiteur anglophone : la page est prérendue en espagnol ; on masque ces zones le temps que le
-   JavaScript les traduise (sans « éclair » d'espagnol). La classe est posée par le <head> et retirée par app.js. */
-html.pre-en [data-i18n], html.pre-en [data-i18n-html], html.pre-en #tira, html.pre-en #rejilla, html.pre-en #conteo{visibility:hidden}
+   JavaScript les traduise (sans « éclair » d'espagnol). Classes posées par le <head>, retirées par app.js : « pre-en » dès la
+   1re traduction (qui n'attend pas les données), « pre-en-datos » quand la bande et la grille sont posées. */
+html.pre-en [data-i18n], html.pre-en [data-i18n-html]{visibility:hidden}
+html.pre-en-datos #tira, html.pre-en-datos #rejilla, html.pre-en-datos #conteo{visibility:hidden}
 
 /* Les filtres taille / énergie disparaissent quand « Chats » est choisi. */
 .filtros__grupo[hidden]{display:none}
