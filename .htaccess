@@ -34,8 +34,12 @@ RewriteRule ^(\.git|\.github|herramientas)(/|$) - [F,L]
     Header set Cache-Control "no-cache"
   </FilesMatch>
   # Les photos portent un nom unique : elles peuvent rester en cache.
-  <FilesMatch "\.(jpe?g|png|webp|svg|woff2)$">
+  <FilesMatch "\.(jpe?g|png|webp|svg)$">
     Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  # Les polices ne changent jamais (si un jour on les remplace : nouveau nom de fichier).
+  <FilesMatch "\.woff2$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 </IfModule>
 

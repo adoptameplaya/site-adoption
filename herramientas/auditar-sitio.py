@@ -95,6 +95,10 @@ for r in locales:
     if st != 200: roto.append((r, st))
 (ok if not roto else bad)(f"{len(locales)} ressources locales : " + ("toutes en HTTP 200" if not roto else f"cassées → {roto}"))
 info("domaines externes appelés : " + (", ".join(sorted(externos)) or "aucun") + "  (à citer dans l'avis de confidentialité)")
+if any(("googleapis" in d or "gstatic" in d) for d in externos): warn("la page appelle encore Google Fonts : les polices ne sont pas hébergées (plus lent, et l'IP des visiteurs part chez Google)")
+else:
+    fuentes_ok = all(get(f"/css/fonts/{n}")[0] == 200 for n in ("baloo2-latin.woff2", "nunito-latin.woff2"))
+    (ok if fuentes_ok else bad)("polices hébergées sur le site, aucun appel à Google Fonts" if fuentes_ok else "fichiers de polices introuvables (/css/fonts/)")
 for m in re.finditer(r'<meta[^>]+(?:name|property)="([^"]+)"[^>]+content="([^"]*)"', html):
     pass
 og = re.search(r'property="og:image"[^>]+content="([^"]+)"', html)
@@ -256,8 +260,8 @@ if A.repo:
     ap_ = (R / "aviso-de-privacidad.html").read_text(encoding="utf-8")
     if re.search(r"armando un mensaje de WhatsApp|no tiene base de datos", ap_): bad("avis de confidentialité périmé : il reprend l'ancien texte du modèle (envoi par WhatsApp, « aucune base de données »)")
     else:
-        faltan = [n for n in ("FormSubmit", "GitHub", "O2switch", "Google Fonts") if n not in ap_]
-        (bad if faltan else ok)("avis de confidentialité : cite les vrais circuits (FormSubmit, GitHub, O2switch, Google Fonts)" if not faltan else f"avis de confidentialité : ne cite pas {', '.join(faltan)}")
+        faltan = [n for n in ("FormSubmit", "GitHub", "O2switch") if n not in ap_]
+        (bad if faltan else ok)("avis de confidentialité : cite les vrais circuits (FormSubmit, GitHub, O2switch)" if not faltan else f"avis de confidentialité : ne cite pas {', '.join(faltan)}")
 
 # ───────────────────────────── bilan
 print("\n" + "═" * 62)

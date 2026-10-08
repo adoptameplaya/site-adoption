@@ -224,7 +224,7 @@ La sortie est reproductible : sans changement de questions, le fichier généré
   masque le texte espagnol le temps de la traduction (classe `pre-en`). Source des textes : `js/i18n.js` (même dictionnaire).
 - **Miniatures** : chaque photo `x.jpg` a une petite `x-m.jpg` (≈ 560 px, ≈ 40 Ko) créée par le panneau ; le build l'ajoute en `miniatura` quand
   elle existe (jamais de 404). Pour les photos d'avant : `sips -Z 560 -s format jpeg -s formatOptions normal x.jpg --out x-m.jpg` (macOS).
-- **Polices Google** chargées sans bloquer l'affichage (`rel=preload` + `<noscript>`). Les auto-héberger demande de télécharger Baloo 2 et Nunito.
+- **Polices hébergées sur le site** (`css/fonts/` : Baloo 2 et Nunito, polices variables, alphabet latin, licence SIL OFL jointe) : plus de Google Fonts, donc pas de requête externe ni d'adresse IP envoyée à Google. `@font-face` est en tête de `css/style.css` ; préchargées dans le `<head>` ; cache d'un an dans `.htaccess`. Si on remplace un fichier, **changer son nom** (cache « immutable »). Un caractère hors alphabet latin prend la police de secours.
 - Mesure : https://pagespeed.web.dev (mobile) — avant : Performances 57, CLS 0,513 ; l'audit local contrôle aussi photos et miniatures.
 
 ## Secours : Decap CMS
