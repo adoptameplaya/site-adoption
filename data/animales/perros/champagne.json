@@ -1,0 +1,31 @@
+{
+  "orden": -168,
+  "id": "champagne",
+  "nombre": "CHAMPAGNE",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 0,
+  "tamano": "chico",
+  "energia": "",
+  "fotos": [
+    "/img/animales/champagne-91pcy.jpg",
+    "/img/animales/champagne-cfd1j.jpg",
+    "/img/animales/champagne-gp04v.jpg",
+    "/img/animales/champagne-12qk8.jpg",
+    "/img/animales/champagne-r8vjh.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
