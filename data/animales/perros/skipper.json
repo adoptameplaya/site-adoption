@@ -1,0 +1,32 @@
+{
+  "orden": -78,
+  "id": "skipper",
+  "nombre": "SKIPPER",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 0,
+  "tamano": "",
+  "energia": "",
+  "fotos": [
+    "/img/animales/skipper-w75kq.jpg",
+    "/img/animales/skipper-5twfm.jpg",
+    "/img/animales/skipper-2zpve.jpg",
+    "/img/animales/skipper-vmp92.jpg",
+    "/img/animales/skipper-kdlf1.jpg",
+    "/img/animales/skipper-osny1.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
