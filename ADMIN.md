@@ -216,6 +216,17 @@ for l in es en; do /tmp/pdf/bin/python herramientas/crear-pdf-cuestionario.py --
 Le même outil, lancé avec `--especie perro`, retrouve **à l'identique** (au pixel près) les PDF des chiens.
 La sortie est reproductible : sans changement de questions, le fichier généré est identique octet pour octet.
 
+## Vitesse et référencement (build)
+
+- **Prérendu** : `build-preprod.py` écrit dans `index.html`, en espagnol, ce que le JavaScript écrirait (textes, bande des animaux, cartes,
+  compteur, JSON-LD). Les robots voient donc une vraie page et la bande a sa hauteur dès le départ (plus de saut de mise en page). Le JS ne
+  repeint pas la bande et la grille quand la langue est l'espagnol (attribut `data-pre`) ; en anglais il repeint comme avant, et le `<head>`
+  masque le texte espagnol le temps de la traduction (classe `pre-en`). Source des textes : `js/i18n.js` (même dictionnaire).
+- **Miniatures** : chaque photo `x.jpg` a une petite `x-m.jpg` (≈ 560 px, ≈ 40 Ko) créée par le panneau ; le build l'ajoute en `miniatura` quand
+  elle existe (jamais de 404). Pour les photos d'avant : `sips -Z 560 -s format jpeg -s formatOptions normal x.jpg --out x-m.jpg` (macOS).
+- **Polices Google** chargées sans bloquer l'affichage (`rel=preload` + `<noscript>`). Les auto-héberger demande de télécharger Baloo 2 et Nunito.
+- Mesure : https://pagespeed.web.dev (mobile) — avant : Performances 57, CLS 0,513 ; l'audit local contrôle aussi photos et miniatures.
+
 ## Secours : Decap CMS
 
 L'ancien admin reste disponible sur **`/admin/decap/`** (même connexion GitHub). Aucun

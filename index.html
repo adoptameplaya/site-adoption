@@ -2,6 +2,7 @@
 <html lang="es-MX">
 <head>
 <meta charset="utf-8">
+<script>/* Visiteur anglophone : masque le texte espagnol prérendu jusqu'à la traduction (voir css/style.css) */try{var l=localStorage.getItem("idioma");if(l==="en"||(l!=="es"&&/^en/i.test(navigator.language||"")))document.documentElement.classList.add("pre-en");setTimeout(function(){document.documentElement.classList.remove("pre-en")},3500)}catch(e){}</script>
 
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Adopta en Playa del Carmen | Adopta Me Playa</title>
@@ -14,17 +15,24 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Adopta en Playa del Carmen | Adopta Me Playa">
 <meta property="og:description" content="Perros y gatos rescatados en Playa del Carmen, esterilizados y vacunados, esperando hogar.">
+<meta property="og:url" content="https://ejemplo.org/">
+<meta property="og:site_name" content="Adopta Me Playa">
 <meta property="og:image" content="img/ui/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Perros y gatos rescatados en Playa del Carmen, listos para ser adoptados">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Adopta en Playa del Carmen | Adopta Me Playa">
+<meta name="twitter:description" content="Perros y gatos rescatados en Playa del Carmen, esterilizados y vacunados, esperando hogar.">
+<meta name="twitter:image" content="img/ui/og.jpg">
 
 <link rel="icon" href="img/ui/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=59">
+<!-- Polices : chargées sans bloquer l'affichage (le texte s'affiche tout de suite, la police prend la place ensuite) -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="css/style.css?v=61">
 </head>
 <body>
 
@@ -355,7 +363,7 @@
   <span class="solo-lectores" data-i18n="wa.flotante"></span>
 </a>
 
-<script src="js/i18n.js?v=53"></script>
-<script src="js/app.js?v=56"></script>
+<script src="js/i18n.js?v=54"></script>
+<script src="js/app.js?v=57"></script>
 </body>
 </html>

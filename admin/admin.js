@@ -729,6 +729,22 @@ async function procesarFoto(archivo) {
   return blob;
 }
 
+/* Miniatura (≈ 560 px) para las tarjetas de la portada: unos 40 KB en vez de 150-300 KB. Se sube junto a la foto
+   con el sufijo «-m» ; el sitio la usa si existe. */
+const MINI_PX = 560;
+const rutaMini = r => String(r).replace(/\.jpe?g$/i, '-m.jpg');
+async function procesarMiniatura(blob) {
+  const bmp = await createImageBitmap(blob);
+  const k = Math.min(1, MINI_PX / Math.max(bmp.width, bmp.height));
+  const cv = document.createElement('canvas');
+  cv.width = Math.max(1, Math.round(bmp.width * k)); cv.height = Math.max(1, Math.round(bmp.height * k));
+  const cx = cv.getContext('2d');
+  cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
+  cx.drawImage(bmp, 0, 0, cv.width, cv.height);
+  bmp.close?.();
+  return new Promise(ok => cv.toBlob(ok, 'image/jpeg', 0.72));
+}
+
 async function añadirFotos(archivos) {
   const lista = [...archivos].filter(a => a.type.startsWith('image/') || /\.(jpe?g|png|webp|heic)$/i.test(a.name));
   if (!lista.length) { aviso('Eso no parece una foto.', 'error'); return; }
@@ -738,7 +754,8 @@ async function añadirFotos(archivos) {
     if (st.fotos.length >= MAX_FOTOS) { aviso(`Máximo ${MAX_FOTOS} fotos por animal.`, 'error'); break; }
     try {
       const blob = await procesarFoto(a);
-      st.fotos.push({ blob, url: URL.createObjectURL(blob) });
+      const mini = await procesarMiniatura(blob).catch(() => null);      // si falla, el sitio usa la foto completa
+      st.fotos.push({ blob, mini, url: URL.createObjectURL(blob) });
       st.sucio = true;
       antes += a.size; despues += blob.size; hechas++;
     } catch { fallos++; }
@@ -993,6 +1010,7 @@ async function publicar() {
       if (f.ruta) { rutas.push(rutaAbs(f.ruta)); continue; }
       const nombreArchivo = `${id}-${Math.random().toString(36).slice(2, 7)}.jpg`;
       cambios.push({ path: `img/animales/${nombreArchivo}`, b64: await aB64(f.blob) });
+      if (f.mini) cambios.push({ path: rutaMini(`img/animales/${nombreArchivo}`), b64: await aB64(f.mini) });
       f._ruta = `/img/animales/${nombreArchivo}`;
       rutas.push(f._ruta);
     }
@@ -1000,7 +1018,10 @@ async function publicar() {
       .flatMap(x => (x.datos.fotos || []).map(rutaAbs)));
     for (const r of (st.original?.fotos || []).map(rutaAbs)) {
       const path = r.slice(1);
-      if (!rutas.includes(r) && !usadasPorOtras.has(r) && ARCHIVOS.has(path)) cambios.push({ path, borrar: true });
+      if (!rutas.includes(r) && !usadasPorOtras.has(r) && ARCHIVOS.has(path)) {
+        cambios.push({ path, borrar: true });
+        if (ARCHIVOS.has(rutaMini(path))) cambios.push({ path: rutaMini(path), borrar: true });
+      }
     }
     prog.paso(1, 'ok');
 
@@ -1065,7 +1086,10 @@ async function quitar(especie, id) {
     const usadas = new Set(FICHAS.filter(x => x !== f).flatMap(x => (x.datos.fotos || []).map(rutaAbs)));
     const cambios = [{ path: f.ruta, borrar: true }];
     for (const r of (f.datos.fotos || []).map(rutaAbs)) {
-      if (!usadas.has(r) && ARCHIVOS.has(r.slice(1))) cambios.push({ path: r.slice(1), borrar: true });
+      if (!usadas.has(r) && ARCHIVOS.has(r.slice(1))) {
+        cambios.push({ path: r.slice(1), borrar: true });
+        if (ARCHIVOS.has(rutaMini(r.slice(1)))) cambios.push({ path: rutaMini(r.slice(1)), borrar: true });
+      }
     }
     sha = await confirmarCambios(cambios, `Quita la ficha de ${f.datos.nombre} (panel)`);
     prog.paso(0, 'ok');

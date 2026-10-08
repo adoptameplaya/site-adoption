@@ -236,11 +236,15 @@ if A.repo:
     refs_foto = set()
     for f in R.glob("data/animales/*/*.json"):
         for ph in json.loads(f.read_text(encoding="utf-8")).get("fotos", []): refs_foto.add(ph.lstrip("/").split("/")[-1])
+    refs_foto |= {re.sub(r"\.jpe?g$", "-m.jpg", n, flags=re.I) for n in refs_foto}     # les miniatures dérivées
     sobran = [p for p in (R / "img/animales").glob("*") if p.is_file() and p.name not in refs_foto and not p.name.startswith(".")]
     if sobran: warn(f"{len(sobran)} photos non utilisées dans img/animales (≈ {sum(p.stat().st_size for p in sobran)//1024} Ko publiés pour rien) : " + ", ".join(sorted(p.name for p in sobran)[:8]))
     else: ok("aucune photo orpheline")
+    sin_mini = sorted(n for n in refs_foto if not n.endswith("-m.jpg") and not (R / "img/animales" / re.sub(r"\.jpe?g$", "-m.jpg", n, flags=re.I)).exists())
+    if sin_mini: warn(f"{len(sin_mini)} photo(s) sans miniature (la carte charge la photo complète, plus lourde) : " + ", ".join(sin_mini[:6]))
+    else: ok("chaque photo a sa miniature pour les cartes")
     # poids : le panneau réduit chaque photo (max 1400 px, ≤ 300 Ko) ; on vérifie que rien de lourd ne s'est glissé
-    fotos = [p for p in (R / "img/animales").glob("*") if p.is_file() and not p.name.startswith(".")]
+    fotos = [p for p in (R / "img/animales").glob("*") if p.is_file() and not p.name.startswith(".") and not p.name.endswith("-m.jpg")]
     pesadas = sorted((p for p in fotos if p.stat().st_size > 350 * 1024), key=lambda p: -p.stat().st_size)
     total = sum(p.stat().st_size for p in fotos)
     if pesadas: warn(f"{len(pesadas)} photo(s) de plus de 350 Ko (ralentissent le site) : " + ", ".join(f"{p.name} ({p.stat().st_size // 1024} Ko)" for p in pesadas[:5]))

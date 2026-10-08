@@ -95,7 +95,7 @@ Un animal nuevo aparece **primero** hasta que lo cambies de lugar.
 
 - Cuadradas o casi, con el animal centrado y mirando a la cámara.
 - Hasta 6 fotos por animal.
-- No hace falta reducirlas ni renombrarlas: el panel lo hace solo. Cada foto se aligera antes de subir (máximo 1400 px y unos 300 KB, aunque la foto original pese varios MB) y te avisa cuánto se redujo, para que el sitio siga rápido.
+- No hace falta reducirlas ni renombrarlas: el panel lo hace solo. Cada foto se aligera antes de subir (máximo 1400 px y unos 300 KB, aunque la foto original pese varios MB) y el panel crea además una versión pequeña para las tarjetas de la portada. Te avisa cuánto se redujo, para que el sitio siga rápido.
 
 ---
 

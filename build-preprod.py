@@ -132,6 +132,173 @@ def sanear_fotos(animales):
         print(f"  ⚠ fiches sans aucune photo : {', '.join(sin_foto)}")
 
 
+def asignar_miniaturas(animales):
+    """Cartes et tira de la page d'accueil n'ont besoin que d'une petite image (≈ 560 px, 40 Ko) :
+    on pointe vers « nom-m.jpg » quand ce fichier existe (le panneau le crée avec chaque photo),
+    sinon vers la photo complète. Aucun 404 possible : on ne référence que ce qui existe."""
+    medios = BUILD / "img" / "animales"
+    con, sin = 0, []
+    for a in animales:
+        fotos = a.get("fotos") or []
+        if not fotos:
+            continue
+        principal = fotos[0]
+        mini = re.sub(r"\.jpe?g$", "-m.jpg", principal, flags=re.I)
+        if mini != principal and (medios / mini.rsplit("/", 1)[-1]).is_file():
+            a["miniatura"] = mini
+            con += 1
+        else:
+            sin.append(a.get("nombre"))
+    print(f"  miniatures : {con}/{len(animales)} fiches"
+          + (f" · sans miniature (photo complète utilisée) : {', '.join(map(str, sin))}" if sin else ""))
+
+
+def textos_es():
+    """Le dictionnaire espagnol de js/i18n.js : la même source que le navigateur (décodée avec json.loads)."""
+    src = (RACINE / "js" / "i18n.js").read_text(encoding="utf-8")
+    bloque = src[src.index("  es: {"):src.index("\n  en: {")]
+    textos = {}
+    for m in re.finditer(r'^\s+"([^"]+)":\s*(".*"),?\s*$', bloque, re.M):
+        try:
+            textos[m.group(1)] = json.loads(m.group(2))
+        except ValueError:
+            pass
+    return textos
+
+
+def prerender_index():
+    """Écrit dans index.html, au build, ce que le JavaScript écrirait en espagnol : textes, bande des
+    animaux, cartes, compteur, données structurées. Les robots (et les navigateurs avant l'exécution du JS)
+    voient alors une vraie page ; la bande a sa hauteur dès le départ, donc plus de saut de mise en page.
+    Le JavaScript ne refait pas ce travail quand la langue est l'espagnol (attribut data-pre)."""
+    import html as H
+    p = BUILD / "index.html"
+    h = p.read_text(encoding="utf-8")
+    es = textos_es()
+    cfg = json.loads((BUILD / "data" / "config.json").read_text(encoding="utf-8"))
+    animales = json.loads((BUILD / "data" / "animales.json").read_text(encoding="utf-8"))["animales"]
+    ref = cfg.get("refugio", {})
+    vars_ = {"refugio": ref.get("nombre", ""), "ano": ref.get("fundado", "")}
+
+    def t(clave, **v):
+        s = es.get(clave, clave)
+        for k, val in {**vars_, **v}.items():
+            s = s.replace("{" + k + "}", str(val))
+        return s
+
+    def esc(x):
+        return H.escape(str(x), quote=True)
+
+    # 1. textes : seulement les éléments encore vides
+    h = re.sub(r'(<(\w+)\b[^>]*\bdata-i18n="([^"]+)"[^>]*>)(</\2>)',
+               lambda m: m.group(1) + esc(t(m.group(3))) + m.group(4), h)
+    h = re.sub(r'(<(\w+)\b[^>]*\bdata-i18n-html="([^"]+)"[^>]*>)(</\2>)',
+               lambda m: m.group(1) + t(m.group(3)) + m.group(4), h)
+
+    def atributos(m):
+        etiqueta = m.group(0)
+        for par in m.group(1).split("|"):
+            nombre, clave = par.split(":")
+            valor = esc(t(clave))
+            if re.search(r'\s%s="[^"]*"' % re.escape(nombre), etiqueta):
+                etiqueta = re.sub(r'(\s%s=")[^"]*(")' % re.escape(nombre),
+                                  lambda x: x.group(1) + valor + x.group(2), etiqueta, count=1)
+            else:
+                etiqueta = re.sub(r'\s*/?>$', lambda x: f' {nombre}="{valor}"' + x.group(0).lstrip(), etiqueta, count=1)
+        return etiqueta
+    h = re.sub(r'<\w+\b[^>]*\bdata-i18n-attr="([^"]+)"[^>]*>', atributos, h)
+
+    # 2. titre et description : une seule source (js/i18n.js)
+    h = re.sub(r"<title>.*?</title>", lambda m: f"<title>{esc(t('meta.titulo'))}</title>", h, count=1, flags=re.S)
+    h = re.sub(r'(<meta name="description" content=")[^"]*(")',
+               lambda m: m.group(1) + esc(t("meta.desc")) + m.group(2), h, count=1)
+
+    # 3. bande de capsules et cartes
+    def foto(a):
+        return a.get("miniatura") or ((a.get("fotos") or [a.get("foto", "")])[0])
+
+    def numero(n):
+        return int(n) if float(n).is_integer() else n
+
+    def edad(a):
+        fijo = (a.get("edad_texto") or {}).get("es")
+        if fijo:
+            return fijo
+        n = a.get("edad") or 0
+        if not n:
+            return t("ficha.bebe")
+        if a.get("edad_unidad") == "meses":
+            return t("ficha.mes") if n == 1 else t("ficha.meses", n=numero(n))
+        return t("ficha.ano") if n == 1 else t("ficha.anos", n=numero(n))
+
+    def giro(a):
+        datos = str(a.get("id") or a.get("nombre")).encode("utf-16-le")
+        return -(10 + sum(int.from_bytes(datos[i:i + 2], "little") for i in range(0, len(datos), 2)) % 7)
+
+    vivos = [a for a in animales if not a.get("adoptado")]
+    ordenados = vivos + [a for a in animales if a.get("adoptado")]          # adoptés à la fin, ordre conservé
+
+    tira = "".join(
+        '\n    <a class="capsula" href="#adoptar" data-abrir="%s">\n'
+        '      <img class="capsula__foto" src="%s" alt="" loading="eager" width="160" height="160">\n'
+        '      <span class="capsula__nombre">%s</span>\n    </a>' % (esc(a["id"]), esc(foto(a)), esc(a["nombre"]))
+        for a in vivos[:5])
+
+    def tarjeta(a):
+        meta = " · ".join(x for x in (t("ficha.macho" if a.get("sexo") == "macho" else "ficha.hembra"), edad(a),
+                                      t("cat." + a["tamano"]) if a.get("tamano") else "") if x)
+        if a.get("adoptado"):
+            sello = ('<span class="sello" style="--giro:%ddeg">\n  <span class="sello__palabra">%s</span>\n'
+                     '  <span class="sello__sub" aria-hidden="true">%s</span></span>'
+                     % (giro(a), esc(t("cat.adoptada" if a.get("sexo") == "hembra" else "cat.adoptado")),
+                        esc(vars_["refugio"] or "Adopta Me Playa")))
+        elif a.get("urgente"):
+            sello = '<span class="tarjeta__urgente">%s</span>' % esc(t("cat.urgente"))
+        else:
+            sello = ""
+        return (
+            '<li class="%s">\n'
+            '    <button class="tarjeta" type="button" data-abrir="%s">\n'
+            '      <span class="tarjeta__marco">\n        %s\n'
+            '        <img src="%s" alt="%s" loading="lazy" width="300" height="300">\n      </span>\n'
+            '      <span class="tarjeta__nombre">%s</span>\n'
+            '      <span class="tarjeta__meta">%s</span>\n'
+            '      <span class="tarjeta__resumen">%s</span>\n'
+            '      <span class="tarjeta__pie">\n'
+            '        <span class="tarjeta__ver">%s</span>\n'
+            '        <span class="tarjeta__flecha"><svg aria-hidden="true"><use href="#i-flecha"></use></svg></span>\n'
+            '      </span>\n    </button>\n  </li>'
+            % ("es-adoptado" if a.get("adoptado") else "", esc(a["id"]), sello, esc(foto(a)),
+               esc(t("cat.foto_de", nombre=a["nombre"])), esc(a["nombre"]), esc(meta),
+               esc((a.get("es") or {}).get("resumen") or ""), esc(t("cat.ver"))))
+
+    cartas = "".join(tarjeta(a) for a in ordenados)
+    conteo = t("cat.conteo_uno") if len(ordenados) == 1 else t("cat.conteo", n=len(ordenados))
+
+    h, n1 = re.subn(r'(<div class="tira" id="tira")([^>]*>)</div>',
+                    lambda m: m.group(1) + ' data-pre="es"' + m.group(2) + tira + "\n    </div>", h, count=1)
+    h, n2 = re.subn(r'(<ul class="rejilla" id="rejilla")>(</ul>)',
+                    lambda m: m.group(1) + ' data-pre="es">' + cartas + m.group(2), h, count=1)
+    h, n3 = re.subn(r'(<p class="conteo" id="conteo"[^>]*>)(</p>)',
+                    lambda m: m.group(1) + esc(conteo) + m.group(2), h, count=1)
+
+    # 4. données structurées (le JavaScript les met à jour au chargement)
+    contacto = cfg.get("contacto", {})
+    ld = {"@context": "https://schema.org", "@type": "Organization", "name": ref.get("nombre"),
+          "address": {"@type": "PostalAddress", "addressLocality": ref.get("ciudad"),
+                      "addressRegion": ref.get("estado"), "addressCountry": "MX"},
+          "telephone": "+" + (contacto.get("whatsapp") or ""), "email": contacto.get("email"),
+          "sameAs": [v for k, v in (cfg.get("redes") or {}).items() if not k.startswith("_") and v]}
+    if "application/ld+json" not in h:
+        h = h.replace("</head>", '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False)
+                      + "</script>\n</head>", 1)
+
+    p.write_text(h, encoding="utf-8")
+    vacios = len(re.findall(r'data-i18n(?:-html)?="[^"]+"[^>]*></', h))
+    print(f"  prérendu espagnol : bande {len(vivos[:5])} · cartes {len(ordenados)} · éléments de texte encore vides : {vacios}"
+          + ("" if (n1 and n2 and n3) else f"  ⚠ zones non trouvées (tira={n1}, rejilla={n2}, conteo={n3})"))
+
+
 def ensamblar_animales():
     """Une fiche = un fichier, pour que l'admin offre une vraie liste par espèce.
     Le site, lui, ne lit qu'un seul animales.json : on l'assemble ici.
@@ -154,6 +321,7 @@ def ensamblar_animales():
 
     animales.sort(key=lambda a: (a.get("orden", 999), a.get("nombre", "")))
     sanear_fotos(animales)
+    asignar_miniaturas(animales)
     perros = sum(1 for a in animales if a["especie"] == "perro")
     print(f"  fiches assemblées : {len(animales)} ({perros} chiens, {len(animales)-perros} chats)")
 
@@ -400,6 +568,7 @@ def zipper():
 if __name__ == "__main__":
     preparer()
     ensamblar_animales()
+    prerender_index()
     if PREPROD:
         noindex()
         bandeau()

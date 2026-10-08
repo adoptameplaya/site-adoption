@@ -13,7 +13,7 @@
   --naranja:#F5A63C;
   --naranja-2:#E38C1D;
   --tinta:#241B12;
-  --tinta-60:rgba(36,27,18,.62);
+  --tinta-60:rgba(36,27,18,.76);
   --tinta-40:rgba(36,27,18,.38);
   --tinta-12:rgba(36,27,18,.12);
   --turquesa:#9EE0DC;
@@ -167,6 +167,9 @@ p{margin:0}
   /* ~47px sont absorbés par les pastilles de noms qui débordent vers le bas :
      ce qui dépasse de cette valeur est l'air réellement visible sous la tira. */
   padding-bottom:clamp(104px,10vw,132px);
+  /* Hauteur réservée = la plus haute capsule + l'air du dessous : la bande occupe sa place avant que les
+     photos n'arrivent, donc rien ne saute (c'était le plus gros défaut de vitesse ressentie). */
+  min-height:calc(clamp(190px,21vw,244px) + clamp(104px,10vw,132px));
 }
 .capsula{
   position:relative;flex:none;
@@ -523,7 +526,7 @@ p{margin:0}
   .barra__acciones{flex:none}
   .idioma button{padding:7px 11px;font-size:.78rem}
 
-  .tira{gap:7px;padding-inline:2px;padding-bottom:98px}
+  .tira{gap:7px;padding-inline:2px;padding-bottom:98px;min-height:calc(clamp(190px,21vw,244px) + 98px)}
   .filtros__grupo+.filtros__grupo{margin-left:0;padding-left:0;border-left:0}
   .filtros__fila{gap:14px}
   .filtros__grupo{width:100%}
@@ -839,7 +842,7 @@ p{margin:0}
   @keyframes sello-golpe{from{scale:1.7;opacity:0}to{scale:1;opacity:.96}}
 }
 .es-adoptado .tarjeta__marco img{filter:grayscale(.6) brightness(.98)}
-.es-adoptado .tarjeta__resumen{opacity:.75}
+/* (le résumé d'un animal adopté garde son contraste : seule la photo est grisée) */
 
 .ficha__adoptado{
   display:grid;gap:10px;justify-items:start;margin-top:26px;padding:20px 22px;
@@ -848,6 +851,10 @@ p{margin:0}
 .ficha__adoptado h4{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:800;font-size:1.25rem;margin:0}
 .ficha__adoptado h4 svg{width:24px;height:24px;flex:none}
 .ficha__adoptado p{font-weight:700;color:var(--tinta-60)}
+
+/* Visiteur anglophone : la page est prérendue en espagnol ; on masque ces zones le temps que le
+   JavaScript les traduise (sans « éclair » d'espagnol). La classe est posée par le <head> et retirée par app.js. */
+html.pre-en [data-i18n], html.pre-en [data-i18n-html], html.pre-en #tira, html.pre-en #rejilla, html.pre-en #conteo{visibility:hidden}
 
 /* Les filtres taille / énergie disparaissent quand « Chats » est choisi. */
 .filtros__grupo[hidden]{display:none}

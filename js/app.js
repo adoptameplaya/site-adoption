@@ -109,12 +109,18 @@ function rangoDonacion(especie) {
 function fotoPrincipal(a) {
   return (a.fotos && a.fotos.length ? a.fotos[0] : a.foto) || '';
 }
+/* Cartes et bande n'ont besoin que de la petite image (le build l'ajoute en « miniatura » quand elle existe) */
+const fotoTarjeta = a => a.miniatura || fotoPrincipal(a);
 
 function pintarTira() {
   const cont = $('#tira');
+  /* El build ya escribió la tira en español en el HTML : no se repinta (evita parpadeo y salto de página). */
+  const yaPuesta = cont.dataset.pre === IDIOMA;
+  delete cont.dataset.pre;
+  if (yaPuesta) return;
   cont.innerHTML = ANIMALES.filter(a => !a.adoptado).slice(0, 5).map(a => `
     <a class="capsula" href="#adoptar" data-abrir="${a.id}">
-      <img class="capsula__foto" src="${esc(fotoPrincipal(a))}" alt="${esc(a.nombre)}" loading="eager" width="160" height="160">
+      <img class="capsula__foto" src="${esc(fotoTarjeta(a))}" alt="" loading="eager" width="160" height="160">
       <span class="capsula__nombre">${esc(a.nombre)}</span>
     </a>`).join('');
 }
@@ -147,7 +153,7 @@ function tarjeta(a) {
       <span class="tarjeta__marco">
         ${a.adoptado ? selloAdoptado(a)
           : (a.urgente ? `<span class="tarjeta__urgente">${esc(t('cat.urgente'))}</span>` : '')}
-        <img src="${esc(fotoPrincipal(a))}" alt="${esc(a.nombre)}" loading="lazy" width="300" height="300">
+        <img src="${esc(fotoTarjeta(a))}" alt="${esc(t('cat.foto_de', { nombre: a.nombre }))}" loading="lazy" width="300" height="300">
       </span>
       <span class="tarjeta__nombre">${esc(a.nombre)}</span>
       <span class="tarjeta__meta">${esc(meta)}</span>
@@ -165,6 +171,10 @@ function pintarRejilla() {
   const rejilla = $('#rejilla');
 
   $('#conteo').textContent = lista.length === 1 ? t('cat.conteo_uno') : t('cat.conteo', { n: lista.length });
+
+  const yaPuesta = rejilla.dataset.pre === IDIOMA;      // cartas escritas por el build : se conservan la primera vez
+  delete rejilla.dataset.pre;
+  if (yaPuesta) return;
 
   rejilla.innerHTML = lista.length
     ? lista.map(tarjeta).join('')
@@ -686,6 +696,7 @@ async function iniciar() {
     $('#rejilla').replaceWith(aviso());
     $('#conteo').textContent = t('err.datos_t');
     aplicarTraduccion();
+    document.documentElement.classList.remove('pre-en');
     return;
   }
 
@@ -704,6 +715,7 @@ async function iniciar() {
   conectarFicha();
   conectarPedido();
   conectarInterfaz();
+  document.documentElement.classList.remove('pre-en');
 }
 
 document.addEventListener('DOMContentLoaded', iniciar);
