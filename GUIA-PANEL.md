@@ -1,6 +1,6 @@
 # Cómo cambiar los animales del sitio
 
-Esta guía es para la asociación. No hace falta saber de computadoras: se hace desde
+Esta guía es para quien cuida el sitio de Adopta Me Playa. No hace falta saber de computadoras: se hace desde
 el celular o la compu, en una página con el mismo aspecto que la ficha del sitio.
 
 ---
@@ -13,7 +13,7 @@ el celular o la compu, en una página con el mismo aspecto que la ficha del siti
 3. Verás las tarjetas de **Perros** y de **Gatos**.
 
 Si te dice que tu cuenta no tiene permiso, pídele a quien administra el sitio
-que te invite como colaborador de la asociación.
+que te invite como colaborador del sitio.
 
 ---
 
@@ -78,11 +78,24 @@ corrija.
 
 ---
 
+## Cambiar el orden de las fichas
+
+En la lista de **Perros** o **Gatos**, toca **Ordenar las fichas**. Verás a todos los animales (perros y gatos juntos), igual que en el sitio:
+
+- **Arrastra** una ficha con los **seis puntitos** de la izquierda y suéltala donde quieras, como al mover las apps del celular. También puedes usar las **flechas** ▲ ▼ de la derecha.
+- Las **cinco primeras** salen además en la franja de arriba de la página: una línea punteada marca hasta dónde llega.
+- Los animales **ya adoptados** van siempre al final; no se pueden subir.
+- Toca **Guardar el orden**. El sitio se actualiza solo en unos minutos. Si sales sin guardar, te avisa.
+
+Un animal nuevo aparece **primero** hasta que lo cambies de lugar.
+
+---
+
 ## Consejos para las fotos
 
 - Cuadradas o casi, con el animal centrado y mirando a la cámara.
 - Hasta 6 fotos por animal.
-- No hace falta reducirlas ni renombrarlas: el panel lo hace.
+- No hace falta reducirlas ni renombrarlas: el panel lo hace solo. Cada foto se aligera antes de subir (máximo 1400 px y unos 300 KB, aunque la foto original pese varios MB) y te avisa cuánto se redujo, para que el sitio siga rápido.
 
 ---
 
@@ -100,4 +113,4 @@ corrija.
 ## Otros datos del sitio
 
 El WhatsApp, las cuentas para donaciones, los textos de «Apoyarnos» y demás datos
-de la asociación no se cambian desde este panel: pídeselo a quien administra el sitio.
+del sitio no se cambian desde este panel: pídeselo a quien administra el sitio.

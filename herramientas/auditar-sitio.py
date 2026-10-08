@@ -127,6 +127,13 @@ for pagina in ("/", "/aviso-de-privacidad.html", "/cuestionario.html", "/gracias
     else:
         ok(f"{pagina} : aucun reste du modèle")
 
+# vocabulaire : Adopta Me Playa est une rescatista independiente (ni « asociación » ni A.C.), et Mercado Pago a été retiré
+VOCAB = re.compile(r"asociaci[oó]n|association|\bA\.C\.|Mercado ?Pago|CLABE", re.I)
+for pagina in ("/", "/aviso-de-privacidad.html", "/cuestionario.html", "/gracias.html", "/js/i18n.js", "/js/app.js", "/data/config.json"):
+    m = VOCAB.search(texto(get(pagina)[2]))
+    if m: bad(f"{pagina} contient « {m.group(0)} » (vocabulaire : rescatista independiente ; Mercado Pago retiré)")
+    else: ok(f"{pagina} : vocabulaire conforme (rescatista independiente, sans Mercado Pago)")
+
 # ───────────────────────────── 4. en-têtes et compression
 sec("4. En-têtes de sécurité, cache, compression")
 s, h, _ = get("/")
@@ -179,7 +186,7 @@ for a in animales:
             if not a.get(k): warn(f"{nom} : {k} manquant")
     if not (a.get("edad") or a.get("edad_texto")): warn(f"{nom} : âge manquant")
     historias.setdefault(es.get("historia", ""), []).append(nom)
-    if re.search(r"refugio|shelter", json.dumps(es | en, ensure_ascii=False), re.I): warn(f"{nom} : le texte parle encore d'un « refugio / shelter »")
+    if re.search(r"refugio|shelter|asociaci[oó]n|association", json.dumps(es | en, ensure_ascii=False), re.I): warn(f"{nom} : le texte parle encore d'un « refugio / shelter / asociación »")
     for ph in a.get("fotos", []):
         st, hh, _ = get(ph if ph.startswith("/") else "/" + ph, method="HEAD", gz=False)
         kb = int(hh.get("content-length", 0)) // 1024
@@ -195,20 +202,13 @@ for a in animales:
 sec("7. Configuration affichée au public")
 s, h, b = get("/data/config.json"); C = json.loads(b)
 d = C.get("donaciones", {})
-pp = d.get("paypal", {}); mp = d.get("mercadopago", {}); wi = d.get("wise", {})
-def clabe_valide(c):
-    if not re.fullmatch(r"\d{18}", str(c)): return False
-    pesos = [3, 7, 1] * 6
-    return (10 - sum((int(x) * pesos[i]) % 10 for i, x in enumerate(c[:17])) % 10) % 10 == int(c[17])
+pp = d.get("paypal", {}); wi = d.get("wise", {})
 if pp.get("activo"):
     if not pp.get("url") or re.fullmatch(r"https://paypal\.me/?", pp["url"]): bad("PayPal : lien vide ou sans identifiant → mène à la page d'accueil de PayPal")
     else: ok(f"PayPal : {pp['url']}")
-if mp.get("activo"):
-    if clabe_valide(mp.get("clabe", "")) and mp.get("titular"): ok(f"Mercado Pago : CLABE valide (clé de contrôle), bénéficiaire « {mp['titular']} »")
-    else: bad("Mercado Pago : CLABE absente/invalide ou bénéficiaire manquant")
 if wi.get("activo"):
     if wi.get("url"): ok(f"Wise : {wi['url']}")
-    else: warn("Wise activé sans lien : le bloc renvoie vers l'e-mail de l'association")
+    else: warn("Wise activé sans lien : le bloc renvoie vers l'e-mail d'Adopta Me Playa")
 if not C.get("redes", {}).get("instagram"): info("pas d'Instagram renseigné (l'icône est masquée)")
 if not C.get("redes", {}).get("facebook"): warn("pas de Facebook renseigné")
 form = C.get("solicitud", {}).get("formularios", {})
@@ -239,6 +239,12 @@ if A.repo:
     sobran = [p for p in (R / "img/animales").glob("*") if p.is_file() and p.name not in refs_foto and not p.name.startswith(".")]
     if sobran: warn(f"{len(sobran)} photos non utilisées dans img/animales (≈ {sum(p.stat().st_size for p in sobran)//1024} Ko publiés pour rien) : " + ", ".join(sorted(p.name for p in sobran)[:8]))
     else: ok("aucune photo orpheline")
+    # poids : le panneau réduit chaque photo (max 1400 px, ≤ 300 Ko) ; on vérifie que rien de lourd ne s'est glissé
+    fotos = [p for p in (R / "img/animales").glob("*") if p.is_file() and not p.name.startswith(".")]
+    pesadas = sorted((p for p in fotos if p.stat().st_size > 350 * 1024), key=lambda p: -p.stat().st_size)
+    total = sum(p.stat().st_size for p in fotos)
+    if pesadas: warn(f"{len(pesadas)} photo(s) de plus de 350 Ko (ralentissent le site) : " + ", ".join(f"{p.name} ({p.stat().st_size // 1024} Ko)" for p in pesadas[:5]))
+    else: ok(f"toutes les photos ≤ 350 Ko ({len(fotos)} fichiers, {total / 1048576:.1f} Mo en tout, la plus lourde : {max((p.stat().st_size for p in fotos), default=0) // 1024} Ko)")
     i18n = (R / "js/i18n.js").read_text(encoding="utf-8")
     es_b, en_b = i18n.split("\n  en: {")[0], i18n.split("\n  en: {")[1]
     k_es, k_en = set(re.findall(r'^\s+"([^"]+)":', es_b, re.M)), set(re.findall(r'^\s+"([^"]+)":', en_b, re.M))

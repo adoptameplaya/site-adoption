@@ -1,6 +1,6 @@
 # Administration et déploiement — O2switch
 
-L'association gère ses fiches depuis **`/admin/`** : un formulaire qui reprend la
+Adopta Me Playa gère ses fiches depuis **`/admin/`** : un formulaire qui reprend la
 fiche du site (mêmes couleurs, même disposition). Il remplit en **espagnol
 seulement** ; l'anglais est traduit automatiquement à la publication.
 
@@ -43,7 +43,7 @@ GitHub Actions est gratuit sur un dépôt public.
 ## 1. Côté O2switch (cPanel)
 
 > ⚠️ **Cet hébergement porte déjà d'autres sites** (wptonyoo.fr, dans `public_html`).
-> Le site de l'association a **son propre dossier**, jamais `public_html`.
+> Le site de Adopta Me Playa a **son propre dossier**, jamais `public_html`.
 
 1. **Brancher le domaine** : cPanel → **Domaines** (« Domaines Configurés ») →
    *Configurer un nom de domaine* :
@@ -164,7 +164,7 @@ Quand il n'y a rien de nouveau, le script ne fait rien et n'écrit rien.
 
 Dès lors, **chaque push sur `main`** (y compris ceux du panel) se retrouve en ligne.
 
-## 6. Donner l'accès à l'association
+## 6. Donner l'accès à Adopta Me Playa
 
 Chaque personne a besoin d'un **compte GitHub gratuit** (avec double authentification),
 puis : dépôt → *Settings → Collaborators → Add people* (accès en écriture). Elle se
@@ -172,7 +172,7 @@ connecte sur `/admin/` avec **Entrer avec GitHub**. Le panel vérifie qu'elle a 
 droit d'écrire ; le script de traduction fait la même vérification, donc personne
 d'extérieur ne peut consommer le quota DeepL.
 
-Le guide à lui remettre : [GUIA-ASOCIACION.md](GUIA-ASOCIACION.md).
+Le guide à lui remettre : [GUIA-PANEL.md](GUIA-PANEL.md).
 
 ---
 
@@ -254,7 +254,7 @@ personnel). Les erreurs y sont écrites avec l'heure.
 |---|---|
 | La fiche est enregistrée mais le site ne change pas | 1) onglet *Actions* du dépôt : la construction a-t-elle échoué ? 2) le journal du serveur : le cron tourne-t-il ? |
 | Journal : `no se pudo clonar … rama despliegue` | la première construction GitHub n'a pas eu lieu : lancer *Construir el sitio* |
-| Journal : `ya contiene un sitio` ou `public_html … se niega` | **le garde-fou a fait son travail** : le dossier visé n'est pas celui de l'association. Vérifier `DEST=` dans le script. Rien n'a été modifié |
+| Journal : `ya contiene un sitio` ou `public_html … se niega` | **le garde-fou a fait son travail** : le dossier visé n'est pas celui de Adopta Me Playa. Vérifier `DEST=` dans le script. Rien n'a été modifié |
 | Journal : `git no está disponible` / `rsync no está disponible` | outil absent du serveur : le signaler au support o2switch |
 | `/api/auth.php` s'affiche comme du texte ou se télécharge | PHP n'est pas actif pour ce domaine (étape 1.3). **Ne pas continuer** |
 | `/api/auth` renvoie 404 | `.htaccess` absent du dossier web, ou `mod_rewrite` inactif |

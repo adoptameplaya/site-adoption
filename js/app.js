@@ -76,7 +76,7 @@ function enlaceWA(mensaje) {
 const esc = s => String(s).replace(/[&<>"']/g, c =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-/* La asociación escribe solo en español; el inglés lo traduce el panel al publicar
+/* Adopta Me Playa escribe solo en español; el inglés lo traduce el panel al publicar
    y puede faltar si el servicio de traducción no respondió ese día. Un texto en
    español vale más que un hueco en la ficha. */
 const txt = (a, campo) => a?.[IDIOMA]?.[campo] || a?.es?.[campo] || '';
@@ -551,29 +551,6 @@ function pintarApoyo() {
       </article>`);
   }
 
-  if (d.mercadopago?.activo) {
-    const filas = [
-      ['ap.beneficiario', d.mercadopago.titular, false],
-      ['ap.clabe', d.mercadopago.clabe, true]
-    ];
-    bloques.push(`
-      <article class="medio">
-        <span class="medio__icono" style="background:var(--coral)"><svg aria-hidden="true"><use href="#i-cartera"></use></svg></span>
-        <h3>${esc(t('ap.mp_t'))}</h3>
-        <p class="medio__cuerpo">${esc(t('ap.mp_d'))}</p>
-        <div class="medio__datos">
-          ${filas.map(([k, v, copiable]) => `
-            <div class="dato-copia">
-              <div class="dato-copia__k">${esc(t(k))}</div>
-              <div class="dato-copia__fila">
-                <span class="dato-copia__v">${esc(v || '—')}</span>
-                ${copiable ? `<button class="copiar" type="button" data-copiar="${esc(v || '')}">${esc(t('ap.copiar'))}</button>` : ''}
-              </div>
-            </div>`).join('')}
-        </div>
-      </article>`);
-  }
-
   $('#medios').innerHTML = bloques.join('');
 
 
@@ -584,25 +561,6 @@ function pintarApoyo() {
   $('#wa-voluntario').href = enlaceWA(t('wa.voluntario'));
   $('#wa-hogar').href = enlaceWA(t('wa.hogar'));
   $('#wa-flotante').href = enlaceWA(t('wa.general'));
-}
-
-function conectarCopiar() {
-  document.addEventListener('click', async e => {
-    const btn = e.target.closest('[data-copiar]');
-    if (!btn) return;
-    try {
-      await navigator.clipboard.writeText(btn.dataset.copiar);
-    } catch {
-      const ta = document.createElement('textarea');
-      ta.value = btn.dataset.copiar;
-      document.body.append(ta); ta.select();
-      document.execCommand('copy'); ta.remove();
-    }
-    const antes = btn.textContent;
-    btn.textContent = t('ap.copiado');
-    btn.dataset.copiado = 'si';
-    setTimeout(() => { btn.textContent = antes; delete btn.dataset.copiado; }, 1800);
-  });
 }
 
 /* =========================================================
@@ -630,9 +588,8 @@ function pintarRefugio() {
 
   const ld = {
     '@context': 'https://schema.org',
-    '@type': 'NGO',
+    '@type': 'Organization',
     name: r.nombre,
-    legalName: r.razon_social,
     address: {
       '@type': 'PostalAddress',
       addressLocality: r.ciudad,
@@ -745,7 +702,6 @@ async function iniciar() {
 
   conectarFiltros();
   conectarFicha();
-  conectarCopiar();
   conectarPedido();
   conectarInterfaz();
 }

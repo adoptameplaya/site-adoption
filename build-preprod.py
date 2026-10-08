@@ -187,12 +187,12 @@ def bandeau():
         "/* Bandeau de préprod. Ce fichier n'existe que dans la version de démonstration. */\n"
         "Object.assign(window.TEXTOS.es, {\n"
         '  "demo.t": "Sitio de demostración.",\n'
-        '  "demo.d": "Los animales, el nombre de la asociación y los datos bancarios son de ejemplo. '
+        '  "demo.d": "Los animales, el nombre del proyecto y los datos de donación son de ejemplo. '
         'Nada de esta página es real todavía."\n'
         "});\n"
         "Object.assign(window.TEXTOS.en, {\n"
         '  "demo.t": "Demo site.",\n'
-        '  "demo.d": "The animals, the association name and the bank details are placeholders. '
+        '  "demo.d": "The animals, the project name and the donation details are placeholders. '
         'Nothing on this page is real yet."\n'
         "});\n"
     )
@@ -348,15 +348,6 @@ FICHES_EXEMPLE = {"coco", "rocky", "canela", "bruno", "frida"}
 RESTES_MODELE = ("Patitas del Caribe", "patitasdelcaribe", "Calle 34 Norte", "ejemplo.org", "PENDIENTE-LEGAL")
 
 
-def clabe_valide(clabe):
-    """CLABE bancaire mexicaine : 18 chiffres, le dernier est une clé de contrôle (poids 3-7-1)."""
-    if not re.fullmatch(r"\d{18}", str(clabe)):
-        return False
-    pesos = [3, 7, 1] * 6
-    total = sum((int(c) * pesos[i]) % 10 for i, c in enumerate(clabe[:17]))
-    return (10 - total % 10) % 10 == int(clabe[17])
-
-
 def verificar_produccion():
     """MODO=produccion : refuse de construire tant qu'il reste des données de démonstration.
 
@@ -374,12 +365,6 @@ def verificar_produccion():
     pp = d.get("paypal", {})
     if pp.get("activo") and (not pp.get("url") or re.fullmatch(r"https://paypal\.me/?", pp["url"])):
         problemas.append("don paypal : lien vide ou sans identifiant (à renseigner, ou « activo »: false)")
-    mp = d.get("mercadopago", {})
-    if mp.get("activo"):
-        if not clabe_valide(mp.get("clabe", "")):
-            problemas.append("don Mercado Pago : CLABE absente ou invalide (18 chiffres, clé de contrôle)")
-        if not mp.get("titular"):
-            problemas.append("don Mercado Pago : bénéficiaire absent")
     wi = d.get("wise", {})
     if wi.get("activo") and not wi.get("url"):
         problemas.append("don wise : lien vide (à renseigner, ou « activo »: false)")

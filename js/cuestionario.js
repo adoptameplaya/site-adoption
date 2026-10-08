@@ -197,13 +197,29 @@ function conectarEnvio() {
       location.href).href;
 
     // le champ email doit porter ce nom exact : FormSubmit y lit le destinataire
+    form.querySelectorAll('input[type="hidden"][name="email"]').forEach(n => n.remove());   // pas de doublon après un retour arrière
     const oculto = document.createElement('input');
     oculto.type = 'hidden'; oculto.name = 'email'; oculto.value = email.value.trim();
     form.append(oculto);
 
+    /* Seul le texte complet (champ « Cuestionario ») part dans le correo. Les réponses une à une
+       (q01…, cases Sí/No, commentaires) et le nom de l'animal sont déjà dedans : on les désactive
+       pour que FormSubmit n'ajoute pas, en dessous, une seconde liste qui répète tout.
+       Un champ désactivé n'est pas envoyé. */
+    $$('#cue-secciones input, #cue-secciones textarea, input[name="Animal"]', form).forEach(el => { el.disabled = true; });
+
     estado.classList.add('oculto');
     boton.setAttribute('aria-busy', 'true');
     boton.querySelector('span').textContent = t('cue.enviando');
+  });
+
+  /* Retour arrière depuis « gracias » : le navigateur peut rendre la page telle quelle (champs désactivés,
+     bouton « Enviando… »). On remet tout en état. */
+  window.addEventListener('pageshow', ev => {
+    if (!ev.persisted) return;
+    $$('#cue-secciones input, #cue-secciones textarea', form).forEach(el => { el.disabled = false; });
+    boton.removeAttribute('aria-busy');
+    boton.querySelector('span').textContent = t('cue.enviar');
   });
 
   form.addEventListener('input', e => {

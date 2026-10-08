@@ -1,5 +1,5 @@
 /* =========================================================
-   Panel de la asociación — se apoya en css/style.css (mismos colores,
+   Panel de Adopta Me Playa — se apoya en css/style.css (mismos colores,
    mismas formas) y solo añade lo que el sitio público no tiene.
    La ficha del editor reutiliza las clases de la ficha real: lo que
    se ve aquí es lo que verá el visitante.
@@ -41,7 +41,7 @@
 .lista__cab{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
 .lista__tabs{display:flex;gap:8px;flex-wrap:wrap}
 .lista__n{font-weight:700;opacity:.6}
-.lista__nuevo{margin:22px 0 28px}
+.lista__botones{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 28px}
 .lista__pie{margin-top:30px}
 
 .carta{cursor:default}
@@ -275,3 +275,57 @@
 .ed__foto--entera #ed-foto-img{object-fit:contain}
 .ed__foto::after{z-index:2}
 .ed__foto-vacia{z-index:1}
+
+
+/* ---------- Ordenar las fichas (arrastrar y soltar) ---------- */
+.orden__ayuda{margin:10px 0 0;max-width:62ch}
+.orden__mini{width:1.05em;height:1.05em;vertical-align:-.15em}
+.orden{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;max-width:720px;position:relative}
+.orden__fila{
+  position:relative;display:grid;grid-template-columns:44px 26px 58px minmax(0,1fr) auto;align-items:center;gap:10px;
+  padding:9px 10px;background:var(--crema-2);border:var(--borde);border-radius:var(--r-md);box-shadow:var(--sombra-suave);
+  user-select:none;-webkit-user-select:none;
+}
+.orden__asa{
+  display:grid;place-items:center;width:44px;height:48px;padding:0;border:0;border-radius:var(--r-sm);
+  background:transparent;color:var(--tinta);cursor:grab;touch-action:none;
+}
+.orden__asa:hover{background:var(--arena)}
+.orden__asa:focus-visible{outline:3px solid var(--naranja);outline-offset:1px}
+.orden__asa svg{width:22px;height:22px}
+.orden__n{font-family:var(--display);font-weight:800;font-size:1.05rem;text-align:center;color:var(--tinta-60)}
+.orden__foto{width:58px;height:58px;border-radius:12px;border:2px solid var(--tinta);object-fit:cover;background:var(--arena);object-position:50% 28%}
+.orden__nombre{font-family:var(--display);font-weight:800;font-size:1.12rem;line-height:1.15;overflow-wrap:anywhere}
+.orden__meta{display:flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--tinta-60)}
+.orden__meta svg{width:15px;height:15px;flex:none}
+.orden__mover{display:grid;gap:6px}
+.orden__mover button{
+  width:38px;height:30px;padding:0;display:grid;place-items:center;border:2px solid var(--tinta);border-radius:10px;
+  background:var(--blanco);color:var(--tinta);cursor:pointer;
+}
+.orden__mover button:disabled{opacity:.3;cursor:default}
+.orden__mover button:not(:disabled):hover{background:var(--naranja)}
+.orden__mover svg{width:15px;height:15px}
+.orden__mover [data-sube] svg{transform:rotate(-90deg)}
+.orden__mover [data-baja] svg{transform:rotate(90deg)}
+.orden__fila--aparta{transition:transform .16s ease-out}
+.orden__fila--arrastre{z-index:6;background:var(--blanco);box-shadow:var(--sombra-dura);scale:1.02;cursor:grabbing}
+.orden__fila--arrastre .orden__asa{cursor:grabbing}
+.orden__fila--fija{background:var(--arena);opacity:.78;grid-template-columns:58px minmax(0,1fr) auto}
+.orden__etiqueta{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--tinta-60);padding-right:6px;text-align:right}
+/* corte : hasta aquí salen en la franja de la portada */
+.orden__fila--corte{margin-bottom:22px}
+.orden__fila--corte::after{
+  content:"Hasta aquí: franja de la portada";position:absolute;left:8px;right:8px;bottom:-19px;
+  font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-60);
+  border-top:2px dashed var(--tinta-60);padding-top:3px;text-align:center;pointer-events:none;
+}
+.orden__vivo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.orden__botones{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+@media (max-width:420px){
+  .orden__fila{grid-template-columns:40px 20px 50px minmax(0,1fr) auto;gap:6px;padding:8px}
+  .orden__asa{width:40px}
+  .orden__foto{width:50px;height:50px}
+  .orden__mover button{width:34px}
+}
+@media (prefers-reduced-motion:reduce){.orden__fila--arrastre{scale:1}}

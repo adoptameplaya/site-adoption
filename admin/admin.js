@@ -1,11 +1,11 @@
 /* =========================================================
-   Panel de la asociación — alta, edición y baja de fichas.
+   Panel de Adopta Me Playa — alta, edición y baja de fichas.
 
    Sin dependencias. Habla directamente con la API de GitHub usando el
    token que entrega el inicio de sesión. Cada publicación es UN solo
    commit (la ficha y sus fotos), que lanza la reconstrucción del sitio.
 
-   La asociación escribe en español. El inglés se traduce solo al publicar
+   Adopta Me Playa escribe en español. El inglés se traduce solo al publicar
    (api/traducir.php); si el servicio no está disponible, la ficha se
    publica igual y el sitio muestra el español en inglés.
    ========================================================= */
@@ -63,7 +63,7 @@ const RASGOS = [
 ];
 
 const SALUD = ['esterilizado', 'vacunado', 'desparasitado', 'cartilla', 'microchip'];
-/* La ficha tipo de la asociación: todo hecho salvo el microchip, que se marca caso por caso. */
+/* La ficha tipo: todo hecho salvo el microchip, que se marca caso por caso. */
 const SALUD_INICIAL = { esterilizado: true, vacunado: true, desparasitado: true, cartilla: true, microchip: false };
 const CAMPOS_TXT = ['raza', 'resumen', 'historia', 'aviso', 'edadTexto'];
 
@@ -95,7 +95,7 @@ function aviso(texto, tipo = '') {
 
 function mostrar(vista) {
   VISTA = vista;
-  for (const v of ['carga', 'entrada', 'lista', 'editor']) $(`#vista-${v}`).hidden = v !== vista;
+  for (const v of ['carga', 'entrada', 'lista', 'orden', 'editor']) $(`#vista-${v}`).hidden = v !== vista;
   $('#usuario').hidden = !TOKEN || vista === 'entrada' || vista === 'carga';
 }
 
@@ -162,7 +162,7 @@ const REPO = () => `/repos/${CFG.repo}`;
 async function verificarSesion() {
   const [u, repo] = await Promise.all([gh('/user'), gh(REPO())]);
   if (repo.permissions && !repo.permissions.push) {
-    const e = new Error(`La cuenta ${u.login} no tiene permiso para modificar el sitio. Pide que te inviten como colaborador de la asociación.`);
+    const e = new Error(`La cuenta ${u.login} no tiene permiso para modificar el sitio. Pide que te inviten como colaborador del sitio.`);
     e.status = 403; e.sinPermiso = true;
     throw e;
   }
@@ -371,6 +371,187 @@ function carta(f) {
 }
 
 /* =========================================================
+   Ordenar las fichas (arrastrar y soltar, como en el móvil)
+   El orden vive en el campo «orden» de cada ficha (de 10 en 10) ; el sitio lo respeta,
+   y los animales adoptados van siempre al final, pase lo que pase.
+   ========================================================= */
+let ORDEN = { inicial: '', sucio: false };
+const claveFicha = f => `${f.especie}/${f.id}`;
+const esFija = li => li?.classList.contains('orden__fila--fija');
+const filasOrden = () => [...$('#orden-lista').children];
+const activasOrden = () => filasOrden().filter(li => !esFija(li));
+
+function filaOrden(f) {
+  const d = f.datos, fija = !!d.adoptado;
+  const foto = (d.fotos && d.fotos[0]) || d.foto || '';
+  const sexo = d.sexo === 'macho' ? 'Macho' : d.sexo === 'hembra' ? 'Hembra' : '';
+  const meta = `<span class="orden__meta"><svg aria-hidden="true"><use href="#${f.especie === 'gatos' ? 'i-gato' : 'i-perro'}"></use></svg>${esc([f.especie === 'gatos' ? 'Gato' : 'Perro', sexo, edadES(d)].filter(Boolean).join(' · '))}</span>`;
+  const img = `<img class="orden__foto" src="${foto ? esc(srcFoto(foto)) : ''}" alt="" width="58" height="58" draggable="false">`;
+  return fija
+    ? `<li class="orden__fila orden__fila--fija" data-k="${esc(claveFicha(f))}">${img}<div><div class="orden__nombre">${esc(d.nombre)}</div>${meta}</div><span class="orden__etiqueta">Adoptado/a · siempre al final</span></li>`
+    : `<li class="orden__fila" data-k="${esc(claveFicha(f))}">
+        <button class="orden__asa" type="button" aria-label="Mover a ${esc(d.nombre)}: arrastra, o usa las flechas arriba y abajo del teclado"><svg aria-hidden="true"><use href="#i-asa"></use></svg></button>
+        <span class="orden__n"></span>${img}
+        <div><div class="orden__nombre">${esc(d.nombre)}</div>${meta}</div>
+        <div class="orden__mover">
+          <button type="button" data-sube aria-label="Subir a ${esc(d.nombre)}"><svg aria-hidden="true"><use href="#i-flecha"></use></svg></button>
+          <button type="button" data-baja aria-label="Bajar a ${esc(d.nombre)}"><svg aria-hidden="true"><use href="#i-flecha"></use></svg></button>
+        </div>
+      </li>`;
+}
+
+function abrirOrden() {
+  const todas = [...FICHAS].sort(porOrden);
+  $('#orden-lista').innerHTML = todas.filter(f => !f.datos.adoptado).map(filaOrden).join('') + todas.filter(f => f.datos.adoptado).map(filaOrden).join('');
+  ORDEN = { inicial: '', sucio: false };
+  refrescarOrden();
+  ORDEN.inicial = activasOrden().map(li => li.dataset.k).join('|');
+  $('#or-guardar').disabled = true;
+  $('#orden-vivo').textContent = '';
+  mostrar('orden');
+}
+
+/* números, flechas desactivadas en los extremos, corte de la franja de portada y botón «Guardar» */
+function refrescarOrden() {
+  const act = activasOrden();
+  act.forEach((li, i) => {
+    li.querySelector('.orden__n').textContent = i + 1;
+    li.querySelector('[data-sube]').disabled = i === 0;
+    li.querySelector('[data-baja]').disabled = i === act.length - 1;
+    li.classList.toggle('orden__fila--corte', i === 4 && act.length > 5);
+  });
+  ORDEN.sucio = act.map(li => li.dataset.k).join('|') !== ORDEN.inicial;
+  $('#or-guardar').disabled = !ORDEN.sucio;
+}
+
+/* anima a las demás fichas cuando una cambia de sitio (FLIP) */
+function conAnimacion(cambio, excluir) {
+  const filas = filasOrden().filter(x => x !== excluir);
+  const antes = new Map(filas.map(x => [x, x.getBoundingClientRect().top]));
+  cambio();
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  for (const x of filas) {
+    const d = antes.get(x) - x.getBoundingClientRect().top;
+    if (d) x.animate([{ transform: `translateY(${d}px)` }, { transform: 'none' }], { duration: 170, easing: 'ease-out' });
+  }
+}
+
+function anunciarOrden(li) {
+  const act = activasOrden();
+  $('#orden-vivo').textContent = `${li.querySelector('.orden__nombre').textContent}: posición ${act.indexOf(li) + 1} de ${act.length}.`;
+}
+
+function moverUno(li, sentido) {
+  const lista = li.parentElement;
+  if (sentido < 0) {
+    const prev = li.previousElementSibling;
+    if (!prev || esFija(prev)) return;
+    conAnimacion(() => lista.insertBefore(li, prev));
+  } else {
+    const next = li.nextElementSibling;
+    if (!next || esFija(next)) return;
+    conAnimacion(() => lista.insertBefore(li, next.nextElementSibling));
+  }
+  refrescarOrden();
+  anunciarOrden(li);
+}
+
+/* Arrastre con el puntero (ratón y dedo). Durante el arrastre NO se mueve nada en el documento
+   (mover un nodo hace que el navegador pierda el puntero, sobre todo en el móvil) : la ficha sigue
+   al dedo con una transformación y las demás se apartan con otra. Al soltar se reordena el listado. */
+let ARRASTRE = null;
+function colocarArrastre() {
+  const A = ARRASTRE, li = A.li, lista = li.parentElement;
+  const rel = (A.y - A.agarre) - lista.getBoundingClientRect().top;     // parte alta deseada, dentro del listado
+  li.style.transform = `translateY(${rel - li.offsetTop}px)`;
+  const centro = rel + li.offsetHeight / 2;
+  const otros = A.filas.filter(x => x !== li);
+  const destino = otros.filter(x => x.offsetTop + x.offsetHeight / 2 < centro).length;
+  if (destino === A.destino) return;
+  A.destino = destino;
+  A.nuevo = [...otros]; A.nuevo.splice(destino, 0, li);
+  A.nuevo.forEach((x, k) => {                                           // cada ficha va a la posición (hueco) que le toca
+    if (x === li) return;
+    const d = A.huecos[k] - x.offsetTop;
+    x.style.transform = d ? `translateY(${d}px)` : '';
+  });
+}
+function bucleArrastre() {
+  if (!ARRASTRE) return;
+  const y = ARRASTRE.y, h = innerHeight;
+  if (y < 90) { scrollBy(0, -Math.min(18, (90 - y) / 4 + 4)); colocarArrastre(); }
+  else if (y > h - 90) { scrollBy(0, Math.min(18, (y - (h - 90)) / 4 + 4)); colocarArrastre(); }
+  ARRASTRE.raf = requestAnimationFrame(bucleArrastre);
+}
+function empezarArrastre(e) {
+  const asa = e.target.closest('.orden__asa');
+  if (!asa || e.button > 0 || ARRASTRE) return;
+  const li = asa.closest('.orden__fila');
+  e.preventDefault();
+  try { asa.setPointerCapture(e.pointerId); } catch { /* sin captura : el arrastre sigue por los eventos del listado */ }
+  const filas = activasOrden();
+  ARRASTRE = {
+    li, id: e.pointerId, y: e.clientY, agarre: e.clientY - li.getBoundingClientRect().top, raf: 0,
+    filas, huecos: filas.map(x => x.offsetTop), destino: filas.indexOf(li), nuevo: filas
+  };
+  filas.forEach(x => { if (x !== li) x.classList.add('orden__fila--aparta'); });
+  li.classList.add('orden__fila--arrastre');
+  navigator.vibrate?.(8);
+  colocarArrastre();
+  ARRASTRE.raf = requestAnimationFrame(bucleArrastre);
+}
+function moverArrastre(e) {
+  if (!ARRASTRE || e.pointerId !== ARRASTRE.id) return;
+  ARRASTRE.y = e.clientY;
+  colocarArrastre();
+}
+function soltarArrastre(e) {
+  if (!ARRASTRE || (e.pointerId !== undefined && e.pointerId !== ARRASTRE.id)) return;
+  const { li, raf, filas, nuevo } = ARRASTRE;
+  cancelAnimationFrame(raf);
+  ARRASTRE = null;
+  const antes = li.getBoundingClientRect().top;
+  filas.forEach(x => { x.style.transform = ''; x.classList.remove('orden__fila--aparta'); });
+  li.classList.remove('orden__fila--arrastre');
+  const lista = li.parentElement, ancla = filasOrden().find(esFija) || null;
+  nuevo.forEach(x => lista.insertBefore(x, ancla));
+  const d = antes - li.getBoundingClientRect().top;                      // la ficha se posa suavemente en su hueco
+  if (d && !matchMedia('(prefers-reduced-motion: reduce)').matches) li.animate([{ transform: `translateY(${d}px)` }, { transform: 'none' }], { duration: 160, easing: 'ease-out' });
+  refrescarOrden();
+  anunciarOrden(li);
+}
+
+async function guardarOrden() {
+  const claves = activasOrden().map(li => li.dataset.k);
+  prog.abrir('Guardando el orden', ['Guardando el orden', 'Publicando en el sitio']);
+  $('#or-guardar').disabled = true;
+  let sha;
+  try {
+    prog.paso(0, 'curso');
+    await cargarFichas();                                   // datos frescos : no se pisa nada que otra persona haya cambiado
+    const frescas = new Map(FICHAS.map(f => [claveFicha(f), f]));
+    const nuevas = FICHAS.filter(f => !f.datos.adoptado && !claves.includes(claveFicha(f))).sort(porOrden).map(claveFicha);
+    const finales = [...nuevas, ...claves.filter(k => frescas.has(k) && !frescas.get(k).datos.adoptado)];
+    const cambios = [];
+    finales.forEach((k, i) => {
+      const f = frescas.get(k), nuevo = (i + 1) * 10;
+      if (f.datos.orden !== nuevo) cambios.push({ path: f.ruta, texto: JSON.stringify({ ...f.datos, orden: nuevo }, null, 2) + '\n' });
+    });
+    if (cambios.length) sha = await confirmarCambios(cambios, 'Cambia el orden de las fichas (panel)');
+    prog.paso(0, 'ok');
+    await cargarFichas();
+  } catch (e) { $('#or-guardar').disabled = false; return fallo(e); }
+
+  ORDEN.sucio = false;
+  if (!sha) { prog.paso(1, 'ok', 'Ya estaba así'); prog.nota('El orden no había cambiado.'); prog.cerrable(); $('#dlg-progreso').addEventListener('close', () => { location.hash = `#${TAB}`; }, { once: true }); return; }
+  prog.paso(1, 'curso');
+  prog.nota('Listo: el nuevo orden está guardado. El sitio se actualiza solo en unos minutos.');
+  prog.cerrable();
+  $('#dlg-progreso').addEventListener('close', () => { prog.cancelado = true; location.hash = `#${TAB}`; }, { once: true });
+  terminarPublicacion(sha);
+}
+
+/* =========================================================
    Editor — estado
    ========================================================= */
 function estadoNuevo(especie) {
@@ -513,8 +694,13 @@ function ajustarFotoEditor() {
 }
 window.addEventListener('resize', () => { if (VISTA === 'editor') ajustarFotoEditor(); });
 
-/* Reduce la foto antes de subirla: una foto de móvil pesa 4-8 MB y el sitio
-   solo necesita ~1400 px. Respeta la orientación EXIF. */
+/* Reduce la foto antes de subirla: una foto de móvil pesa 4-8 MB y el sitio solo necesita ~1400 px.
+   Respeta la orientación EXIF. Tope duro: ninguna foto sube por encima de FOTO_MAX_KB, aunque sea
+   muy detallada (se baja la calidad y, si hace falta, el tamaño, hasta llegar). */
+const FOTO_MAX_PX = 1400;
+const FOTO_MAX_KB = 300;
+const pesoTxt = n => n >= 1048576 ? `${(n / 1048576).toFixed(1).replace('.', ',')} MB` : `${Math.round(n / 1024)} KB`;
+
 async function procesarFoto(archivo) {
   let bmp;
   try {
@@ -527,21 +713,26 @@ async function procesarFoto(archivo) {
     });
   }
   const w0 = bmp.width || bmp.naturalWidth, h0 = bmp.height || bmp.naturalHeight;
-  const k = Math.min(1, 1400 / Math.max(w0, h0));
-  const cv = document.createElement('canvas');
-  cv.width = Math.round(w0 * k); cv.height = Math.round(h0 * k);
-  const cx = cv.getContext('2d');
-  cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
-  cx.drawImage(bmp, 0, 0, cv.width, cv.height);
-  const blob = await new Promise(ok => cv.toBlob(ok, 'image/jpeg', 0.84));
-  if (!blob) throw new Error('canvas vacío');
+  let escala = Math.min(1, FOTO_MAX_PX / Math.max(w0, h0)), calidad = 0.84, blob = null;
+  for (let intento = 0; intento < 9; intento++) {
+    const cv = document.createElement('canvas');
+    cv.width = Math.max(1, Math.round(w0 * escala)); cv.height = Math.max(1, Math.round(h0 * escala));
+    const cx = cv.getContext('2d');
+    cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
+    cx.drawImage(bmp, 0, 0, cv.width, cv.height);
+    blob = await new Promise(ok => cv.toBlob(ok, 'image/jpeg', calidad));
+    if (!blob) throw new Error('canvas vacío');
+    if (blob.size <= FOTO_MAX_KB * 1024 || Math.max(cv.width, cv.height) <= 800) break;
+    if (calidad > 0.62) calidad = Math.max(0.62, calidad - 0.08); else escala *= 0.85;
+  }
+  bmp.close?.();
   return blob;
 }
 
 async function añadirFotos(archivos) {
   const lista = [...archivos].filter(a => a.type.startsWith('image/') || /\.(jpe?g|png|webp|heic)$/i.test(a.name));
   if (!lista.length) { aviso('Eso no parece una foto.', 'error'); return; }
-  let fallos = 0;
+  let fallos = 0, antes = 0, despues = 0, hechas = 0;
   $('#ed-estado').textContent = 'Preparando las fotos…';
   for (const a of lista) {
     if (st.fotos.length >= MAX_FOTOS) { aviso(`Máximo ${MAX_FOTOS} fotos por animal.`, 'error'); break; }
@@ -549,9 +740,11 @@ async function añadirFotos(archivos) {
       const blob = await procesarFoto(a);
       st.fotos.push({ blob, url: URL.createObjectURL(blob) });
       st.sucio = true;
+      antes += a.size; despues += blob.size; hechas++;
     } catch { fallos++; }
   }
   $('#ed-estado').textContent = '';
+  if (hechas && !fallos) aviso(`${hechas === 1 ? 'Foto lista' : `${hechas} fotos listas`}: se aligeró de ${pesoTxt(antes)} a ${pesoTxt(despues)} para que el sitio siga rápido.`);
   if (fallos) aviso(fallos === 1 ? 'No pude leer una de las fotos. Prueba con otra (JPG o PNG).' : `No pude leer ${fallos} fotos. Prueba con JPG o PNG.`, 'error');
   pintarFotos();
   $('.ed__foto-vacia')?.classList.remove('ed__campo--error');
@@ -849,7 +1042,7 @@ function fallo(e) {
   if (li) li.dataset.e = 'error';
   const permiso = e.status === 403 || e.status === 404;
   prog.nota(permiso
-    ? 'GitHub no te deja guardar en este sitio. Revisa que tu cuenta tenga acceso de escritura al sitio de la asociación.'
+    ? 'GitHub no te deja guardar en este sitio. Revisa que tu cuenta tenga acceso de escritura al sitio.'
     : `No se pudo guardar: ${e.message}. No se perdió nada de lo que escribiste; inténtalo de nuevo.`);
   prog.cerrable();
 }
@@ -899,8 +1092,12 @@ function ruta() {
       IGNORAR_HASH = true; location.hash = HASH_OK; return;
     }
   }
+  if (VISTA === 'orden' && ORDEN.sucio && a !== 'ordenar') {
+    if (!confirm('Cambiaste el orden y no lo has guardado. ¿Salir y perderlo?')) { IGNORAR_HASH = true; location.hash = HASH_OK; return; }
+  }
   HASH_OK = location.hash;
 
+  if (a === 'ordenar') return abrirOrden();
   if (a === 'nuevo' && ESPECIES[b]) return abrirEditor(b, null);
   if (a === 'editar' && ESPECIES[b] && c) return abrirEditor(b, decodeURIComponent(c));
   if (ESPECIES[a]) TAB = a;
@@ -920,11 +1117,36 @@ function conectar() {
   $('#entrar').addEventListener('click', entrar);
   $('#salir').addEventListener('click', () => salir());
   window.addEventListener('hashchange', () => { if (IGNORAR_HASH) { IGNORAR_HASH = false; return; } if (TOKEN && VISTA !== 'carga') ruta(); });
-  window.addEventListener('beforeunload', e => { if (VISTA === 'editor' && st?.sucio) { e.preventDefault(); e.returnValue = ''; } });
+  window.addEventListener('beforeunload', e => { if ((VISTA === 'editor' && st?.sucio) || (VISTA === 'orden' && ORDEN.sucio)) { e.preventDefault(); e.returnValue = ''; } });
 
   /* lista */
   $$('[data-especie]').forEach(b => b.addEventListener('click', () => { location.hash = `#${b.dataset.especie}`; }));
   $('#nuevo').addEventListener('click', () => { location.hash = `#nuevo/${TAB}`; });
+  $('#ordenar').addEventListener('click', () => { location.hash = '#ordenar'; });
+
+  /* ordenar */
+  const olista = $('#orden-lista');
+  olista.addEventListener('pointerdown', empezarArrastre);
+  olista.addEventListener('pointermove', moverArrastre);
+  olista.addEventListener('pointerup', soltarArrastre);
+  olista.addEventListener('pointercancel', soltarArrastre);
+  olista.addEventListener('lostpointercapture', soltarArrastre);
+  olista.addEventListener('click', e => {
+    const li = e.target.closest('.orden__fila');
+    if (!li) return;
+    if (e.target.closest('[data-sube]')) moverUno(li, -1);
+    else if (e.target.closest('[data-baja]')) moverUno(li, 1);
+  });
+  olista.addEventListener('keydown', e => {
+    const asa = e.target.closest('.orden__asa');
+    if (!asa || (e.key !== 'ArrowUp' && e.key !== 'ArrowDown')) return;
+    e.preventDefault();
+    moverUno(asa.closest('.orden__fila'), e.key === 'ArrowUp' ? -1 : 1);
+    asa.focus();
+  });
+  $('#or-volver').addEventListener('click', () => { location.hash = `#${TAB}`; });
+  $('#or-cancelar').addEventListener('click', () => { location.hash = `#${TAB}`; });
+  $('#or-guardar').addEventListener('click', guardarOrden);
   $('#lista').addEventListener('click', e => {
     const b = e.target.closest('[data-borrar]');
     if (b) { const [esp, id] = b.dataset.borrar.split('/'); quitar(esp, id); }
