@@ -1,6 +1,0 @@
-# Le secours Decap charge son code depuis unpkg.com : la politique du panel
-# principal (admin/.htaccess) ne s'applique donc pas ici.
-<IfModule mod_headers.c>
-  Header always unset Content-Security-Policy
-  Header always set X-Robots-Tag "noindex, nofollow"
-</IfModule>

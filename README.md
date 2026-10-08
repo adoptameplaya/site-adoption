@@ -11,7 +11,7 @@ par Adopta Me Playa vivent dans deux fichiers JSON.
 Les fiches d'animaux se gèrent depuis `/admin/` (formulaire sur mesure, en
 espagnol, traduction anglaise automatique). Le site est construit par
 `build-preprod.py` puis publié sur O2switch par GitHub Actions
-(`.github/workflows/desplegar.yml`, `deploy-ftp.py`).
+(`.github/workflows/desplegar.yml`).
 
 - Mise en place complète : [ADMIN.md](ADMIN.md)
 - Guide à remettre à Adopta Me Playa (espagnol) : [GUIA-PANEL.md](GUIA-PANEL.md)
@@ -145,8 +145,9 @@ numéro** dans `index.html` (CSS + 2 scripts) et dans les deux `fetch()` de
 
 ## Déploiement
 
-Glisser-déposer le dossier sur Netlify. Aucune commande de build, dossier de
-publication = la racine. Prévoir un domaine et un certificat HTTPS.
+Automatique : chaque enregistrement sur la branche `main` (y compris ceux du panneau `/admin/`) déclenche
+GitHub Actions, qui construit le site (`build-preprod.py`) et le dépose dans la branche `despliegue` ; le serveur
+O2switch la récupère toutes les 2 minutes. Mise en place et dépannage : [ADMIN.md](ADMIN.md).
 
 ---
 
@@ -164,29 +165,18 @@ défilement doux n'y sont pas observables.
 
 ---
 
-## Version de préprod (Netlify)
+## Construction du site (préprod et production)
 
 ```bash
-python3 build-preprod.py
+python3 build-preprod.py          # → dist/preprod/ (préprod : bandeau « demostración » + noindex)
+MODO=produccion SITE_URL=https://adoptameplaya.org python3 build-preprod.py   # production
 ```
 
-Produit `dist/refugio-preprod.zip` — c'est **ce zip** qu'on dépose sur Netlify,
-pas le dossier de travail. Il diffère du site final sur trois points :
-
-- **`noindex` triple** : `robots.txt`, en-tête `X-Robots-Tag` via `netlify.toml`,
-  et balise `<meta name="robots">` sur les deux pages. Indispensable tant que la
-  page affiche des liens de don fictifs au nom d'une rescatista qui existe vraiment.
-- **Bandeau « sitio de demostración »** en haut de page, bilingue, injecté par
-  `js/demo.js`. Ce fichier n'existe que dans le build.
-- **Fichiers de travail exclus** : les `.md`, `servir.command` et le script de
-  build lui-même ne partent pas en ligne.
-
-Les fichiers source ne sont jamais modifiés par le script : le bandeau et le
-`noindex` n'existent que dans `dist/`.
-
-**Pour la mise en production**, quand les vraies données seront là : retirer
-l'appel à `bandeau()` et à `noindex()` dans `build-preprod.py`, et vider le
-`robots.txt`.
+C'est le dossier `dist/preprod/` qui est publié (par GitHub Actions) ; les fichiers source ne sont jamais modifiés.
+Différences de la préprod avec la production : `noindex` (robots.txt + balise meta) et le **bandeau**
+« sitio de demostración » injecté par `js/demo.js` (fichier qui n'existe que dans le build).
+En production le build **refuse** de se terminer tant qu'il reste des données de démonstration.
+Les fichiers de travail (`.md`, `servir.command`, le script de build lui-même) ne partent pas en ligne.
 
 ---
 

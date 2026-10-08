@@ -1,44 +1,35 @@
 #!/usr/bin/env python3
 """
-Génère dist/refugio-preprod.zip : la version à déposer sur Netlify
-tant que les vraies données du refuge ne sont pas arrivées.
+Construit le site dans dist/preprod/ (puis GitHub Actions le publie sur O2switch).
 
-Différences avec le site final :
-  - noindex partout (robots.txt + netlify.toml + balise meta)
-  - bandeau « sitio de demostración » en haut de page
-  - les fichiers de travail (.md, servir.command, ce script) sont exclus
+MODO=preprod (défaut) : bandeau « sitio de demostración » + noindex partout.
+MODO=produccion       : site public (robots.txt ouvert, plan du site) ; le build REFUSE de se
+                        terminer tant qu'il reste des données de démonstration (voir verificar_produccion).
+Dans les deux cas : texte espagnol prérendu dans index.html, miniatures, api/ (PHP) et .htaccess.
+Les fichiers de travail (.md, servir.command, ce script…) ne partent pas en ligne.
 
 Usage : python3 build-preprod.py
 
 Variables d'environnement :
-  MODO     preprod (défaut) | produccion
-  DESTINO  netlify (défaut) | o2switch
-           o2switch ajoute api/ (PHP) et .htaccess, et ne produit ni
-           _redirects ni _headers, qui ne servent qu'à Netlify.
-  SITE_URL adresse publique (https://adoptameplaya.org) : réglée dans le
-           canonical, dans la config du secours Decap
+  MODO      preprod (défaut) | produccion
+  SITE_URL  adresse publique (https://adoptameplaya.org) : réglée dans le canonical,
+            le plan du site et l'image de partage
 """
-import json, os, re, shutil, unicodedata, zipfile
+import json, os, re, shutil, unicodedata
 from pathlib import Path
 
 # preprod = bandeau de démo + noindex ; produccion = site public.
-# Sur Netlify, se règle dans Site settings → Environment variables.
+# Sur GitHub : Settings → Secrets and variables → Actions → Variables → MODO.
 MODO = os.environ.get("MODO", "preprod").strip().lower()
 PREPROD = MODO != "produccion"
 
-# netlify = ancien hébergement ; o2switch = hébergement définitif (PHP + .htaccess).
-DESTINO = os.environ.get("DESTINO", "netlify").strip().lower()
-O2 = DESTINO == "o2switch"
 SITE_URL = os.environ.get("SITE_URL", "").strip().rstrip("/")
 
 RACINE = Path(__file__).parent.resolve()
 DIST   = RACINE / "dist"
 BUILD  = DIST / "preprod"
-ZIP    = DIST / "refugio-preprod.zip"
 
-A_COPIER = ["index.html", "aviso-de-privacidad.html", "gracias.html", "cuestionario.html", "admin", "css", "js", "data", "img", "formularios"]
-if O2:
-    A_COPIER += ["api", ".htaccess"]
+A_COPIER = ["index.html", "aviso-de-privacidad.html", "gracias.html", "cuestionario.html", "admin", "css", "js", "data", "img", "formularios", "api", ".htaccess"]
 
 # Jamais dans le site publié : les secrets posés à la main sur le serveur,
 # et les scories de macOS.
@@ -62,10 +53,6 @@ def ajustar_url():
     """Règle l'adresse publique là où elle est écrite en dur."""
     if not SITE_URL:
         return
-    cfg = BUILD / "admin" / "decap" / "config.yml"
-    if cfg.is_file():
-        t = re.sub(r"(?m)^(\s*base_url:\s*).*$", lambda m: m.group(1) + SITE_URL, cfg.read_text(encoding="utf-8"))
-        cfg.write_text(t, encoding="utf-8")
     for page in BUILD.glob("*.html"):
         t = page.read_text(encoding="utf-8")
         n = t.replace("https://ejemplo.org", SITE_URL)
@@ -441,27 +428,17 @@ def verifier_cuestionario():
         print(f"  · questionnaire {especie} : {len(numeros)} questions, {len(secciones)} sections, ES/EN complets")
 
 
-def fichiers_netlify():
-    """robots.txt, _redirects et _headers du site publié.
-
-    On n'écrit PAS de netlify.toml ici : celui de la racine du dépôt décrit
-    déjà la construction, et en avoir deux rendait les redirections
-    silencieusement inopérantes. Les fichiers _redirects et _headers posés
-    dans le dossier publié, eux, sont sans ambiguïté.
-    """
+def robots_y_version():
+    """robots.txt et version.txt du site publié."""
     if PREPROD:
         robots = ("# Préprod : rien ne doit être indexé tant que les données sont fictives.\n"
                   "User-agent: *\n"
                   "Disallow: /\n")
-        cabeceras = ("/*\n"
-                     "  X-Robots-Tag: noindex, nofollow\n")
     else:
         robots = ("User-agent: *\n"
                   "Allow: /\n"
                   "Disallow: /admin/\n"
                   + (f"\nSitemap: {SITE_URL}/sitemap.xml\n" if SITE_URL else ""))
-        cabeceras = ("/admin/*\n"
-                     "  X-Robots-Tag: noindex, nofollow\n")
 
     (BUILD / "robots.txt").write_text(robots)
 
@@ -474,25 +451,8 @@ def fichiers_netlify():
     except Exception:
         sha = "?"
     (BUILD / "version.txt").write_text(
-        f"commit={sha or '?'}\nmode={'preprod' if PREPROD else 'produccion'}\ndestino={DESTINO}\n"
+        f"commit={sha or '?'}\nmode={'preprod' if PREPROD else 'produccion'}\ndestino=o2switch\n"
         f"construit={__import__('datetime').datetime.utcnow().isoformat(timespec='seconds')}Z\n"
-    )
-
-    if O2:
-        return   # sur O2switch, c'est le .htaccess qui fait ce travail
-
-    # Decap appelle ces deux chemins pour l'authentification GitHub.
-    (BUILD / "_redirects").write_text(
-        "/api/auth      /.netlify/functions/auth      200\n"
-        "/api/callback  /.netlify/functions/callback  200\n"
-    )
-
-    (BUILD / "_headers").write_text(
-        cabeceras +
-        "\n# Les JSON changent à chaque modification faite dans l'admin :\n"
-        "# ils ne doivent jamais rester en cache.\n"
-        "/data/*\n"
-        "  Cache-Control: public, max-age=0, must-revalidate\n"
     )
 
 
@@ -557,14 +517,6 @@ def verificar_produccion():
     print("  ✓ contrôle de production : aucune donnée de démonstration détectée")
 
 
-def zipper():
-    with zipfile.ZipFile(ZIP, "w", zipfile.ZIP_DEFLATED) as z:
-        for chemin in sorted(BUILD.rglob("*")):
-            if chemin.is_file() and not chemin.name.startswith("."):
-                z.write(chemin, chemin.relative_to(BUILD))
-    return ZIP
-
-
 if __name__ == "__main__":
     preparer()
     ensamblar_animales()
@@ -573,16 +525,12 @@ if __name__ == "__main__":
         noindex()
         bandeau()
     ajustar_url()
-    fichiers_netlify()
+    robots_y_version()
     sitemap()
     verifier_formularios()
     verifier_cuestionario()
     verificar_produccion()
-    print(f"  mode : {'préprod (noindex + bandeau)' if PREPROD else 'PRODUCTION'} · destino : {DESTINO}")
-    chemin = zipper()
-    poids = chemin.stat().st_size / 1024
-    with zipfile.ZipFile(chemin) as z:
-        fichiers = z.namelist()
-    print(f"✓ {chemin.relative_to(RACINE)} — {poids:.0f} Ko, {len(fichiers)} fichiers")
-    for f in fichiers:
-        print("   ", f)
+    fichiers = sorted(str(c.relative_to(BUILD)) for c in BUILD.rglob("*") if c.is_file() and not c.name.startswith("."))
+    peso = sum((BUILD / f).stat().st_size for f in fichiers) / 1024
+    print(f"  mode : {'préprod (noindex + bandeau)' if PREPROD else 'PRODUCTION'}")
+    print(f"✓ {BUILD.relative_to(RACINE)} — {peso:.0f} Ko, {len(fichiers)} fichiers")

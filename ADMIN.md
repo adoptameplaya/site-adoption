@@ -199,7 +199,6 @@ de recherche.
 | `herramientas/crear-pdf-cuestionario.py`, `herramientas/fuentes/`, `herramientas/sello-adopta-me.png` | générateur de ces PDF, polices Poppins (licence SIL OFL) et sello du logo |
 | `herramientas/servir-vista-previa.py` | sert `dist/preprod` sur http://127.0.0.1:8124 pour vérifier le site avant publication |
 | `.sitio-adoptameplaya` (dans le dossier web) | marque « ce dossier est géré par le script » |
-| `herramientas/desplegar-por-ftp.yml.ejemplo`, `deploy-ftp.py` | **non utilisés** : variante FTP, pour un autre hébergeur qui accepterait FTPS |
 
 ## Régénérer les PDF du questionnaire
 
@@ -227,17 +226,11 @@ La sortie est reproductible : sans changement de questions, le fichier généré
 - **Polices hébergées sur le site** (`css/fonts/` : Baloo 2 et Nunito, polices variables, alphabet latin, licence SIL OFL jointe) : plus de Google Fonts, donc pas de requête externe ni d'adresse IP envoyée à Google. `@font-face` est en tête de `css/style.css` ; préchargées dans le `<head>` ; cache d'un an dans `.htaccess`. Si on remplace un fichier, **changer son nom** (cache « immutable »). Un caractère hors alphabet latin prend la police de secours.
 - Mesure : https://pagespeed.web.dev (mobile) — avant : Performances 57, CLS 0,513 ; l'audit local contrôle aussi photos et miniatures.
 
-## Secours : Decap CMS
-
-L'ancien admin reste disponible sur **`/admin/decap/`** (même connexion GitHub). Aucun
-lien n'y mène : c'est un filet de sécurité si le panel tombe en panne.
-
 ## Tester sans rien publier
 
 ```bash
 python3 herramientas/probar-api.py          # scripts PHP : 56 contrôles (PHP ≥ 8.0 avec curl)
 python3 herramientas/probar-servidor.py     # script de mise à jour du serveur : 23 contrôles
-python3 herramientas/probar-despliegue.py   # variante FTP, non utilisée : 20 contrôles
 ```
 
 `herramientas/servidor-prueba.py` simule l'API GitHub et la traduction, sur une **copie**
@@ -275,9 +268,3 @@ personnel). Les erreurs y sont écrites avec l'heure.
 | « La cuenta … no tiene permiso » | la personne n'est pas collaboratrice du dépôt |
 | « Traducción no disponible » à la publication | clé DeepL absente/erronée, ou quota du mois épuisé. La fiche est publiée quand même |
 | Le `.htaccess` perd sa configuration PHP après une mise à jour | cPanel y avait écrit la version de PHP et le script l'a remplacé : la choisir à nouveau dans le *Sélecteur de version PHP* |
-
-## Après la bascule : retirer Netlify
-
-Une fois le domaine O2switch en service et testé, `netlify.toml` et le dossier
-`netlify/` ne servent plus et peuvent être supprimés ; le projet Netlify peut être
-mis en pause.

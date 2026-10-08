@@ -155,7 +155,7 @@ csp = h.get("content-security-policy", "")
 # ───────────────────────────── 5. chemins qui ne doivent PAS être servis
 sec("5. Protection des fichiers internes")
 for p in ("/.git/config", "/.git/HEAD", "/api/_comun.php", "/api/secrets.php", "/api/secrets.example.php", "/.htaccess", "/herramientas/",
-          "/.sitio-adoptameplaya", "/deploy-ftp.py", "/build-preprod.py", "/ADMIN.md", "/README.md", "/.github/workflows/desplegar.yml", "/netlify.toml", "/secrets-adoptameplaya.php"):
+          "/.sitio-adoptameplaya", "/build-preprod.py", "/ADMIN.md", "/README.md", "/.github/workflows/desplegar.yml", "/secrets-adoptameplaya.php"):
     s, _, b = get(p)
     if s in (401, 403, 404): ok(f"{p} → {s}")
     else: bad(f"{p} est ACCESSIBLE (HTTP {s})")
