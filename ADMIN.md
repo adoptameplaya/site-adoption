@@ -226,6 +226,17 @@ La sortie est reproductible : sans changement de questions, le fichier généré
 - **Polices hébergées sur le site** (`css/fonts/` : Baloo 2 et Nunito, polices variables, alphabet latin, licence SIL OFL jointe) : plus de Google Fonts, donc pas de requête externe ni d'adresse IP envoyée à Google. `@font-face` est en tête de `css/style.css` ; préchargées dans le `<head>` ; cache d'un an dans `.htaccess`. Si on remplace un fichier, **changer son nom** (cache « immutable »). Un caractère hors alphabet latin prend la police de secours.
 - Mesure : https://pagespeed.web.dev (mobile) — avant : Performances 57, CLS 0,513 ; l'audit local contrôle aussi photos et miniatures.
 
+## Brouillons (mode « en attente »)
+
+Une fiche avec `"borrador": true` dans son JSON est un **brouillon** : `build-preprod.py` ne la met
+pas dans `data/animales.json` et **retire du site publié** ses photos et miniatures (celles qu'aucune
+fiche publiée n'utilise). Le panel enregistre un brouillon avec seulement le nom, sans traduction ;
+« Publier les N à la fois » = **un seul commit** (donc un seul build), avec la même validation que la
+publication d'une fiche seule. Le brouillon est partagé entre appareils et personnes (c'est le JSON
+du dépôt). **Attention : le dépôt est public**, donc un brouillon n'est pas visible sur le site mais
+l'est sur GitHub. `herramientas/auditar-sitio.py` vérifie qu'aucun `borrador` n'est dans le JSON public
+et (avec `--repo`) que les photos des brouillons répondent 404.
+
 ## Tester sans rien publier
 
 ```bash

@@ -36,7 +36,7 @@ que te invite como colaborador del sitio.
      de decidir (por ejemplo, que es un perro muy fuerte). Sale en rojo.
    - **Salud:** ya vienen marcados esterilizado, vacunas, desparasitado y
      cartilla. Quita lo que aún no esté hecho y marca **microchip** si lo tiene.
-3. Toca **Publicar**.
+3. Toca **Publicar**. Si todavía no está lista, toca **Guardar borrador** (mira «Borradores» más abajo).
 
 Escribe **solo en español**. El inglés se traduce solo.
 
@@ -52,6 +52,7 @@ lista para publicarse.
   y toca **Guardar**. La ficha **sigue en el sitio**, pasa al final de la lista con
   una etiqueta verde «Adoptado/a», y quien la abre ve que ya encontró familia. Ya
   no sale en la portada ni se puede elegir en el formulario de adopción.
+- **Esconder un tiempo:** abre su ficha y toca **Pasar a borrador**. Deja de verse en el sitio, pero no se pierde nada: la tienes en la lista, en «Borradores».
 - **Quitar del todo** (por ejemplo, una ficha creada por error): toca el icono de
   la papelera de su tarjeta y confirma. Desaparece del sitio.
 
@@ -88,6 +89,20 @@ En la lista de **Perros** o **Gatos**, toca **Ordenar las fichas**. Verás a tod
 - Toca **Guardar el orden**. El sitio se actualiza solo en unos minutos. Si sales sin guardar, te avisa.
 
 Un animal nuevo aparece **primero** hasta que lo cambies de lugar.
+
+---
+
+## Borradores: preparar fichas sin publicarlas
+
+Un **borrador** es una ficha que guardas **sin que se vea en el sitio**. Sirve para empezarla hoy, completarla mañana y publicar varias juntas.
+
+- **Guardar un borrador:** en la ficha nueva toca **Guardar borrador**. Solo hace falta el **nombre**; lo demás puede quedar vacío. Puedes volver cuando quieras con **Editar**.
+- **Dónde están:** en la lista de **Perros** o **Gatos**, arriba, bajo el título **Borradores · no se ven en el sitio**. Cada uno dice si ya está **«Lista para publicar»** o qué **«Falta»**.
+- **Publicar uno:** ábrelo con **Editar** y toca **Publicar**.
+- **Publicar varios de una vez:** marca **Elegir** en cada borrador y, en la barra negra que aparece abajo, toca **Publicar los N a la vez**. El panel comprueba que **todos estén completos**; si a uno le falta algo, **no publica ninguno** y te dice cuál. El sitio se actualiza **una sola vez**, y las fichas publicadas salen **al principio**.
+- **Pasar una ficha publicada a borrador:** abre su ficha y toca **Pasar a borrador**.
+
+Una cosa que conviene saber: los borradores **no salen en la página**, pero el código del sitio está en GitHub, que es público. No escribas en un borrador nada que no quieras que alguien pueda ver allí (por ejemplo, datos personales de un adoptante).
 
 ---
 

@@ -286,6 +286,31 @@ def prerender_index():
           + ("" if (n1 and n2 and n3) else f"  ⚠ zones non trouvées (tira={n1}, rejilla={n2}, conteo={n3})"))
 
 
+def retirar_borradores(publicados, borradores):
+    """Une fiche « borrador » (champ borrador: true, écrit par le panneau) ne doit rien montrer sur le site :
+    ni la fiche (elle n'entre pas dans animales.json) ni ses photos (retirées du site publié, sauf si une fiche
+    publiée utilise la même). Les fichiers restent dans le dépôt, prêts à être publiés."""
+    if not borradores:
+        return
+    medios = BUILD / "img" / "animales"
+    usados = {unicodedata.normalize("NFC", r.rsplit("/", 1)[-1])
+              for a in publicados for r in (a.get("fotos") or [])}
+    usados |= {re.sub(r"\.jpe?g$", "-m.jpg", n, flags=re.I) for n in usados}
+    quitadas = 0
+    for a in borradores:
+        for r in (a.get("fotos") or []):
+            nombre = unicodedata.normalize("NFC", r.rsplit("/", 1)[-1])
+            for n in (nombre, re.sub(r"\.jpe?g$", "-m.jpg", nombre, flags=re.I)):
+                if n in usados:
+                    continue
+                for p in medios.glob("*"):
+                    if unicodedata.normalize("NFC", p.name) == n:
+                        p.unlink()
+                        quitadas += 1
+    print(f"  brouillons exclus du site : {len(borradores)} ({', '.join(str(a.get('nombre')) for a in borradores)})"
+          + f" · {quitadas} fichier(s) photo retiré(s) du site publié")
+
+
 def ensamblar_animales():
     """Une fiche = un fichier, pour que l'admin offre une vraie liste par espèce.
     Le site, lui, ne lit qu'un seul animales.json : on l'assemble ici.
@@ -294,7 +319,7 @@ def ensamblar_animales():
     L'ordre vient du champ « orden », croissant, puis du nom.
     """
     import json
-    animales = []
+    animales, borradores = [], []
     for carpeta, especie in (("perros", "perro"), ("gatos", "gato")):
         origen = RACINE / "data" / "animales" / carpeta
         if not origen.is_dir():
@@ -304,7 +329,8 @@ def ensamblar_animales():
                 a = json.load(f)
             a["especie"] = especie
             a.setdefault("orden", 999)
-            animales.append(a)
+            (borradores if a.get("borrador") else animales).append(a)
+    retirar_borradores(animales, borradores)
 
     animales.sort(key=lambda a: (a.get("orden", 999), a.get("nombre", "")))
     sanear_fotos(animales)

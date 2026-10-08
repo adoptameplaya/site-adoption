@@ -10,7 +10,7 @@
 <link rel="preload" as="font" type="font/woff2" href="../css/fonts/baloo2-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../css/fonts/nunito-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../css/style.css?v=63">
-<link rel="stylesheet" href="admin.css?v=5">
+<link rel="stylesheet" href="admin.css?v=6">
 </head>
 <body class="panel">
 
@@ -87,6 +87,13 @@
       <button class="btn btn--claro" type="button" id="ordenar"><svg aria-hidden="true"><use href="#i-asa"></use></svg>Ordenar las fichas</button>
     </div>
     <ul class="rejilla" id="lista"></ul>
+    <div class="seleccion" id="seleccion" hidden>
+      <span class="seleccion__texto" id="seleccion-texto"></span>
+      <span class="seleccion__botones">
+        <button class="btn btn--claro" type="button" id="sel-quitar">Quitar la selección</button>
+        <button class="btn" type="button" id="sel-publicar">Publicar</button>
+      </span>
+    </div>
     <p class="panel__nota lista__pie">Los cambios tardan unos minutos en verse en el sitio.</p>
   </section>
 
@@ -107,6 +114,7 @@
   <section id="vista-editor" hidden>
     <button class="btn btn--fantasma ed__volver" type="button" id="ed-volver"><svg aria-hidden="true"><use href="#i-flecha"></use></svg>Volver a la lista</button>
     <h1 class="ed__titulo" id="ed-titulo">Nuevo perro</h1>
+    <p class="ed__borrador" id="ed-aviso-borrador" role="status" hidden><strong>Borrador.</strong> Este animal todavía no se ve en el sitio. Puedes guardarlo incompleto y publicarlo cuando esté listo.</p>
 
     <form id="ed-form" novalidate autocomplete="off">
       <div class="ficha__caja ed__caja">
@@ -239,6 +247,7 @@
       <div class="ed__barra">
         <span class="ed__estado" id="ed-estado" role="status"></span>
         <button class="btn btn--claro" type="button" id="ed-cancelar">Cancelar</button>
+        <button class="btn btn--claro" type="button" id="ed-borrador">Guardar borrador</button>
         <button class="btn" type="submit" id="ed-publicar">Publicar</button>
       </div>
     </form>
@@ -270,6 +279,6 @@
 <div class="panel__aviso" id="aviso" role="status" aria-live="polite" hidden></div>
 
 <script src="config.js?v=1"></script>
-<script src="admin.js?v=6"></script>
+<script src="admin.js?v=8"></script>
 </body>
 </html>

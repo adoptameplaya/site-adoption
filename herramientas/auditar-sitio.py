@@ -170,6 +170,8 @@ s, h, b = get("/data/animales.json")
 try: animales = json.loads(b)["animales"]; ok(f"{len(animales)} fiches lisibles ({sum(a['especie']=='perro' for a in animales)} chiens, {sum(a['especie']=='gato' for a in animales)} chats)")
 except Exception as e: bad(f"animales.json illisible : {e}"); animales = []
 EJEMPLO = {"coco", "rocky", "canela", "bruno", "frida"}
+borr_pub = [a.get("nombre", "?") for a in animales if "borrador" in a]
+(bad if borr_pub else ok)("aucun brouillon dans le JSON public" if not borr_pub else f"brouillon(s) publié(s) sur le site : {', '.join(borr_pub)}")
 ids = [a.get("id") for a in animales]
 (ok if len(ids) == len(set(ids)) else bad)("identifiants uniques")
 ej = [a["nombre"] for a in animales if a.get("id") in EJEMPLO]
@@ -238,8 +240,19 @@ if A.repo:
     sec("8. Dépôt local")
     R = Path(A.repo)
     refs_foto = set()
+    borradores = []
+    fotos_borr, fotos_pub = set(), set()
     for f in R.glob("data/animales/*/*.json"):
-        for ph in json.loads(f.read_text(encoding="utf-8")).get("fotos", []): refs_foto.add(ph.lstrip("/").split("/")[-1])
+        d_ = json.loads(f.read_text(encoding="utf-8"))
+        if d_.get("borrador"): borradores.append(d_.get("nombre", f.stem))
+        for ph in d_.get("fotos", []):
+            refs_foto.add(ph.lstrip("/").split("/")[-1])
+            (fotos_borr if d_.get("borrador") else fotos_pub).add("/" + ph.lstrip("/"))
+    info(f"brouillons en attente dans le panneau : {len(borradores)}" + (f" ({', '.join(borradores)})" if borradores else ""))
+    # les photos d'un brouillon ne doivent pas être servies par le site (le dépôt GitHub, lui, est public)
+    for ph in sorted(fotos_borr - fotos_pub):
+        st_, _, _ = get(ph, method="HEAD", gz=False)
+        (ok if st_ == 404 else bad)(f"photo de brouillon {ph.split('/')[-1]} : HTTP {st_} " + ("(non publiée)" if st_ == 404 else "→ ELLE EST PUBLIQUE"))
     refs_foto |= {re.sub(r"\.jpe?g$", "-m.jpg", n, flags=re.I) for n in refs_foto}     # les miniatures dérivées
     sobran = [p for p in (R / "img/animales").glob("*") if p.is_file() and p.name not in refs_foto and not p.name.startswith(".")]
     if sobran: warn(f"{len(sobran)} photos non utilisées dans img/animales (≈ {sum(p.stat().st_size for p in sobran)//1024} Ko publiés pour rien) : " + ", ".join(sorted(p.name for p in sobran)[:8]))

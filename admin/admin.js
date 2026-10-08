@@ -336,33 +336,74 @@ async function iniciar() {
    ========================================================= */
 const porOrden = (a, b) => (a.datos.orden ?? 999) - (b.datos.orden ?? 999) || String(a.datos.nombre).localeCompare(b.datos.nombre);
 
+const claveFicha = f => `${f.especie}/${f.id}`;
+
+/* Qué le falta a una ficha ya guardada para poder publicarse : las mismas exigencias que validar() */
+function faltasDatos(f) {
+  const d = f.datos, falta = [];
+  if (!String(d.nombre || '').trim()) falta.push('el nombre');
+  if (!((d.fotos && d.fotos.length) || d.foto)) falta.push('una foto');
+  if (!d.sexo) falta.push('el sexo');
+  const hayEdad = d.edad !== null && d.edad !== undefined && d.edad !== '';
+  if (!hayEdad && !String(d.edad_texto?.es || '').trim()) falta.push('la edad');
+  if (f.especie === 'perros') {
+    if (!d.tamano) falta.push('el tamaño');
+    if (!d.energia) falta.push('el nivel de energía');
+  }
+  if (!String(d.es?.resumen || '').trim()) falta.push('el resumen');
+  if (!String(d.es?.historia || '').trim()) falta.push('su historia');
+  return falta;
+}
+
+/* Borradores elegidos en la lista (se conservan al cambiar entre Perros y Gatos) */
+const SELECCION = new Set();
+
+function actualizarSeleccion() {
+  const claves = new Set(FICHAS.filter(f => f.datos.borrador).map(claveFicha));
+  for (const k of [...SELECCION]) if (!claves.has(k)) SELECCION.delete(k);
+  const n = SELECCION.size;
+  $('#seleccion').hidden = n === 0;
+  $('#seleccion-texto').textContent = n === 1 ? '1 borrador elegido' : `${n} borradores elegidos`;
+  $('#sel-publicar').textContent = n === 1 ? 'Publicar este borrador' : `Publicar los ${n} a la vez`;
+}
+
 function pintarLista() {
-  const lista = FICHAS.filter(f => f.especie === TAB).sort(porOrden);
+  const todas = FICHAS.filter(f => f.especie === TAB).sort(porOrden);
+  const borr = todas.filter(f => f.datos.borrador), pub = todas.filter(f => !f.datos.borrador);
   for (const e of Object.keys(ESPECIES)) {
     $(`#n-${e}`).textContent = `(${FICHAS.filter(f => f.especie === e).length})`;
     $(`[data-especie="${e}"]`).setAttribute('aria-pressed', String(e === TAB));
   }
   $('#nuevo-texto').textContent = ESPECIES[TAB].nuevo;
 
-  $('#lista').innerHTML = lista.length
-    ? lista.map(carta).join('')
+  const grupo = t => `<li class="lista__grupo">${t}</li>`;
+  $('#lista').innerHTML = todas.length
+    ? (borr.length ? grupo(`Borradores · no se ven en el sitio (${borr.length})`) + borr.map(carta).join('') : '')
+      + (borr.length && pub.length ? grupo(`En el sitio (${pub.length})`) : '') + pub.map(carta).join('')
     : `<li class="vacio carta__vacia"><h3>${esc(ESPECIES[TAB].vacio)}</h3><p>Pulsa «${esc(ESPECIES[TAB].nuevo)}» para crear la primera ficha.</p></li>`;
+  actualizarSeleccion();
 }
 
 function carta(f) {
-  const d = f.datos;
+  const d = f.datos, borr = !!d.borrador, clave = claveFicha(f);
   const foto = (d.fotos && d.fotos[0]) || d.foto || '';
   const meta = [d.sexo === 'macho' ? 'Macho' : d.sexo === 'hembra' ? 'Hembra' : '', edadES(d),
     d.tamano ? d.tamano[0].toUpperCase() + d.tamano.slice(1) : ''].filter(Boolean).join(' · ');
-  return `<li class="${d.adoptado ? 'es-adoptado' : ''}"><article class="tarjeta carta">
+  const falta = borr ? faltasDatos(f) : [];
+  const estado = !borr ? '' : (falta.length
+    ? `<p class="carta__estado carta__estado--falta"><svg aria-hidden="true"><use href="#i-alerta"></use></svg><span>Falta: ${esc(falta.join(', '))}</span></p>`
+    : `<p class="carta__estado carta__estado--lista"><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Lista para publicar</span></p>`);
+  return `<li class="${[d.adoptado ? 'es-adoptado' : '', borr ? 'es-borrador' : ''].join(' ').trim()}"><article class="tarjeta carta">
     <span class="tarjeta__marco">
       ${d.adoptado ? `<span class="sello" style="--giro:${-(10 + [...String(d.id || d.nombre || '')].reduce((n, c) => n + c.charCodeAt(0), 0) % 7)}deg"><span class="sello__palabra">${d.sexo === 'hembra' ? 'Adoptada' : 'Adoptado'}</span><span class="sello__sub" aria-hidden="true">Adopta Me Playa</span></span>`
-        : (d.urgente ? '<span class="tarjeta__urgente">Urgente</span>' : '')}
+        : (borr ? '<span class="tarjeta__borrador">Borrador</span>' : (d.urgente ? '<span class="tarjeta__urgente">Urgente</span>' : ''))}
+      ${borr ? `<label class="carta__marcar"><input type="checkbox" data-marcar="${esc(clave)}" ${SELECCION.has(clave) ? 'checked' : ''} aria-label="Elegir a ${esc(d.nombre)} para publicar"><span>Elegir</span></label>` : ''}
       ${foto ? `<img src="${esc(srcFoto(foto))}" data-ruta="${esc(foto)}" alt="" loading="lazy" width="300" height="300">` : '<span class="carta__sin-foto">Sin foto</span>'}
     </span>
     <span class="tarjeta__nombre">${esc(d.nombre)}</span>
     <span class="tarjeta__meta">${esc(meta)}</span>
     <span class="tarjeta__resumen">${esc(d.es?.resumen || '')}</span>
+    ${estado}
     <div class="carta__acciones">
       <a class="btn" href="#editar/${f.especie}/${esc(f.id)}"><svg aria-hidden="true"><use href="#i-lapiz"></use></svg>Editar</a>
       <button class="btn btn--claro btn--icono" type="button" data-borrar="${f.especie}/${esc(f.id)}" aria-label="Quitar a ${esc(d.nombre)}"><svg aria-hidden="true"><use href="#i-papelera"></use></svg></button>
@@ -376,7 +417,6 @@ function carta(f) {
    y los animales adoptados van siempre al final, pase lo que pase.
    ========================================================= */
 let ORDEN = { inicial: '', sucio: false };
-const claveFicha = f => `${f.especie}/${f.id}`;
 const esFija = li => li?.classList.contains('orden__fila--fija');
 const filasOrden = () => [...$('#orden-lista').children];
 const activasOrden = () => filasOrden().filter(li => !esFija(li));
@@ -401,7 +441,7 @@ function filaOrden(f) {
 }
 
 function abrirOrden() {
-  const todas = [...FICHAS].sort(porOrden);
+  const todas = FICHAS.filter(f => !f.datos.borrador).sort(porOrden);      // los borradores no se ven en el sitio : no se ordenan
   $('#orden-lista').innerHTML = todas.filter(f => !f.datos.adoptado).map(filaOrden).join('') + todas.filter(f => f.datos.adoptado).map(filaOrden).join('');
   ORDEN = { inicial: '', sucio: false };
   refrescarOrden();
@@ -530,8 +570,8 @@ async function guardarOrden() {
     prog.paso(0, 'curso');
     await cargarFichas();                                   // datos frescos : no se pisa nada que otra persona haya cambiado
     const frescas = new Map(FICHAS.map(f => [claveFicha(f), f]));
-    const nuevas = FICHAS.filter(f => !f.datos.adoptado && !claves.includes(claveFicha(f))).sort(porOrden).map(claveFicha);
-    const finales = [...nuevas, ...claves.filter(k => frescas.has(k) && !frescas.get(k).datos.adoptado)];
+    const nuevas = FICHAS.filter(f => !f.datos.adoptado && !f.datos.borrador && !claves.includes(claveFicha(f))).sort(porOrden).map(claveFicha);
+    const finales = [...nuevas, ...claves.filter(k => frescas.has(k) && !frescas.get(k).datos.adoptado && !frescas.get(k).datos.borrador)];
     const cambios = [];
     finales.forEach((k, i) => {
       const f = frescas.get(k), nuevo = (i + 1) * 10;
@@ -559,7 +599,7 @@ function estadoNuevo(especie) {
   return {
     nuevo: true, especie, id: '', original: null, sucio: false,
     orden: ordenes.length ? Math.min(...ordenes) - 10 : 10,
-    nombre: '', sexo: '', edad: '', unidad: 'anos', peso: '', tamano: '', energia: '', urgente: false, adoptado: false,
+    nombre: '', sexo: '', edad: '', unidad: 'anos', peso: '', tamano: '', energia: '', urgente: false, adoptado: false, borrador: false,
     salud: { ...SALUD_INICIAL },
     es: { raza: '', resumen: '', historia: '', aviso: '', edadTexto: '' },
     en: { raza: '', resumen: '', historia: '', aviso: '', edadTexto: '' },
@@ -577,7 +617,7 @@ function estadoDesde(f) {
     nombre: d.nombre || '', sexo: d.sexo || '',
     edad: Number(d.edad) ? String(d.edad) : '', unidad: d.edad_unidad === 'meses' ? 'meses' : 'anos',
     peso: d.peso_kg ? String(d.peso_kg) : '', tamano: d.tamano || '', energia: d.energia || '',
-    urgente: !!d.urgente, adoptado: !!d.adoptado
+    urgente: !!d.urgente, adoptado: !!d.adoptado, borrador: !!d.borrador
   });
   for (const k of SALUD) s.salud[k] = !!d[k];
 
@@ -603,8 +643,11 @@ function abrirEditor(especie, id) {
   if (id && !f) { aviso('No encuentro esa ficha.', 'error'); location.hash = `#${especie}`; return; }
   TAB = especie;
   st = f ? estadoDesde(f) : estadoNuevo(especie);
-  $('#ed-titulo').textContent = f ? `Editar a ${f.datos.nombre}` : ESPECIES[especie].titulo;
-  $('#ed-publicar').textContent = f ? 'Guardar' : 'Publicar';
+  const esBorr = !!f?.datos.borrador, esVisible = !!f && !esBorr;
+  $('#ed-titulo').textContent = f ? (esBorr ? `Borrador de ${f.datos.nombre}` : `Editar a ${f.datos.nombre}`) : ESPECIES[especie].titulo;
+  $('#ed-publicar').textContent = esVisible ? 'Guardar' : 'Publicar';
+  $('#ed-borrador').textContent = esVisible ? 'Pasar a borrador' : 'Guardar borrador';
+  $('#ed-aviso-borrador').hidden = esVisible;               // ficha nueva o borrador : todavía no se ve en el sitio
   $('#ed-estado').textContent = '';
   rellenarForm();
   mostrar('editor');
@@ -891,7 +934,7 @@ function idUnico() {
 function construirJSON(id, rutasFotos) {
   const o = st.original || {};
   const conocidas = new Set(['orden', 'id', 'nombre', 'raza', 'edad', 'edad_unidad', 'sexo', 'edad_texto', 'peso_kg',
-    'tamano', 'energia', 'fotos', 'foto', 'urgente', 'adoptado', ...SALUD, 'es', 'en', 'especie']);
+    'tamano', 'energia', 'fotos', 'foto', 'urgente', 'adoptado', 'borrador', ...SALUD, 'es', 'en', 'especie']);
   const extra = Object.fromEntries(Object.entries(o).filter(([k]) => !conocidas.has(k)));
 
   const t = c => st.es[c].trim();
@@ -909,7 +952,7 @@ function construirJSON(id, rutasFotos) {
     id,
     nombre: st.nombre.trim(),
     ...(t('raza') ? { raza: bilingue('raza') } : {}),
-    edad: Number(st.edad) || 0,
+    edad: (st.borrador && st.edad === '') ? null : (Number(st.edad) || 0),     // un borrador puede no tener edad todavía
     edad_unidad: st.unidad,
     sexo: st.sexo,
     ...(t('edadTexto') ? { edad_texto: bilingue('edadTexto') } : {}),
@@ -921,6 +964,7 @@ function construirJSON(id, rutasFotos) {
     fotos: rutasFotos,
     urgente: !!st.urgente,
     ...(st.adoptado ? { adoptado: true } : {}),
+    ...(st.borrador ? { borrador: true } : {}),
     ...Object.fromEntries(SALUD.map(k => [k, !!st.salud[k]])),
     es: {
       resumen: t('resumen'),
@@ -956,27 +1000,47 @@ const prog = {
     if (texto) li.textContent = texto;
   },
   nota(t) { $('#prog-nota').textContent = t; },
+  ultimo() { return $$('#prog-pasos li').length - 1; },
   cerrable() { $('#prog-botones').hidden = false; }
 };
 
-async function publicar() {
+const bloquearEditor = v => { $('#ed-publicar').disabled = v; $('#ed-borrador').disabled = v; };
+
+/* modo «publicar» : la ficha se ve en el sitio ; modo «borrador» : se guarda (aunque esté incompleta) y NO se ve.
+   Un borrador es una ficha con "borrador": true : el sitio la ignora, ella y sus fotos. */
+async function guardarFicha(modo) {
   leerForm();
-  if (!validar()) return;
+  const borrador = modo === 'borrador';
+  if (borrador) {
+    if (!st.nombre.trim()) { aviso('Pon al menos el nombre para guardar el borrador.', 'error'); $('#f-nombre').focus(); return; }
+  } else if (!validar()) return;
+  const eraBorrador = !!st.original?.borrador, eraVisible = !!st.original && !eraBorrador;
+  if (borrador && eraVisible && !confirm(`«${st.nombre.trim()}» dejará de verse en el sitio y quedará como borrador. ¿Continuar?`)) return;
+  st.borrador = borrador;
+  if (!borrador && (st.nuevo || eraBorrador)) {     // una ficha que se publica ahora sale la primera
+    const otros = FICHAS.filter(f => !f.datos.borrador && !(f.especie === st.especie && f.id === st.id)).map(f => f.datos.orden).filter(Number.isFinite);
+    st.orden = (otros.length ? Math.min(...otros) : 10) - 10;
+  }
 
   const id = idUnico();
   const esNueva = st.nuevo;
   const nombre = st.nombre.trim();
   const rutaJson = `data/animales/${st.especie}/${id}.json`;
+  const cambiaElSitio = !borrador || eraVisible;      // ¿lo que ve el público cambia con este guardado?
 
-  prog.abrir(esNueva ? `Publicando a ${nombre}` : `Guardando a ${nombre}`,
-    [TRADUCCION_AUTO ? 'Traduciendo al inglés' : 'Comprobando el inglés', 'Preparando las fotos', 'Guardando la ficha', 'Publicando en el sitio']);
-  $('#ed-publicar').disabled = true;
+  prog.abrir(borrador ? `Guardando el borrador de ${nombre}` : (esNueva || eraBorrador ? `Publicando a ${nombre}` : `Guardando a ${nombre}`),
+    borrador
+      ? ['Un borrador no necesita traducción', 'Preparando las fotos', 'Guardando el borrador', eraVisible ? 'Retirando del sitio' : 'El sitio no cambia']
+      : [TRADUCCION_AUTO ? 'Traduciendo al inglés' : 'Comprobando el inglés', 'Preparando las fotos', 'Guardando la ficha', 'Publicando en el sitio']);
+  bloquearEditor(true);
   let sha = '';
 
   try {
     /* 1. traducción — si falla, se decide con el usuario, no se bloquea */
     prog.paso(0, 'curso');
-    if (!TRADUCCION_AUTO) {
+    if (borrador) {
+      prog.paso(0, 'ok');
+    } else if (!TRADUCCION_AUTO) {
       const f = faltaIngles();
       prog.paso(0, 'ok', f.length ? `Inglés incompleto (falta ${f.join(', ')}): se mostrará en español` : 'Versión en inglés completa');
     } else if (pendientes().length) {
@@ -996,7 +1060,7 @@ async function publicar() {
       if (sinTraduccion) {
         prog.paso(0, 'error', 'Traducción no disponible');
         const seguir = confirm(`No se pudo traducir al inglés (${sinTraduccion.message.replace(/\.$/, '')}).\n\n¿Publicar igualmente? La versión en inglés mostrará el texto en español.`);
-        if (!seguir) { $('#dlg-progreso').close(); $('#ed-publicar').disabled = false; return; }
+        if (!seguir) { $('#dlg-progreso').close(); bloquearEditor(false); return; }
       }
     } else {
       prog.paso(0, 'ok', 'Traducción al día');
@@ -1028,7 +1092,9 @@ async function publicar() {
     /* 3. un solo commit */
     prog.paso(2, 'curso');
     cambios.push({ path: rutaJson, texto: JSON.stringify(construirJSON(id, rutas), null, 2) + '\n' });
-    sha = await confirmarCambios(cambios, `${esNueva ? 'Añade' : 'Actualiza'} la ficha de ${nombre} (panel)`);
+    const mensaje = borrador ? `Guarda el borrador de ${nombre} (panel)`
+      : (eraBorrador ? `Publica la ficha de ${nombre} (panel)` : `${esNueva ? 'Añade' : 'Actualiza'} la ficha de ${nombre} (panel)`);
+    sha = await confirmarCambios(cambios, mensaje);
     prog.paso(2, 'ok');
 
     for (const f of st.fotos) if (f._ruta) fotoLocal.set(f._ruta, f.url);
@@ -1038,26 +1104,100 @@ async function publicar() {
     return fallo(e);
   }
 
-  $('#ed-publicar').disabled = false;
-  prog.paso(3, 'curso');
-  prog.nota('Tu ficha ya está guardada. Puedes cerrar esta ventana: el sitio se actualiza solo en unos minutos.');
-  prog.cerrable();
+  bloquearEditor(false);
   const especie = st.especie;
   const alCerrar = () => { prog.cancelado = true; location.hash = `#${especie}`; };
   $('#dlg-progreso').addEventListener('close', alCerrar, { once: true });
+  if (!cambiaElSitio) {
+    prog.paso(3, 'ok');
+    prog.nota('Borrador guardado. No se ve en el sitio. Cuando esté listo, márcalo con «Elegir» en la lista y pulsa «Publicar».');
+    prog.cerrable();
+    return;
+  }
+  prog.paso(3, 'curso');
+  prog.nota(borrador ? 'Listo: ya no se ve en el sitio (queda como borrador). El cambio tarda unos minutos.'
+                     : 'Tu ficha ya está guardada. Puedes cerrar esta ventana: el sitio se actualiza solo en unos minutos.');
+  prog.cerrable();
+  terminarPublicacion(sha);
+}
+
+/* Publicar de una vez los borradores elegidos : un solo commit, una sola actualización del sitio.
+   Cada borrador pasa por el mismo camino que una ficha normal (estado, traducción, JSON). */
+async function publicarSeleccion() {
+  const claves = [...SELECCION];
+  if (!claves.length) return;
+  prog.abrir(claves.length === 1 ? 'Publicando el borrador' : `Publicando ${claves.length} borradores a la vez`,
+    ['Comprobando que estén completos', TRADUCCION_AUTO ? 'Traduciendo al inglés' : 'Preparando las fichas', 'Publicando', 'Actualizando el sitio']);
+  $('#sel-publicar').disabled = true;
+  let sha = '', nombres = [];
+  try {
+    prog.paso(0, 'curso');
+    await cargarFichas();                                  // datos frescos : no se pisa nada que otra persona haya cambiado
+    const frescas = new Map(FICHAS.map(f => [claveFicha(f), f]));
+    const sel = claves.map(k => frescas.get(k)).filter(f => f && f.datos.borrador).sort(porOrden);
+    if (!sel.length) {
+      prog.paso(0, 'error', 'Ya no hay nada que publicar');
+      prog.nota('Alguien ya los publicó o los quitó.');
+      prog.cerrable(); SELECCION.clear(); pintarLista(); $('#sel-publicar').disabled = false;
+      return;
+    }
+    const problemas = sel.map(f => [f, faltasDatos(f)]).filter(([, m]) => m.length);
+    if (problemas.length) {
+      prog.paso(0, 'error', 'Faltan datos: no se publicó nada');
+      prog.nota(problemas.map(([f, m]) => `${f.datos.nombre}: falta ${m.join(', ')}.`).join(' ') + ' Ábrelos con «Editar», complétalos y vuelve a intentarlo.');
+      prog.cerrable(); $('#sel-publicar').disabled = false;
+      return;
+    }
+    prog.paso(0, 'ok');
+
+    prog.paso(1, 'curso');
+    const otros = FICHAS.filter(f => !f.datos.borrador).map(f => f.datos.orden).filter(Number.isFinite);
+    const base = (otros.length ? Math.min(...otros) : 10) - 10 * sel.length;     // salen los primeros, en el orden en que estaban
+    const cambios = [];
+    let sinTraducir = 0;
+    for (const [i, f] of sel.entries()) {
+      st = estadoDesde(f);
+      st.borrador = false;
+      st.orden = base + 10 * i;
+      if (TRADUCCION_AUTO && pendientes().length) {
+        try { await traducirPendientes(); }
+        catch (err) {
+          if (err.status !== 503) throw err;               // 503 : traducción aún sin configurar, se publica en español
+          sinTraducir++;
+        }
+      }
+      cambios.push({ path: f.ruta, texto: JSON.stringify(construirJSON(f.id, st.fotos.map(x => rutaAbs(x.ruta))), null, 2) + '\n' });
+    }
+    prog.paso(1, 'ok', sinTraducir ? 'Sin traducción automática (aún no activada)' : '');
+    nombres = sel.map(f => f.datos.nombre);
+
+    prog.paso(2, 'curso');
+    sha = await confirmarCambios(cambios, `Publica ${sel.length === 1 ? 'la ficha' : `${sel.length} fichas`}: ${nombres.join(', ')} (panel)`);
+    prog.paso(2, 'ok');
+    SELECCION.clear();
+    await cargarFichas();
+    pintarLista();
+  } catch (e) { $('#sel-publicar').disabled = false; return fallo(e); }
+
+  $('#sel-publicar').disabled = false;
+  prog.paso(3, 'curso');
+  prog.nota(nombres.length === 1 ? `Listo: ${nombres[0]} está guardado y se verá en el sitio en unos minutos.`
+                                  : `Listo: ${nombres.join(', ')} están guardados y se verán en el sitio en unos minutos.`);
+  prog.cerrable();
+  $('#dlg-progreso').addEventListener('close', () => { prog.cancelado = true; }, { once: true });
   terminarPublicacion(sha);
 }
 
 async function terminarPublicacion(sha) {
   const r = await esperarSitio(sha, () => prog.cancelado);
   if (prog.cancelado) return;
-  if (r === 'ok') { prog.paso(3, 'ok', 'Lista para publicarse'); prog.nota('¡Listo! En un par de minutos se verá en la página.'); }
-  else if (r === 'fallo') { prog.paso(3, 'error', 'El sitio no se pudo reconstruir'); prog.nota('La ficha está guardada, pero la publicación falló. Avisa a quien administra el sitio.'); }
-  else { prog.paso(3, 'ok', 'Guardado'); prog.nota('Guardado. Aparecerá en el sitio en unos minutos.'); }
+  if (r === 'ok') { prog.paso(prog.ultimo(), 'ok', 'Lista para publicarse'); prog.nota('¡Listo! En un par de minutos se verá en la página.'); }
+  else if (r === 'fallo') { prog.paso(prog.ultimo(), 'error', 'El sitio no se pudo reconstruir'); prog.nota('La ficha está guardada, pero la publicación falló. Avisa a quien administra el sitio.'); }
+  else { prog.paso(prog.ultimo(), 'ok', 'Guardado'); prog.nota('Guardado. Aparecerá en el sitio en unos minutos.'); }
 }
 
 function fallo(e) {
-  $('#ed-publicar').disabled = false;
+  bloquearEditor(false);
   if (e.status === 401) { $('#dlg-progreso').close(); return salir('La sesión caducó. Vuelve a entrar: tu ficha sigue en pantalla.'); }
   const li = $('#prog-pasos [data-e="curso"]');
   if (li) li.dataset.e = 'error';
@@ -1147,6 +1287,14 @@ function conectar() {
   $$('[data-especie]').forEach(b => b.addEventListener('click', () => { location.hash = `#${b.dataset.especie}`; }));
   $('#nuevo').addEventListener('click', () => { location.hash = `#nuevo/${TAB}`; });
   $('#ordenar').addEventListener('click', () => { location.hash = '#ordenar'; });
+  $('#lista').addEventListener('change', e => {
+    const c = e.target.closest('[data-marcar]');
+    if (!c) return;
+    c.checked ? SELECCION.add(c.dataset.marcar) : SELECCION.delete(c.dataset.marcar);
+    actualizarSeleccion();
+  });
+  $('#sel-quitar').addEventListener('click', () => { SELECCION.clear(); pintarLista(); });
+  $('#sel-publicar').addEventListener('click', publicarSeleccion);
 
   /* ordenar */
   const olista = $('#orden-lista');
@@ -1179,7 +1327,8 @@ function conectar() {
   /* editor */
   $('#ed-volver').addEventListener('click', volver);
   $('#ed-cancelar').addEventListener('click', volver);
-  $('#ed-form').addEventListener('submit', e => { e.preventDefault(); publicar(); });
+  $('#ed-form').addEventListener('submit', e => { e.preventDefault(); guardarFicha('publicar'); });
+  $('#ed-borrador').addEventListener('click', () => guardarFicha('borrador'));
   $('#prog-cerrar').addEventListener('click', () => $('#dlg-progreso').close());
 
   $('#ed-form').addEventListener('input', e => {
