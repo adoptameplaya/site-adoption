@@ -1,0 +1,30 @@
+{
+  "orden": -148,
+  "id": "prentis",
+  "nombre": "PRENTIS",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 0,
+  "tamano": "grande",
+  "energia": "",
+  "fotos": [
+    "/img/animales/prentis-bnznv.jpg",
+    "/img/animales/prentis-uxs7f.jpg",
+    "/img/animales/prentis-ifz8d.jpg",
+    "/img/animales/prentis-qaghq.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
