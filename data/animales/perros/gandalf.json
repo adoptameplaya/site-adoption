@@ -1,0 +1,31 @@
+{
+  "orden": -98,
+  "id": "gandalf",
+  "nombre": "GANDALF",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 0,
+  "tamano": "",
+  "energia": "",
+  "fotos": [
+    "/img/animales/gandalf-p8zw4.jpg",
+    "/img/animales/gandalf-mefp6.jpg",
+    "/img/animales/gandalf-43lcd.jpg",
+    "/img/animales/gandalf-brxgn.jpg",
+    "/img/animales/gandalf-tyhzz.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
