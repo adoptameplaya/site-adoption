@@ -1,0 +1,32 @@
+{
+  "orden": -118,
+  "id": "bingo",
+  "nombre": "BINGO",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 0,
+  "tamano": "chico",
+  "energia": "",
+  "fotos": [
+    "/img/animales/bingo-1l7zi.jpg",
+    "/img/animales/bingo-1zoep.jpg",
+    "/img/animales/bingo-ullgj.jpg",
+    "/img/animales/bingo-no43t.jpg",
+    "/img/animales/bingo-ei20f.jpg",
+    "/img/animales/bingo-0n7wj.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
