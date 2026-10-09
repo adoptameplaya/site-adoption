@@ -1,0 +1,32 @@
+{
+  "orden": -258,
+  "id": "raffa",
+  "nombre": "RAFFA",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 0,
+  "tamano": "",
+  "energia": "",
+  "fotos": [
+    "/img/animales/raffa-ptibd.jpg",
+    "/img/animales/raffa-audoi.jpg",
+    "/img/animales/raffa-11cx9.jpg",
+    "/img/animales/raffa-4dm83.jpg",
+    "/img/animales/raffa-bhsw2.jpg",
+    "/img/animales/raffa-m28ij.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
