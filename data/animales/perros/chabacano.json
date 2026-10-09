@@ -1,0 +1,28 @@
+{
+  "orden": -318,
+  "id": "chabacano",
+  "nombre": "CHABACANO",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "",
+  "peso_kg": 0,
+  "tamano": "",
+  "energia": "",
+  "fotos": [
+    "/img/animales/chabacano-0hnlk.jpg",
+    "/img/animales/chabacano-zbj65.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
