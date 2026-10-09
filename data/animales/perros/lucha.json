@@ -1,0 +1,32 @@
+{
+  "orden": -348,
+  "id": "lucha",
+  "nombre": "LUCHA",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 0,
+  "tamano": "chico",
+  "energia": "",
+  "fotos": [
+    "/img/animales/lucha-t4sne.jpg",
+    "/img/animales/lucha-163kx.jpg",
+    "/img/animales/lucha-pgdaz.jpg",
+    "/img/animales/lucha-ivtdi.jpg",
+    "/img/animales/lucha-9hqw2.jpg",
+    "/img/animales/lucha-ptdf4.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
