@@ -1,0 +1,32 @@
+{
+  "orden": -248,
+  "id": "krueger",
+  "nombre": "KRUEGER",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 0,
+  "tamano": "mediano",
+  "energia": "",
+  "fotos": [
+    "/img/animales/krueger-x73e2.jpg",
+    "/img/animales/krueger-djcml.jpg",
+    "/img/animales/krueger-fdz3u.jpg",
+    "/img/animales/krueger-7zhtw.jpg",
+    "/img/animales/krueger-pp8r1.jpg",
+    "/img/animales/krueger-e15fd.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
