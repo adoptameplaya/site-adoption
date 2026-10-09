@@ -1,0 +1,32 @@
+{
+  "orden": -278,
+  "id": "pirata",
+  "nombre": "PIRATA",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 0,
+  "tamano": "mediano",
+  "energia": "",
+  "fotos": [
+    "/img/animales/pirata-krz2d.jpg",
+    "/img/animales/pirata-6i8ug.jpg",
+    "/img/animales/pirata-7o7z5.jpg",
+    "/img/animales/pirata-adxdq.jpg",
+    "/img/animales/pirata-37jcs.jpg",
+    "/img/animales/pirata-huvae.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
