@@ -1,0 +1,32 @@
+{
+  "orden": -228,
+  "id": "mar",
+  "nombre": "MAR",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 0,
+  "tamano": "mediano",
+  "energia": "",
+  "fotos": [
+    "/img/animales/mar-m9ht6.jpg",
+    "/img/animales/mar-hp6io.jpg",
+    "/img/animales/mar-s19t6.jpg",
+    "/img/animales/mar-rxoyv.jpg",
+    "/img/animales/mar-jwszf.jpg",
+    "/img/animales/mar-hg6eu.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
