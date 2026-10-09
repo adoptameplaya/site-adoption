@@ -1,0 +1,28 @@
+{
+  "orden": -378,
+  "id": "sidra",
+  "nombre": "SIDRA",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 0,
+  "tamano": "chico",
+  "energia": "",
+  "fotos": [
+    "/img/animales/sidra-8npcy.jpg",
+    "/img/animales/sidra-gcz4r.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
