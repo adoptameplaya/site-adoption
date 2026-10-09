@@ -1,0 +1,31 @@
+{
+  "orden": -298,
+  "id": "tamara",
+  "nombre": "TAMARA",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 0,
+  "tamano": "mediano",
+  "energia": "",
+  "fotos": [
+    "/img/animales/tamara-vkykp.jpg",
+    "/img/animales/tamara-uq7eq.jpg",
+    "/img/animales/tamara-sqxbi.jpg",
+    "/img/animales/tamara-rwf34.jpg",
+    "/img/animales/tamara-o95no.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
