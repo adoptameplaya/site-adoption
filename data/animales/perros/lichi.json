@@ -1,0 +1,28 @@
+{
+  "orden": -308,
+  "id": "lichi",
+  "nombre": "LICHI",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 0,
+  "tamano": "chico",
+  "energia": "",
+  "fotos": [
+    "/img/animales/lichi-nl2hj.jpg",
+    "/img/animales/lichi-uzirm.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
