@@ -1,0 +1,28 @@
+{
+  "orden": -338,
+  "id": "tamarindo",
+  "nombre": "TAMARINDO",
+  "edad": null,
+  "edad_unidad": "anos",
+  "sexo": "",
+  "peso_kg": 0,
+  "tamano": "",
+  "energia": "",
+  "fotos": [
+    "/img/animales/tamarindo-mywgd.jpg",
+    "/img/animales/tamarindo-rqmip.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
