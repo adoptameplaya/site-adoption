@@ -2,12 +2,12 @@
   "orden": -278,
   "id": "pirata",
   "nombre": "PIRATA",
-  "edad": null,
+  "edad": 4,
   "edad_unidad": "anos",
   "sexo": "macho",
-  "peso_kg": 0,
+  "peso_kg": 23,
   "tamano": "mediano",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/pirata-krz2d.jpg",
     "/img/animales/pirata-6i8ug.jpg",
@@ -26,7 +26,19 @@
   "es": {
     "resumen": "",
     "historia": "",
-    "caracter": []
+    "caracter": [
+      "Tranquilo",
+      "Cariñoso",
+      "Juguetón",
+      "Sociable"
+    ]
   },
-  "en": {}
+  "en": {
+    "caracter": [
+      "Calm",
+      "Affectionate",
+      "Playful",
+      "Sociable"
+    ]
+  }
 }
