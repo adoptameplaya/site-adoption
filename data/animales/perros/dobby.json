@@ -2,12 +2,12 @@
   "orden": -118,
   "id": "dobby",
   "nombre": "DOBBY",
-  "edad": null,
+  "edad": 5,
   "edad_unidad": "anos",
   "sexo": "macho",
-  "peso_kg": 0,
+  "peso_kg": 27,
   "tamano": "mediano",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/dobby-zdbyj.jpg",
     "/img/animales/dobby-yzale.jpg",
@@ -26,7 +26,13 @@
   "es": {
     "resumen": "",
     "historia": "",
-    "caracter": []
+    "caracter": [
+      "Juguetón"
+    ]
   },
-  "en": {}
+  "en": {
+    "caracter": [
+      "Playful"
+    ]
+  }
 }
