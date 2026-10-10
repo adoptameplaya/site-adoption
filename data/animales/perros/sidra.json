@@ -2,10 +2,10 @@
   "orden": -378,
   "id": "sidra",
   "nombre": "SIDRA",
-  "edad": null,
+  "edad": 1,
   "edad_unidad": "anos",
   "sexo": "hembra",
-  "peso_kg": 0,
+  "peso_kg": 18,
   "tamano": "chico",
   "energia": "",
   "fotos": [
