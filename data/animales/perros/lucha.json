@@ -2,10 +2,10 @@
   "orden": -348,
   "id": "lucha",
   "nombre": "LUCHA",
-  "edad": null,
+  "edad": 3,
   "edad_unidad": "anos",
   "sexo": "hembra",
-  "peso_kg": 0,
+  "peso_kg": 14,
   "tamano": "chico",
   "energia": "",
   "fotos": [
