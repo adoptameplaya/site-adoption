@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>¡Listo! | Adopta Me Playa</title>
+<link rel="icon" href="img/ui/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="font" type="font/woff2" href="css/fonts/baloo2-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="css/fonts/nunito-latin.woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=63">
+<style>
+  .gracias{min-height:100dvh;display:grid;place-items:center;padding:clamp(24px,6vw,64px) var(--gutter)}
+  .gracias__caja{
+    max-width:620px;text-align:center;
+    background:var(--crema-2);border:var(--borde);border-radius:var(--r-xl);
+    padding:clamp(28px,5vw,52px);box-shadow:var(--sombra-suave);
+  }
+  .gracias__caja img{width:112px;height:auto;margin:0 auto 20px}
+  .gracias__caja h1{font-size:clamp(1.9rem,5vw,2.8rem)}
+  .gracias__caja p{color:var(--tinta-60);margin-top:16px;font-size:1.06rem}
+  .gracias__caja .btn{margin-top:30px}
+</style>
+</head>
+<body>
+<main class="gracias">
+  <div class="gracias__caja">
+    <img src="img/ui/logo-180.png" alt="" width="112" height="112">
+    <h1 id="g-titulo"></h1>
+    <p id="g-texto"></p>
+    <div class="gracias__wa" id="g-wa" hidden>
+      <a class="btn" id="g-wa-boton" href="#" target="_blank" rel="noopener">
+        <span id="g-wa-texto"></span>
+      </a>
+      <p id="g-wa-ayuda"></p>
+    </div>
+    <p><a class="btn btn--claro" href="index.html" id="g-volver"></a></p>
+  </div>
+</main>
+
+<script src="js/i18n.js?v=54"></script>
+<script>
+/* Page d'arrivée après l'envoi du formulaire. FormSubmit n'y renvoie aucune
+   donnée : la langue passe par ?lang=, posée par app.js dans le champ _next. */
+(() => {
+  const params = new URLSearchParams(location.search);
+  const guardado = localStorage.getItem('idioma');
+  const idioma = ['es', 'en'].includes(params.get('lang')) ? params.get('lang')
+               : (['es', 'en'].includes(guardado) ? guardado : 'es');
+  const T = window.TEXTOS[idioma] || window.TEXTOS.es;
+
+  document.documentElement.lang = T['html.lang'];
+  document.title = T['sol.ok_t'] + ' | Adopta Me Playa';
+  /* Deux provenances : le mini-formulaire (on attend un mail) et le
+     questionnaire complet (on propose le ping WhatsApp au refuge). */
+  const deCuestionario = params.get('de') === 'cuestionario';
+  document.getElementById('g-titulo').textContent = deCuestionario ? T['cue.ok_t'] : T['sol.ok_t'];
+  document.getElementById('g-texto').textContent  = deCuestionario ? T['cue.ok_d'] : T['sol.ok_gracias'];
+  document.getElementById('g-volver').textContent = T['sol.volver'];
+
+  const wa = params.get('wa');
+  if (deCuestionario && wa) {
+    fetch('data/config.json').then(r => r.json()).then(c => {
+      const tel = (c.contacto?.whatsapp || '').replace(/\D/g, '');
+      if (!tel) return;
+      document.getElementById('g-wa-boton').href = `https://wa.me/${tel}?text=${encodeURIComponent(wa)}`;
+      document.getElementById('g-wa-texto').textContent = T['cue.wa_boton'];
+      document.getElementById('g-wa-ayuda').textContent = T['cue.wa_ayuda'];
+      document.getElementById('g-wa').hidden = false;
+    }).catch(() => {});
+  }
+})();
+</script>
+</body>
+</html>

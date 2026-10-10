@@ -1,0 +1,124 @@
+{
+  "_leeme": "Datos de Adopta Me Playa. Los valores marcados REEMPLAZAR (si queda alguno) son provisionales y deben cambiarse antes de pasar a producción.",
+  "refugio": {
+    "nombre": "Adopta Me Playa",
+    "nombre_corto": "Adopta Me",
+    "_nombre_nota": "Adopta Me Playa est une rescatista independiente : ne jamais la présenter comme une structure à statut associatif dans les textes publics (le contrôle de l'audit le vérifie).",
+    "ciudad": "Playa del Carmen",
+    "estado": "Quintana Roo",
+    "pais": "México",
+    "direccion": "Colonia Ejidal, Playa del Carmen, Quintana Roo",
+    "_direccion_nota": "Domicile communiqué par Adopta Me Playa le 2026-10-08 : colonia Ejidal, C.P. 77712 (sans rue ni numéro). Utilisé dans l'avis de confidentialité ; le site ne l'affiche pas ailleurs.",
+    "codigo_postal": "77712",
+    "mapa_url": "",
+    "horarios": {
+      "es": "Visitas con cita previa · Lunes a sábado, 10:00 – 17:00",
+      "en": "Visits by appointment · Monday to Saturday, 10:00 – 17:00"
+    },
+    "fundado": "2016",
+    "_nota_ocultos": "direccion, codigo_postal, mapa_url et horarios ne sont plus affichés depuis le 2026-10-02 (demande d'Adopta Me Playa). Conservés ici au cas où."
+  },
+  "contacto": {
+    "whatsapp": "17142248714",
+    "_whatsapp_nota": "Numéro réel d'Adopta Me Playa. Format international sans + ni espaces pour wa.me.",
+    "whatsapp_visible": "+1 (714) 224 8714",
+    "email": "adoptameplaya@gmail.com",
+    "_email_nota": "Adresse réelle d'Adopta Me Playa. Reçoit aussi les demandes du formulaire."
+  },
+  "redes": {
+    "facebook": "https://www.facebook.com/profile.php?id=61594293778768",
+    "instagram": "",
+    "tiktok": "",
+    "_nota": "Laisser vide une réseau non fourni : l'icône disparaît au lieu de pointer vers l'accueil du réseau."
+  },
+  "donaciones": {
+    "paypal": {
+      "activo": true,
+      "url": "https://paypal.me/liatrovati",
+      "_nota": "Vérifié le 2026-10-07 : la page affiche « Lia Trovati @liatrovati »."
+    },
+    "wise": {
+      "activo": true,
+      "url": "https://wise.com/pay/me/liat38",
+      "_nota": "Wisetag @liat38. Vérifié le 2026-10-07 : la page affiche « Lia trovati @liat38 »."
+    }
+  },
+  "padrinazgo": {
+    "_nota": "PLUS AFFICHÉ depuis le 2026-10-02 : Adopta Me Playa a retiré l'apadrinamiento de la page. Conservé au cas où il reviendrait."
+  },
+  "lista_deseos": [
+    {
+      "es": "Croquetas para cachorro y gatito (marca específica)",
+      "en": "Puppy and kitten dry food (specific brand)"
+    },
+    {
+      "es": "Toallas y cobijas usadas (limpias)",
+      "en": "Used towels and blankets (clean)"
+    },
+    {
+      "es": "Antipulgas y desparasitantes",
+      "en": "Flea treatment and dewormers"
+    },
+    {
+      "es": "Transportadoras y correas",
+      "en": "Carriers and leashes"
+    },
+    {
+      "es": "Cloro, jabón y bolsas para popó",
+      "en": "Bleach, soap and poop bags"
+    }
+  ],
+  "cifras": {
+    "adoptados": 1240,
+    "esterilizados": 3100,
+    "en_refugio": 47,
+    "_nota": "PLUS AFFICHÉ sur la page depuis le 2026-10-02 : les chiffres clés ont été remplacés par la mosaïque de photos. Conservé au cas où Adopta Me Playa voudrait les réafficher."
+  },
+  "adopcion": {
+    "donacion_sugerida": {
+      "perro": {
+        "min": 500,
+        "max": 1000
+      },
+      "gato": {
+        "min": 400,
+        "max": 800
+      }
+    },
+    "_donacion_nota": "Fourchette suggérée par espèce, affichée sur les fiches (ex. « $500 – $1,000 MXN »). Un simple nombre reste accepté et vaut pour les deux espèces.",
+    "moneda": "MXN",
+    "incluye": {
+      "es": [
+        "Esterilización",
+        "Vacunas al día",
+        "Desparasitación",
+        "Prueba de enfermedades"
+      ],
+      "en": [
+        "Spay / neuter",
+        "Up-to-date vaccines",
+        "Deworming",
+        "Disease testing"
+      ]
+    },
+    "_incluye_nota": "Microchip retiré le 2026-10-02 (Adopta Me Playa ne le fournit pas)."
+  },
+  "solicitud": {
+    "_leeme": "Le mini-formulaire du site poste ici. FormSubmit renvoie au visiteur le PDF correspondant à l'espèce choisie, et notifie Adopta Me Playa.",
+    "endpoint": "https://formsubmit.co/adoptameplaya@gmail.com",
+    "_endpoint_nota": "SANS /ajax/ et SANS _captcha=false : FormSubmit désactive l'auto-réponse dans ces deux cas (documenté sur formsubmit.co). Le visiteur passe donc par un reCAPTCHA puis revient sur gracias.html. Après activation, remplacer l'adresse par l'alias fourni par FormSubmit pour ne pas exposer le mail dans le code source.",
+    "formularios": {
+      "perro": {
+        "es": "formularios/Cuestionario_Adopcion_Perro_ES.pdf",
+        "en": "formularios/Adoption_Questionnaire_Dog_EN.pdf"
+      },
+      "gato": {
+        "es": "formularios/Cuestionario_Adopcion_Gato_ES.pdf",
+        "en": "formularios/Adoption_Questionnaire_Cat_EN.pdf"
+      }
+    },
+    "_formularios_nota": "Chemin du PDF envoyé par l'auto-réponse, par espèce ET par langue du site. Les 4 PDF (chien/chat × ES/EN) sont en place. Ils sont remplissables et se régénèrent depuis data/cuestionario.json avec herramientas/crear-pdf-cuestionario.py (voir ADMIN.md). Si un chemin est vide, la page n'affiche pas le lien PDF et l'auto-réponse renvoie seulement au questionnaire en ligne.",
+    "url_base": "",
+    "_url_base_nota": "Laisser vide : le lien du mail est construit sur le domaine depuis lequel la page est ouverte, donc il suit automatiquement Netlify puis le domaine définitif. Ne remplir que pour forcer un domaine."
+  }
+}

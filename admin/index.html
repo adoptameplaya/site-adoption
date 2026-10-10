@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#FFF7EA">
+<title>Panel de Adopta Me Playa</title>
+<link rel="icon" href="../img/ui/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="font" type="font/woff2" href="../css/fonts/baloo2-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../css/fonts/nunito-latin.woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css?v=63">
+<link rel="stylesheet" href="admin.css?v=6">
+</head>
+<body class="panel">
+
+<!-- Iconos (los mismos que el sitio + los del panel) -->
+<svg class="sprite" aria-hidden="true" focusable="false"><defs>
+<filter id="tinta-sello" x="-6%" y="-10%" width="112%" height="120%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="onda"/>
+<feDisplacementMap in="SourceGraphic" in2="onda" scale="2.2" xChannelSelector="R" yChannelSelector="G" result="borde"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="11" result="grano"/>
+<feColorMatrix in="grano" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -12 0 0 0 9.3" result="manchas"/>
+<feComposite in="borde" in2="manchas" operator="in"/>
+</filter>
+<symbol id="i-perro" viewBox="0 0 24 24"><ellipse fill="currentColor" cx="4.9" cy="10.4" rx="2.6" ry="5.4" transform="rotate(-14 4.9 10.4)"/><ellipse fill="currentColor" cx="19.1" cy="10.4" rx="2.6" ry="5.4" transform="rotate(14 19.1 10.4)"/><path fill="currentColor" fill-rule="evenodd" d="M12 4.6c-4.1 0-7.4 3.3-7.4 7.4 0 4.4 3.3 9.4 7.4 9.4s7.4-5 7.4-9.4c0-4.1-3.3-7.4-7.4-7.4Zm-2.9 6.2a1.25 1.6 0 1 0 0 3.2 1.25 1.6 0 1 0 0-3.2Zm5.8 0a1.25 1.6 0 1 0 0 3.2 1.25 1.6 0 1 0 0-3.2ZM12 15.6c-1.2 0-2.1.6-2.1 1.4s.9 1.4 2.1 1.4 2.1-.6 2.1-1.4-.9-1.4-2.1-1.4Z"/></symbol>
+<symbol id="i-gato" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.5 2.3 7.3 7h9.4l3.8-4.7c.5-.7 1.7-.3 1.7.7v8.5c0 5.2-4.6 9.4-10.2 9.4S1.8 16.7 1.8 11.5V3c0-1 1.2-1.4 1.7-.7ZM9 10.6a1.25 1.6 0 1 0 0 3.2 1.25 1.6 0 1 0 0-3.2Zm6 0a1.25 1.6 0 1 0 0 3.2 1.25 1.6 0 1 0 0-3.2Zm-3.5 5.2h2.2L12 17.5l-1.1-1.7Z"/></symbol>
+<symbol id="i-flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5.5 5.5L20 6.5"/></symbol>
+<symbol id="i-alerta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.9 18.2A1.9 1.9 0 0 0 3.5 21h17a1.9 1.9 0 0 0 1.6-2.8L13.7 3.9a1.9 1.9 0 0 0-3.4 0"/><path d="M12 9v4.5M12 17.4v.1"/></symbol>
+<symbol id="i-mas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-camara" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6H8l1.3-2h5.4L16 6h1.5A2.5 2.5 0 0 1 20 8.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.5" r="3.4"/></symbol>
+<symbol id="i-asa" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.9"/><circle cx="15" cy="6" r="1.9"/><circle cx="9" cy="12" r="1.9"/><circle cx="15" cy="12" r="1.9"/><circle cx="9" cy="18" r="1.9"/><circle cx="15" cy="18" r="1.9"/></symbol>
+<symbol id="i-papelera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l.8 12.2A1.8 1.8 0 0 0 9.1 21h5.8a1.8 1.8 0 0 0 1.8-1.8L17.5 7M10 11v6m4-6v6"/></symbol>
+<symbol id="i-lapiz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4.2L16.6 4.2a2 2 0 0 1 2.8 0l.4.4a2 2 0 0 1 0 2.8L8.2 19z"/><path d="m14.5 6.3 3.2 3.2"/></symbol>
+<symbol id="i-globo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8a14 14 0 0 1 0 18.4 14 14 0 0 1 0-18.4"/></symbol>
+</defs></svg>
+
+<header class="barra">
+  <div class="contenedor barra__fila">
+    <a class="marca" href="#">
+      <img class="marca__logo" src="../img/ui/logo-128.png" alt="" width="58" height="58">
+      <span>
+        <span class="marca__nombre">Panel de Adopta Me Playa</span>
+        <span class="marca__lugar">Playa del Carmen</span>
+      </span>
+    </a>
+    <div class="panel__usuario" id="usuario" hidden>
+      <img id="usuario-foto" alt="" width="36" height="36">
+      <span id="usuario-nombre"></span>
+      <button class="btn btn--claro panel__salir" type="button" id="salir">Salir</button>
+    </div>
+  </div>
+</header>
+
+<main class="contenedor panel__main">
+
+  <!-- ============ Cargando ============ -->
+  <section id="vista-carga" class="panel__centro">
+    <p class="panel__giro" role="status">Un momento…</p>
+  </section>
+
+  <!-- ============ Entrada ============ -->
+  <section id="vista-entrada" class="panel__centro" hidden>
+    <div class="panel__tarjeta">
+      <img src="../img/ui/logo-180.png" alt="" width="96" height="96">
+      <h1>Panel de Adopta Me Playa</h1>
+      <p>Aquí se añaden, se cambian y se quitan los animales del sitio.</p>
+      <button class="btn btn--grande" type="button" id="entrar">Entrar con GitHub</button>
+      <p class="panel__nota" id="entrada-error" role="alert" hidden></p>
+      <p class="panel__nota">Necesitas una cuenta de GitHub a la que se haya dado acceso al sitio. Si no entras, pídele a quien administra el sitio que te invite.</p>
+    </div>
+  </section>
+
+  <!-- ============ Lista ============ -->
+  <section id="vista-lista" hidden>
+    <div class="lista__cab">
+      <h1>Nuestros peludos</h1>
+      <div class="lista__tabs" role="tablist" aria-label="Especie">
+        <button class="pastilla" role="tab" type="button" data-especie="perros" aria-pressed="true"><svg aria-hidden="true"><use href="#i-perro"></use></svg>Perros <span class="lista__n" id="n-perros"></span></button>
+        <button class="pastilla" role="tab" type="button" data-especie="gatos" aria-pressed="false"><svg aria-hidden="true"><use href="#i-gato"></use></svg>Gatos <span class="lista__n" id="n-gatos"></span></button>
+      </div>
+    </div>
+    <div class="lista__botones">
+      <button class="btn" type="button" id="nuevo"><svg aria-hidden="true"><use href="#i-mas"></use></svg><span id="nuevo-texto">Añadir un perro</span></button>
+      <button class="btn btn--claro" type="button" id="ordenar"><svg aria-hidden="true"><use href="#i-asa"></use></svg>Ordenar las fichas</button>
+    </div>
+    <ul class="rejilla" id="lista"></ul>
+    <div class="seleccion" id="seleccion" hidden>
+      <span class="seleccion__texto" id="seleccion-texto"></span>
+      <span class="seleccion__botones">
+        <button class="btn btn--claro" type="button" id="sel-quitar">Quitar la selección</button>
+        <button class="btn" type="button" id="sel-publicar">Publicar</button>
+      </span>
+    </div>
+    <p class="panel__nota lista__pie">Los cambios tardan unos minutos en verse en el sitio.</p>
+  </section>
+
+  <!-- ============ Ordenar ============ -->
+  <section id="vista-orden" hidden>
+    <button class="btn btn--fantasma ed__volver" type="button" id="or-volver"><svg aria-hidden="true"><use href="#i-flecha"></use></svg>Volver a la lista</button>
+    <h1>Ordenar las fichas</h1>
+    <p class="panel__nota orden__ayuda">Arrastra cada ficha con los seis puntitos <svg class="orden__mini" aria-hidden="true"><use href="#i-asa"></use></svg> (o usa las flechas) para elegir el orden en que aparecen en el sitio, perros y gatos juntos. Las primeras también salen en la franja de arriba de la página. Los animales ya adoptados van siempre al final.</p>
+    <ol class="orden" id="orden-lista"></ol>
+    <p class="orden__vivo" id="orden-vivo" role="status" aria-live="polite"></p>
+    <div class="orden__botones">
+      <button class="btn btn--claro" type="button" id="or-cancelar">Cancelar</button>
+      <button class="btn" type="button" id="or-guardar" disabled>Guardar el orden</button>
+    </div>
+  </section>
+
+  <!-- ============ Editor ============ -->
+  <section id="vista-editor" hidden>
+    <button class="btn btn--fantasma ed__volver" type="button" id="ed-volver"><svg aria-hidden="true"><use href="#i-flecha"></use></svg>Volver a la lista</button>
+    <h1 class="ed__titulo" id="ed-titulo">Nuevo perro</h1>
+    <p class="ed__borrador" id="ed-aviso-borrador" role="status" hidden><strong>Borrador.</strong> Este animal todavía no se ve en el sitio. Puedes guardarlo incompleto y publicarlo cuando esté listo.</p>
+
+    <form id="ed-form" novalidate autocomplete="off">
+      <div class="ficha__caja ed__caja">
+
+        <div class="ficha__marco ed__marco">
+          <button type="button" class="ed__foto" id="ed-foto" aria-label="Añadir o cambiar fotos">
+            <img id="ed-foto-fondo" class="ed__foto-fondo" alt="" aria-hidden="true" hidden>
+            <img id="ed-foto-img" alt="" width="300" height="300" hidden>
+            <span class="ed__foto-vacia" id="ed-foto-vacia"><svg aria-hidden="true"><use href="#i-camara"></use></svg>Añadir fotos</span>
+          </button>
+          <div class="galeria ed__galeria" id="ed-galeria" role="group" aria-label="Fotos"></div>
+          <input type="file" id="ed-archivos" accept="image/*" multiple hidden>
+          <p class="ed__ayuda">La primera foto es la que sale en la tarjeta y en la portada: mejor una donde se vea bien la cara. Toca otra para hacerla principal.</p>
+        </div>
+
+        <div class="ficha__texto">
+          <div class="ed__campo" data-campo="nombre">
+            <div class="ficha__titulo">
+              <input class="ed__nombre" id="f-nombre" type="text" maxlength="40" placeholder="Nombre" aria-label="Nombre">
+              <label class="ed__chip-check"><input type="checkbox" id="f-urgente"><span>Lleva mucho esperando</span></label>
+              <label class="ed__chip-check ed__chip-check--adoptado"><input type="checkbox" id="f-adoptado"><span>Ya fue adoptado/a</span></label>
+            </div>
+          </div>
+          <input class="ed__ghost ed__raza" id="f-raza" type="text" maxlength="60" placeholder="Raza (opcional): Pastor holandés, mestizo…" aria-label="Raza">
+
+          <div class="ed__campo" data-campo="resumen">
+            <textarea class="ed__ghost ed__resumen" id="f-resumen" rows="2" maxlength="220" placeholder="Resumen en una o dos frases (sale en la tarjeta)" aria-label="Resumen"></textarea>
+          </div>
+
+          <div class="datos ed__datos">
+            <div class="dato ed__campo" data-campo="sexo">
+              <label class="dato__k" for="f-sexo">Sexo</label>
+              <select id="f-sexo" class="dato__v"><option value="">Elige…</option><option value="macho">Macho</option><option value="hembra">Hembra</option></select>
+            </div>
+            <div class="dato ed__campo" data-campo="edad">
+              <label class="dato__k" for="f-edad">Edad</label>
+              <div class="ed__duo">
+                <input id="f-edad" class="dato__v" type="number" inputmode="numeric" min="0" max="30" step="1" placeholder="0">
+                <select id="f-unidad" class="dato__v" aria-label="Unidad de edad"><option value="anos">años</option><option value="meses">meses</option></select>
+              </div>
+            </div>
+            <div class="dato ed__campo" data-campo="peso" data-solo="perros">
+              <label class="dato__k" for="f-peso">Peso</label>
+              <div class="ed__duo">
+                <input id="f-peso" class="dato__v" type="number" inputmode="decimal" min="0" max="120" step="0.5" placeholder="0">
+                <span class="dato__v">kg</span>
+              </div>
+            </div>
+            <div class="dato ed__campo" data-campo="tamano" data-solo="perros">
+              <label class="dato__k" for="f-tamano">Tamaño</label>
+              <select id="f-tamano" class="dato__v"><option value="">Elige…</option><option value="chico">Chico</option><option value="mediano">Mediano</option><option value="grande">Grande</option></select>
+            </div>
+            <div class="dato ed__campo" data-campo="energia" data-solo="perros">
+              <label class="dato__k" for="f-energia">Energía</label>
+              <select id="f-energia" class="dato__v"><option value="">Elige…</option><option value="baja">Baja</option><option value="media">Media</option><option value="alta">Alta</option></select>
+            </div>
+          </div>
+
+          <div class="ed__bloque">
+            <p class="ed__etq">Carácter <span>(elige los que mejor lo describan)</span></p>
+            <div class="etiquetas ed__rasgos" id="ed-rasgos"></div>
+            <div class="ed__otro">
+              <input class="ed__ghost" id="f-rasgo-otro" type="text" maxlength="24" placeholder="Otro rasgo…" aria-label="Otro rasgo">
+              <button class="btn btn--claro ed__otro-btn" type="button" id="ed-rasgo-add">Añadir</button>
+            </div>
+          </div>
+
+          <div class="ed__campo" data-campo="historia">
+            <textarea class="ed__ghost ed__historia" id="f-historia" rows="6" maxlength="1500" placeholder="Su historia: cómo llegó con nosotros, cómo es, qué necesita…" aria-label="Historia"></textarea>
+          </div>
+
+          <div class="aviso-animal ed__aviso">
+            <h4><svg aria-hidden="true"><use href="#i-alerta"></use></svg>Aviso importante <small>(opcional)</small></h4>
+            <textarea class="ed__ghost" id="f-aviso" rows="2" maxlength="400" placeholder="Solo si hay algo que el adoptante deba saber antes de decidir." aria-label="Aviso importante"></textarea>
+          </div>
+
+          <div class="salud ed__salud">
+            <h4>Salud <small>(marca lo que ya está hecho)</small></h4>
+            <ul>
+              <li><label class="ed__check"><input type="checkbox" id="f-esterilizado"><span class="ed__tic"><svg aria-hidden="true"><use href="#i-check"></use></svg></span>Esterilizado</label></li>
+              <li><label class="ed__check"><input type="checkbox" id="f-vacunado"><span class="ed__tic"><svg aria-hidden="true"><use href="#i-check"></use></svg></span>Vacunas al día</label></li>
+              <li><label class="ed__check"><input type="checkbox" id="f-desparasitado"><span class="ed__tic"><svg aria-hidden="true"><use href="#i-check"></use></svg></span>Desparasitado</label></li>
+              <li><label class="ed__check"><input type="checkbox" id="f-cartilla"><span class="ed__tic"><svg aria-hidden="true"><use href="#i-check"></use></svg></span>Cartilla de vacunación</label></li>
+              <li><label class="ed__check"><input type="checkbox" id="f-microchip"><span class="ed__tic"><svg aria-hidden="true"><use href="#i-check"></use></svg></span>Microchip</label></li>
+            </ul>
+          </div>
+
+          <details class="ed__det ed__ingles" id="ed-ingles">
+            <summary><svg aria-hidden="true"><use href="#i-globo"></use></svg>Versión en inglés <span id="ed-ingles-estado"></span></summary>
+            <div class="ed__det-cuerpo">
+              <p class="ed__ayuda" id="ed-ingles-manual">Escribe aquí lo mismo que arriba, pero en inglés. Debajo de cada campo ves el texto en español para traducirlo. Si dejas algo vacío, la versión inglesa del sitio mostrará ese texto en español.</p>
+              <p class="ed__ayuda" id="ed-ingles-auto" hidden>No tienes que hacer nada aquí. Al publicar, lo que escribiste arriba se traduce automáticamente. Entra solo si quieres corregir una frase: lo que cambies a mano ya no se vuelve a traducir.</p>
+
+              <div class="campo" data-en-campo="resumen"><label for="e-resumen">Summary <span>(resumen)</span></label>
+                <p class="ed__orig" data-orig="resumen"></p>
+                <textarea id="e-resumen" rows="2" maxlength="260" placeholder="Resumen en inglés"></textarea></div>
+              <div class="campo" data-en-campo="historia"><label for="e-historia">Story <span>(historia)</span></label>
+                <p class="ed__orig" data-orig="historia"></p>
+                <textarea id="e-historia" rows="5" maxlength="1800" placeholder="Historia en inglés"></textarea></div>
+              <div class="campo" data-en-campo="raza" hidden><label for="e-raza">Breed <span>(raza)</span></label>
+                <p class="ed__orig" data-orig="raza"></p>
+                <input id="e-raza" type="text" maxlength="60"></div>
+              <div class="campo" data-en-campo="aviso" hidden><label for="e-aviso">Important warning <span>(aviso)</span></label>
+                <p class="ed__orig" data-orig="aviso"></p>
+                <textarea id="e-aviso" rows="2" maxlength="480"></textarea></div>
+              <div class="campo" data-en-campo="edadTexto" hidden><label for="e-edadtexto">Approximate age <span>(edad escrita a mano)</span></label>
+                <p class="ed__orig" data-orig="edadTexto"></p>
+                <input id="e-edadtexto" type="text" maxlength="30"></div>
+              <div class="campo"><label>Character <span>(carácter)</span></label><div class="etiquetas" id="e-rasgos"></div></div>
+
+              <button class="btn btn--claro" type="button" id="ed-traducir" hidden>Traducir ahora para revisar</button>
+              <p class="ed__ayuda" id="ed-traducir-estado" role="status" hidden></p>
+            </div>
+          </details>
+
+          <details class="ed__det">
+            <summary>Más opciones</summary>
+            <div class="ed__det-cuerpo">
+              <div class="campo ed__campo" data-campo="edadTexto">
+                <label for="f-edadtexto">Edad aproximada escrita a mano</label>
+                <input id="f-edadtexto" type="text" maxlength="30" placeholder="Ej.: 6-7 años">
+                <span class="ayuda">Solo si la edad no se puede decir con un número. Si la llenas, sustituye a la edad de arriba.</span>
+              </div>
+              <button class="btn btn--claro" type="button" id="ed-primero">Mostrarlo el primero en el sitio</button>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="ed__barra">
+        <span class="ed__estado" id="ed-estado" role="status"></span>
+        <button class="btn btn--claro" type="button" id="ed-cancelar">Cancelar</button>
+        <button class="btn btn--claro" type="button" id="ed-borrador">Guardar borrador</button>
+        <button class="btn" type="submit" id="ed-publicar">Publicar</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<!-- ============ Confirmar borrado ============ -->
+<dialog class="panel__dlg" id="dlg-borrar" aria-labelledby="borrar-t">
+  <form method="dialog">
+    <h2 id="borrar-t">¿Quitar a <span id="borrar-nombre"></span>?</h2>
+    <p>Su ficha desaparecerá del sitio. Si fue un error, se puede volver a crear, pero tendrás que escribirla otra vez.</p>
+    <div class="panel__dlg-botones">
+      <button class="btn btn--claro" value="no">No, conservarla</button>
+      <button class="btn panel__peligro" value="si">Sí, quitarla</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ============ Progreso de publicación ============ -->
+<dialog class="panel__dlg" id="dlg-progreso" aria-labelledby="prog-t">
+  <h2 id="prog-t">Publicando…</h2>
+  <ol class="panel__pasos" id="prog-pasos"></ol>
+  <p class="panel__nota" id="prog-nota" role="status"></p>
+  <div class="panel__dlg-botones" id="prog-botones" hidden>
+    <button class="btn" type="button" id="prog-cerrar">Entendido</button>
+  </div>
+</dialog>
+
+<div class="panel__aviso" id="aviso" role="status" aria-live="polite" hidden></div>
+
+<script src="config.js?v=1"></script>
+<script src="admin.js?v=8"></script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+{
+  "animales": [
+    {
+      "orden": 10,
+      "id": "reo",
+      "nombre": "Reo",
+      "raza": {
+        "es": "Pastor",
+        "en": "Shepherd"
+      },
+      "edad": 7,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "edad_texto": {
+        "es": "6-7 años",
+        "en": "6-7 years"
+      },
+      "peso_kg": 35,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/reo3.jpg",
+        "/img/animales/reo2.jpg",
+        "/img/animales/reo-ysen7.jpg",
+        "/img/animales/reo-zfxhg.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": true,
+      "es": {
+        "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
+        "historia": "Reo fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
+        "aviso": "Es un perro con mucha fuerza. Hace falta ser consciente de ello y estar capacitado para manejar este tipo de perro.",
+        "caracter": [
+          "Cariñoso",
+          "Juguetón",
+          "Protector",
+          "Leal"
+        ]
+      },
+      "en": {
+        "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
+        "historia": "Reo was a working security dog. When the company shut down, the dogs were left behind. We found him in very poor condition; he is much better now, but he still lives in a cage in the jungle, waiting for a family.",
+        "aviso": "He is a very powerful dog. You need to be aware of that and properly equipped to handle this kind of dog",
+        "caracter": [
+          "Affectionate",
+          "Playful",
+          "Protective",
+          "Loyal"
+        ]
+      },
+      "color": "menta",
+      "edad_meses": 80,
+      "especie": "perro",
+      "miniatura": "/img/animales/reo3-m.jpg"
+    },
+    {
+      "orden": 20,
+      "id": "kayla",
+      "nombre": "KAYLA",
+      "edad": 1,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "edad_texto": {
+        "es": "1.4 años",
+        "en": "1.4 years"
+      },
+      "peso_kg": 14,
+      "tamano": "mediano",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/kayla-qikeq.jpg",
+        "/img/animales/kayla-ljxok.jpg",
+        "/img/animales/kayla-rwf5n.jpg",
+        "/img/animales/kayla-02ld5.jpg",
+        "/img/animales/kayla-wvdrz.jpg",
+        "/img/animales/kayla-avxgt.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Un poco tímida al principio, pero muy sonriente una vez que se siente cómoda.",
+        "historia": "Fue abandonada sin motivo, por lo que perdió un poco la confianza en las personas, pero ahora se encuentra en un hogar temporal y ha aprendido a confiar de nuevo. Dale una oportunidad y verás que, una vez que se siente segura, es una perrita increíble que te dará muchísimo amor.",
+        "caracter": [
+          "Tranquila",
+          "Cariñosa",
+          "Juguetona",
+          "Tímida"
+        ]
+      },
+      "en": {
+        "resumen": "A bit shy at first, but very smiley once she feels comfortable.",
+        "historia": "She was abandoned for no reason, which caused her to lose some trust in people, but she is now in a foster home and has learned to trust again. Give her a chance, and you’ll see that once she feels safe, she is an amazing little dog who will give you so much love.",
+        "caracter": [
+          "Calm",
+          "Affectionate",
+          "Playful",
+          "Shy"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/kayla-qikeq-m.jpg"
+    },
+    {
+      "orden": 30,
+      "id": "wayu",
+      "nombre": "WAYU",
+      "edad": 1,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "edad_texto": {
+        "es": "1.4 años",
+        "en": "1.4 years"
+      },
+      "peso_kg": 20,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/wayu-3e0p5.jpg",
+        "/img/animales/wayu-qql2g.jpg",
+        "/img/animales/wayu-mt8aj.jpg",
+        "/img/animales/wayu-tjl91.jpg",
+        "/img/animales/wayu-a8teu.jpg",
+        "/img/animales/wayu-2ykcv.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Una segunda oportunidad para un gran compañero",
+        "historia": "Fue adoptado a los 2 meses y feliz durante 1 año... hasta que un viaje des sus dueños lo devolvió al refugio sin culpa suya. Wayu ya sabe lo que es tener un hogar solo le falta una familia que se quede para siempre. Serás tu  escribinos?",
+        "caracter": [
+          "Sociable",
+          "Noble",
+          "Protector"
+        ]
+      },
+      "en": {
+        "resumen": "A second chance for a loyal friend",
+        "historia": "He was adopted at two months old and was happy for a year... until a trip his owners took led to him being returned to the shelter—through no fault of his own. Wayu already knows what it’s like to have a home; all he needs now is a family that will stay with him forever. Could it be you? Write to us!",
+        "caracter": [
+          "Sociable",
+          "Noble",
+          "Protective"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/wayu-3e0p5-m.jpg"
+    },
+    {
+      "orden": 40,
+      "id": "theodor",
+      "nombre": "THEODOR",
+      "edad": 3,
+      "edad_unidad": "meses",
+      "sexo": "macho",
+      "fotos": [
+        "/img/animales/theodor-z0f8j.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": false,
+      "desparasitado": true,
+      "cartilla": false,
+      "microchip": false,
+      "es": {
+        "resumen": "Listo para tu familia",
+        "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenía una infección muy grave en los ojos. Ya se recuperó por completo y ahora ve perfectamente.",
+        "caracter": [
+          "Sociable",
+          "Curioso",
+          "Cariñoso"
+        ]
+      },
+      "en": {
+        "resumen": "Ready for your family",
+        "historia": "He was abandoned in an empty lot along with his siblings and had a very serious eye infection. He has made a full recovery and can now see perfectly.",
+        "caracter": [
+          "Sociable",
+          "Curious",
+          "Affectionate"
+        ]
+      },
+      "especie": "gato",
+      "miniatura": "/img/animales/theodor-z0f8j-m.jpg"
+    },
+    {
+      "orden": 50,
+      "id": "lucien",
+      "nombre": "LUCIEN",
+      "edad": 3,
+      "edad_unidad": "meses",
+      "sexo": "macho",
+      "fotos": [
+        "/img/animales/lucien-gs925.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": false,
+      "desparasitado": true,
+      "cartilla": false,
+      "microchip": false,
+      "es": {
+        "resumen": "listo para tu familia",
+        "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenia una infección muy grave en los ojos. Ya se recupero por completo y ahora ve perfectamente.",
+        "caracter": [
+          "Juguetón",
+          "Cariñoso",
+          "Activo"
+        ]
+      },
+      "en": {
+        "resumen": "Ready for your family",
+        "historia": "He was abandoned in an empty lot along with his siblings and had a very serious eye infection. He has made a full recovery and can now see perfectly.",
+        "caracter": [
+          "Playful",
+          "Affectionate",
+          "Active"
+        ]
+      },
+      "especie": "gato",
+      "miniatura": "/img/animales/lucien-gs925-m.jpg"
+    },
+    {
+      "orden": 60,
+      "id": "sheruk",
+      "nombre": "Sheruk",
+      "raza": {
+        "es": "Pastor holandés",
+        "en": "Dutch Shepherd"
+      },
+      "edad": 7,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "edad_texto": {
+        "es": "6-7 años",
+        "en": "6-7 years"
+      },
+      "peso_kg": 32,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/sheruk-d7j5c.jpg",
+        "/img/animales/sheruk-2.jpg",
+        "/img/animales/sheruk.jpg",
+        "/img/animales/sheruk-3.jpg",
+        "/img/animales/sheruk-977np.jpg",
+        "/img/animales/sheruk-4ski3.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": true,
+      "es": {
+        "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
+        "historia": "Sheruk fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
+        "aviso": "Es un perro con mucha fuerza. Hace falta ser consciente de ello y estar capacitado para manejar este tipo de perro.",
+        "caracter": [
+          "Protector",
+          "Tranquilo",
+          "Cariñoso",
+          "Leal",
+          "Obediente"
+        ]
+      },
+      "en": {
+        "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
+        "historia": "Sheruk was a working security dog. When the company shut down, the dogs were left behind. We found him in very poor condition; he is much better now, but he still lives in a cage in the jungle, waiting for a family.",
+        "aviso": "He is a very powerful dog. You need to be aware of that and properly equipped to handle this kind of dog.",
+        "caracter": [
+          "Protective",
+          "Calm",
+          "Affectionate",
+          "Loyal",
+          "Obedient"
+        ]
+      },
+      "color": "arena",
+      "especie": "perro",
+      "miniatura": "/img/animales/sheruk-d7j5c-m.jpg"
+    },
+    {
+      "orden": 70,
+      "id": "charly",
+      "nombre": "CHARLY",
+      "edad": 7,
+      "edad_unidad": "meses",
+      "sexo": "macho",
+      "peso_kg": 10,
+      "tamano": "chico",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/charly-k48ht.jpg",
+        "/img/animales/charly-rpe3q.jpg",
+        "/img/animales/charly-8rj8s.jpg",
+        "/img/animales/charly-w7bnl.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "un cachorro con todo la energía, se lleva bien con perros y gatos",
+        "historia": "Fue abandonado a muy joven en una caja de tenis, ahora está a salvo en un hogar temporal y convive con gatos y perros. Es un cachorro que simplemente quiere crecer rodeado de amigos y de una familia que lo quiera para siempre.",
+        "caracter": [
+          "Juguetón",
+          "Sociable",
+          "Enérgico",
+          "Travieso"
+        ]
+      },
+      "en": {
+        "resumen": "A high-energy puppy; gets along well with dogs and cats.",
+        "historia": "He was abandoned at a very young age in a shoebox; he is now safe in a foster home and lives alongside cats and dogs. He is a puppy who simply wants to grow up with friends and a family that will love him forever.",
+        "caracter": [
+          "Playful",
+          "Sociable",
+          "Energetic",
+          "Mischievous"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/charly-k48ht-m.jpg"
+    },
+    {
+      "orden": 80,
+      "id": "tigresa",
+      "nombre": "Tigresa",
+      "edad": 3,
+      "edad_unidad": "meses",
+      "sexo": "hembra",
+      "fotos": [
+        "/img/animales/tigresa-1.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": false,
+      "desparasitado": true,
+      "cartilla": false,
+      "microchip": false,
+      "es": {
+        "resumen": "lista para darte mucho amor",
+        "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenía una infección muy grave en los ojos. Ya se recuperó por completo y ahora ve perfectamente.",
+        "caracter": [
+          "Juguetona",
+          "Cariñosa"
+        ]
+      },
+      "en": {
+        "resumen": "Ready to give you lots of love",
+        "historia": "She was abandoned in an empty lot together with her siblings and had a very serious eye infection. She has made a full recovery and can now see perfectly.",
+        "caracter": [
+          "Playful",
+          "Affectionate"
+        ]
+      },
+      "color": "turquesa",
+      "especie": "gato",
+      "miniatura": "/img/animales/tigresa-1-m.jpg"
+    }
+  ]
+}
