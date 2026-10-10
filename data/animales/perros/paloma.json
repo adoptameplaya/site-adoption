@@ -2,12 +2,16 @@
   "orden": -188,
   "id": "paloma",
   "nombre": "PALOMA",
-  "edad": null,
+  "edad": 2,
   "edad_unidad": "anos",
   "sexo": "hembra",
-  "peso_kg": 0,
+  "edad_texto": {
+    "es": "2.5 anos",
+    "en": "2.5 years"
+  },
+  "peso_kg": 30,
   "tamano": "grande",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/paloma-sxut3.jpg",
     "/img/animales/paloma-t8bas.jpg",
