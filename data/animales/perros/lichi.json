@@ -2,12 +2,12 @@
   "orden": -308,
   "id": "lichi",
   "nombre": "LICHI",
-  "edad": null,
+  "edad": 7,
   "edad_unidad": "anos",
   "sexo": "hembra",
-  "peso_kg": 0,
+  "peso_kg": 14,
   "tamano": "chico",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/lichi-nl2hj.jpg",
     "/img/animales/lichi-uzirm.jpg"
