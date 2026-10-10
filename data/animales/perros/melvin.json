@@ -2,10 +2,14 @@
   "orden": -358,
   "id": "melvin",
   "nombre": "MELVIN",
-  "edad": null,
+  "edad": 2,
   "edad_unidad": "anos",
   "sexo": "macho",
-  "peso_kg": 0,
+  "edad_texto": {
+    "es": "2.5 anos",
+    "en": "2.5 years"
+  },
+  "peso_kg": 30,
   "tamano": "grande",
   "energia": "",
   "fotos": [
