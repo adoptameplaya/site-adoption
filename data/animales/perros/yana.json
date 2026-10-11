@@ -1,5 +1,5 @@
 {
-  "orden": -128,
+  "orden": -200,
   "id": "yana",
   "nombre": "YANA",
   "edad": 3,
@@ -7,7 +7,7 @@
   "sexo": "hembra",
   "peso_kg": 19,
   "tamano": "mediano",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/yana-7mkmh.jpg",
     "/img/animales/yana-43dc2.jpg",
@@ -16,16 +16,18 @@
     "/img/animales/yana-alm5i.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
