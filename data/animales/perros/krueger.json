@@ -1,5 +1,5 @@
 {
-  "orden": -248,
+  "orden": -20,
   "id": "krueger",
   "nombre": "KRUEGER",
   "edad": 8,
@@ -17,16 +17,27 @@
     "/img/animales/krueger-e15fd.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
-    "caracter": []
+    "resumen": "Es muy fuerte y cariñoso",
+    "historia": "Información próximamente",
+    "caracter": [
+      "Cariñoso",
+      "Leal",
+      "Amistoso"
+    ]
   },
-  "en": {}
+  "en": {
+    "resumen": "Es muy fuerte y cariñoso",
+    "historia": "Information coming soon",
+    "caracter": [
+      "Affectionate",
+      "Loyal",
+      "Friendly"
+    ]
+  }
 }
