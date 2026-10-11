@@ -1,5 +1,5 @@
 {
-  "orden": -198,
+  "orden": -260,
   "id": "danny",
   "nombre": "DANNY",
   "edad": 3,
@@ -7,7 +7,7 @@
   "sexo": "macho",
   "peso_kg": 23,
   "tamano": "mediano",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/danny-qk4hv.jpg",
     "/img/animales/danny-r0lyn.jpg",
@@ -17,16 +17,18 @@
     "/img/animales/danny-o5ji4.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
