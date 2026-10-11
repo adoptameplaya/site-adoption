@@ -1,5 +1,5 @@
 {
-  "orden": -108,
+  "orden": -140,
   "id": "tesla",
   "nombre": "TESLA",
   "edad": 2,
@@ -17,16 +17,18 @@
     "/img/animales/tesla-u3v56.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
