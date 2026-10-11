@@ -1,5 +1,5 @@
 {
-  "orden": -358,
+  "orden": -60,
   "id": "melvin",
   "nombre": "MELVIN",
   "edad": 2,
@@ -21,7 +21,6 @@
     "/img/animales/melvin-i4wtj.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
