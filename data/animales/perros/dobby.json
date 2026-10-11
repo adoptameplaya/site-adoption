@@ -16,7 +16,7 @@
     "/img/animales/dobby-jlk4c.jpg",
     "/img/animales/dobby-a3k7y.jpg"
   ],
-  "urgente": false,
+  "urgente": true,
   "borrador": true,
   "esterilizado": true,
   "vacunado": true,
@@ -24,15 +24,19 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "Años esperando una familia que me cambiara la vida.",
+    "historia": "encontrado en la calle peleando con otros perros por una hembra en celo , hoy esta esterilizado ;)",
     "caracter": [
-      "Juguetón"
+      "Juguetón",
+      "Cariñoso",
+      "Valiente"
     ]
   },
   "en": {
     "caracter": [
-      "Playful"
+      "Playful",
+      "Affectionate",
+      "Brave"
     ]
   }
 }
