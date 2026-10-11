@@ -1,5 +1,5 @@
 {
-  "orden": -398,
+  "orden": -30,
   "id": "queen",
   "nombre": "QUEEN",
   "edad": 3,
@@ -14,16 +14,18 @@
     "/img/animales/queen-n6mi1.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
