@@ -1,5 +1,5 @@
 {
-  "orden": -278,
+  "orden": -320,
   "id": "pirata",
   "nombre": "PIRATA",
   "edad": 4,
@@ -17,28 +17,31 @@
     "/img/animales/pirata-huvae.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": [
       "Tranquilo",
       "Cariñoso",
       "Juguetón",
-      "Sociable"
+      "Sociable",
+      "Dulce"
     ]
   },
   "en": {
+    "resumen": "pending information",
+    "historia": "pending information",
     "caracter": [
       "Calm",
       "Affectionate",
       "Playful",
-      "Sociable"
+      "Sociable",
+      "Sweet"
     ]
   }
 }
