@@ -1,5 +1,5 @@
 {
-  "orden": -78,
+  "orden": -170,
   "id": "skipper",
   "nombre": "SKIPPER",
   "edad": 2,
@@ -7,7 +7,7 @@
   "sexo": "macho",
   "peso_kg": 25,
   "tamano": "mediano",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/skipper-w75kq.jpg",
     "/img/animales/skipper-5twfm.jpg",
@@ -17,16 +17,18 @@
     "/img/animales/skipper-osny1.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "informacion pendiente",
+    "historia": "informacion pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information ... I'm one of the Penguins of Madagascar, but I can be adopted on my own ;)",
+    "historia": "pending information"
+  }
 }
