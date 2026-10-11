@@ -1,5 +1,5 @@
 {
-  "orden": -268,
+  "orden": -340,
   "id": "patas",
   "nombre": "PATAS",
   "edad": 3,
@@ -17,16 +17,31 @@
     "/img/animales/patas-18axu.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "soy muy amoroso, con mucha energiga y gusta juegar con otros perros ,",
-    "historia": "",
-    "caracter": []
+    "resumen": "Soy muy cariñoso y estoy lleno de energía; me gusta jugar con otros perros.",
+    "historia": "Fue encontrado junto a otros cuatro perros; dos de ellos no sobrevivieron, ya que estaban esqueléticos y gravemente desnutridos. El dueño padecía una enfermedad mental y también estaba desnutrido; los perros fueron rescatados y el hombre fue trasladado al hospital, pero desconocemos si sobrevivió.",
+    "caracter": [
+      "Cariñoso",
+      "Juguetón",
+      "Sociable",
+      "Amistoso",
+      "Enérgico"
+    ]
   },
-  "en": {}
+  "en": {
+    "resumen": "Soy muy cariñoso y estoy lleno de energía; me gusta jugar con otros perros.",
+    "historia": "He was found alongside four other dogs; two of them did not survive, as they were emaciated and severely malnourished. The owner suffered from mental illness and was also malnourished; the dogs were rescued and the man was taken to the hospital, but we do not know if he survived.",
+    "caracter": [
+      "Affectionate",
+      "Playful",
+      "Sociable",
+      "Friendly",
+      "Energetic"
+    ]
+  }
 }
