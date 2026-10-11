@@ -1,5 +1,5 @@
 {
-  "orden": -388,
+  "orden": -40,
   "id": "guayaba",
   "nombre": "GUAYABA",
   "edad": 2,
@@ -14,16 +14,18 @@
     "/img/animales/guayaba-dgtkw.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
