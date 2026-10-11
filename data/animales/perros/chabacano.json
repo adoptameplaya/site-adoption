@@ -1,5 +1,5 @@
 {
-  "orden": -318,
+  "orden": -110,
   "id": "chabacano",
   "nombre": "CHABACANO",
   "edad": 2,
@@ -7,22 +7,24 @@
   "sexo": "macho",
   "peso_kg": 27,
   "tamano": "grande",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/chabacano-0hnlk.jpg",
     "/img/animales/chabacano-zbj65.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
