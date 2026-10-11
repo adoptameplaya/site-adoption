@@ -1,5 +1,5 @@
 {
-  "orden": -178,
+  "orden": -240,
   "id": "soya",
   "nombre": "SOYA",
   "edad": 2,
@@ -7,7 +7,7 @@
   "sexo": "hembra",
   "peso_kg": 17,
   "tamano": "mediano",
-  "energia": "",
+  "energia": "baja",
   "fotos": [
     "/img/animales/soya-q8afj.jpg",
     "/img/animales/soya-iv0us.jpg",
@@ -17,16 +17,18 @@
     "/img/animales/soya-6ylgf.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
