@@ -1,5 +1,5 @@
 {
-  "orden": -68,
+  "orden": -160,
   "id": "cabo",
   "nombre": "CABO",
   "edad": 2,
@@ -17,7 +17,6 @@
     "/img/animales/cabo-8fipd.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
@@ -25,8 +24,11 @@
   "microchip": false,
   "es": {
     "resumen": "el hace parte de los 3 Pinguinos de Madagascar , pero se puede adoptar solo ;) tengo un poco de sobrepeso , me ayudas con mi dieta",
-    "historia": "",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "I'm one of the 3 Penguins of Madagascar, but I can be adopted on my own ;) I'm a little overweight—will you help me with my diet?",
+    "historia": "pending information"
+  }
 }
