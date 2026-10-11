@@ -1,5 +1,5 @@
 {
-  "orden": -98,
+  "orden": -190,
   "id": "gandalf",
   "nombre": "GANDALF",
   "edad": 2,
@@ -16,16 +16,18 @@
     "/img/animales/gandalf-tyhzz.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
