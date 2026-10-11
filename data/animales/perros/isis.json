@@ -1,5 +1,5 @@
 {
-  "orden": -138,
+  "orden": -10,
   "id": "isis",
   "nombre": "ISIS",
   "edad": 3,
@@ -17,16 +17,29 @@
     "/img/animales/isis-anv68.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
-    "caracter": []
+    "resumen": "Me encanta jugar a la pelota, ¿vienes a jugar conmigo?",
+    "historia": "Información próximamente",
+    "caracter": [
+      "Cariñosa",
+      "Inteligente",
+      "Activa",
+      "Sociable"
+    ]
   },
-  "en": {}
+  "en": {
+    "resumen": "Found on the street fighting with other dogs over a female in heat; today I’m neutered, and with a proper introduction, I love playing with other dogs ;)",
+    "historia": "Information coming soon",
+    "caracter": [
+      "Affectionate",
+      "Smart",
+      "Active",
+      "Sociable"
+    ]
+  }
 }
