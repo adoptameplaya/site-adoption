@@ -1,5 +1,5 @@
 {
-  "orden": -58,
+  "orden": -150,
   "id": "kowalski",
   "nombre": "KOWALSKI",
   "edad": 2,
@@ -7,7 +7,7 @@
   "sexo": "macho",
   "peso_kg": 26,
   "tamano": "grande",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/kowalski-1wl35.jpg",
     "/img/animales/kowalski-u8wi2.jpg",
@@ -17,16 +17,18 @@
     "/img/animales/kowalski-c3owi.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
