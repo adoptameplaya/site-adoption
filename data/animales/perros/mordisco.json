@@ -1,5 +1,5 @@
 {
-  "orden": -288,
+  "orden": -330,
   "id": "mordisco",
   "nombre": "MORDISCO",
   "edad": 3,
@@ -16,16 +16,18 @@
     "/img/animales/mordisco-3e1v8.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
