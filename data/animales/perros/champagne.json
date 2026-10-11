@@ -1,5 +1,5 @@
 {
-  "orden": -168,
+  "orden": -230,
   "id": "champagne",
   "nombre": "CHAMPAGNE",
   "edad": 2,
@@ -16,16 +16,18 @@
     "/img/animales/champagne-r8vjh.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
