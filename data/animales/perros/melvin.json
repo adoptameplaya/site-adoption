@@ -11,7 +11,7 @@
   },
   "peso_kg": 30,
   "tamano": "grande",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/melvin-3ci3y.jpg",
     "/img/animales/melvin-cuq9y.jpg",
@@ -28,9 +28,12 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "información pendiente",
+    "historia": "información pendiente",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "pending information",
+    "historia": "pending information"
+  }
 }
