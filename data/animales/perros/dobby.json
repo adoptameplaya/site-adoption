@@ -1,5 +1,5 @@
 {
-  "orden": -118,
+  "orden": 0,
   "id": "dobby",
   "nombre": "DOBBY",
   "edad": 5,
@@ -17,7 +17,6 @@
     "/img/animales/dobby-a3k7y.jpg"
   ],
   "urgente": true,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
@@ -33,6 +32,8 @@
     ]
   },
   "en": {
+    "resumen": "Years spent waiting for a family that would change my life.",
+    "historia": "Found on the street fighting with other dogs over a female in heat; today he is neutered ;)",
     "caracter": [
       "Playful",
       "Affectionate",
