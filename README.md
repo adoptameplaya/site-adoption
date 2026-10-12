@@ -46,7 +46,8 @@ js/app.js                   Logique (filtres, fiche, formulaire, dons)
 data/config.json            ← infos de Adopta Me Playa (à remplir)
 data/animales.json          ← les animaux (à remplir)
 img/animales/*.svg          Illustrations provisoires
-img/ui/favicon.svg
+favicon.ico + img/ui/favicon-*.png    Icône d'onglet = logo (tampon sur disque crème)
+img/ui/apple-touch-icon.png  Icône écran d'accueil iPhone
 servir.command              Lanceur local
 ```
 

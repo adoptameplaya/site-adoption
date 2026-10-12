@@ -29,7 +29,7 @@ RACINE = Path(__file__).parent.resolve()
 DIST   = RACINE / "dist"
 BUILD  = DIST / "preprod"
 
-A_COPIER = ["index.html", "aviso-de-privacidad.html", "gracias.html", "cuestionario.html", "admin", "css", "js", "data", "img", "formularios", "api", ".htaccess"]
+A_COPIER = ["index.html", "aviso-de-privacidad.html", "gracias.html", "cuestionario.html", "admin", "css", "js", "data", "img", "formularios", "api", ".htaccess", "favicon.ico"]
 
 # Jamais dans le site publié : les secrets posés à la main sur le serveur,
 # et les scories de macOS.
