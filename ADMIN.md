@@ -183,6 +183,21 @@ vrais animaux : variable GitHub `MODO` = `produccion`, puis *Run workflow*. Cela
 le bandeau « sitio de demostración » et le `noindex`. `/admin/` reste exclu des moteurs
 de recherche.
 
+## HSTS (sécurité HTTPS)
+
+`.htaccess` envoie `Strict-Transport-Security`. **Mise en place progressive**, parce qu'on ne peut pas
+l'annuler vite : une fois reçu, le navigateur refuse tout accès non sécurisé pendant `max-age`.
+
+| Étape | Valeur | Quand |
+|---|---|---|
+| 1 | `max-age=604800` (1 semaine) | mis en place le 12/10/2026 |
+| 2 | `max-age=15552000` (6 mois) | après 2–3 semaines sans souci (vers le 02/11/2026) |
+
+Pas de `includeSubDomains` (le site n'a pas besoin d'imposer HTTPS aux sous-domaines) ni de `preload`
+(liste intégrée aux navigateurs, quasi irréversible). Avant de monter la durée : certificat valide
+(AutoSSL), `http://` et `www.` redirigent bien vers `https://adoptameplaya.org` — `auditar-sitio.py` le vérifie.
+**Pour l'annuler** : servir `max-age=0` en HTTPS ; chaque navigateur oublie la règle à sa prochaine visite.
+
 ## Fichiers
 
 | Chemin | Rôle |

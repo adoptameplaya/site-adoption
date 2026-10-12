@@ -143,7 +143,12 @@ sec("4. En-têtes de sécurité, cache, compression")
 s, h, _ = get("/")
 for k in ("x-content-type-options", "referrer-policy"):
     (ok if k in h else warn)(f"en-tête {k} : {h.get(k, 'absent')}")
-(info if "strict-transport-security" not in h else ok)(f"HSTS : {h.get('strict-transport-security', 'absent (à activer seulement après le lancement, il est difficile à annuler)')}")
+hsts = h.get("strict-transport-security", "")
+if not hsts: info("HSTS : absent (à activer progressivement, voir ADMIN.md)")
+else:
+    m_ = re.search(r"max-age=(\d+)", hsts); dur = int(m_.group(1)) if m_ else 0
+    (ok if dur >= 604800 else warn)(f"HSTS actif : {hsts} (≈ {dur // 86400} jours)")
+    if "preload" in hsts: warn("HSTS : « preload » présent — presque impossible à annuler, à retirer sauf choix délibéré")
 s, h, _ = get("/css/style.css"); (ok if h.get("content-encoding") == "gzip" else warn)(f"compression gzip des CSS : {h.get('content-encoding', 'non')}")
 s, h, _ = get("/data/animales.json"); (ok if "no-cache" in h.get("cache-control", "") else warn)(f"JSON jamais mis en cache : {h.get('cache-control', 'absent')}")
 s, h, _ = get("/admin/")
