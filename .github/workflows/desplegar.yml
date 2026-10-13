@@ -13,7 +13,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-
+  schedule:
+    - cron: '10 5 * * 1'
 # Una construcci√≥n a la vez: dos fichas guardadas seguidas se encadenan.
 concurrency:
   group: construir
