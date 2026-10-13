@@ -7,7 +7,7 @@
   "sexo": "hembra",
   "peso_kg": 31,
   "tamano": "grande",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/lana-y0n78.jpg",
     "/img/animales/lana-tz8oo.jpg"
@@ -20,9 +20,12 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
 }
