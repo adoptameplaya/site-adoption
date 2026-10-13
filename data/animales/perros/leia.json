@@ -22,10 +22,11 @@
   "microchip": false,
   "es": {
     "resumen": "Pronto más información",
-    "historia": "",
+    "historia": "Pronto más información",
     "caracter": []
   },
   "en": {
-    "resumen": "More information coming soon"
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
   }
 }
