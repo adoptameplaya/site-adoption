@@ -1,0 +1,32 @@
+{
+  "orden": -80,
+  "id": "cheel",
+  "nombre": "CHEEL",
+  "edad": 5,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 23,
+  "tamano": "mediano",
+  "energia": "baja",
+  "fotos": [
+    "/img/animales/cheel-h5jdd.jpg",
+    "/img/animales/cheel-u0atk.jpg",
+    "/img/animales/cheel-sw0ml.jpg",
+    "/img/animales/cheel-9so1u.jpg",
+    "/img/animales/cheel-j6omk.jpg",
+    "/img/animales/cheel-huqqq.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
