@@ -1,0 +1,32 @@
+{
+  "orden": -60,
+  "id": "shirley",
+  "nombre": "SHIRLEY",
+  "edad": 4,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 22,
+  "tamano": "mediano",
+  "energia": "",
+  "fotos": [
+    "/img/animales/shirley-9wz5d.jpg",
+    "/img/animales/shirley-67q85.jpg",
+    "/img/animales/shirley-t8nb9.jpg",
+    "/img/animales/shirley-cwhxg.jpg",
+    "/img/animales/shirley-fj0oh.jpg",
+    "/img/animales/shirley-qx5pu.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
