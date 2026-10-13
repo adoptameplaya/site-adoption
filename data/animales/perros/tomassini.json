@@ -1,0 +1,32 @@
+{
+  "orden": -250,
+  "id": "tomassini",
+  "nombre": "TOMASSINI",
+  "edad": 4,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 15,
+  "tamano": "chico",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/tomassini-ibxgu.jpg",
+    "/img/animales/tomassini-240jk.jpg",
+    "/img/animales/tomassini-jev9w.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
