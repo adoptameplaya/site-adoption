@@ -532,6 +532,17 @@ def sitemap():
 
 # Animaux de la démonstration : leurs fiches ne doivent jamais partir en production.
 FICHES_EXEMPLE = {"coco", "rocky", "canela", "bruno", "frida"}
+
+
+def es_ficha_ejemplo(a):
+    """Vraie fiche de démonstration = id de la liste ET photo de banque d'images (img/animales/<id>.jpg, sans
+    suffixe). Un vrai animal qui porte le même prénom (un chien « Bruno » !) n'est PAS une fiche d'exemple :
+    ses photos viennent du panneau et ont toujours un suffixe aléatoire (bruno-krz2d.jpg)."""
+    if a.get("id") not in FICHES_EXEMPLE:
+        return False
+    demo = {f"img/animales/{a['id']}.{ext}" for ext in ("jpg", "jpeg", "png", "webp", "svg")}
+    fotos = [str(p).lstrip("/") for p in (a.get("fotos") or [a.get("foto")]) if p]
+    return not fotos or any(f in demo for f in fotos)
 # Restes du modèle de démonstration : nom, adresse et e-mail inventés.
 RESTES_MODELE = ("Patitas del Caribe", "patitasdelcaribe", "Calle 34 Norte", "ejemplo.org", "PENDIENTE-LEGAL")
 
@@ -558,7 +569,7 @@ def verificar_produccion():
         problemas.append("don wise : lien vide (à renseigner, ou « activo »: false)")
 
     animales = json.loads((BUILD / "data" / "animales.json").read_text(encoding="utf-8"))["animales"]
-    ejemplo = sorted(a["nombre"] for a in animales if a.get("id") in FICHES_EXEMPLE)
+    ejemplo = sorted(a["nombre"] for a in animales if es_ficha_ejemplo(a))
     if ejemplo:
         problemas.append("fiches d'exemple encore présentes : " + ", ".join(ejemplo))
 

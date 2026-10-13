@@ -175,11 +175,16 @@ s, h, b = get("/data/animales.json")
 try: animales = json.loads(b)["animales"]; ok(f"{len(animales)} fiches lisibles ({sum(a['especie']=='perro' for a in animales)} chiens, {sum(a['especie']=='gato' for a in animales)} chats)")
 except Exception as e: bad(f"animales.json illisible : {e}"); animales = []
 EJEMPLO = {"coco", "rocky", "canela", "bruno", "frida"}
+def es_ejemplo(a):    # même règle que build-preprod.py : id de la démo ET photo de banque d'images sans suffixe
+    if a.get("id") not in EJEMPLO: return False
+    demo = {f"img/animales/{a['id']}.{e}" for e in ("jpg", "jpeg", "png", "webp", "svg")}
+    fotos = [str(p).lstrip("/") for p in (a.get("fotos") or [a.get("foto")]) if p]
+    return not fotos or any(f in demo for f in fotos)
 borr_pub = [a.get("nombre", "?") for a in animales if "borrador" in a]
 (bad if borr_pub else ok)("aucun brouillon dans le JSON public" if not borr_pub else f"brouillon(s) publié(s) sur le site : {', '.join(borr_pub)}")
 ids = [a.get("id") for a in animales]
 (ok if len(ids) == len(set(ids)) else bad)("identifiants uniques")
-ej = [a["nombre"] for a in animales if a.get("id") in EJEMPLO]
+ej = [a["nombre"] for a in animales if es_ejemplo(a)]
 if ej: bad(f"{len(ej)} fiches d'EXEMPLE encore publiées (animaux fictifs, photos de banque d'images) : {', '.join(ej)}")
 # Texte « en attente » (case « Aún no tengo esta información » du panneau, ou ancienne formule) : voulu, pas une erreur.
 PENDIENTES = {"pronto mas informacion", "informacion pendiente"}
@@ -189,7 +194,7 @@ historias = {}
 en_espera = []
 for a in animales:
     nom = a["nombre"]; es, en = a.get("es", {}), a.get("en", {})
-    if a.get("id") in EJEMPLO: continue
+    if es_ejemplo(a): continue
     fal = [k for k in ("resumen", "historia") if not es.get(k)]
     if fal: bad(f"{nom} : texte espagnol manquant ({', '.join(fal)})")
     falen = [k for k in ("resumen", "historia") if es.get(k) and not en.get(k)]
@@ -212,7 +217,7 @@ if en_espera: info(f"{len(en_espera)} fiche(s) avec un texte « en attente » (r
 for hist, noms in historias.items():
     if hist and len(noms) > 1: warn(f"même histoire pour {', '.join(noms)} (texte copié/provisoire ?)")
 for a in animales:
-    if a.get("id") not in EJEMPLO and not es_pendiente(a.get("es", {}).get("resumen")) and sum(1 for r in resumenes if r and r == a.get("es", {}).get("resumen")) > 1:
+    if not es_ejemplo(a) and not es_pendiente(a.get("es", {}).get("resumen")) and sum(1 for r in resumenes if r and r == a.get("es", {}).get("resumen")) > 1:
         warn(f"{a['nombre']} : son résumé est identique à celui d'une autre fiche"); break
 
 # ───────────────────────────── 7. configuration : dons, contacts
@@ -276,7 +281,9 @@ if A.repo:
     # les photos d'un brouillon ne doivent pas être servies par le site (le dépôt GitHub, lui, est public)
     for ph in sorted(fotos_borr - fotos_pub):
         st_, _, _ = get(ph, method="HEAD", gz=False)
-        (ok if st_ == 404 else bad)(f"photo de brouillon {ph.split('/')[-1]} : HTTP {st_} " + ("(non publiée)" if st_ == 404 else "→ ELLE EST PUBLIQUE"))
+        if st_ == 404: ok(f"photo de brouillon {ph.split('/')[-1]} : HTTP 404 (non publiée)")
+        elif st_ == 0: warn(f"photo de brouillon {ph.split('/')[-1]} : non vérifiée (coupure réseau pendant l'audit, relancer)")
+        else: bad(f"photo de brouillon {ph.split('/')[-1]} : HTTP {st_} → ELLE EST PUBLIQUE")
     refs_foto |= {re.sub(r"\.jpe?g$", "-m.jpg", n, flags=re.I) for n in refs_foto}     # les miniatures dérivées
     sobran = [p for p in (R / "img/animales").glob("*") if p.is_file() and p.name not in refs_foto and not p.name.startswith(".")]
     if sobran: warn(f"{len(sobran)} photos non utilisées dans img/animales (≈ {sum(p.stat().st_size for p in sobran)//1024} Ko publiés pour rien) : " + ", ".join(sorted(p.name for p in sobran)[:8]))
