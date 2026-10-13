@@ -1,0 +1,32 @@
+{
+  "orden": -140,
+  "id": "cooper",
+  "nombre": "COOPER",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 28,
+  "tamano": "grande",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/cooper-cdjmr.jpg",
+    "/img/animales/cooper-ud7ku.jpg",
+    "/img/animales/cooper-yox7u.jpg",
+    "/img/animales/cooper-rh8al.jpg",
+    "/img/animales/cooper-za913.jpg",
+    "/img/animales/cooper-7oaff.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
