@@ -1,5 +1,5 @@
 {
-  "orden": -210,
+  "orden": 0,
   "id": "oso",
   "nombre": "OSO",
   "edad": 5,
@@ -14,7 +14,6 @@
     "/img/animales/oso-cvccm.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
@@ -22,10 +21,11 @@
   "microchip": false,
   "es": {
     "resumen": "Pronto más información",
-    "historia": "",
+    "historia": "Pronto más información",
     "caracter": []
   },
   "en": {
-    "resumen": "More information coming soon"
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
   }
 }
