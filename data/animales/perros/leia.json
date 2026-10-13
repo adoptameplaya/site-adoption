@@ -1,0 +1,31 @@
+{
+  "orden": -220,
+  "id": "leia",
+  "nombre": "LEIA",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 28,
+  "tamano": "grande",
+  "energia": "",
+  "fotos": [
+    "/img/animales/leia-8ik8t.jpg",
+    "/img/animales/leia-lkpco.jpg",
+    "/img/animales/leia-v7991.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon"
+  }
+}
