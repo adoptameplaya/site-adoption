@@ -7,7 +7,7 @@
   "sexo": "hembra",
   "peso_kg": 16,
   "tamano": "mediano",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/sulley-019yc.jpg",
     "/img/animales/sulley-igzrj.jpg",
@@ -23,9 +23,12 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
 }
