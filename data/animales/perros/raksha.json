@@ -1,0 +1,32 @@
+{
+  "orden": -160,
+  "id": "raksha",
+  "nombre": "RAKSHA",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 18,
+  "tamano": "grande",
+  "energia": "",
+  "fotos": [
+    "/img/animales/raksha-mxbe9.jpg",
+    "/img/animales/raksha-6wiqy.jpg",
+    "/img/animales/raksha-8ey99.jpg",
+    "/img/animales/raksha-n9ns6.jpg",
+    "/img/animales/raksha-11sxq.jpg",
+    "/img/animales/raksha-myoad.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
