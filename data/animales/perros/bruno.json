@@ -10,13 +10,11 @@
   "energia": "baja",
   "fotos": [
     "/img/animales/bruno-zeis9.jpg",
-    "/img/animales/bruno-b5vmi.jpg",
     "/img/animales/bruno-mfljf.jpg",
-    "/img/animales/bruno-yeigv.jpg",
-    "/img/animales/bruno-q91bc.jpg",
-    "/img/animales/bruno-pyxku.jpg"
+    "/img/animales/bruno-q91bc.jpg"
   ],
   "urgente": true,
+  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
