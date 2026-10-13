@@ -24,9 +24,11 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
+    "resumen": "Pronto más información",
     "historia": "",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "More information coming soon"
+  }
 }
