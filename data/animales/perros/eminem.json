@@ -1,0 +1,32 @@
+{
+  "orden": -270,
+  "id": "eminem",
+  "nombre": "EMINEM",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 20,
+  "tamano": "grande",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/eminem-jky83.jpg",
+    "/img/animales/eminem-p5hc2.jpg",
+    "/img/animales/eminem-gfis3.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
