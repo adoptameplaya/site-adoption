@@ -22,16 +22,16 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "información pendiente",
-    "historia": "información pendiente",
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
     "caracter": [
       "Juguetón",
       "Amistoso"
     ]
   },
   "en": {
-    "resumen": "pending information",
-    "historia": "pending information",
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon",
     "caracter": [
       "Playful",
       "Friendly"

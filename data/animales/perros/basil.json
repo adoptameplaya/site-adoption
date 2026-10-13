@@ -23,12 +23,12 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "informacion pendiente",
-    "historia": "informacion pendiente",
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
     "caracter": []
   },
   "en": {
-    "resumen": "pending information",
-    "historia": "pending information"
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
   }
 }
