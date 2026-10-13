@@ -1,0 +1,32 @@
+{
+  "orden": -40,
+  "id": "max",
+  "nombre": "MAX",
+  "edad": 5,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 23,
+  "tamano": "mediano",
+  "energia": "",
+  "fotos": [
+    "/img/animales/max-qotzh.jpg",
+    "/img/animales/max-g3asm.jpg",
+    "/img/animales/max-p7ab4.jpg",
+    "/img/animales/max-fmx9s.jpg",
+    "/img/animales/max-1nl1u.jpg",
+    "/img/animales/max-alrr1.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
