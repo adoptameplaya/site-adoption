@@ -1,0 +1,32 @@
+{
+  "orden": 999,
+  "id": "bolillo",
+  "nombre": "BOLILLO",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 24,
+  "tamano": "grande",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/bolillo-b6qei.jpg",
+    "/img/animales/bolillo-kb4kg.jpg",
+    "/img/animales/bolillo-3ivlg.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
