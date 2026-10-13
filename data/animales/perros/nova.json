@@ -1,0 +1,32 @@
+{
+  "orden": -130,
+  "id": "nova",
+  "nombre": "NOVA",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 28,
+  "tamano": "mediano",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/nova-a9ggl.jpg",
+    "/img/animales/nova-ncsof.jpg",
+    "/img/animales/nova-aml9o.jpg",
+    "/img/animales/nova-zubym.jpg",
+    "/img/animales/nova-gdlw4.jpg",
+    "/img/animales/nova-y6hra.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
