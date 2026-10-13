@@ -1,0 +1,32 @@
+{
+  "orden": 999,
+  "id": "rowan",
+  "nombre": "ROWAN",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 35,
+  "tamano": "grande",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/rowan-xdv5p.jpg",
+    "/img/animales/rowan-t7vwd.jpg",
+    "/img/animales/rowan-gg3v1.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
