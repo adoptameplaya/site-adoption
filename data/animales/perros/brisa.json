@@ -1,0 +1,32 @@
+{
+  "orden": -240,
+  "id": "brisa",
+  "nombre": "BRISA",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 21,
+  "tamano": "mediano",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/brisa-ik745.jpg",
+    "/img/animales/brisa-uomd3.jpg",
+    "/img/animales/brisa-estcf.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
