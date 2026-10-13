@@ -1,0 +1,32 @@
+{
+  "orden": -30,
+  "id": "camilo",
+  "nombre": "CAMILO",
+  "edad": 5,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 25,
+  "tamano": "grande",
+  "energia": "",
+  "fotos": [
+    "/img/animales/camilo-gwel5.jpg",
+    "/img/animales/camilo-2oeip.jpg",
+    "/img/animales/camilo-p7pcn.jpg",
+    "/img/animales/camilo-5iuvh.jpg",
+    "/img/animales/camilo-a5wyv.jpg",
+    "/img/animales/camilo-2tshu.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
