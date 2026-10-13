@@ -16,7 +16,7 @@
     "/img/animales/bruno-q91bc.jpg",
     "/img/animales/bruno-pyxku.jpg"
   ],
-  "urgente": false,
+  "urgente": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
