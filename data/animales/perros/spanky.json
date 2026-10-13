@@ -1,0 +1,32 @@
+{
+  "orden": -70,
+  "id": "spanky",
+  "nombre": "SPANKY",
+  "edad": 4,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 27,
+  "tamano": "grande",
+  "energia": "",
+  "fotos": [
+    "/img/animales/spanky-6q8ke.jpg",
+    "/img/animales/spanky-pj53g.jpg",
+    "/img/animales/spanky-eawvq.jpg",
+    "/img/animales/spanky-3c1ec.jpg",
+    "/img/animales/spanky-dvmzo.jpg",
+    "/img/animales/spanky-nckdl.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
