@@ -14,7 +14,7 @@
 <link rel="preload" as="font" type="font/woff2" href="../css/fonts/baloo2-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../css/fonts/nunito-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../css/style.css?v=63">
-<link rel="stylesheet" href="admin.css?v=6">
+<link rel="stylesheet" href="admin.css?v=7">
 </head>
 <body class="panel">
 
@@ -146,6 +146,7 @@
 
           <div class="ed__campo" data-campo="resumen">
             <textarea class="ed__ghost ed__resumen" id="f-resumen" rows="2" maxlength="220" placeholder="Resumen en una o dos frases (sale en la tarjeta)" aria-label="Resumen"></textarea>
+            <label class="ed__pendiente"><input type="checkbox" data-pendiente="resumen"><span>Aún no tengo esta información <small>(el sitio mostrará «Pronto más información»)</small></span></label>
           </div>
 
           <div class="datos ed__datos">
@@ -188,6 +189,7 @@
 
           <div class="ed__campo" data-campo="historia">
             <textarea class="ed__ghost ed__historia" id="f-historia" rows="6" maxlength="1500" placeholder="Su historia: cómo llegó con nosotros, cómo es, qué necesita…" aria-label="Historia"></textarea>
+            <label class="ed__pendiente"><input type="checkbox" data-pendiente="historia"><span>Aún no tengo esta información <small>(el sitio mostrará «Pronto más información»)</small></span></label>
           </div>
 
           <div class="aviso-animal ed__aviso">
@@ -283,6 +285,6 @@
 <div class="panel__aviso" id="aviso" role="status" aria-live="polite" hidden></div>
 
 <script src="config.js?v=1"></script>
-<script src="admin.js?v=8"></script>
+<script src="admin.js?v=9"></script>
 </body>
 </html>

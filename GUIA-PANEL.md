@@ -26,7 +26,7 @@ que te invite como colaborador del sitio.
      se vea bien la cara. Para cambiar la principal, toca otra miniatura.
      Quien visita el sitio ve la foto a todo el ancho y puede **deslizar** para
      ver las demás (hasta 6 por animal).
-   - **Nombre, resumen y su historia.**
+   - **Nombre, resumen y su historia.** Si todavía no tienes esa información, mira «Aún no tengo la información» más abajo.
    - **Sexo y edad.** En la edad escribe el número y elige *años* o *meses*.
      **Solo para los perros:** también peso, tamaño y nivel de energía. Los
      gatos únicamente llevan sexo y edad.
@@ -42,6 +42,21 @@ Escribe **solo en español**. El inglés se traduce solo.
 
 En unos minutos la ficha aparece en el sitio. La ventana te avisa cuando ya está
 lista para publicarse.
+
+---
+
+## Aún no tengo la información
+
+Para publicar a un animal sin esperar, bajo el **resumen** y bajo **su historia** hay una casilla: **«Aún no tengo esta información»**.
+
+- Márcala y el panel escribe solo **«Pronto más información»**, también en inglés («More information coming soon»). No hay que traducir nada.
+- El campo se vuelve gris y no se puede escribir mientras la casilla esté marcada.
+- Cuando tengas la información: **desmarca la casilla**, escribe el texto y toca **Guardar**. El inglés se traduce solo.
+- Si ya habías escrito un texto y marcas la casilla, el panel te pregunta antes de reemplazarlo.
+- En la lista, las fichas con información pendiente llevan una línea **«Info pendiente: el resumen y su historia»** para que las encuentres rápido.
+- Sirve igual con **Guardar borrador** y con **Publicar los N a la vez**: un texto pendiente cuenta como completo.
+
+Las demás cosas (foto, sexo, edad, tamaño, energía) siguen siendo obligatorias para publicar.
 
 ---
 

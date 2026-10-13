@@ -252,6 +252,15 @@ du dépôt). **Attention : le dépôt est public**, donc un brouillon n'est pas 
 l'est sur GitHub. `herramientas/auditar-sitio.py` vérifie qu'aucun `borrador` n'est dans le JSON public
 et (avec `--repo`) que les photos des brouillons répondent 404.
 
+## Texte « en attente » (case « Aún no tengo esta información »)
+
+Sous le résumé et l'histoire, la case remplit `es.resumen` / `es.historia` avec **« Pronto más información »**
+et l'anglais avec **« More information coming soon »** (sans appeler la traduction : `enBase` = espagnol, donc
+rien à retraduire). Décocher vide le champ ; le vrai texte est ensuite traduit comme d'habitude. La liste du
+panel affiche « Info pendiente » ; `auditar-sitio.py` les compte en *info* (plus d'avertissement « résumé
+très court / même histoire ») et reconnaît aussi l'ancienne formule « información pendiente » (31 fiches
+au 12/10/2026, saisie à la main, **non modifiées**).
+
 ## Tester sans rien publier
 
 ```bash

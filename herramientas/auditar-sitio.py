@@ -9,7 +9,7 @@ encore factices. Aucune écriture, aucun envoi : uniquement des lectures.
 
 Sévérités :  ✗ BLOQUANT avant la production · ⚠ À FAIRE · ℹ info · ✓ ok
 """
-import argparse, gzip, http.client, json, re, socket, ssl, sys, urllib.parse
+import unicodedata, argparse, gzip, http.client, json, re, socket, ssl, sys, urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -181,8 +181,12 @@ ids = [a.get("id") for a in animales]
 (ok if len(ids) == len(set(ids)) else bad)("identifiants uniques")
 ej = [a["nombre"] for a in animales if a.get("id") in EJEMPLO]
 if ej: bad(f"{len(ej)} fiches d'EXEMPLE encore publiées (animaux fictifs, photos de banque d'images) : {', '.join(ej)}")
+# Texte « en attente » (case « Aún no tengo esta información » du panneau, ou ancienne formule) : voulu, pas une erreur.
+PENDIENTES = {"pronto mas informacion", "informacion pendiente"}
+def es_pendiente(t): return unicodedata.normalize("NFKD", t or "").encode("ascii", "ignore").decode().strip().lower().rstrip(".!") in PENDIENTES
 resumenes = [a.get("es", {}).get("resumen", "") for a in animales]
 historias = {}
+en_espera = []
 for a in animales:
     nom = a["nombre"]; es, en = a.get("es", {}), a.get("en", {})
     if a.get("id") in EJEMPLO: continue
@@ -190,23 +194,25 @@ for a in animales:
     if fal: bad(f"{nom} : texte espagnol manquant ({', '.join(fal)})")
     falen = [k for k in ("resumen", "historia") if es.get(k) and not en.get(k)]
     if falen: warn(f"{nom} : pas de version anglaise pour {', '.join(falen)} (le site affiche l'espagnol)")
-    if len(es.get("resumen", "")) < 25: warn(f"{nom} : résumé très court ({es.get('resumen','')!r}) — texte provisoire ?")
+    if es_pendiente(es.get("resumen")) or es_pendiente(es.get("historia")): en_espera.append(nom)
+    if len(es.get("resumen", "")) < 25 and not es_pendiente(es.get("resumen")): warn(f"{nom} : résumé très court ({es.get('resumen','')!r}) — texte provisoire ?")
     if not a.get("fotos"): bad(f"{nom} : aucune photo")
     if a["especie"] == "perro":
         for k in ("peso_kg", "tamano", "energia"):
             if not a.get(k): warn(f"{nom} : {k} manquant")
     if not (a.get("edad") or a.get("edad_texto")): warn(f"{nom} : âge manquant")
-    historias.setdefault(es.get("historia", ""), []).append(nom)
+    if not es_pendiente(es.get("historia")): historias.setdefault(es.get("historia", ""), []).append(nom)
     if re.search(r"refugio|shelter|asociaci[oó]n|association", json.dumps(es | en, ensure_ascii=False), re.I): warn(f"{nom} : le texte parle encore d'un « refugio / shelter / asociación »")
     for ph in a.get("fotos", []):
         st, hh, _ = get(ph if ph.startswith("/") else "/" + ph, method="HEAD", gz=False)
         kb = int(hh.get("content-length", 0)) // 1024
         if st != 200: bad(f"{nom} : photo introuvable {ph} (HTTP {st})")
         elif kb > 400: warn(f"{nom} : photo lourde ({kb} Ko) : {ph.split('/')[-1]} — ralentit le site sur mobile")
+if en_espera: info(f"{len(en_espera)} fiche(s) avec un texte « en attente » (résumé et/ou histoire) : {', '.join(en_espera[:12])}{'…' if len(en_espera) > 12 else ''}")
 for hist, noms in historias.items():
     if hist and len(noms) > 1: warn(f"même histoire pour {', '.join(noms)} (texte copié/provisoire ?)")
 for a in animales:
-    if a.get("id") not in EJEMPLO and sum(1 for r in resumenes if r and r == a.get("es", {}).get("resumen")) > 1:
+    if a.get("id") not in EJEMPLO and not es_pendiente(a.get("es", {}).get("resumen")) and sum(1 for r in resumenes if r and r == a.get("es", {}).get("resumen")) > 1:
         warn(f"{a['nombre']} : son résumé est identique à celui d'une autre fiche"); break
 
 # ───────────────────────────── 7. configuration : dons, contacts

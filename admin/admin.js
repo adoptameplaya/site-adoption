@@ -67,6 +67,13 @@ const SALUD = ['esterilizado', 'vacunado', 'desparasitado', 'cartilla', 'microch
 const SALUD_INICIAL = { esterilizado: true, vacunado: true, desparasitado: true, cartilla: true, microchip: false };
 const CAMPOS_TXT = ['raza', 'resumen', 'historia', 'aviso', 'edadTexto'];
 
+/* «Aún no tengo esta información» : texto provisional que se publica mientras llega la información.
+   Se reconoce también la fórmula antigua («información pendiente») que ya está en varias fichas. */
+const PENDIENTE = { es: 'Pronto más información', en: 'More information coming soon' };
+const PENDIENTES_NORM = new Set(['pronto mas informacion', 'informacion pendiente']);
+const esPendiente = t => PENDIENTES_NORM.has(String(t || '').normalize('NFKD').replace(/[̀-ͯ]/g, '').trim().toLowerCase().replace(/[.!]+$/, ''));
+const CAMPOS_PENDIENTES = { resumen: 'el resumen', historia: 'su historia' };
+
 /* ---------------- Estado ---------------- */
 let TOKEN = '';
 let FICHAS = [];                 // { especie, id, ruta, datos }
@@ -393,6 +400,9 @@ function carta(f) {
   const estado = !borr ? '' : (falta.length
     ? `<p class="carta__estado carta__estado--falta"><svg aria-hidden="true"><use href="#i-alerta"></use></svg><span>Falta: ${esc(falta.join(', '))}</span></p>`
     : `<p class="carta__estado carta__estado--lista"><svg aria-hidden="true"><use href="#i-check"></use></svg><span>Lista para publicar</span></p>`);
+  const pend = Object.keys(CAMPOS_PENDIENTES).filter(c => esPendiente(d.es?.[c])).map(c => CAMPOS_PENDIENTES[c]);
+  const pendiente = pend.length
+    ? `<p class="carta__estado carta__estado--pend"><svg aria-hidden="true"><use href="#i-lapiz"></use></svg><span>Info pendiente: ${esc(pend.join(' y '))}</span></p>` : '';
   return `<li class="${[d.adoptado ? 'es-adoptado' : '', borr ? 'es-borrador' : ''].join(' ').trim()}"><article class="tarjeta carta">
     <span class="tarjeta__marco">
       ${d.adoptado ? `<span class="sello" style="--giro:${-(10 + [...String(d.id || d.nombre || '')].reduce((n, c) => n + c.charCodeAt(0), 0) % 7)}deg"><span class="sello__palabra">${d.sexo === 'hembra' ? 'Adoptada' : 'Adoptado'}</span><span class="sello__sub" aria-hidden="true">Adopta Me Playa</span></span>`
@@ -403,7 +413,7 @@ function carta(f) {
     <span class="tarjeta__nombre">${esc(d.nombre)}</span>
     <span class="tarjeta__meta">${esc(meta)}</span>
     <span class="tarjeta__resumen">${esc(d.es?.resumen || '')}</span>
-    ${estado}
+    ${estado}${pendiente}
     <div class="carta__acciones">
       <a class="btn" href="#editar/${f.especie}/${esc(f.id)}"><svg aria-hidden="true"><use href="#i-lapiz"></use></svg>Editar</a>
       <button class="btn btn--claro btn--icono" type="button" data-borrar="${f.especie}/${esc(f.id)}" aria-label="Quitar a ${esc(d.nombre)}"><svg aria-hidden="true"><use href="#i-papelera"></use></svg></button>
@@ -681,6 +691,33 @@ function rellenarForm() {
   pintarFotos();
   pintarRasgos();
   pintarIngles();
+  for (const c of Object.keys(CAMPOS_PENDIENTES)) sincronizarPendiente(c);
+}
+
+/* La casilla «Aún no tengo esta información» sigue al texto : marcada si es el texto provisional (campo bloqueado). */
+function sincronizarPendiente(c) {
+  const pend = esPendiente(st.es[c]);
+  $(`[data-pendiente="${c}"]`).checked = pend;
+  $(`#f-${c}`).readOnly = pend;
+  $(`#f-${c}`).classList.toggle('ed__ghost--pendiente', pend);
+}
+
+function cambiarPendiente(c, marcada) {
+  leerForm();
+  if (marcada && st.es[c].trim() && !esPendiente(st.es[c])
+      && !confirm(`Ya escribiste ${CAMPOS_PENDIENTES[c]}. ¿Reemplazarlo por «${PENDIENTE.es}»?`)) {
+    $(`[data-pendiente="${c}"]`).checked = false;
+    return;
+  }
+  const nuevo = marcada ? PENDIENTE : { es: '', en: '' };       // desmarcar : campo vacío, listo para escribir (el inglés se traduce solo)
+  st.es[c] = nuevo.es; st.en[c] = nuevo.en; st.enBase[c] = nuevo.es; st.manual[c] = false;
+  st.sucio = true;
+  $(`#f-${c}`).value = st.es[c];
+  $(`#e-${c}`).value = st.en[c];
+  $(`#f-${c}`).closest('.ed__campo')?.classList.remove('ed__campo--error');
+  sincronizarPendiente(c);
+  estadoIngles();
+  if (!marcada) $(`#f-${c}`).focus();
 }
 
 function leerForm() {
@@ -1347,6 +1384,10 @@ function conectar() {
     leerForm();
     if (e.target.id === 'f-sexo') pintarRasgos();
     estadoIngles();
+  });
+  $('#ed-form').addEventListener('change', e => {
+    const c = e.target.dataset?.pendiente;
+    if (st && c in CAMPOS_PENDIENTES) cambiarPendiente(c, e.target.checked);
   });
   $('#ed-form').addEventListener('keydown', e => {
     if (e.key !== 'Enter' || e.target.tagName !== 'INPUT') return;

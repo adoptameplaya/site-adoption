@@ -342,6 +342,11 @@
 .carta__estado svg{width:17px;height:17px;flex:none;margin-top:1px}
 .carta__estado--lista{color:#1d7a3b}
 .carta__estado--falta{color:var(--alerta)}
+.carta__estado--pend{color:#8a5a00}
+.ed__pendiente{display:flex;gap:10px;align-items:flex-start;margin:8px 2px 0;font-weight:700;font-size:.92rem;line-height:1.35;cursor:pointer}
+.ed__pendiente input{width:20px;height:20px;flex:none;margin:1px 0 0;accent-color:var(--tinta);cursor:pointer}
+.ed__pendiente small{font-weight:600;opacity:.7}
+.ed__ghost--pendiente{font-style:italic;background:var(--arena);border-style:solid;border-color:rgba(36,27,18,.25);color:var(--tinta-60,rgba(36,27,18,.62));cursor:default}
 .seleccion{position:sticky;bottom:12px;z-index:20;margin:22px auto 0;max-width:680px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;background:var(--tinta);color:var(--crema);border-radius:var(--r-lg);padding:12px 14px 12px 20px;box-shadow:var(--sombra-dura)}
 .seleccion__texto{font-family:var(--display);font-weight:800;font-size:1.05rem}
 .seleccion__botones{display:flex;gap:10px;flex-wrap:wrap}
