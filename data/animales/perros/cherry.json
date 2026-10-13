@@ -1,0 +1,32 @@
+{
+  "orden": -90,
+  "id": "cherry",
+  "nombre": "CHERRY",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 14,
+  "tamano": "grande",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/cherry-3z3cj.jpg",
+    "/img/animales/cherry-s2sbt.jpg",
+    "/img/animales/cherry-opndx.jpg",
+    "/img/animales/cherry-26frc.jpg",
+    "/img/animales/cherry-s8naa.jpg",
+    "/img/animales/cherry-7k4au.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
