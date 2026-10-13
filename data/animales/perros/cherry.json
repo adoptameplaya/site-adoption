@@ -9,12 +9,11 @@
   "tamano": "grande",
   "energia": "alta",
   "fotos": [
-    "/img/animales/cherry-3z3cj.jpg",
-    "/img/animales/cherry-s2sbt.jpg",
+    "/img/animales/cherry-qri32.jpg",
     "/img/animales/cherry-opndx.jpg",
     "/img/animales/cherry-26frc.jpg",
-    "/img/animales/cherry-s8naa.jpg",
-    "/img/animales/cherry-7k4au.jpg"
+    "/img/animales/cherry-s2sbt.jpg",
+    "/img/animales/cherry-s8naa.jpg"
   ],
   "urgente": false,
   "borrador": true,
@@ -24,9 +23,12 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
 }
