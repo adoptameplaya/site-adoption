@@ -32,7 +32,7 @@ const ESPECIES = {
   perros: { singular: 'perro', nuevo: 'Añadir un perro', titulo: 'Nuevo perro', vacio: 'Aún no hay perros' },
   gatos:  { singular: 'gato',  nuevo: 'Añadir un gato',  titulo: 'Nuevo gato',  vacio: 'Aún no hay gatos' }
 };
-const MAX_FOTOS = 6;
+const MAX_FOTOS = 4;          // el sitio carga más rápido con pocas fotos por animal
 const MAX_RASGOS = 5;
 
 /* Rasgos de carácter más usados. [masculino, femenino, inglés]
@@ -482,6 +482,7 @@ function abrirEditor(especie, id) {
   rellenarForm();
   mostrar('editor');
   window.scrollTo(0, 0);
+  if (st.fotos.length > MAX_FOTOS) aviso(`Esta ficha tiene ${st.fotos.length} fotos. El máximo ahora es ${MAX_FOTOS}: puedes dejarla así, pero no podrás añadir más.`);
 }
 
 function rellenarForm() {
@@ -629,9 +630,9 @@ async function procesarFoto(archivo) {
   return blob;
 }
 
-/* Miniatura (≈ 560 px) para las tarjetas de la portada: unos 40 KB en vez de 150-300 KB. Se sube junto a la foto
+/* Miniatura (≈ 480 px) para las tarjetas de la portada: unos 25 KB en vez de 150-300 KB. Se sube junto a la foto
    con el sufijo «-m» ; el sitio la usa si existe. */
-const MINI_PX = 560;
+const MINI_PX = 480;
 const rutaMini = r => String(r).replace(/\.jpe?g$/i, '-m.jpg');
 async function procesarMiniatura(blob) {
   const bmp = await createImageBitmap(blob);
@@ -642,7 +643,7 @@ async function procesarMiniatura(blob) {
   cx.fillStyle = '#fff'; cx.fillRect(0, 0, cv.width, cv.height);
   cx.drawImage(bmp, 0, 0, cv.width, cv.height);
   bmp.close?.();
-  return new Promise(ok => cv.toBlob(ok, 'image/jpeg', 0.72));
+  return new Promise(ok => cv.toBlob(ok, 'image/jpeg', 0.62));
 }
 
 async function añadirFotos(archivos) {

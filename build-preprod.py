@@ -121,7 +121,7 @@ def sanear_fotos(animales):
 
 
 def asignar_miniaturas(animales):
-    """Cartes et tira de la page d'accueil n'ont besoin que d'une petite image (≈ 560 px, 40 Ko) :
+    """Cartes et tira de la page d'accueil n'ont besoin que d'une petite image (≈ 480 px, ≈ 30 Ko) :
     on pointe vers « nom-m.jpg » quand ce fichier existe (le panneau le crée avec chaque photo),
     sinon vers la photo complète. Aucun 404 possible : on ne référence que ce qui existe."""
     medios = BUILD / "img" / "animales"
@@ -139,6 +139,9 @@ def asignar_miniaturas(animales):
             sin.append(a.get("nombre"))
     print(f"  miniatures : {con}/{len(animales)} fiches"
           + (f" · sans miniature (photo complète utilisée) : {', '.join(map(str, sin))}" if sin else ""))
+
+
+POR_PAGINA = 12      # cartes visibles à l'arrivée (même valeur que POR_PAGINA dans js/app.js)
 
 
 # ───────────── Ordre des fiches sur le site : aléatoire, identique pour tous pendant une semaine ─────────────
@@ -264,7 +267,7 @@ def prerender_index():
         '      <span class="capsula__nombre">%s</span>\n    </a>' % (esc(a["id"]), esc(foto(a)), esc(a["nombre"]))
         for a in vivos[:5])
 
-    def tarjeta(a):
+    def tarjeta(a, oculta=False):
         meta = " · ".join(x for x in (t("ficha.macho" if a.get("sexo") == "macho" else "ficha.hembra"), edad(a),
                                       t("cat." + a["tamano"]) if a.get("tamano") else "") if x)
         if a.get("adoptado"):
@@ -277,7 +280,7 @@ def prerender_index():
         else:
             sello = ""
         return (
-            '<li class="%s">\n'
+            '<li class="%s"%s>\n'
             '    <button class="tarjeta" type="button" data-abrir="%s">\n'
             '      <span class="tarjeta__marco">\n        %s\n'
             '        <img src="%s" alt="%s" loading="lazy" width="300" height="300">\n      </span>\n'
@@ -288,11 +291,11 @@ def prerender_index():
             '        <span class="tarjeta__ver">%s</span>\n'
             '        <span class="tarjeta__flecha"><svg aria-hidden="true"><use href="#i-flecha"></use></svg></span>\n'
             '      </span>\n    </button>\n  </li>'
-            % ("es-adoptado" if a.get("adoptado") else "", esc(a["id"]), sello, esc(foto(a)),
+            % ("es-adoptado" if a.get("adoptado") else "", " hidden" if oculta else "", esc(a["id"]), sello, esc(foto(a)),
                esc(t("cat.foto_de", nombre=a["nombre"])), esc(a["nombre"]), esc(meta),
                esc((a.get("es") or {}).get("resumen") or ""), esc(t("cat.ver"))))
 
-    cartas = "".join(tarjeta(a) for a in ordenados)
+    cartas = "".join(tarjeta(a, i >= POR_PAGINA) for i, a in enumerate(ordenados))      # au-delà de la 12e : présentes mais cachées
     conteo = t("cat.conteo_uno") if len(ordenados) == 1 else t("cat.conteo", n=len(ordenados))
 
     h, n1 = re.subn(r'(<div class="tira" id="tira")([^>]*>)</div>',
@@ -301,6 +304,11 @@ def prerender_index():
                     lambda m: m.group(1) + ' data-pre="es">' + cartas + m.group(2), h, count=1)
     h, n3 = re.subn(r'(<p class="conteo" id="conteo"[^>]*>)(</p>)',
                     lambda m: m.group(1) + esc(conteo) + m.group(2), h, count=1)
+    # bouton « Ver más » : visible seulement s'il reste des cartes cachées
+    estado = t("cat.mostrando", a=min(POR_PAGINA, len(ordenados)), b=len(ordenados))
+    h, n4 = re.subn(r'<div class="ver-mas" id="ver-mas"( hidden)?>(\s*)<p class="ver-mas__estado" id="ver-mas-estado" aria-live="polite"></p>',
+                    lambda m: '<div class="ver-mas" id="ver-mas"%s>%s<p class="ver-mas__estado" id="ver-mas-estado" aria-live="polite">%s</p>'
+                    % (" hidden" if len(ordenados) <= POR_PAGINA else "", m.group(2), esc(estado)), h, count=1)
 
     # 4. données structurées (le JavaScript les met à jour au chargement)
     contacto = cfg.get("contacto", {})
@@ -317,7 +325,7 @@ def prerender_index():
     vacios = len(re.findall(r'data-i18n(?:-html)?="[^"]+"[^>]*></', h))
     print(f"  ordre aléatoire de la semaine du {semana_actual()} (changement chaque lundi, heure de Quintana Roo)")
     print(f"  prérendu espagnol : bande {len(vivos[:5])} · cartes {len(ordenados)} · éléments de texte encore vides : {vacios}"
-          + ("" if (n1 and n2 and n3) else f"  ⚠ zones non trouvées (tira={n1}, rejilla={n2}, conteo={n3})"))
+          + ("" if (n1 and n2 and n3 and n4) else f"  ⚠ zones non trouvées (tira={n1}, rejilla={n2}, conteo={n3}, ver-mas={n4})"))
 
 
 def retirar_borradores(publicados, borradores):

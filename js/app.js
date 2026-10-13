@@ -202,19 +202,41 @@ function tarjeta(a) {
   </li>`;
 }
 
-function pintarRejilla() {
+/* La portada enseña 12 animales y un botón «Ver más» (de 12 en 12) : página más corta y menos fotos que cargar.
+   Las demás cartas están en el HTML pero ocultas (atributo hidden). Mismo valor que POR_PAGINA en build-preprod.py. */
+const POR_PAGINA = 12;
+let visibles = POR_PAGINA;
+
+function aplicarLimite() {
+  const cartas = [...$('#rejilla').children].filter(li => !li.classList.contains('vacio'));
+  cartas.forEach((li, i) => { li.hidden = i >= visibles; });
+  $('#ver-mas').hidden = cartas.length <= visibles;
+  $('#ver-mas-estado').textContent = t('cat.mostrando', { a: Math.min(visibles, cartas.length), b: cartas.length });
+}
+
+function verMas() {
+  const antes = visibles;
+  visibles += POR_PAGINA;
+  aplicarLimite();
+  [...$('#rejilla').children][antes]?.querySelector('button')?.focus();        // el teclado sigue en la primera carta nueva
+}
+
+/* nuevo = true : cambio de filtro o de búsqueda → se vuelve a las 12 primeras ; false : solo cambio de idioma */
+function pintarRejilla(nuevo = true) {
   const lista = ANIMALES.filter(coincide);
   const rejilla = $('#rejilla');
+  if (nuevo) visibles = POR_PAGINA;
 
   $('#conteo').textContent = lista.length === 1 ? t('cat.conteo_uno') : t('cat.conteo', { n: lista.length });
 
   const yaPuesta = rejilla.dataset.pre === IDIOMA && idsPuestos(rejilla) === lista.map(a => a.id).join('|');   // cartas del build : se conservan la primera vez si son del orden de esta semana
   delete rejilla.dataset.pre;
-  if (yaPuesta) return;
-
-  rejilla.innerHTML = lista.length
-    ? lista.map(tarjeta).join('')
-    : `<li class="vacio"><h3>${esc(t('cat.vacio_t'))}</h3><p>${esc(t('cat.vacio_d'))}</p></li>`;
+  if (!yaPuesta) {
+    rejilla.innerHTML = lista.length
+      ? lista.map(tarjeta).join('')
+      : `<li class="vacio"><h3>${esc(t('cat.vacio_t'))}</h3><p>${esc(t('cat.vacio_d'))}</p></li>`;
+  }
+  aplicarLimite();
 }
 
 /* Los gatos no tienen tamaño ni energía en su ficha : con «Gatos» elegido,
@@ -230,6 +252,7 @@ function actualizarFiltrosEspecie() {
 }
 
 function conectarFiltros() {
+  $('#ver-mas-btn').addEventListener('click', verMas);
   $$('[data-filtro]').forEach(btn => {
     btn.addEventListener('click', () => {
       const { filtro, valor } = btn.dataset;
@@ -700,7 +723,7 @@ function repintar() {
     pintarFicha(animalEnFicha);
     $('#ficha-cuerpo').scrollTop = desplazamiento;
   }
-  pintarRejilla();
+  pintarRejilla(false);
   pintarApoyo();
   pintarRefugio();
   llenarSelectAnimales();

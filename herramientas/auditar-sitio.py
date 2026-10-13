@@ -72,7 +72,7 @@ else: info(f"www.{HOST} répond directement (HTTP {sw}) : un doublon de contenu 
 
 # ───────────────────────────── 2. pages
 sec("2. Pages")
-for p in ("/", "/cuestionario.html", "/gracias.html", "/aviso-de-privacidad.html", "/admin/", "/robots.txt", "/version.txt", "/data/animales.json", "/data/config.json", "/data/cuestionario.json", "/favicon.ico", "/img/ui/favicon-48.png", "/img/ui/apple-touch-icon.png"):
+for p in ("/", "/cuestionario.html", "/gracias.html", "/aviso-de-privacidad.html", "/admin/", "/robots.txt", "/version.txt", "/data/animales.json", "/data/config.json", "/data/cuestionario.json", "/favicon.ico", "/img/ui/favicon-48.png", "/img/ui/apple-touch-icon.png", "/img/ui/familia-960.avif", "/img/ui/familia-1344.avif"):
     s, h, b = get(p); (ok if s == 200 else bad)(f"{p} → HTTP {s}")
 s404, h404, b404 = get("/esta-pagina-no-existe")
 (ok if s404 == 404 else warn)(f"page inexistante → HTTP {s404}")

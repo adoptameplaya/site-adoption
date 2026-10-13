@@ -25,7 +25,7 @@ que te invite como colaborador del sitio.
      La primera es la que sale en la portada y en la tarjeta: mejor una donde
      se vea bien la cara. Para cambiar la principal, toca otra miniatura.
      Quien visita el sitio ve la foto a todo el ancho y puede **deslizar** para
-     ver las demás (hasta 6 por animal).
+     ver las demás (hasta 4 por animal).
    - **Nombre, resumen y su historia.** Si todavía no tienes esa información, mira «Aún no tengo la información» más abajo.
    - **Sexo y edad.** En la edad escribe el número y elige *años* o *meses*.
      **Solo para los perros:** también peso, tamaño y nivel de energía. Los
@@ -121,7 +121,7 @@ Una cosa que conviene saber: los borradores **no salen en la página**, pero el 
 ## Consejos para las fotos
 
 - Cuadradas o casi, con el animal centrado y mirando a la cámara.
-- Hasta 6 fotos por animal.
+- Hasta **4** fotos por animal: así la página carga rápido. Elige las mejores (la primera es la que sale en la tarjeta). Las fichas que ya tenían más fotos se quedan como están, pero no se pueden añadir más.
 - No hace falta reducirlas ni renombrarlas: el panel lo hace solo. Cada foto se aligera antes de subir (máximo 1400 px y unos 300 KB, aunque la foto original pese varios MB) y el panel crea además una versión pequeña para las tarjetas de la portada. Te avisa cuánto se redujo, para que el sitio siga rápido.
 
 ---

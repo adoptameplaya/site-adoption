@@ -300,6 +300,10 @@ p{margin:0}
 .tarjeta__flecha{width:36px;height:36px;border-radius:50%;background:var(--naranja);border:2px solid var(--tinta);display:grid;place-items:center;flex:none}
 .tarjeta__flecha svg{width:17px;height:17px}
 
+.rejilla > li[hidden]{display:none}
+.ver-mas{display:flex;flex-direction:column;align-items:center;gap:14px;margin:clamp(28px,4vw,44px) 0 0;text-align:center}
+.ver-mas[hidden]{display:none}
+.ver-mas__estado{margin:0;font-weight:700;color:var(--tinta-60)}
 .vacio{
   grid-column:1/-1;text-align:center;padding:56px 24px;
   background:var(--crema-2);border:3px dashed var(--tinta-40);border-radius:var(--r-lg);

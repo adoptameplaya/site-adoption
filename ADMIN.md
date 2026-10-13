@@ -236,8 +236,15 @@ La sortie est reproductible : sans changement de questions, le fichier généré
   compteur, JSON-LD). Les robots voient donc une vraie page et la bande a sa hauteur dès le départ (plus de saut de mise en page). Le JS ne
   repeint pas la bande et la grille quand la langue est l'espagnol (attribut `data-pre`) ; en anglais il repeint comme avant, et le `<head>`
   masque le texte espagnol le temps de la traduction (classe `pre-en`). Source des textes : `js/i18n.js` (même dictionnaire).
-- **Miniatures** : chaque photo `x.jpg` a une petite `x-m.jpg` (≈ 560 px, ≈ 40 Ko) créée par le panneau ; le build l'ajoute en `miniatura` quand
-  elle existe (jamais de 404). Pour les photos d'avant : `sips -Z 560 -s format jpeg -s formatOptions normal x.jpg --out x-m.jpg` (macOS).
+- **Miniatures** : chaque photo `x.jpg` a une petite `x-m.jpg` (**480 px, ≈ 25-30 Ko**) créée par le panneau (canvas, qualité 0,62) ; le build
+  l'ajoute en `miniatura` quand elle existe (jamais de 404). Les 357 vignettes d'avant (560 px, 53 Ko) ont été régénérées le 14/10/2026
+  depuis les photos complètes (31 Ko en moyenne, −40 %) avec ImageIO (Swift, qualité 0,38 ≈ canvas 0,62). Une vignette seule : `swift` + `CGImageDestination`
+  (le `sips` classique donne un fichier plus lourd à qualité égale).
+- **Photo du haut de l'accueil** : `img/ui/familia.webp` (273 Ko, repli) + `familia-960.avif` (64 Ko) et `familia-1344.avif` (108 Ko) dans un `<picture>` ;
+  l'AVIF garde la transparence. `.htaccess` déclare `image/avif` et le cache 30 jours.
+- **Accueil : 12 cartes puis « Ver más »** (12 de plus à chaque clic ; filtres et recherche remettent à 12 et portent sur toutes les fiches). Les autres cartes
+  sont dans le HTML avec l'attribut `hidden` (`POR_PAGINA = 12` dans `build-preprod.py` ET `js/app.js`, à garder identique).
+- **Plafond de 4 photos** par fiche dans le panneau (`MAX_FOTOS`) ; les fiches qui en avaient plus gardent les leurs (avertissement à l'ouverture).
 - **Polices hébergées sur le site** (`css/fonts/` : Baloo 2 et Nunito, polices variables, alphabet latin, licence SIL OFL jointe) : plus de Google Fonts, donc pas de requête externe ni d'adresse IP envoyée à Google. `@font-face` est en tête de `css/style.css` ; préchargées dans le `<head>` ; cache d'un an dans `.htaccess`. Si on remplace un fichier, **changer son nom** (cache « immutable »). Un caractère hors alphabet latin prend la police de secours.
 - Mesure : https://pagespeed.web.dev (mobile) — avant : Performances 57, CLS 0,513 ; l'audit local contrôle aussi photos et miniatures.
 
