@@ -7,7 +7,7 @@
   "sexo": "hembra",
   "peso_kg": 22,
   "tamano": "mediano",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/shirley-9wz5d.jpg",
     "/img/animales/shirley-67q85.jpg",
@@ -24,9 +24,12 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
 }
