@@ -1,0 +1,32 @@
+{
+  "orden": -280,
+  "id": "asha",
+  "nombre": "ASHA",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 22,
+  "tamano": "mediano",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/asha-bc49n.jpg",
+    "/img/animales/asha-4jnqz.jpg",
+    "/img/animales/asha-crehr.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
