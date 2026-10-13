@@ -7,7 +7,7 @@
   "sexo": "macho",
   "peso_kg": 23,
   "tamano": "mediano",
-  "energia": "",
+  "energia": "media",
   "fotos": [
     "/img/animales/max-qotzh.jpg",
     "/img/animales/max-g3asm.jpg",
@@ -24,9 +24,12 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
 }
