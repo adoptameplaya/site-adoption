@@ -1,0 +1,32 @@
+{
+  "orden": -200,
+  "id": "blondie",
+  "nombre": "BLONDIE",
+  "edad": 4,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 30,
+  "tamano": "grande",
+  "energia": "baja",
+  "fotos": [
+    "/img/animales/blondie-ym94i.jpg",
+    "/img/animales/blondie-i318f.jpg",
+    "/img/animales/blondie-dro8b.jpg",
+    "/img/animales/blondie-72wet.jpg",
+    "/img/animales/blondie-fjlje.jpg",
+    "/img/animales/blondie-175pf.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
