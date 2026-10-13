@@ -1,0 +1,32 @@
+{
+  "orden": 999,
+  "id": "david",
+  "nombre": "DAVID",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 22,
+  "tamano": "mediano",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/david-bk87z.jpg",
+    "/img/animales/david-atvsk.jpg",
+    "/img/animales/david-m3jxk.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
