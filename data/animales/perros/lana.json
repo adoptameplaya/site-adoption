@@ -1,0 +1,28 @@
+{
+  "orden": -150,
+  "id": "lana",
+  "nombre": "LANA",
+  "edad": 4,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 31,
+  "tamano": "grande",
+  "energia": "",
+  "fotos": [
+    "/img/animales/lana-y0n78.jpg",
+    "/img/animales/lana-tz8oo.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
