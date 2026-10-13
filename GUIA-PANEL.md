@@ -64,8 +64,8 @@ Las demás cosas (foto, sexo, edad, tamaño, energía) siguen siendo obligatoria
 
 - **Cambiar:** en su tarjeta toca **Editar**, haz el cambio y toca **Guardar**.
 - **Cuando lo adoptan:** abre su ficha con **Editar**, marca **«Ya fue adoptado/a»**
-  y toca **Guardar**. La ficha **sigue en el sitio**, pasa al final de la lista con
-  una etiqueta verde «Adoptado/a», y quien la abre ve que ya encontró familia. Ya
+  y toca **Guardar**. La ficha **sigue en el sitio**, **mezclada con las demás**, con
+  un tampón «Adoptado/a», y quien la abre ve que ya encontró familia. Ya
   no sale en la portada ni se puede elegir en el formulario de adopción.
 - **Esconder un tiempo:** abre su ficha y toca **Pasar a borrador**. Deja de verse en el sitio, pero no se pierde nada: la tienes en la lista, en «Borradores».
 - **Quitar del todo** (por ejemplo, una ficha creada por error): toca el icono de
@@ -94,16 +94,13 @@ corrija.
 
 ---
 
-## Cambiar el orden de las fichas
+## El orden de las fichas
 
-En la lista de **Perros** o **Gatos**, toca **Ordenar las fichas**. Verás a todos los animales (perros y gatos juntos), igual que en el sitio:
-
-- **Arrastra** una ficha con los **seis puntitos** de la izquierda y suéltala donde quieras, como al mover las apps del celular. También puedes usar las **flechas** ▲ ▼ de la derecha.
-- Las **cinco primeras** salen además en la franja de arriba de la página: una línea punteada marca hasta dónde llega.
-- Los animales **ya adoptados** van siempre al final; no se pueden subir.
-- Toca **Guardar el orden**. El sitio se actualiza solo en unos minutos. Si sales sin guardar, te avisa.
-
-Un animal nuevo aparece **primero** hasta que lo cambies de lugar.
+- **En este panel**, las fichas van en **orden alfabético** (de la A a la Z), en «Borradores» y en «En el sitio».
+- **En el sitio**, el orden es **aleatorio y cambia cada semana** (el lunes a las 00:00, hora de Quintana Roo). Es el mismo para todos los que visitan la página durante la semana. Así **todos los animales tienen su turno** arriba y los ya adoptados quedan **mezclados** con los demás.
+- Un animal marcado **«Lleva mucho esperando»** (urgente) sale **siempre primero** mientras siga disponible.
+- Las **cinco** de la franja de arriba de la página son las cinco primeras de la semana (solo animales disponibles).
+- El orden **no se puede elegir a mano**: no hay nada que mover. Una ficha nueva entra en el sorteo de la semana, sin salir siempre primera.
 
 ---
 
@@ -114,7 +111,7 @@ Un **borrador** es una ficha que guardas **sin que se vea en el sitio**. Sirve p
 - **Guardar un borrador:** en la ficha nueva toca **Guardar borrador**. Solo hace falta el **nombre**; lo demás puede quedar vacío. Puedes volver cuando quieras con **Editar**.
 - **Dónde están:** en la lista de **Perros** o **Gatos**, arriba, bajo el título **Borradores · no se ven en el sitio**. Cada uno dice si ya está **«Lista para publicar»** o qué **«Falta»**.
 - **Publicar uno:** ábrelo con **Editar** y toca **Publicar**.
-- **Publicar varios de una vez:** marca **Elegir** en cada borrador y, en la barra negra que aparece abajo, toca **Publicar los N a la vez**. El panel comprueba que **todos estén completos**; si a uno le falta algo, **no publica ninguno** y te dice cuál. El sitio se actualiza **una sola vez**, y las fichas publicadas salen **al principio**.
+- **Publicar varios de una vez:** marca **Elegir** en cada borrador y, en la barra negra que aparece abajo, toca **Publicar los N a la vez**. El panel comprueba que **todos estén completos**; si a uno le falta algo, **no publica ninguno** y te dice cuál. El sitio se actualiza **una sola vez** y las fichas entran en el sorteo de la semana.
 - **Pasar una ficha publicada a borrador:** abre su ficha y toca **Pasar a borrador**.
 
 Una cosa que conviene saber: los borradores **no salen en la página**, pero el código del sitio está en GitHub, que es público. No escribas en un borrador nada que no quieras que alguien pueda ver allí (por ejemplo, datos personales de un adoptante).

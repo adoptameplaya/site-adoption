@@ -16,6 +16,7 @@ Variables d'environnement :
             le plan du site et l'image de partage
 """
 import json, os, re, shutil, unicodedata
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 # preprod = bandeau de démo + noindex ; produccion = site public.
@@ -140,6 +141,38 @@ def asignar_miniaturas(animales):
           + (f" · sans miniature (photo complète utilisée) : {', '.join(map(str, sin))}" if sin else ""))
 
 
+# ───────────── Ordre des fiches sur le site : aléatoire, identique pour tous pendant une semaine ─────────────
+# DOIT donner exactement le même résultat que ordenSemanal() dans js/app.js (le build écrit l'ordre de la
+# semaine dans index.html ; le navigateur le recalcule et ne repeint que si la page date d'une autre semaine).
+# La semaine va de lundi 00:00 à dimanche, heure de Quintana Roo (UTC−5 toute l'année).
+def semana_actual(ahora=None):
+    d = ((ahora or datetime.now(timezone.utc)) - timedelta(hours=5)).date()
+    return (d - timedelta(days=d.weekday())).isoformat()
+
+
+def hash32(texto):
+    """FNV-1a 32 bits + mélange final (même code côté JavaScript)."""
+    h = 0x811C9DC5
+    for octet in texto.encode("utf-8"):
+        h = ((h ^ octet) * 0x01000193) & 0xFFFFFFFF
+    h ^= h >> 16
+    h = (h * 0x85EBCA6B) & 0xFFFFFFFF
+    h ^= h >> 13
+    h = (h * 0xC2B2AE35) & 0xFFFFFFFF
+    h ^= h >> 16
+    return h
+
+
+def ordenar_semanal(animales, semana=None):
+    """Les urgents encore disponibles d'abord, puis tous les autres — adoptés mélangés avec les autres.
+    La clé d'une fiche ne dépend que de la semaine et de son id : en ajouter ou en retirer une ne
+    remélange pas les autres."""
+    semilla = semana or semana_actual()
+    def clave(a):
+        return (0 if (a.get("urgente") and not a.get("adoptado")) else 1, hash32(f"{semilla}|{a['id']}"), str(a["id"]))
+    return sorted(animales, key=clave)
+
+
 def textos_es():
     """Le dictionnaire espagnol de js/i18n.js : la même source que le navigateur (décodée avec json.loads)."""
     src = (RACINE / "js" / "i18n.js").read_text(encoding="utf-8")
@@ -222,8 +255,8 @@ def prerender_index():
         datos = str(a.get("id") or a.get("nombre")).encode("utf-16-le")
         return -(10 + sum(int.from_bytes(datos[i:i + 2], "little") for i in range(0, len(datos), 2)) % 7)
 
-    vivos = [a for a in animales if not a.get("adoptado")]
-    ordenados = vivos + [a for a in animales if a.get("adoptado")]          # adoptés à la fin, ordre conservé
+    ordenados = ordenar_semanal(animales)                                    # ordre de la semaine (adoptés mélangés)
+    vivos = [a for a in ordenados if not a.get("adoptado")]                  # la bande n'affiche que des animaux disponibles
 
     tira = "".join(
         '\n    <a class="capsula" href="#adoptar" data-abrir="%s">\n'
@@ -282,6 +315,7 @@ def prerender_index():
 
     p.write_text(h, encoding="utf-8")
     vacios = len(re.findall(r'data-i18n(?:-html)?="[^"]+"[^>]*></', h))
+    print(f"  ordre aléatoire de la semaine du {semana_actual()} (changement chaque lundi, heure de Quintana Roo)")
     print(f"  prérendu espagnol : bande {len(vivos[:5])} · cartes {len(ordenados)} · éléments de texte encore vides : {vacios}"
           + ("" if (n1 and n2 and n3) else f"  ⚠ zones non trouvées (tira={n1}, rejilla={n2}, conteo={n3})"))
 

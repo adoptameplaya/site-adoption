@@ -260,6 +260,19 @@ if A.repo:
             refs_foto.add(ph.lstrip("/").split("/")[-1])
             (fotos_borr if d_.get("borrador") else fotos_pub).add("/" + ph.lstrip("/"))
     info(f"brouillons en attente dans le panneau : {len(borradores)}" + (f" ({', '.join(borradores)})" if borradores else ""))
+    # ordre aléatoire de la semaine : la page servie doit porter l'ordre de CETTE semaine (sinon la reconstruction
+    # du lundi n'a pas tourné ; le navigateur corrige quand même, mais la page se réordonne au chargement)
+    try:
+        src_b = (R / "build-preprod.py").read_text(encoding="utf-8")
+        ns_b = {}; exec("from datetime import datetime, timedelta, timezone\n" + src_b[src_b.index("def semana_actual"):src_b.index("def textos_es")], ns_b)
+        _, _, home = get("/")
+        m_ = re.search(r'id="rejilla"[^>]*>(.*?)</ul>', texto(home), re.S)
+        servidos = re.findall(r'data-abrir="([^"]+)"', m_.group(1)) if m_ else []
+        esperados = [x["id"] for x in ns_b["ordenar_semanal"](animales)]
+        semana = ns_b["semana_actual"]()
+        (ok if servidos == esperados else warn)(f"ordre aléatoire de la semaine du {semana} : " + ("page à jour" if servidos == esperados
+            else "la page servie date d'une autre semaine (reconstruction du lundi pas encore passée ?)"))
+    except Exception as e_: warn(f"ordre de la semaine non vérifié : {e_}")
     # les photos d'un brouillon ne doivent pas être servies par le site (le dépôt GitHub, lui, est public)
     for ph in sorted(fotos_borr - fotos_pub):
         st_, _, _ = get(ph, method="HEAD", gz=False)

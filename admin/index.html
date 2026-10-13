@@ -14,7 +14,7 @@
 <link rel="preload" as="font" type="font/woff2" href="../css/fonts/baloo2-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../css/fonts/nunito-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../css/style.css?v=63">
-<link rel="stylesheet" href="admin.css?v=7">
+<link rel="stylesheet" href="admin.css?v=8">
 </head>
 <body class="panel">
 
@@ -35,7 +35,6 @@
 <symbol id="i-alerta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.9 18.2A1.9 1.9 0 0 0 3.5 21h17a1.9 1.9 0 0 0 1.6-2.8L13.7 3.9a1.9 1.9 0 0 0-3.4 0"/><path d="M12 9v4.5M12 17.4v.1"/></symbol>
 <symbol id="i-mas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-camara" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6H8l1.3-2h5.4L16 6h1.5A2.5 2.5 0 0 1 20 8.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.5" r="3.4"/></symbol>
-<symbol id="i-asa" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.9"/><circle cx="15" cy="6" r="1.9"/><circle cx="9" cy="12" r="1.9"/><circle cx="15" cy="12" r="1.9"/><circle cx="9" cy="18" r="1.9"/><circle cx="15" cy="18" r="1.9"/></symbol>
 <symbol id="i-papelera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l.8 12.2A1.8 1.8 0 0 0 9.1 21h5.8a1.8 1.8 0 0 0 1.8-1.8L17.5 7M10 11v6m4-6v6"/></symbol>
 <symbol id="i-lapiz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4.2L16.6 4.2a2 2 0 0 1 2.8 0l.4.4a2 2 0 0 1 0 2.8L8.2 19z"/><path d="m14.5 6.3 3.2 3.2"/></symbol>
 <symbol id="i-globo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8a14 14 0 0 1 0 18.4 14 14 0 0 1 0-18.4"/></symbol>
@@ -88,7 +87,6 @@
     </div>
     <div class="lista__botones">
       <button class="btn" type="button" id="nuevo"><svg aria-hidden="true"><use href="#i-mas"></use></svg><span id="nuevo-texto">Añadir un perro</span></button>
-      <button class="btn btn--claro" type="button" id="ordenar"><svg aria-hidden="true"><use href="#i-asa"></use></svg>Ordenar las fichas</button>
     </div>
     <ul class="rejilla" id="lista"></ul>
     <div class="seleccion" id="seleccion" hidden>
@@ -102,18 +100,6 @@
   </section>
 
   <!-- ============ Ordenar ============ -->
-  <section id="vista-orden" hidden>
-    <button class="btn btn--fantasma ed__volver" type="button" id="or-volver"><svg aria-hidden="true"><use href="#i-flecha"></use></svg>Volver a la lista</button>
-    <h1>Ordenar las fichas</h1>
-    <p class="panel__nota orden__ayuda">Arrastra cada ficha con los seis puntitos <svg class="orden__mini" aria-hidden="true"><use href="#i-asa"></use></svg> (o usa las flechas) para elegir el orden en que aparecen en el sitio, perros y gatos juntos. Las primeras también salen en la franja de arriba de la página. Los animales ya adoptados van siempre al final.</p>
-    <ol class="orden" id="orden-lista"></ol>
-    <p class="orden__vivo" id="orden-vivo" role="status" aria-live="polite"></p>
-    <div class="orden__botones">
-      <button class="btn btn--claro" type="button" id="or-cancelar">Cancelar</button>
-      <button class="btn" type="button" id="or-guardar" disabled>Guardar el orden</button>
-    </div>
-  </section>
-
   <!-- ============ Editor ============ -->
   <section id="vista-editor" hidden>
     <button class="btn btn--fantasma ed__volver" type="button" id="ed-volver"><svg aria-hidden="true"><use href="#i-flecha"></use></svg>Volver a la lista</button>
@@ -244,7 +230,6 @@
                 <input id="f-edadtexto" type="text" maxlength="30" placeholder="Ej.: 6-7 años">
                 <span class="ayuda">Solo si la edad no se puede decir con un número. Si la llenas, sustituye a la edad de arriba.</span>
               </div>
-              <button class="btn btn--claro" type="button" id="ed-primero">Mostrarlo el primero en el sitio</button>
             </div>
           </details>
         </div>
@@ -285,6 +270,6 @@
 <div class="panel__aviso" id="aviso" role="status" aria-live="polite" hidden></div>
 
 <script src="config.js?v=1"></script>
-<script src="admin.js?v=9"></script>
+<script src="admin.js?v=10"></script>
 </body>
 </html>

@@ -241,13 +241,30 @@ La sortie est reproductible : sans changement de questions, le fichier généré
 - **Polices hébergées sur le site** (`css/fonts/` : Baloo 2 et Nunito, polices variables, alphabet latin, licence SIL OFL jointe) : plus de Google Fonts, donc pas de requête externe ni d'adresse IP envoyée à Google. `@font-face` est en tête de `css/style.css` ; préchargées dans le `<head>` ; cache d'un an dans `.htaccess`. Si on remplace un fichier, **changer son nom** (cache « immutable »). Un caractère hors alphabet latin prend la police de secours.
 - Mesure : https://pagespeed.web.dev (mobile) — avant : Performances 57, CLS 0,513 ; l'audit local contrôle aussi photos et miniatures.
 
+## Ordre des fiches (aléatoire, change chaque semaine)
+
+- **Panel** : liste alphabétique (`localeCompare('es', {sensitivity:'base'})`), groupes Borradores / En el sitio.
+  L'ancien écran glisser-déposer et le bouton « Mostrarlo el primero » sont supprimés ; le champ `orden`
+  des JSON n'a plus d'effet (les nouvelles fiches reçoivent 999).
+- **Site** : `ordenar_semanal()` (`build-preprod.py`) et `ordenSemanal()` (`js/app.js`) — **mêmes calculs, à ne
+  modifier qu'ensemble**. Clé = (urgent disponible d'abord, `hash32("<lundi>|<id>")`, id) ; la « semaine » est le
+  lundi 00:00–dimanche, heure de Quintana Roo (UTC−5 toute l'année). Les adoptés sont mélangés aux autres ;
+  la bande du haut = les 5 premiers disponibles. Ajouter/retirer une fiche ne remélange pas les autres.
+- Le build écrit l'ordre de la semaine dans `index.html` (prérendu). Le navigateur recalcule et **ne repeint que si
+  la page date d'une autre semaine** (garde-fou : sans reconstruction hebdomadaire, ça marche mais la page peut
+  se réordonner au chargement).
+- **Reconstruction hebdomadaire** : `schedule: - cron: '10 5 * * 1'` dans `.github/workflows/desplegar.yml`
+  (lundi 05:10 UTC = 00:10 Quintana Roo). Ce fichier ne peut être modifié que sur le site de GitHub
+  (le jeton du panel/des pushs n'a pas le droit « workflow »).
+- `auditar-sitio.py` vérifie que l'ordre servi correspond à la semaine en cours.
+
 ## Brouillons (mode « en attente »)
 
 Une fiche avec `"borrador": true` dans son JSON est un **brouillon** : `build-preprod.py` ne la met
 pas dans `data/animales.json` et **retire du site publié** ses photos et miniatures (celles qu'aucune
 fiche publiée n'utilise). Le panel enregistre un brouillon avec seulement le nom, sans traduction ;
 « Publier les N à la fois » = **un seul commit** (donc un seul build), avec la même validation que la
-publication d'une fiche seule. Le brouillon est partagé entre appareils et personnes (c'est le JSON
+publication d'une fiche seule (l'ordre sur le site ne dépend plus de la publication : voir plus haut). Le brouillon est partagé entre appareils et personnes (c'est le JSON
 du dépôt). **Attention : le dépôt est public**, donc un brouillon n'est pas visible sur le site mais
 l'est sur GitHub. `herramientas/auditar-sitio.py` vérifie qu'aucun `borrador` n'est dans le JSON public
 et (avec `--repo`) que les photos des brouillons répondent 404.

@@ -102,7 +102,7 @@ function aviso(texto, tipo = '') {
 
 function mostrar(vista) {
   VISTA = vista;
-  for (const v of ['carga', 'entrada', 'lista', 'orden', 'editor']) $(`#vista-${v}`).hidden = v !== vista;
+  for (const v of ['carga', 'entrada', 'lista', 'editor']) $(`#vista-${v}`).hidden = v !== vista;
   $('#usuario').hidden = !TOKEN || vista === 'entrada' || vista === 'carga';
 }
 
@@ -341,7 +341,8 @@ async function iniciar() {
 /* =========================================================
    Lista
    ========================================================= */
-const porOrden = (a, b) => (a.datos.orden ?? 999) - (b.datos.orden ?? 999) || String(a.datos.nombre).localeCompare(b.datos.nombre);
+/* La lista del panel va en orden alfabético (sin distinguir mayúsculas ni acentos). El orden del sitio no se elige : es aleatorio y cambia cada semana. */
+const porNombre = (a, b) => String(a.datos.nombre || '').localeCompare(String(b.datos.nombre || ''), 'es', { sensitivity: 'base' });
 
 const claveFicha = f => `${f.especie}/${f.id}`;
 
@@ -375,7 +376,7 @@ function actualizarSeleccion() {
 }
 
 function pintarLista() {
-  const todas = FICHAS.filter(f => f.especie === TAB).sort(porOrden);
+  const todas = FICHAS.filter(f => f.especie === TAB).sort(porNombre);
   const borr = todas.filter(f => f.datos.borrador), pub = todas.filter(f => !f.datos.borrador);
   for (const e of Object.keys(ESPECIES)) {
     $(`#n-${e}`).textContent = `(${FICHAS.filter(f => f.especie === e).length})`;
@@ -422,193 +423,12 @@ function carta(f) {
 }
 
 /* =========================================================
-   Ordenar las fichas (arrastrar y soltar, como en el móvil)
-   El orden vive en el campo «orden» de cada ficha (de 10 en 10) ; el sitio lo respeta,
-   y los animales adoptados van siempre al final, pase lo que pase.
-   ========================================================= */
-let ORDEN = { inicial: '', sucio: false };
-const esFija = li => li?.classList.contains('orden__fila--fija');
-const filasOrden = () => [...$('#orden-lista').children];
-const activasOrden = () => filasOrden().filter(li => !esFija(li));
-
-function filaOrden(f) {
-  const d = f.datos, fija = !!d.adoptado;
-  const foto = (d.fotos && d.fotos[0]) || d.foto || '';
-  const sexo = d.sexo === 'macho' ? 'Macho' : d.sexo === 'hembra' ? 'Hembra' : '';
-  const meta = `<span class="orden__meta"><svg aria-hidden="true"><use href="#${f.especie === 'gatos' ? 'i-gato' : 'i-perro'}"></use></svg>${esc([f.especie === 'gatos' ? 'Gato' : 'Perro', sexo, edadES(d)].filter(Boolean).join(' · '))}</span>`;
-  const img = `<img class="orden__foto" src="${foto ? esc(srcFoto(foto)) : ''}" alt="" width="58" height="58" draggable="false">`;
-  return fija
-    ? `<li class="orden__fila orden__fila--fija" data-k="${esc(claveFicha(f))}">${img}<div><div class="orden__nombre">${esc(d.nombre)}</div>${meta}</div><span class="orden__etiqueta">Adoptado/a · siempre al final</span></li>`
-    : `<li class="orden__fila" data-k="${esc(claveFicha(f))}">
-        <button class="orden__asa" type="button" aria-label="Mover a ${esc(d.nombre)}: arrastra, o usa las flechas arriba y abajo del teclado"><svg aria-hidden="true"><use href="#i-asa"></use></svg></button>
-        <span class="orden__n"></span>${img}
-        <div><div class="orden__nombre">${esc(d.nombre)}</div>${meta}</div>
-        <div class="orden__mover">
-          <button type="button" data-sube aria-label="Subir a ${esc(d.nombre)}"><svg aria-hidden="true"><use href="#i-flecha"></use></svg></button>
-          <button type="button" data-baja aria-label="Bajar a ${esc(d.nombre)}"><svg aria-hidden="true"><use href="#i-flecha"></use></svg></button>
-        </div>
-      </li>`;
-}
-
-function abrirOrden() {
-  const todas = FICHAS.filter(f => !f.datos.borrador).sort(porOrden);      // los borradores no se ven en el sitio : no se ordenan
-  $('#orden-lista').innerHTML = todas.filter(f => !f.datos.adoptado).map(filaOrden).join('') + todas.filter(f => f.datos.adoptado).map(filaOrden).join('');
-  ORDEN = { inicial: '', sucio: false };
-  refrescarOrden();
-  ORDEN.inicial = activasOrden().map(li => li.dataset.k).join('|');
-  $('#or-guardar').disabled = true;
-  $('#orden-vivo').textContent = '';
-  mostrar('orden');
-}
-
-/* números, flechas desactivadas en los extremos, corte de la franja de portada y botón «Guardar» */
-function refrescarOrden() {
-  const act = activasOrden();
-  act.forEach((li, i) => {
-    li.querySelector('.orden__n').textContent = i + 1;
-    li.querySelector('[data-sube]').disabled = i === 0;
-    li.querySelector('[data-baja]').disabled = i === act.length - 1;
-    li.classList.toggle('orden__fila--corte', i === 4 && act.length > 5);
-  });
-  ORDEN.sucio = act.map(li => li.dataset.k).join('|') !== ORDEN.inicial;
-  $('#or-guardar').disabled = !ORDEN.sucio;
-}
-
-/* anima a las demás fichas cuando una cambia de sitio (FLIP) */
-function conAnimacion(cambio, excluir) {
-  const filas = filasOrden().filter(x => x !== excluir);
-  const antes = new Map(filas.map(x => [x, x.getBoundingClientRect().top]));
-  cambio();
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  for (const x of filas) {
-    const d = antes.get(x) - x.getBoundingClientRect().top;
-    if (d) x.animate([{ transform: `translateY(${d}px)` }, { transform: 'none' }], { duration: 170, easing: 'ease-out' });
-  }
-}
-
-function anunciarOrden(li) {
-  const act = activasOrden();
-  $('#orden-vivo').textContent = `${li.querySelector('.orden__nombre').textContent}: posición ${act.indexOf(li) + 1} de ${act.length}.`;
-}
-
-function moverUno(li, sentido) {
-  const lista = li.parentElement;
-  if (sentido < 0) {
-    const prev = li.previousElementSibling;
-    if (!prev || esFija(prev)) return;
-    conAnimacion(() => lista.insertBefore(li, prev));
-  } else {
-    const next = li.nextElementSibling;
-    if (!next || esFija(next)) return;
-    conAnimacion(() => lista.insertBefore(li, next.nextElementSibling));
-  }
-  refrescarOrden();
-  anunciarOrden(li);
-}
-
-/* Arrastre con el puntero (ratón y dedo). Durante el arrastre NO se mueve nada en el documento
-   (mover un nodo hace que el navegador pierda el puntero, sobre todo en el móvil) : la ficha sigue
-   al dedo con una transformación y las demás se apartan con otra. Al soltar se reordena el listado. */
-let ARRASTRE = null;
-function colocarArrastre() {
-  const A = ARRASTRE, li = A.li, lista = li.parentElement;
-  const rel = (A.y - A.agarre) - lista.getBoundingClientRect().top;     // parte alta deseada, dentro del listado
-  li.style.transform = `translateY(${rel - li.offsetTop}px)`;
-  const centro = rel + li.offsetHeight / 2;
-  const otros = A.filas.filter(x => x !== li);
-  const destino = otros.filter(x => x.offsetTop + x.offsetHeight / 2 < centro).length;
-  if (destino === A.destino) return;
-  A.destino = destino;
-  A.nuevo = [...otros]; A.nuevo.splice(destino, 0, li);
-  A.nuevo.forEach((x, k) => {                                           // cada ficha va a la posición (hueco) que le toca
-    if (x === li) return;
-    const d = A.huecos[k] - x.offsetTop;
-    x.style.transform = d ? `translateY(${d}px)` : '';
-  });
-}
-function bucleArrastre() {
-  if (!ARRASTRE) return;
-  const y = ARRASTRE.y, h = innerHeight;
-  if (y < 90) { scrollBy(0, -Math.min(18, (90 - y) / 4 + 4)); colocarArrastre(); }
-  else if (y > h - 90) { scrollBy(0, Math.min(18, (y - (h - 90)) / 4 + 4)); colocarArrastre(); }
-  ARRASTRE.raf = requestAnimationFrame(bucleArrastre);
-}
-function empezarArrastre(e) {
-  const asa = e.target.closest('.orden__asa');
-  if (!asa || e.button > 0 || ARRASTRE) return;
-  const li = asa.closest('.orden__fila');
-  e.preventDefault();
-  try { asa.setPointerCapture(e.pointerId); } catch { /* sin captura : el arrastre sigue por los eventos del listado */ }
-  const filas = activasOrden();
-  ARRASTRE = {
-    li, id: e.pointerId, y: e.clientY, agarre: e.clientY - li.getBoundingClientRect().top, raf: 0,
-    filas, huecos: filas.map(x => x.offsetTop), destino: filas.indexOf(li), nuevo: filas
-  };
-  filas.forEach(x => { if (x !== li) x.classList.add('orden__fila--aparta'); });
-  li.classList.add('orden__fila--arrastre');
-  navigator.vibrate?.(8);
-  colocarArrastre();
-  ARRASTRE.raf = requestAnimationFrame(bucleArrastre);
-}
-function moverArrastre(e) {
-  if (!ARRASTRE || e.pointerId !== ARRASTRE.id) return;
-  ARRASTRE.y = e.clientY;
-  colocarArrastre();
-}
-function soltarArrastre(e) {
-  if (!ARRASTRE || (e.pointerId !== undefined && e.pointerId !== ARRASTRE.id)) return;
-  const { li, raf, filas, nuevo } = ARRASTRE;
-  cancelAnimationFrame(raf);
-  ARRASTRE = null;
-  const antes = li.getBoundingClientRect().top;
-  filas.forEach(x => { x.style.transform = ''; x.classList.remove('orden__fila--aparta'); });
-  li.classList.remove('orden__fila--arrastre');
-  const lista = li.parentElement, ancla = filasOrden().find(esFija) || null;
-  nuevo.forEach(x => lista.insertBefore(x, ancla));
-  const d = antes - li.getBoundingClientRect().top;                      // la ficha se posa suavemente en su hueco
-  if (d && !matchMedia('(prefers-reduced-motion: reduce)').matches) li.animate([{ transform: `translateY(${d}px)` }, { transform: 'none' }], { duration: 160, easing: 'ease-out' });
-  refrescarOrden();
-  anunciarOrden(li);
-}
-
-async function guardarOrden() {
-  const claves = activasOrden().map(li => li.dataset.k);
-  prog.abrir('Guardando el orden', ['Guardando el orden', 'Publicando en el sitio']);
-  $('#or-guardar').disabled = true;
-  let sha;
-  try {
-    prog.paso(0, 'curso');
-    await cargarFichas();                                   // datos frescos : no se pisa nada que otra persona haya cambiado
-    const frescas = new Map(FICHAS.map(f => [claveFicha(f), f]));
-    const nuevas = FICHAS.filter(f => !f.datos.adoptado && !f.datos.borrador && !claves.includes(claveFicha(f))).sort(porOrden).map(claveFicha);
-    const finales = [...nuevas, ...claves.filter(k => frescas.has(k) && !frescas.get(k).datos.adoptado && !frescas.get(k).datos.borrador)];
-    const cambios = [];
-    finales.forEach((k, i) => {
-      const f = frescas.get(k), nuevo = (i + 1) * 10;
-      if (f.datos.orden !== nuevo) cambios.push({ path: f.ruta, texto: JSON.stringify({ ...f.datos, orden: nuevo }, null, 2) + '\n' });
-    });
-    if (cambios.length) sha = await confirmarCambios(cambios, 'Cambia el orden de las fichas (panel)');
-    prog.paso(0, 'ok');
-    await cargarFichas();
-  } catch (e) { $('#or-guardar').disabled = false; return fallo(e); }
-
-  ORDEN.sucio = false;
-  if (!sha) { prog.paso(1, 'ok', 'Ya estaba así'); prog.nota('El orden no había cambiado.'); prog.cerrable(); $('#dlg-progreso').addEventListener('close', () => { location.hash = `#${TAB}`; }, { once: true }); return; }
-  prog.paso(1, 'curso');
-  prog.nota('Listo: el nuevo orden está guardado. El sitio se actualiza solo en unos minutos.');
-  prog.cerrable();
-  $('#dlg-progreso').addEventListener('close', () => { prog.cancelado = true; location.hash = `#${TAB}`; }, { once: true });
-  terminarPublicacion(sha);
-}
-
-/* =========================================================
    Editor — estado
    ========================================================= */
 function estadoNuevo(especie) {
-  const ordenes = FICHAS.map(f => f.datos.orden).filter(Number.isFinite);
   return {
     nuevo: true, especie, id: '', original: null, sucio: false,
-    orden: ordenes.length ? Math.min(...ordenes) - 10 : 10,
+    orden: 999,                                   // sin uso : el sitio ordena solo (aleatorio, cambia cada semana)
     nombre: '', sexo: '', edad: '', unidad: 'anos', peso: '', tamano: '', energia: '', urgente: false, adoptado: false, borrador: false,
     salud: { ...SALUD_INICIAL },
     es: { raza: '', resumen: '', historia: '', aviso: '', edadTexto: '' },
@@ -1054,10 +874,6 @@ async function guardarFicha(modo) {
   const eraBorrador = !!st.original?.borrador, eraVisible = !!st.original && !eraBorrador;
   if (borrador && eraVisible && !confirm(`«${st.nombre.trim()}» dejará de verse en el sitio y quedará como borrador. ¿Continuar?`)) return;
   st.borrador = borrador;
-  if (!borrador && (st.nuevo || eraBorrador)) {     // una ficha que se publica ahora sale la primera
-    const otros = FICHAS.filter(f => !f.datos.borrador && !(f.especie === st.especie && f.id === st.id)).map(f => f.datos.orden).filter(Number.isFinite);
-    st.orden = (otros.length ? Math.min(...otros) : 10) - 10;
-  }
 
   const id = idUnico();
   const esNueva = st.nuevo;
@@ -1171,7 +987,7 @@ async function publicarSeleccion() {
     prog.paso(0, 'curso');
     await cargarFichas();                                  // datos frescos : no se pisa nada que otra persona haya cambiado
     const frescas = new Map(FICHAS.map(f => [claveFicha(f), f]));
-    const sel = claves.map(k => frescas.get(k)).filter(f => f && f.datos.borrador).sort(porOrden);
+    const sel = claves.map(k => frescas.get(k)).filter(f => f && f.datos.borrador).sort(porNombre);
     if (!sel.length) {
       prog.paso(0, 'error', 'Ya no hay nada que publicar');
       prog.nota('Alguien ya los publicó o los quitó.');
@@ -1188,14 +1004,11 @@ async function publicarSeleccion() {
     prog.paso(0, 'ok');
 
     prog.paso(1, 'curso');
-    const otros = FICHAS.filter(f => !f.datos.borrador).map(f => f.datos.orden).filter(Number.isFinite);
-    const base = (otros.length ? Math.min(...otros) : 10) - 10 * sel.length;     // salen los primeros, en el orden en que estaban
     const cambios = [];
     let sinTraducir = 0;
-    for (const [i, f] of sel.entries()) {
+    for (const f of sel) {
       st = estadoDesde(f);
       st.borrador = false;
-      st.orden = base + 10 * i;
       if (TRADUCCION_AUTO && pendientes().length) {
         try { await traducirPendientes(); }
         catch (err) {
@@ -1293,12 +1106,8 @@ function ruta() {
       IGNORAR_HASH = true; location.hash = HASH_OK; return;
     }
   }
-  if (VISTA === 'orden' && ORDEN.sucio && a !== 'ordenar') {
-    if (!confirm('Cambiaste el orden y no lo has guardado. ¿Salir y perderlo?')) { IGNORAR_HASH = true; location.hash = HASH_OK; return; }
-  }
   HASH_OK = location.hash;
 
-  if (a === 'ordenar') return abrirOrden();
   if (a === 'nuevo' && ESPECIES[b]) return abrirEditor(b, null);
   if (a === 'editar' && ESPECIES[b] && c) return abrirEditor(b, decodeURIComponent(c));
   if (ESPECIES[a]) TAB = a;
@@ -1318,12 +1127,11 @@ function conectar() {
   $('#entrar').addEventListener('click', entrar);
   $('#salir').addEventListener('click', () => salir());
   window.addEventListener('hashchange', () => { if (IGNORAR_HASH) { IGNORAR_HASH = false; return; } if (TOKEN && VISTA !== 'carga') ruta(); });
-  window.addEventListener('beforeunload', e => { if ((VISTA === 'editor' && st?.sucio) || (VISTA === 'orden' && ORDEN.sucio)) { e.preventDefault(); e.returnValue = ''; } });
+  window.addEventListener('beforeunload', e => { if (VISTA === 'editor' && st?.sucio) { e.preventDefault(); e.returnValue = ''; } });
 
   /* lista */
   $$('[data-especie]').forEach(b => b.addEventListener('click', () => { location.hash = `#${b.dataset.especie}`; }));
   $('#nuevo').addEventListener('click', () => { location.hash = `#nuevo/${TAB}`; });
-  $('#ordenar').addEventListener('click', () => { location.hash = '#ordenar'; });
   $('#lista').addEventListener('change', e => {
     const c = e.target.closest('[data-marcar]');
     if (!c) return;
@@ -1333,29 +1141,6 @@ function conectar() {
   $('#sel-quitar').addEventListener('click', () => { SELECCION.clear(); pintarLista(); });
   $('#sel-publicar').addEventListener('click', publicarSeleccion);
 
-  /* ordenar */
-  const olista = $('#orden-lista');
-  olista.addEventListener('pointerdown', empezarArrastre);
-  olista.addEventListener('pointermove', moverArrastre);
-  olista.addEventListener('pointerup', soltarArrastre);
-  olista.addEventListener('pointercancel', soltarArrastre);
-  olista.addEventListener('lostpointercapture', soltarArrastre);
-  olista.addEventListener('click', e => {
-    const li = e.target.closest('.orden__fila');
-    if (!li) return;
-    if (e.target.closest('[data-sube]')) moverUno(li, -1);
-    else if (e.target.closest('[data-baja]')) moverUno(li, 1);
-  });
-  olista.addEventListener('keydown', e => {
-    const asa = e.target.closest('.orden__asa');
-    if (!asa || (e.key !== 'ArrowUp' && e.key !== 'ArrowDown')) return;
-    e.preventDefault();
-    moverUno(asa.closest('.orden__fila'), e.key === 'ArrowUp' ? -1 : 1);
-    asa.focus();
-  });
-  $('#or-volver').addEventListener('click', () => { location.hash = `#${TAB}`; });
-  $('#or-cancelar').addEventListener('click', () => { location.hash = `#${TAB}`; });
-  $('#or-guardar').addEventListener('click', guardarOrden);
   $('#lista').addEventListener('click', e => {
     const b = e.target.closest('[data-borrar]');
     if (b) { const [esp, id] = b.dataset.borrar.split('/'); quitar(esp, id); }
@@ -1437,12 +1222,6 @@ function conectar() {
       estado.textContent = `No se pudo traducir: ${err.message}`;
     }
     btn.disabled = false;
-  });
-  $('#ed-primero').addEventListener('click', () => {
-    const otros = FICHAS.filter(f => !(f.especie === st.especie && f.id === st.id)).map(f => f.datos.orden).filter(Number.isFinite);
-    st.orden = (otros.length ? Math.min(...otros) : 10) - 10;
-    st.sucio = true;
-    aviso('Saldrá el primero del sitio al guardar.');
   });
 }
 

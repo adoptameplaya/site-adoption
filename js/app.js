@@ -105,6 +105,38 @@ function rangoDonacion(especie) {
 }
 
 /* =========================================================
+   Orden de las fichas : aleatorio, el mismo para todos durante una semana, distinto cada semana.
+   Los animales ya adoptados quedan mezclados con los demás ; los urgentes disponibles salen primero.
+   DEBE dar el mismo resultado que ordenar_semanal() en build-preprod.py (el build escribe en el HTML el
+   orden de esta semana ; aquí se recalcula y la página solo se repinta si es de otra semana).
+   La semana va de lunes a domingo, hora de Quintana Roo (UTC−5 todo el año).
+   ========================================================= */
+/* ORDEN-SEMANAL:INICIO */
+function semanaActual(ahora = Date.now()) {
+  const d = new Date(ahora - 5 * 3600 * 1000);
+  d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7));       // lunes de esa semana
+  return d.toISOString().slice(0, 10);
+}
+function hash32(texto) {
+  let h = 0x811c9dc5;
+  for (const octeto of new TextEncoder().encode(texto)) { h ^= octeto; h = Math.imul(h, 0x01000193); }
+  h ^= h >>> 16; h = Math.imul(h, 0x85ebca6b);
+  h ^= h >>> 13; h = Math.imul(h, 0xc2b2ae35);
+  h ^= h >>> 16;
+  return h >>> 0;
+}
+function ordenSemanal(lista, semana = semanaActual()) {
+  const clave = a => [(a.urgente && !a.adoptado) ? 0 : 1, hash32(`${semana}|${a.id}`), String(a.id)];
+  return [...lista].sort((x, y) => {
+    const kx = clave(x), ky = clave(y);
+    return kx[0] - ky[0] || kx[1] - ky[1] || (kx[2] < ky[2] ? -1 : kx[2] > ky[2] ? 1 : 0);
+  });
+}
+/* ORDEN-SEMANAL:FIN */
+/* ids (en orden) de las cartas que ya están escritas en el HTML */
+const idsPuestos = cont => [...cont.querySelectorAll('[data-abrir]')].map(e => e.dataset.abrir).join('|');
+
+/* =========================================================
    Hero — la tira de cápsulas
    ========================================================= */
 /* Decap gère une seule liste de photos : la première sert de portrait. */
@@ -116,11 +148,13 @@ const fotoTarjeta = a => a.miniatura || fotoPrincipal(a);
 
 function pintarTira() {
   const cont = $('#tira');
-  /* El build ya escribió la tira en español en el HTML : no se repinta (evita parpadeo y salto de página). */
-  const yaPuesta = cont.dataset.pre === IDIOMA;
+  const lista = ANIMALES.filter(a => !a.adoptado).slice(0, 5);
+  /* El build ya escribió la tira en español en el HTML : no se repinta (evita parpadeo y salto de página),
+     salvo que esa página sea de una semana anterior (otro orden). */
+  const yaPuesta = cont.dataset.pre === IDIOMA && idsPuestos(cont) === lista.map(a => a.id).join('|');
   delete cont.dataset.pre;
   if (yaPuesta) return;
-  cont.innerHTML = ANIMALES.filter(a => !a.adoptado).slice(0, 5).map(a => `
+  cont.innerHTML = lista.map(a => `
     <a class="capsula" href="#adoptar" data-abrir="${a.id}">
       <img class="capsula__foto" src="${esc(fotoTarjeta(a))}" alt="" loading="eager" width="160" height="160">
       <span class="capsula__nombre">${esc(a.nombre)}</span>
@@ -174,7 +208,7 @@ function pintarRejilla() {
 
   $('#conteo').textContent = lista.length === 1 ? t('cat.conteo_uno') : t('cat.conteo', { n: lista.length });
 
-  const yaPuesta = rejilla.dataset.pre === IDIOMA;      // cartas escritas por el build : se conservan la primera vez
+  const yaPuesta = rejilla.dataset.pre === IDIOMA && idsPuestos(rejilla) === lista.map(a => a.id).join('|');   // cartas del build : se conservan la primera vez si son del orden de esta semana
   delete rejilla.dataset.pre;
   if (yaPuesta) return;
 
@@ -415,7 +449,7 @@ function llenarSelectAnimales() {
   const sel = $('#p-animal');
   const previo = sel.value;
   sel.innerHTML = `<option value="">${esc(t('sol.animal_cualquiera'))}</option>` +
-    ANIMALES.filter(a => !a.adoptado).map(a => `<option value="${esc(a.nombre)}">${esc(a.nombre)} — ${esc(t(a.especie === 'gato' ? 'cat.gato' : 'cat.perro'))}</option>`).join('');
+    ANIMALES.filter(a => !a.adoptado).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' })).map(a => `<option value="${esc(a.nombre)}">${esc(a.nombre)} — ${esc(t(a.especie === 'gato' ? 'cat.gato' : 'cat.perro'))}</option>`).join('');
   if (previo) sel.value = previo;
 }
 
@@ -688,7 +722,7 @@ async function iniciar() {
     CONFIG = cfg;
     // Decap écrit { "animales": [...] } ; on accepte aussi l'ancien tableau nu.
     ANIMALES = Array.isArray(ani) ? ani : (ani.animales || []);
-    ANIMALES.sort((a, b) => Number(!!a.adoptado) - Number(!!b.adoptado));
+    ANIMALES = ordenSemanal(ANIMALES);
   } catch (err) {
     console.error('[refugio] datos no cargados:', err);
     const aviso = () => {
