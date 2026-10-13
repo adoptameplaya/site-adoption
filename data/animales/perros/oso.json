@@ -1,0 +1,31 @@
+{
+  "orden": -210,
+  "id": "oso",
+  "nombre": "OSO",
+  "edad": 5,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 22,
+  "tamano": "mediano",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/oso-r59ds.jpg",
+    "/img/animales/oso-ubwcy.jpg",
+    "/img/animales/oso-cvccm.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon"
+  }
+}
