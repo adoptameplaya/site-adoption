@@ -1,0 +1,32 @@
+{
+  "orden": -260,
+  "id": "dominga",
+  "nombre": "DOMINGA",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 16,
+  "tamano": "grande",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/dominga-foh8v.jpg",
+    "/img/animales/dominga-81af8.jpg",
+    "/img/animales/dominga-kftgu.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
