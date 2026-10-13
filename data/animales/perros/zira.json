@@ -1,0 +1,32 @@
+{
+  "orden": -300,
+  "id": "zira",
+  "nombre": "ZIRA",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 17,
+  "tamano": "mediano",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/zira-s4v4i.jpg",
+    "/img/animales/zira-yc8kh.jpg",
+    "/img/animales/zira-3pqt7.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
