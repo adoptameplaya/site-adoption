@@ -7,7 +7,7 @@
   "sexo": "hembra",
   "peso_kg": 20,
   "tamano": "grande",
-  "energia": "",
+  "energia": "alta",
   "fotos": [
     "/img/animales/rose-e2vrt.jpg",
     "/img/animales/rose-35096.jpg",
@@ -24,9 +24,12 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "",
-    "historia": "",
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
     "caracter": []
   },
-  "en": {}
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
 }
