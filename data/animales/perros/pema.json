@@ -1,0 +1,32 @@
+{
+  "orden": -290,
+  "id": "pema",
+  "nombre": "PEMA",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 17,
+  "tamano": "chico",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/pema-5e1jo.jpg",
+    "/img/animales/pema-hguyn.jpg",
+    "/img/animales/pema-30lv7.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
