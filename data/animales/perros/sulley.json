@@ -1,0 +1,31 @@
+{
+  "orden": -120,
+  "id": "sulley",
+  "nombre": "SULLEY",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 16,
+  "tamano": "mediano",
+  "energia": "",
+  "fotos": [
+    "/img/animales/sulley-019yc.jpg",
+    "/img/animales/sulley-igzrj.jpg",
+    "/img/animales/sulley-1fog4.jpg",
+    "/img/animales/sulley-0d9f3.jpg",
+    "/img/animales/sulley-y7dyy.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "",
+    "historia": "",
+    "caracter": []
+  },
+  "en": {}
+}
