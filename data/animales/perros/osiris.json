@@ -1,0 +1,32 @@
+{
+  "orden": -310,
+  "id": "osiris",
+  "nombre": "OSIRIS",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 33,
+  "tamano": "grande",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/osiris-07opw.jpg",
+    "/img/animales/osiris-f18dw.jpg",
+    "/img/animales/osiris-51mr5.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
