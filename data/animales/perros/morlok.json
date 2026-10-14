@@ -1,0 +1,31 @@
+{
+  "orden": 999,
+  "id": "morlok",
+  "nombre": "MORLOK",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 22,
+  "tamano": "mediano",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/morlok-xto57.jpg",
+    "/img/animales/morlok-lyp8a.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
