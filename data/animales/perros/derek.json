@@ -1,0 +1,32 @@
+{
+  "orden": 999,
+  "id": "derek",
+  "nombre": "DEREK",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 27,
+  "tamano": "grande",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/derek-njyse.jpg",
+    "/img/animales/derek-h1e76.jpg",
+    "/img/animales/derek-8mfop.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
