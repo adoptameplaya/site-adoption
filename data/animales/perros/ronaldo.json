@@ -1,0 +1,32 @@
+{
+  "orden": 999,
+  "id": "ronaldo",
+  "nombre": "RONALDO",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 15,
+  "tamano": "chico",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/ronaldo-bo23h.jpg",
+    "/img/animales/ronaldo-bw7dy.jpg",
+    "/img/animales/ronaldo-86n85.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
