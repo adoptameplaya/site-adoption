@@ -1,0 +1,35 @@
+{
+  "orden": 999,
+  "id": "ella",
+  "nombre": "ELLA",
+  "edad": 1,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "edad_texto": {
+    "es": "1.5 ANOS",
+    "en": "1.5 YEARS"
+  },
+  "peso_kg": 18,
+  "tamano": "mediano",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/ella-vrigm.jpg",
+    "/img/animales/ella-g2ya1.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
