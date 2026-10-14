@@ -1,0 +1,31 @@
+{
+  "orden": 999,
+  "id": "gonzalo",
+  "nombre": "GONZALO",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 19,
+  "tamano": "grande",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/gonzalo-4vhhe.jpg",
+    "/img/animales/gonzalo-qfizn.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
