@@ -1,0 +1,32 @@
+{
+  "orden": 999,
+  "id": "rambo",
+  "nombre": "RAMBO",
+  "edad": 6,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 14,
+  "tamano": "chico",
+  "energia": "baja",
+  "fotos": [
+    "/img/animales/rambo-7sr0n.jpg",
+    "/img/animales/rambo-48lpu.jpg",
+    "/img/animales/rambo-aph8p.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
