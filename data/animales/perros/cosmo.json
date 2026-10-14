@@ -1,0 +1,32 @@
+{
+  "orden": 999,
+  "id": "cosmo",
+  "nombre": "COSMO",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 32,
+  "tamano": "grande",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/cosmo-3upds.jpg",
+    "/img/animales/cosmo-x9hui.jpg",
+    "/img/animales/cosmo-k7ahz.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
