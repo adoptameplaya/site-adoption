@@ -1,0 +1,32 @@
+{
+  "orden": 999,
+  "id": "sauron",
+  "nombre": "SAURON",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 23,
+  "tamano": "mediano",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/sauron-7qm0l.jpg",
+    "/img/animales/sauron-qdznc.jpg",
+    "/img/animales/sauron-q66vi.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
