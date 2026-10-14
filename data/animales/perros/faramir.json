@@ -1,0 +1,31 @@
+{
+  "orden": 999,
+  "id": "faramir",
+  "nombre": "FARAMIR",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 25,
+  "tamano": "grande",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/faramir-pd533.jpg",
+    "/img/animales/faramir-xgkg9.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
