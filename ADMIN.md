@@ -276,6 +276,17 @@ du dépôt). **Attention : le dépôt est public**, donc un brouillon n'est pas 
 l'est sur GitHub. `herramientas/auditar-sitio.py` vérifie qu'aucun `borrador` n'est dans le JSON public
 et (avec `--repo`) que les photos des brouillons répondent 404.
 
+## Demande de formulaire : page de remerciement et e-mail
+
+- Le mini-formulaire de l'accueil poste vers FormSubmit (natif, avec reCAPTCHA) puis revient sur `gracias.html?lang=..&especie=..&animal=..`
+  (jamais de nom ni d'e-mail dans l'adresse). **Cette page affiche le logo, le remerciement et DEUX boutons** : « Rellenar el formulario en línea »
+  (`cuestionario.html?especie=..`) et « Descargar el formulario en PDF » (lien `download`, chemin pris dans `data/config.json` → `solicitud.formularios`).
+  Sans `especie` dans l'adresse, elle propose les deux espèces. Depuis le questionnaire complet (`&de=cuestionario`), elle garde son comportement (bouton WhatsApp).
+- **L'e-mail automatique reste du TEXTE BRUT** : test réel du 16/10/2026 — FormSubmit affiche le HTML tel quel, impose l'expéditeur « FormSubmit »,
+  l'objet « We have received your submission on <site> » (anglais) et ajoute « Here's what we have received ». Textes dans `js/i18n.js`
+  (`sol.auto_con` / `sol.auto_web` / `sol.auto_sin`, ES et EN selon la langue du visiteur). Pour un vrai e-mail HTML avec logo et boutons,
+  il faudrait l'envoyer depuis le serveur (PHP + expéditeur + anti-abus) : non fait, au choix de Yohan.
+
 ## Texte « en attente » (case « Aún no tengo esta información »)
 
 Sous le résumé et l'histoire, la case remplit `es.resumen` / `es.historia` avec **« Pronto más información »**

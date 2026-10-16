@@ -577,7 +577,12 @@ function conectarPedido() {
     form._subject.value = `${t('sol.asunto')} — ${nombre} ${apellido}`;
     form.name.value = `${nombre} ${apellido}`;
     form._autoresponse.value = textoAutoRespuesta(nombre, especie, form.animal.value);
-    form._next.value = new URL('gracias.html?lang=' + IDIOMA, location.origin + location.pathname.replace(/[^/]*$/, '')).href;
+    /* la página de gracias muestra los botones del formulario de ESA especie (y del animal pedido). Ni nombre ni correo en la dirección. */
+    const destino = new URL('gracias.html', location.origin + location.pathname.replace(/[^/]*$/, ''));
+    destino.searchParams.set('lang', IDIOMA);
+    destino.searchParams.set('especie', especie);
+    if (form.animal.value) destino.searchParams.set('animal', form.animal.value);
+    form._next.value = destino.href;
 
     estado.classList.add('oculto');
     boton.setAttribute('aria-busy', 'true');
