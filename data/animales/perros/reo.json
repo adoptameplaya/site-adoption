@@ -1,7 +1,7 @@
 {
   "orden": 30,
   "id": "reo",
-  "nombre": "Reo",
+  "nombre": "REO",
   "raza": {
     "es": "Pastor",
     "en": "Shepherd"
@@ -36,7 +36,8 @@
       "Cariñoso",
       "Juguetón",
       "Protector",
-      "Leal"
+      "Leal",
+      "Dulce"
     ]
   },
   "en": {
@@ -47,7 +48,8 @@
       "Affectionate",
       "Playful",
       "Protective",
-      "Loyal"
+      "Loyal",
+      "Sweet"
     ]
   },
   "color": "menta",
