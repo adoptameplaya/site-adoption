@@ -1,0 +1,4 @@
+commit=ad52d05
+mode=produccion
+destino=o2switch
+construit=2026-10-16T23:53:05Z
