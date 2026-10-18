@@ -1,7 +1,7 @@
 {
   "orden": 20,
   "id": "sheruk",
-  "nombre": "SHERUK",
+  "nombre": "SHEROUK",
   "raza": {
     "es": "Pastor holandés",
     "en": "Dutch Shepherd"
@@ -17,14 +17,14 @@
   "tamano": "grande",
   "energia": "media",
   "fotos": [
-    "/img/animales/sheruk-d7j5c.jpg",
     "/img/animales/sheruk-2.jpg",
-    "/img/animales/sheruk.jpg",
-    "/img/animales/sheruk-3.jpg",
+    "/img/animales/sheruk-4ski3.jpg",
     "/img/animales/sheruk-977np.jpg",
-    "/img/animales/sheruk-4ski3.jpg"
+    "/img/animales/sheruk-3.jpg",
+    "/img/animales/sheruk-d7j5c.jpg",
+    "/img/animales/sheruk.jpg"
   ],
-  "urgente": false,
+  "urgente": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
@@ -32,26 +32,26 @@
   "microchip": true,
   "es": {
     "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
-    "historia": "Sheruk fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
+    "historia": "Sherouk fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
     "aviso": "Es un perro con mucha fuerza. Hace falta ser consciente de ello y estar capacitado para manejar este tipo de perro.",
     "caracter": [
-      "Protector",
       "Tranquilo",
       "Cariñoso",
       "Leal",
-      "Obediente"
+      "Obediente",
+      "Independiente"
     ]
   },
   "en": {
     "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
-    "historia": "Sheruk was a working security dog. When the company shut down, the dogs were left behind. We found him in very poor condition; he is much better now, but he still lives in a cage in the jungle, waiting for a family.",
+    "historia": "Sherouk was a working security dog. When the company shut down, the dogs were left behind. We found him in very poor condition; he is much better now, but he still lives in a cage in the jungle, waiting for a family.",
     "aviso": "He is a very powerful dog. You need to be aware of that and properly equipped to handle this kind of dog.",
     "caracter": [
-      "Protective",
       "Calm",
       "Affectionate",
       "Loyal",
-      "Obedient"
+      "Obedient",
+      "Independent"
     ]
   },
   "color": "arena"
