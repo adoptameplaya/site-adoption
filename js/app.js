@@ -480,12 +480,29 @@ function llenarSelectAnimales() {
    le formulaire chien pour un chat. */
 function sincronizarEspecie() {
   const a = ANIMALES.find(x => x.nombre === $('#p-animal').value);
-  if (!a) return;
-  const radio = $(`.especie__btn input[value="${a.especie}"]`);
-  if (radio && !radio.checked) {
-    radio.checked = true;
-    radio.closest('.especie')?.classList.remove('campo--error');
+  if (a) {
+    const radio = $(`.especie__btn input[value="${a.especie}"]`);
+    if (radio && !radio.checked) {
+      radio.checked = true;
+      radio.closest('.especie')?.classList.remove('campo--error');
+    }
   }
+  actualizarEnlacesAdopcion();
+}
+
+/* Vía principal de la solicitud : «Rellenar en línea» y «Descargar el PDF». Los enlaces siguen la especie y el animal elegidos. */
+function actualizarEnlacesAdopcion() {
+  const form = $('#pedido');
+  if (!form || !CONFIG) return;
+  const esp = form.querySelector('input[name="especie"]:checked')?.value || '';
+  const animal = form.animal.value;
+  const web = $('#adop-web'), pdf = $('#adop-pdf');
+  if (!esp) { web.href = '#solicitud'; pdf.href = '#solicitud'; web.hidden = false; pdf.hidden = false; return; }
+  web.href = `cuestionario.html?especie=${esp}&lang=${IDIOMA}${animal ? '&animal=' + encodeURIComponent(animal) : ''}`;
+  web.hidden = CUESTIONARIO_WEB[esp] === false;
+  const ruta = CONFIG.solicitud?.formularios?.[esp]?.[IDIOMA] || '';
+  pdf.hidden = !ruta;
+  if (ruta) pdf.href = ruta;
 }
 
 /* Le PDF dépend de l'espèce ET de la langue affichée. Le lien doit être
@@ -595,6 +612,17 @@ function conectarPedido() {
   });
 
   $('#p-animal').addEventListener('change', sincronizarEspecie);
+  form.addEventListener('change', e => { if (e.target.name === 'especie') actualizarEnlacesAdopcion(); });
+
+  /* Rellenar / descargar : primero hay que saber si es un perro o un gato (de ello depende el formulario) */
+  $$('.solicitud__botones a').forEach(enlace => enlace.addEventListener('click', e => {
+    if (form.querySelector('input[name="especie"]:checked')) return;
+    e.preventDefault();
+    $('.especie', form).classList.add('campo--error');
+    mostrar('err', t('sol.revisa_t'), t('sol.falta_especie'));
+    $('.especie__btn input', form).focus();
+  }));
+  actualizarEnlacesAdopcion();
 }
 
 /* =========================================================
@@ -634,6 +662,10 @@ function pintarApoyo() {
   $('#wa-deseos').href = enlaceWA(t('wa.deseos'));
   $('#wa-voluntario').href = enlaceWA(t('wa.voluntario'));
   $('#wa-hogar').href = enlaceWA(t('wa.hogar'));
+  $('#hogar-web').href = `cuestionario.html?especie=hogar&lang=${IDIOMA}`;
+  const pdfHogar = CONFIG.solicitud?.formularios?.hogar?.[IDIOMA] || '';
+  $('#hogar-pdf').hidden = !pdfHogar;
+  if (pdfHogar) $('#hogar-pdf').href = pdfHogar;
   $('#wa-flotante').href = enlaceWA(t('wa.general'));
 }
 
@@ -732,6 +764,7 @@ function repintar() {
   pintarApoyo();
   pintarRefugio();
   llenarSelectAnimales();
+  actualizarEnlacesAdopcion();
 }
 
 /* =========================================================

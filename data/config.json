@@ -115,6 +115,10 @@
       "gato": {
         "es": "formularios/Cuestionario_Adopcion_Gato_ES.pdf",
         "en": "formularios/Adoption_Questionnaire_Cat_EN.pdf"
+      },
+      "hogar": {
+        "es": "formularios/Cuestionario_Hogar_Temporal_ES.pdf",
+        "en": "formularios/Foster_Home_Questionnaire_EN.pdf"
       }
     },
     "_formularios_nota": "Chemin du PDF envoyé par l'auto-réponse, par espèce ET par langue du site. Les 4 PDF (chien/chat × ES/EN) sont en place. Ils sont remplissables et se régénèrent depuis data/cuestionario.json avec herramientas/crear-pdf-cuestionario.py (voir ADMIN.md). Si un chemin est vide, la page n'affiche pas le lien PDF et l'auto-réponse renvoie seulement au questionnaire en ligne.",

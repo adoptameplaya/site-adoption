@@ -34,7 +34,7 @@
 <link rel="apple-touch-icon" href="img/ui/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="css/fonts/baloo2-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="css/fonts/nunito-latin.woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=64">
+<link rel="stylesheet" href="css/style.css?v=67">
 </head>
 <body>
 
@@ -247,19 +247,6 @@
       </fieldset>
 
       <div class="campos">
-        <p class="campo">
-          <label for="p-nombre" data-i18n="sol.nombre"></label>
-          <input id="p-nombre" name="nombre" required autocomplete="given-name" placeholder=" ">
-        </p>
-        <p class="campo">
-          <label for="p-apellido" data-i18n="sol.apellido"></label>
-          <input id="p-apellido" name="apellido" required autocomplete="family-name" placeholder=" ">
-        </p>
-        <p class="campo campo--ancho">
-          <label for="p-email" data-i18n="sol.email"></label>
-          <input id="p-email" name="email" type="email" required autocomplete="email" placeholder=" ">
-          <span class="ayuda" data-i18n="sol.email_ayuda"></span>
-        </p>
         <p class="campo campo--ancho">
           <label for="p-animal" data-i18n="sol.animal"></label>
           <select id="p-animal" name="animal"></select>
@@ -267,13 +254,39 @@
         </p>
       </div>
 
-      <div class="enviar">
-        <button class="btn btn--grande" type="submit" id="pedido-enviar">
-          <svg aria-hidden="true"><use href="#i-sobre"></use></svg>
-          <span data-i18n="sol.enviar"></span>
-        </button>
-        <span class="enviar__nota" data-i18n="sol.privacidad"></span>
+      <!-- vía principal : rellenar en línea o descargar el PDF (los enlaces siguen la especie y el animal elegidos) -->
+      <div class="solicitud__botones">
+        <a class="btn btn--grande" id="adop-web" href="#solicitud"><span data-i18n="gra.en_linea"></span></a>
+        <a class="btn btn--claro btn--grande" id="adop-pdf" href="#solicitud" download><span data-i18n="gra.pdf"></span></a>
       </div>
+
+      <!-- vía secundaria : recibir el formulario por correo -->
+      <details class="solicitud__correo">
+        <summary data-i18n="sol.correo_t"></summary>
+        <p class="ayuda" data-i18n="sol.correo_d"></p>
+        <div class="campos">
+          <p class="campo">
+            <label for="p-nombre" data-i18n="sol.nombre"></label>
+            <input id="p-nombre" name="nombre" required autocomplete="given-name" placeholder=" ">
+          </p>
+          <p class="campo">
+            <label for="p-apellido" data-i18n="sol.apellido"></label>
+            <input id="p-apellido" name="apellido" required autocomplete="family-name" placeholder=" ">
+          </p>
+          <p class="campo campo--ancho">
+            <label for="p-email" data-i18n="sol.email"></label>
+            <input id="p-email" name="email" type="email" required autocomplete="email" placeholder=" ">
+            <span class="ayuda" data-i18n="sol.email_ayuda"></span>
+          </p>
+        </div>
+        <div class="enviar">
+          <button class="btn" type="submit" id="pedido-enviar">
+            <svg aria-hidden="true"><use href="#i-sobre"></use></svg>
+            <span data-i18n="sol.enviar"></span>
+          </button>
+          <span class="enviar__nota" data-i18n="sol.privacidad"></span>
+        </div>
+      </details>
 
       <div class="pedido__estado oculto" id="pedido-estado" role="status" aria-live="polite"></div>
     </form>
@@ -302,9 +315,11 @@
         <span class="medio__icono" style="background:var(--blanco)"><svg aria-hidden="true"><use href="#i-casa"></use></svg></span>
         <h3 data-i18n="ap.hogar_t"></h3>
         <p class="medio__cuerpo" data-i18n="ap.hogar_d"></p>
-        <a class="btn btn--bloque" id="wa-hogar" target="_blank" rel="noopener" href="#">
-          <svg aria-hidden="true"><use href="#i-wa"></use></svg><span data-i18n="ap.hogar_b"></span>
-        </a>
+        <div class="medio__acciones">
+          <a class="btn btn--bloque" id="hogar-web" href="cuestionario.html?especie=hogar"><span data-i18n="ap.hogar_b"></span></a>
+          <a class="btn btn--claro btn--bloque" id="hogar-pdf" href="#" download hidden><span data-i18n="ap.hogar_pdf"></span></a>
+          <a class="medio__enlace" id="wa-hogar" target="_blank" rel="noopener" href="#" data-i18n="ap.hogar_wa"></a>
+        </div>
       </article>
     </div>
 
@@ -372,7 +387,7 @@
   <span class="solo-lectores" data-i18n="wa.flotante"></span>
 </a>
 
-<script src="js/i18n.js?v=55"></script>
-<script src="js/app.js?v=61"></script>
+<script src="js/i18n.js?v=58"></script>
+<script src="js/app.js?v=63"></script>
 </body>
 </html>

@@ -14,6 +14,7 @@ Hace falta (no forman parte del sitio, se instalan solo para generar el PDF) :
 Uso :
   python3 herramientas/crear-pdf-cuestionario.py --especie gato --lang es \
       --salida formularios/Cuestionario_Adopcion_Gato_ES.pdf
+  (--especie hogar : cuestionario de HOGAR TEMPORAL, sin nombre de animal y con casillas de selección múltiple)
 """
 import argparse
 import io
@@ -44,6 +45,7 @@ INFERIOR = 50                      # nada se dibuja por debajo (el pie va a 38)
 TEXTOS = {
     "es": {
         "titulo": "Cuestionario para Adoptantes",
+        "titulo_hogar": "Cuestionario para Hogar Temporal",
         "nombre": {"perro": "NOMBRE DEL PERRO", "gato": "NOMBRE DEL GATO"},
         "fecha": "Fecha de solicitud",
         "comentario": "Comentario:",
@@ -55,6 +57,7 @@ TEXTOS = {
     },
     "en": {
         "titulo": "Adopter Questionnaire",
+        "titulo_hogar": "Foster Home Questionnaire",
         "nombre": {"perro": "DOG'S NAME", "gato": "CAT'S NAME"},
         "fecha": "Application date",
         "comentario": "Comment:",
@@ -109,7 +112,9 @@ def etiqueta(texto):
 class Documento:
     def __init__(self, c, datos, especie, lang, logo, total):
         self.c, self.especie, self.lang, self.logo, self.total = c, especie, lang, logo, total
-        self.t = TEXTOS[lang]
+        self.t = dict(TEXTOS[lang])
+        if especie == "hogar":
+            self.t["titulo"] = self.t["titulo_hogar"]
         self.bloque = datos[especie]
         self.pagina = 1
 
@@ -152,9 +157,12 @@ class Documento:
         self.color(TERRA)
         c.rect(0, 592, ANCHO, 3, stroke=0, fill=1)
         c.drawImage(self.logo, MARGEN, 622, 130, 130, mask="auto")
-        self.texto(200, 710, self.t["titulo"], "P-Bold", 24, MARRON)
+        # título en una o varias líneas (el de «Hogar Temporal» no cabe en una sola)
+        titulo = partir(self.t["titulo"], "P-Bold", 24, ANCHO - 220)       # 392 pt : «Cuestionario para Adoptantes» (375 pt) sigue en una línea
+        for i, linea in enumerate(titulo):
+            self.texto(200, 710 - 28 * i, linea, "P-Bold", 24, MARRON)
         intro = self.bloque.get("intro_pdf", self.bloque["intro"])[self.lang]
-        y = 690
+        y = 690 - 28 * (len(titulo) - 1)
         for linea in partir(intro, "P-Regular", 9, DERECHA - 200):
             self.texto(200, y, linea, "P-Regular", 9, GRIS)
             y -= 12.5
@@ -163,10 +171,14 @@ class Documento:
         self.color(TERRA, True)
         c.setLineWidth(1.2)
         c.roundRect(MARGEN, 508, DERECHA - MARGEN, 62, 8, stroke=1, fill=1)
-        self.texto(66, 548, self.t["nombre"][self.especie], "P-Bold", 10.5, TERRA)
-        self.texto(383.44, 548, self.t["fecha"], "P-Medium", 8.5, GRIS)
-        self.campo("nombre_" + self.especie, 66.4, 518.4, 296.16, 21.2, borde=TERRA, tam=13)
-        self.campo("fecha_solicitud", 383.84, 518.4, 161.76, 21.2)
+        if self.especie == "hogar":      # no es para un animal en concreto : solo la fecha
+            self.texto(66, 548, self.t["fecha"], "P-Bold", 10.5, TERRA)
+            self.campo("fecha_solicitud", 66.4, 518.4, 296.16, 21.2, borde=TERRA, tam=13)
+        else:
+            self.texto(66, 548, self.t["nombre"][self.especie], "P-Bold", 10.5, TERRA)
+            self.texto(383.44, 548, self.t["fecha"], "P-Medium", 8.5, GRIS)
+            self.campo("nombre_" + self.especie, 66.4, 518.4, 296.16, 21.2, borde=TERRA, tam=13)
+            self.campo("fecha_solicitud", 383.84, 518.4, 161.76, 21.2)
         return 478                       # arriba de la primera franja
 
     # ---------- campos ----------
@@ -186,13 +198,24 @@ class Documento:
             x=x, y=y, size=12, borderColor=_color(TERRA), fillColor=_color(CAMPO),
             textColor=_color(MARRON), borderWidth=1, borderStyle="solid", forceBorder=True)
 
+    def checkbox(self, nombre, x, y):
+        self.c.acroForm.checkbox(
+            name=nombre, x=x, y=y, size=11, buttonStyle="check", shape="square", checked=False,
+            borderColor=_color(TERRA), fillColor=_color(CAMPO), textColor=_color(MARRON),
+            borderWidth=1, borderStyle="solid", forceBorder=True)
+
     # ---------- bloques ----------
     def franja(self, titulo, arriba):
         self.color(MARRON)
         self.c.roundRect(MARGEN, arriba - 24, DERECHA - MARGEN, 24, 5, stroke=0, fill=1)
         self.texto(62, arriba - 24 + 7, titulo.upper(), "P-Bold", 11, (1, 1, 1))
 
+    def lineas_opciones(self, q):
+        return [partir(o[self.lang], "P-Regular", 9, DERECHA - 90) for o in q["opciones"]]
+
     def altura(self, q):
+        if q["tipo"] == "multi":
+            return sum(12 * len(l) + 5 for l in self.lineas_opciones(q))
         return 47.2 if q["tipo"] == "largo" else 19.2
 
     def lineas_pregunta(self, q):
@@ -214,7 +237,14 @@ class Documento:
         for i, linea in enumerate(lineas):
             self.texto(72, L - 12.5 * i, linea, "P-Medium", 9.5, MARRON)
         ult = L - 12.5 * (len(lineas) - 1)
-        if q["tipo"] == "sino":
+        if q["tipo"] == "multi":
+            y = ult - 18                     # línea base de la primera opción
+            for k, lineas_op in enumerate(self.lineas_opciones(q), 1):
+                self.checkbox(f"{nombre}_{k}", 72, y - 2.6)
+                for j, linea in enumerate(lineas_op):
+                    self.texto(90, y - 12 * j, linea, "P-Regular", 9, MARRON)
+                y -= 12 * len(lineas_op) + 5
+        elif q["tipo"] == "sino":
             self.casilla(nombre, "si", 72, ult - 26)
             self.texto(88, ult - 23, self.t["si"], "P-Regular", 9, MARRON)
             self.casilla(nombre, "no", 130, ult - 26)
@@ -281,9 +311,12 @@ def generar(datos, especie, lang, logo, salida):
         buf = io.BytesIO() if paso == 1 else None
         c = canvas.Canvas(buf if buf else str(salida), pagesize=(ANCHO, ALTO), invariant=1, pageCompression=1)
         t = TEXTOS[lang]
-        c.setTitle(f'{t["titulo"]} · {"Gatos" if especie == "gato" else "Perros"} · Adopta Me Playa'
-                   if lang == "es" else
-                   f'{t["titulo"]} · {"Cats" if especie == "gato" else "Dogs"} · Adopta Me Playa')
+        if especie == "hogar":
+            c.setTitle(f'{t["titulo_hogar"]} · Adopta Me Playa')
+        else:
+            c.setTitle(f'{t["titulo"]} · {"Gatos" if especie == "gato" else "Perros"} · Adopta Me Playa'
+                       if lang == "es" else
+                       f'{t["titulo"]} · {"Cats" if especie == "gato" else "Dogs"} · Adopta Me Playa')
         c.setAuthor("Adopta Me Playa")
         doc = Documento(c, datos, especie, lang, logo, total or 1)
         doc.construir()
@@ -294,7 +327,7 @@ def generar(datos, especie, lang, logo, salida):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--especie", choices=("perro", "gato"), required=True)
+    ap.add_argument("--especie", choices=("perro", "gato", "hogar"), required=True)
     ap.add_argument("--lang", choices=("es", "en"), required=True)
     ap.add_argument("--fuentes", default=str(RAIZ / "herramientas" / "fuentes"), help="carpeta con Poppins-Regular/Medium/Bold.ttf")
     ap.add_argument("--salida", required=True)

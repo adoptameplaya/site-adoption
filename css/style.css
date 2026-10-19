@@ -430,6 +430,10 @@ p{margin:0}
    deux colonnes égales dès 700 px, sinon une seule colonne. */
 .apoyo__rejilla--medios{grid-template-columns:1fr;grid-auto-rows:1fr;max-width:560px;margin-inline:auto}
 .apoyo__rejilla--medios .medio .btn{margin-top:auto;min-height:56px;text-align:center}
+.btn[hidden]{display:none}
+.medio__acciones{margin-top:auto;display:grid;gap:12px}
+.apoyo__rejilla--medios .medio .medio__acciones .btn{margin-top:0}
+.medio__enlace{text-align:center;font-weight:800;font-size:.95rem;text-decoration:underline;text-underline-offset:3px}
 @media (min-width:700px){
   .apoyo__rejilla--medios{grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px}
 }
@@ -601,6 +605,15 @@ p{margin:0}
 .especie__btn:has(input:focus-visible){outline:3px solid var(--tinta);outline-offset:3px}
 .especie.campo--error .especie__btn{border-color:var(--alerta)}
 
+.solicitud__botones{display:grid;gap:14px;max-width:470px;margin-top:26px}
+.solicitud__botones .btn{width:100%;justify-content:center;text-align:center}
+.solicitud__correo{margin-top:34px;max-width:720px;border-top:2px dashed var(--tinta-40);padding-top:18px}
+.solicitud__correo summary{cursor:pointer;font-weight:800;font-size:1.02rem;text-decoration:underline;text-underline-offset:3px;list-style:none}
+.solicitud__correo summary::-webkit-details-marker{display:none}
+.solicitud__correo summary:focus-visible{outline:3px solid var(--tinta);outline-offset:3px}
+.solicitud__correo > .ayuda{margin:10px 0 0}
+.solicitud__correo .campos{margin-top:18px}
+.solicitud__correo .enviar{margin-top:22px}
 .pedido__estado{
   margin-top:24px;padding:22px 24px;
   border:var(--borde);border-radius:var(--r-lg);
@@ -752,6 +765,19 @@ p{margin:0}
 .cue-sino__op:has(input:checked){background:var(--naranja)}
 .cue-sino__op:has(input:focus-visible){outline:3px solid var(--tinta);outline-offset:2px}
 .cue-comentario{font-size:.92rem}
+.campo[hidden]{display:none}
+
+/* casillas de selección múltiple (hogar temporal) : las reglas de «.cue-p input» no deben aplastar la casilla */
+.cue-multi{gap:10px;margin-top:4px}
+.cue-p .casilla input{width:26px;padding:0;border:2px solid var(--tinta);border-radius:8px;background:var(--blanco)}
+.cue-p .casilla input:checked{background:var(--naranja)}
+.cue-multi .casilla{
+  padding:13px 15px;border:2px solid var(--tinta);border-radius:var(--r-sm);background:var(--blanco);
+  font-weight:600;font-size:.97rem;line-height:1.45;
+}
+.cue-multi .casilla:has(input:checked){background:var(--arena)}
+.cue-multi .casilla:has(input:focus-visible){outline:3px solid var(--tinta);outline-offset:2px}
+.cue-p--error .cue-multi .casilla{border-color:var(--alerta)}
 
 .cue-acuerdo{background:var(--menta);border:var(--borde);border-radius:var(--r-lg);padding:24px}
 .cue-acuerdo legend{padding:0 10px;background:var(--menta);border:0}

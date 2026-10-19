@@ -471,7 +471,7 @@ def verifier_cuestionario():
     question sans traduction ou un numéro en double ne se voit qu'à l'envoi."""
     import json
     datos = json.load(open(BUILD / "data" / "cuestionario.json"))
-    for especie in ("perro", "gato"):
+    for especie in ("perro", "gato", "hogar"):
         bloque = datos.get(especie, {})
         secciones = bloque.get("secciones", [])
         if not secciones:
@@ -486,7 +486,13 @@ def verifier_cuestionario():
                 if not s.get(lang): errores.append(f"section « {s.get('id')} » sans {lang}")
             for q in s.get("preguntas", []):
                 numeros.append(q.get("n"))
-                if q.get("tipo") not in ("texto", "largo", "sino"): errores.append(f"question {q.get('n')} : tipo « {q.get('tipo')} » inconnu")
+                if q.get("tipo") not in ("texto", "largo", "sino", "multi"): errores.append(f"question {q.get('n')} : tipo « {q.get('tipo')} » inconnu")
+                if q.get("tipo") == "multi":
+                    ops = q.get("opciones") or []
+                    if not ops: errores.append(f"question {q.get('n')} (multi) sans « opciones »")
+                    for k, o in enumerate(ops, 1):
+                        for lang in ("es", "en"):
+                            if not str(o.get(lang, "")).strip(): errores.append(f"question {q.get('n')} option {k} sans {lang}")
                 for lang in ("es", "en"):
                     if not str(q.get(lang, "")).strip(): errores.append(f"question {q.get('n')} sans {lang}")
         if numeros != list(range(1, len(numeros) + 1)):

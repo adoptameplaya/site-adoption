@@ -209,7 +209,7 @@ Pas de `includeSubDomains` (le site n'a pas besoin d'imposer HTTPS aux sous-doma
 | `/home/cupa8096/secrets-adoptameplaya.php` | **créé à la main**, hors dépôt et hors dossier web |
 | `.htaccess` | HTTPS forcé, adresses `/api/…`, cache (les JSON ne sont jamais mis en cache) |
 | `admin/.htaccess` | en-têtes de sécurité du panel : seuls ses propres scripts peuvent s'y exécuter |
-| `data/cuestionario.json` | questions d'adoption **chiens (44) et chats (36)**, ES et EN. Pas modifiable depuis le panel : se change dans ce fichier. Le build refuse un numéro en double ou une traduction manquante. Types : `texto`, `largo`, `sino` |
+| `data/cuestionario.json` | questions d'adoption **chiens (44) et chats (36)** et questionnaire de **famille d'accueil « hogar » (34, 9 sections)**, ES et EN. Pas modifiable depuis le panel : se change dans ce fichier. Le build refuse un numéro en double ou une traduction manquante. Types : `texto`, `largo`, `sino` (Sí/No + commentaire, `ph` = texte du champ commentaire), `multi` (cases à cocher : `opciones` [{es,en}], `opcional`: true si on peut n'en cocher aucune) |
 | `formularios/*.pdf` | les 4 PDF remplissables (chien/chat × ES/EN) joints à l'e-mail automatique. Ceux des chats sont **générés** depuis `data/cuestionario.json` (voir ci-dessous) |
 | `herramientas/crear-pdf-cuestionario.py`, `herramientas/fuentes/`, `herramientas/sello-adopta-me.png` | générateur de ces PDF, polices Poppins (licence SIL OFL) et sello du logo |
 | `herramientas/servir-vista-previa.py` | sert `dist/preprod` sur http://127.0.0.1:8124 pour vérifier le site avant publication |
@@ -226,6 +226,8 @@ python3 -m venv /tmp/pdf && /tmp/pdf/bin/pip install reportlab pillow
 for l in es en; do /tmp/pdf/bin/python herramientas/crear-pdf-cuestionario.py --especie gato --lang $l \
   --salida formularios/$([ $l = es ] && echo Cuestionario_Adopcion_Gato_ES || echo Adoption_Questionnaire_Cat_EN).pdf; done
 ```
+
+Pour la **famille d'accueil** : `--especie hogar` (`formularios/Cuestionario_Hogar_Temporal_ES.pdf` et `formularios/Foster_Home_Questionnaire_EN.pdf`, 6 pages, 37 champs texte + cases à cocher et Sí/No) ; la couverture n'a pas de nom d'animal et son titre passe sur deux lignes s'il est trop long. Les PDF « hogar » ont été générés le 19/10/2026 avec ReportLab 5.0.1 et Pillow 11.3.0 ; l'extension du générateur (type `multi`, `hogar`) donne des fichiers identiques octet pour octet à l'ancienne version pour les chiens et les chats.
 
 Le même outil, lancé avec `--especie perro`, retrouve **à l'identique** (au pixel près) les PDF des chiens.
 La sortie est reproductible : sans changement de questions, le fichier généré est identique octet pour octet.
@@ -278,6 +280,11 @@ et (avec `--repo`) que les photos des brouillons répondent 404.
 
 ## Demande de formulaire : page de remerciement et e-mail
 
+- **Voie principale (depuis le 19/10/2026)** : la section « Rellena tu formulario de adopción » de l'accueil demande seulement chien/chat (et l'animal, facultatif), puis deux boutons :
+  « Rellenar el formulario en línea » (`cuestionario.html?especie=..&lang=..&animal=..`) et « Descargar el formulario en PDF » (`app.js` → `actualizarEnlacesAdopcion()`).
+  Sans espèce choisie, le clic affiche « Elige perro o gato ». L'ancien envoi par e-mail (nom, prénom, e-mail → FormSubmit → page de remerciement) est resté en **option repliée**
+  « ¿Prefieres recibirlo por correo? » (`<details class="solicitud__correo">`) ; pour la supprimer, retirer ce bloc dans `index.html`.
+- **Voie par e-mail (ancienne voie principale)** :
 - Le mini-formulaire de l'accueil poste vers FormSubmit (natif, avec reCAPTCHA) puis revient sur `gracias.html?lang=..&especie=..&animal=..`
   (jamais de nom ni d'e-mail dans l'adresse). **Cette page affiche le logo, le remerciement et DEUX boutons** : « Rellenar el formulario en línea »
   (`cuestionario.html?especie=..`) et « Descargar el formulario en PDF » (lien `download`, chemin pris dans `data/config.json` → `solicitud.formularios`).
@@ -286,6 +293,17 @@ et (avec `--repo`) que les photos des brouillons répondent 404.
   l'objet « We have received your submission on <site> » (anglais) et ajoute « Here's what we have received ». Textes dans `js/i18n.js`
   (`sol.auto_con` / `sol.auto_web` / `sol.auto_sin`, ES et EN selon la langue du visiteur). Pour un vrai e-mail HTML avec logo et boutons,
   il faudrait l'envoyer depuis le serveur (PHP + expéditeur + anti-abus) : non fait, au choix de Yohan.
+
+## Questionnaire « hogar temporal » (famille d'accueil)
+
+- Page : `cuestionario.html?especie=hogar` (même page que l'adoption, pilotée par le bloc `hogar` de `data/cuestionario.json`) ; pas de champ « ¿Para qué peludo? ».
+  Mêmes pied de page, déclaration, lieu, e-mail et envoi (FormSubmit, tout dans un seul champ texte « Cuestionario ») ; objet « Cuestionario de hogar temporal — Nom ».
+  Les cases à cocher (questions 16 et 22) sont recopiées dans le texte de l'e-mail (« > [x] option »).
+- Accès : carte « Hogar temporal » de l'accueil (bouton « Rellenar el cuestionario de hogar temporal », bouton PDF dès que `solicitud.formularios.hogar` existe
+  dans `data/config.json`, et lien WhatsApp). Source : Word « Cuestionario_Hogar_Temporal_Foster_last.docx » (34 questions) ; la question 23 fusionne « flexibilité » et
+  « date limite » (le commentaire reçoit la date) ; textes ES repris du Word (fautes corrigées : « situation » → « situación », « tomarnos fotos » → « tomar y enviarnos fotos ») ;
+  l'anglais est une traduction à faire relire.
+- L'avis de confidentialité mentionne ce questionnaire (données, finalité, conservation).
 
 ## Texte « en attente » (case « Aún no tengo esta información »)
 

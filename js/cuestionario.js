@@ -16,7 +16,8 @@ const guardado = localStorage.getItem('idioma');
 let IDIOMA = ['es', 'en'].includes(params.get('lang')) ? params.get('lang')
            : (['es', 'en'].includes(guardado) ? guardado : 'es');
 
-const ESPECIE = ['perro', 'gato'].includes(params.get('especie')) ? params.get('especie') : 'perro';
+const ESPECIE = ['perro', 'gato', 'hogar'].includes(params.get('especie')) ? params.get('especie') : 'perro';
+const ES_HOGAR = ESPECIE === 'hogar';          // familia de acogida : sin «¿para qué peludo?», otros textos
 
 let CONFIG = null, CUESTIONARIO = null;
 
@@ -42,7 +43,17 @@ function campo(p) {
         <label class="cue-sino__op"><input type="radio" name="${id}" value="si" required><span>${esc(t('cue.si'))}</span></label>
         <label class="cue-sino__op"><input type="radio" name="${id}" value="no" required><span>${esc(t('cue.no'))}</span></label>
       </div>
-      <input class="cue-comentario" name="${id}_c" data-i18n-attr="placeholder:cue.comentario" placeholder="${esc(t('cue.comentario'))}">
+      <input class="cue-comentario" name="${id}_c"${p.ph ? '' : ' data-i18n-attr="placeholder:cue.comentario"'} placeholder="${esc(p.ph ? (p.ph[IDIOMA] || p.ph.es) : t('cue.comentario'))}">
+    </div>`;
+  }
+
+  if (p.tipo === 'multi') {
+    /* casillas sin «name» : no se envían tal cual, textoCuestionario() las recoge en el texto del correo */
+    const ops = (p.opciones || []).map((o, k) =>
+      `<label class="casilla"><input type="checkbox" data-op="${k}"><span>${esc(o[IDIOMA] || o.es)}</span></label>`).join('');
+    return `<div class="cue-p cue-p--multi" data-q="${id}" data-multi${p.opcional ? ' data-opcional' : ''} role="group" aria-labelledby="${id}-l">
+      <p class="cue-p__label" id="${id}-l"><span class="cue-p__n">${p.n}</span>${etiqueta}</p>
+      <div class="casillas cue-multi">${ops}</div>
     </div>`;
   }
 
@@ -68,6 +79,7 @@ function pintar() {
 
   $('#cue-form').hidden = false;
   $('#cue-progreso').hidden = false;
+  if (ES_HOGAR) $('#cue-campo-animal').hidden = true;          // no es para un animal en concreto
   $('#cue-intro').textContent = bloque.intro?.[IDIOMA] || bloque.intro?.es || '';
 
   $('#cue-secciones').innerHTML = secciones.map((s, i) => `
@@ -86,7 +98,8 @@ function pintar() {
 
 /* ---------------- Progression ---------------- */
 function obligatorios() {
-  return $$('#cue-secciones .cue-p').map(p => {
+  return $$('#cue-secciones .cue-p').filter(p => !p.hasAttribute('data-opcional')).map(p => {
+    if (p.hasAttribute('data-multi')) return { el: p, lleno: $$('input[type="checkbox"]', p).some(x => x.checked) };
     const radios = $$('input[type="radio"]', p);
     if (radios.length) return { el: p, lleno: radios.some(r => r.checked) };
     const c = $('input,textarea', p);
@@ -110,7 +123,10 @@ function textoCuestionario() {
     for (const p of s.preguntas) {
       const id = `q${String(p.n).padStart(2, '0')}`;
       const etiqueta = p[IDIOMA] || p.es;
-      if (p.tipo === 'sino') {
+      if (p.tipo === 'multi') {
+        const marcadas = $$(`[data-q="${id}"] input:checked`).map(x => x.closest('label').textContent.trim());
+        lineas.push(`${p.n}. ${etiqueta}`, ...(marcadas.length ? marcadas.map(m => `   > [x] ${m}`) : ['   > —']));
+      } else if (p.tipo === 'sino') {
         const sel = $(`input[name="${id}"]:checked`);
         const com = $(`input[name="${id}_c"]`).value.trim();
         lineas.push(`${p.n}. ${etiqueta}`,
@@ -171,24 +187,24 @@ function conectarEnvio() {
     const nombre = $('#q01').value.trim();
     const animal = $('#cue-animal').value.trim();
     const cabecera = [
-      `${t('cue.animal')} ${animal || '—'}`,
+      ...(ES_HOGAR ? [] : [`${t('cue.animal')} ${animal || '—'}`]),
       `${t('cue.fecha')}: ${$('#cue-fecha').value || '—'}`,
       `${t('cue.email')}: ${email.value.trim()}`,
       `${t('cue.lugar')}: ${$('#cue-lugar').value.trim() || '—'}`,
       `${t('cue.declaracion')} → ${t('cue.acepto')}`,
     ].join('\n');
 
-    form._subject.value = `${t('cue.asunto')} — ${nombre}${animal ? ' · ' + animal : ''}`;
+    form._subject.value = `${t(ES_HOGAR ? 'cue.asunto_hogar' : 'cue.asunto')} — ${nombre}${animal && !ES_HOGAR ? ' · ' + animal : ''}`;
     form.name.value = nombre;
     form.Animal.value = animal || '—';
     form.Cuestionario.value = `${cabecera}\n\n${textoCuestionario()}`;
-    form._autoresponse.value = t('cue.auto', {
+    form._autoresponse.value = t(ES_HOGAR ? 'cue.auto_hogar' : 'cue.auto', {
       nombre,
       refugio: CONFIG.refugio?.nombre || '',
       wa_enlace: enlaceWA(t('wa.general'))
     });
 
-    const wa = t('cue.wa_msg', {
+    const wa = ES_HOGAR ? t('cue.wa_msg_hogar', { nombre }) : t('cue.wa_msg', {
       nombre,
       animal: animal ? t('cue.wa_msg_animal', { animal }) : ''
     });
@@ -233,8 +249,12 @@ function conectarEnvio() {
 /* ---------------- Traduction de la page ---------------- */
 function aplicarTraduccion() {
   document.documentElement.lang = t('html.lang');
-  document.title = `${t('cue.titulo')} | ${CONFIG?.refugio?.nombre || ''}`;
+  document.title = `${t(ES_HOGAR ? 'cue.titulo_hogar' : 'cue.titulo')} | ${CONFIG?.refugio?.nombre || ''}`;
   $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  if (ES_HOGAR) {
+    $('.cue-titulo').textContent = t('cue.titulo_hogar');
+    $('.epigrafe').textContent = t('cue.epigrafe_hogar');
+  }
   $$('[data-i18n-attr]').forEach(el => {
     el.dataset.i18nAttr.split('|').forEach(par => {
       const [attr, clave] = par.split(':');
@@ -262,7 +282,7 @@ async function iniciar() {
   if (!$('#cue-form').hidden) conectarEnvio();
 
   const animal = params.get('animal');
-  if (animal) $('#cue-animal').value = animal;
+  if (animal && !ES_HOGAR) $('#cue-animal').value = animal;
   $('#cue-fecha').value = new Date().toISOString().slice(0, 10);
 
   $$('.idioma button').forEach(b => b.addEventListener('click', () => {
