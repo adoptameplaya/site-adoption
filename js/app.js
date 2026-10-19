@@ -549,6 +549,20 @@ function textoAutoRespuesta(nombre, especie, animal) {
   return t(enlace ? 'sol.auto_con' : (hayWeb ? 'sol.auto_web' : 'sol.auto_sin'), vars);
 }
 
+const T0 = Date.now();                          // tiempo mínimo de relleno que pide el servidor (anti-robots)
+
+/* Primero el servidor del propio sitio (api/enviar) ; si falla, FormSubmit como antes. (Misma función en cuestionario.js) */
+async function enviarPorServidor(datos) {
+  const ctl = new AbortController();
+  const plazo = setTimeout(() => ctl.abort(), 20000);
+  try {
+    const r = await fetch('api/enviar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos), signal: ctl.signal });
+    const res = await r.json().catch(() => ({}));
+    return r.ok && res.ok === true;
+  } catch { return false; }
+  finally { clearTimeout(plazo); }
+}
+
 function conectarPedido() {
   const form = $('#pedido');
   if (form && CONFIG.solicitud?.endpoint) form.action = CONFIG.solicitud.endpoint;
@@ -604,6 +618,13 @@ function conectarPedido() {
     estado.classList.add('oculto');
     boton.setAttribute('aria-busy', 'true');
     boton.querySelector('span').textContent = t('sol.enviando');
+
+    e.preventDefault();
+    enviarPorServidor({
+      tipo: 'solicitud', idioma: IDIOMA, especie, nombre, apellido,
+      email: form.email.value.trim(), animal: form.animal.value, texto: '',
+      t: T0, hp: form._honey.value
+    }).then(ok => { if (ok) location.href = form._next.value; else form.submit(); });        // FormSubmit : respaldo
   });
 
   form.addEventListener('input', e => {

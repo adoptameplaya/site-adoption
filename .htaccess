@@ -22,6 +22,7 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteRule ^api/auth/?$      api/auth.php      [L,QSA]
 RewriteRule ^api/callback/?$  api/callback.php  [L,QSA]
 RewriteRule ^api/traducir/?$  api/traducir.php  [L,QSA]
+RewriteRule ^api/enviar/?$    api/enviar.php    [L,QSA]
 
 # Le dossier .git et les fichiers de travail ne sont jamais servis.
 RewriteRule ^(\.git|\.github|herramientas)(/|$) - [F,L]

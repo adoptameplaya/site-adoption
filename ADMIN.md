@@ -278,6 +278,26 @@ du dépôt). **Attention : le dépôt est public**, donc un brouillon n'est pas 
 l'est sur GitHub. `herramientas/auditar-sitio.py` vérifie qu'aucun `borrador` n'est dans le JSON public
 et (avec `--repo`) que les photos des brouillons répondent 404.
 
+## Envoi des formulaires : serveur du site d'abord, FormSubmit en secours
+
+**Pourquoi** (20/10/2026) : FormSubmit (gratuit) répondait en 0,3 s ou 17 s au hasard et renvoyait des erreurs 500 : la page de remerciement n'arrivait pas,
+une demande a été perdue. Les formulaires (questionnaire adoption, questionnaire hogar, petite demande de l'accueil) passent donc d'abord par
+**`api/enviar.php`** (`js/cuestionario.js` et `js/app.js` → `enviarPorServidor()`), qui répond tout de suite ; si cela échoue pour une raison quelconque
+(serveur, limite, réseau, 20 s sans réponse), le navigateur **retombe sur FormSubmit** comme avant (mêmes champs, reCAPTCHA).
+
+- **Deux e-mails** partent du serveur (PHP `mail()`, expéditeur `formularios@adoptameplaya.org`, SPF/DKIM du domaine déjà au DNS O2switch) :
+  1. à l'association (`contacto.email` de `data/config.json`), texte brut, « Répondre » vers la personne, objet « Cuestionario de … — Nom » ;
+  2. à la personne, **HTML avec logo centré, remerciement et vrais boutons** (+ texte brut, + copie de ses réponses pour les questionnaires). Textes ES/EN dans `api/_correo.php`.
+- **Protections** (pas de reCAPTCHA sur cette voie) : Origin/Referer = le site ; champ piège `hp` ; temps minimum de remplissage (25 s questionnaires, 4 s demande) ;
+  limites 6/h par IP, 4/jour par e-mail, 300/jour au total (au-delà → 429 → le navigateur utilise FormSubmit, avec son reCAPTCHA) ; corps ≤ 70 Ko ; nettoyage
+  des retours à la ligne (pas d'injection d'en-têtes) ; HTML échappé ; même demande en 10 min = envoyée une seule fois.
+- **Copie de secours 30 jours** de chaque demande : `/home/<compte>/respaldo-solicitudes/*.json` (hors dossier web, effacée automatiquement après 30 jours ; mentionnée dans
+  l'avis de confidentialité). À consulter si un e-mail semble perdu.
+- **Interrupteur d'urgence** : dans `/home/<compte>/secrets-adoptameplaya.php`, `'envio_directo' => 'no'` → l'endpoint répond 503 et le site revient entièrement à FormSubmit
+  (voir `api/secrets.example.php`). `correo_desde` et `correo_asociacion` y sont aussi réglables.
+- **Tests** : `python3 herramientas/probar-correo.py` (43 contrôles : e-mails écrits en fichiers .eml, rien ne sort de la machine). Si un e-mail n'arrive pas après la mise en
+  ligne : vérifier le dossier Spam d'adoptameplaya@gmail.com (filtre « de : adoptameplaya.org → jamais en spam » conseillé), puis le dossier de secours.
+
 ## Demande de formulaire : page de remerciement et e-mail
 
 - **Voie principale (depuis le 19/10/2026)** : la section « Rellena tu formulario de adopción » de l'accueil demande seulement chien/chat (et l'animal, facultatif), puis deux boutons :
@@ -289,7 +309,7 @@ et (avec `--repo`) que les photos des brouillons répondent 404.
   (jamais de nom ni d'e-mail dans l'adresse). **Cette page affiche le logo, le remerciement et DEUX boutons** : « Rellenar el formulario en línea »
   (`cuestionario.html?especie=..`) et « Descargar el formulario en PDF » (lien `download`, chemin pris dans `data/config.json` → `solicitud.formularios`).
   Sans `especie` dans l'adresse, elle propose les deux espèces. Depuis le questionnaire complet (`&de=cuestionario`), elle garde son comportement (bouton WhatsApp).
-- **L'e-mail automatique reste du TEXTE BRUT** : test réel du 16/10/2026 — FormSubmit affiche le HTML tel quel, impose l'expéditeur « FormSubmit »,
+- **(Voie FormSubmit de secours uniquement) L'e-mail automatique reste du TEXTE BRUT** : test réel du 16/10/2026 — FormSubmit affiche le HTML tel quel, impose l'expéditeur « FormSubmit »,
   l'objet « We have received your submission on <site> » (anglais) et ajoute « Here's what we have received ». Textes dans `js/i18n.js`
   (`sol.auto_con` / `sol.auto_web` / `sol.auto_sin`, ES et EN selon la langue du visiteur). Pour un vrai e-mail HTML avec logo et boutons,
   il faudrait l'envoyer depuis le serveur (PHP + expéditeur + anti-abus) : non fait, au choix de Yohan.

@@ -168,6 +168,7 @@ s, h, b = get("/api/traducir.php"); (ok if s == 405 and b'"ok":false' in b else 
 s, h, b = get("/api/auth"); loc = h.get("location", "")
 (ok if s == 302 and "client_id=Ov23" in loc and "redirect_uri=https%3A%2F%2F" in loc else bad)(f"/api/auth → {s} vers GitHub avec client_id et redirect_uri")
 s, h, b = get("/api/callback"); (ok if s == 400 else warn)(f"/api/callback sans code → {s}")
+s, h, b = get("/api/enviar"); (ok if s == 405 and b'"ok":false' in b else bad)(f"envoi des formulaires par le serveur : /api/enviar (GET) → {s} {texto(b)[:70]}")
 
 # ───────────────────────────── 6. données publiées
 sec("6. Fiches publiées")

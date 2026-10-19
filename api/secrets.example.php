@@ -25,4 +25,13 @@ return [
     /* Clave de la API de DeepL (plan gratuito: termina en :fx).
        Si queda vacía, el panel funciona igual pero no traduce solo. */
     'deepl_key'            => '',
+
+    /* Envío de formularios (api/enviar.php). TODO ES OPCIONAL :
+       · 'envio_directo' => 'no'   desactiva el envío desde el servidor : el sitio vuelve a FormSubmit
+         (interruptor de emergencia, sin tocar el código).
+       · 'correo_desde'      remitente de los correos (un dominio de la cuenta : SPF y DKIM ya están en el DNS).
+       · 'correo_asociacion' destinatario ; por defecto, el de data/config.json (contacto.email). */
+    // 'envio_directo'     => 'si',
+    // 'correo_desde'      => 'formularios@adoptameplaya.org',
+    // 'correo_asociacion' => 'adoptameplaya@gmail.com',
 ];

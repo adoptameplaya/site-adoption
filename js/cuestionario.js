@@ -17,7 +17,8 @@ let IDIOMA = ['es', 'en'].includes(params.get('lang')) ? params.get('lang')
            : (['es', 'en'].includes(guardado) ? guardado : 'es');
 
 const ESPECIE = ['perro', 'gato', 'hogar'].includes(params.get('especie')) ? params.get('especie') : 'perro';
-const ES_HOGAR = ESPECIE === 'hogar';          // familia de acogida : sin «¿para qué peludo?», otros textos
+const ES_HOGAR = ESPECIE === 'hogar';
+const T0 = Date.now();                          // para el tiempo mínimo de relleno que pide el servidor (anti-robots)          // familia de acogida : sin «¿para qué peludo?», otros textos
 
 let CONFIG = null, CUESTIONARIO = null;
 
@@ -140,6 +141,19 @@ function textoCuestionario() {
 }
 
 /* ---------------- Envoi ---------------- */
+/* Primero el servidor del propio sitio (api/enviar) : responde enseguida y manda los correos.
+   Si falla por cualquier motivo (servidor, límite, red), se sigue con FormSubmit, como antes. */
+async function enviarPorServidor(datos) {
+  const ctl = new AbortController();
+  const plazo = setTimeout(() => ctl.abort(), 20000);
+  try {
+    const r = await fetch('api/enviar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos), signal: ctl.signal });
+    const res = await r.json().catch(() => ({}));
+    return r.ok && res.ok === true;
+  } catch { return false; }
+  finally { clearTimeout(plazo); }
+}
+
 function conectarEnvio() {
   const form = $('#cue-form');
   const estado = $('#cue-estado');
@@ -227,6 +241,13 @@ function conectarEnvio() {
     estado.classList.add('oculto');
     boton.setAttribute('aria-busy', 'true');
     boton.querySelector('span').textContent = t('cue.enviando');
+
+    e.preventDefault();
+    enviarPorServidor({
+      tipo: ES_HOGAR ? 'hogar' : 'adopcion', idioma: IDIOMA, especie: ES_HOGAR ? '' : ESPECIE,
+      nombre, email: email.value.trim(), animal: ES_HOGAR ? '' : animal, texto: form.Cuestionario.value,
+      t: T0, hp: form._honey.value
+    }).then(ok => { if (ok) location.href = form._next.value; else form.submit(); });       // FormSubmit : respaldo
   });
 
   /* Retour arrière depuis « gracias » : le navigateur peut rendre la page telle quelle (champs désactivés,
