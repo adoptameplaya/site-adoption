@@ -1,0 +1,4 @@
+commit=f7be749
+mode=produccion
+destino=o2switch
+construit=2026-10-23T17:29:29Z
