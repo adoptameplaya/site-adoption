@@ -20,12 +20,23 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "Pronto más información",
-    "historia": "Pronto más información",
-    "caracter": []
+    "resumen": "Ronaldo es un perro hermoso, valiente y muy sociable",
+    "historia": "Tiene mucha energía, le encanta estar rodeado de otros y se lleva muy bien con otros perros. Sería un compañero maravilloso para familias con niños y para personas activas que deseen compartir momentos de juego, cariño y compañía.\nA pesar de las dificultades que ha enfrentado, Ronaldo tiene mucho amor para dar y merece encontrar una familia que lo quiera y lo cuide para siempre. 💙Ronaldo sufrió una lesión en una de sus patas debido a maltratos previos, lo que le dificulta caminar con normalidad.\nNecesita una familia cariñosa y comprensiva que tenga en cuenta su condición, evite las caminatas largas y respete sus límites. Aunque tiene mucha energía y ganas de vivir, es importante cuidar su pata y adaptar las actividades a sus necesidades.\nSi buscas un compañero sociable, valiente y lleno de vida, Ronaldo está esperando su oportunidad para formar parte de tu familia.",
+    "caracter": [
+      "Sociable",
+      "Valiente",
+      "Cariñoso",
+      "Dulce"
+    ]
   },
   "en": {
-    "resumen": "More information coming soon",
-    "historia": "More information coming soon"
+    "resumen": "Ronaldo is a beautiful, brave, and very sociable dog.",
+    "historia": "He has lots of energy, loves being around others, and gets along very well with other dogs.He would make a wonderful companion for families with children and active people who want to share moments of play, affection, and companionship.\nDespite the difficulties he has faced, Ronaldo has so much love to give and deserves to find a family that will love and care for him forever. 💙Ronaldo suffered an injury to one of his paws due to past abuse, which makes it difficult for him to walk normally. He needs a loving and understanding family who will be mindful of his condition, avoid long walks, and respect his limits. Although he has lots of energy and a zest for life, it is important to take care of his paw and adapt activities to his needs.\nIf you’re looking for a sociable, brave, and lively companion, Ronaldo is waiting for his chance to become part of your family",
+    "caracter": [
+      "Sociable",
+      "Brave",
+      "Affectionate",
+      "Sweet"
+    ]
   }
 }
