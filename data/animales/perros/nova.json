@@ -23,12 +23,25 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "Pronto más información",
-    "historia": "Pronto más información",
-    "caracter": []
+    "resumen": "Nova es muy energética , le gusta mucho los juguetes",
+    "historia": "Fue rescatada tras ser arrastrada durante kilómetros por un mototaxi. sus patas y panza estaban cubiertos de sangre. Afortunadamente, llegaron a tiempo para socorrerla, recibió tratamiento médico y ahora está totalmente lista para conocer a su nueva familia.",
+    "aviso": "tiene que ser perra única",
+    "caracter": [
+      "Enérgica",
+      "fuerte",
+      "Protectora",
+      "Juguetona"
+    ]
   },
   "en": {
-    "resumen": "More information coming soon",
-    "historia": "More information coming soon"
+    "resumen": "Nova es muy energética , le gusta mucho los juguetes",
+    "historia": "She was rescued after being dragged for kilometers by a motorcycle taxi. Her paws and belly were covered in blood. Fortunately, she was reached in time, received medical treatment, and is now fully ready to meet her new family.",
+    "aviso": "She has to be unique dog.",
+    "caracter": [
+      "Energetic",
+      "strong",
+      "Protective",
+      "Playful"
+    ]
   }
 }
