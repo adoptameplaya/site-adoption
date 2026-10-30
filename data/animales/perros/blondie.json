@@ -4,7 +4,7 @@
   "nombre": "BLONDIE",
   "edad": 4,
   "edad_unidad": "anos",
-  "sexo": "macho",
+  "sexo": "hembra",
   "peso_kg": 30,
   "tamano": "grande",
   "energia": "baja",
@@ -23,12 +23,23 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "Pronto más información",
-    "historia": "Pronto más información",
-    "caracter": []
+    "resumen": "Blondie es una perrita tímida; solo necesita que le brindes un poco de tu amor y paciencia.",
+    "historia": "Blondie es una perrita miedosa ; le tomó bastante tiempo adaptarse, pero ahora está mucho mejor. Buscamos una familia que le brinde la oportunidad de sentirse segura; con un poco de paciencia, su personalidad cariñosa saldrá a relucir.",
+    "caracter": [
+      "Miedosa",
+      "Tímida",
+      "Noble",
+      "Dulce"
+    ]
   },
   "en": {
-    "resumen": "More information coming soon",
-    "historia": "More information coming soon"
+    "resumen": "Blondie is a shy little doggy; she just needs you to give her a bit of your love and patience.",
+    "historia": "Blondie is a very timid dog; it took her quite some time to adjust, but she is doing much better now. We are looking for a family that will give her the chance to feel secure—with a bit of patience, her affectionate personality will shine through.",
+    "caracter": [
+      "Fearful",
+      "Shy",
+      "Noble",
+      "Sweet"
+    ]
   }
 }
