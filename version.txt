@@ -1,0 +1,4 @@
+commit=d9a1054
+mode=produccion
+destino=o2switch
+construit=2026-10-30T19:35:27Z

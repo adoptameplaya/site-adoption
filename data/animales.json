@@ -1,0 +1,3362 @@
+{
+  "animales": [
+    {
+      "orden": -310,
+      "id": "osiris",
+      "nombre": "OSIRIS",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 33,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/osiris-07opw.jpg",
+        "/img/animales/osiris-f18dw.jpg",
+        "/img/animales/osiris-51mr5.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/osiris-07opw-m.jpg"
+    },
+    {
+      "orden": -300,
+      "id": "zira",
+      "nombre": "ZIRA",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 17,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/zira-s4v4i.jpg",
+        "/img/animales/zira-yc8kh.jpg",
+        "/img/animales/zira-3pqt7.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/zira-s4v4i-m.jpg"
+    },
+    {
+      "orden": -290,
+      "id": "pema",
+      "nombre": "PEMA",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 17,
+      "tamano": "chico",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/pema-5e1jo.jpg",
+        "/img/animales/pema-hguyn.jpg",
+        "/img/animales/pema-30lv7.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/pema-5e1jo-m.jpg"
+    },
+    {
+      "orden": -280,
+      "id": "asha",
+      "nombre": "ASHA",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 22,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/asha-bc49n.jpg",
+        "/img/animales/asha-4jnqz.jpg",
+        "/img/animales/asha-crehr.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/asha-bc49n-m.jpg"
+    },
+    {
+      "orden": -270,
+      "id": "eminem",
+      "nombre": "EMINEM",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 20,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/eminem-jky83.jpg",
+        "/img/animales/eminem-p5hc2.jpg",
+        "/img/animales/eminem-gfis3.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/eminem-jky83-m.jpg"
+    },
+    {
+      "orden": -260,
+      "id": "dominga",
+      "nombre": "DOMINGA",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 16,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/dominga-foh8v.jpg",
+        "/img/animales/dominga-81af8.jpg",
+        "/img/animales/dominga-kftgu.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/dominga-foh8v-m.jpg"
+    },
+    {
+      "orden": -250,
+      "id": "tomassini",
+      "nombre": "TOMASSINI",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 15,
+      "tamano": "chico",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/tomassini-ibxgu.jpg",
+        "/img/animales/tomassini-240jk.jpg",
+        "/img/animales/tomassini-jev9w.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/tomassini-ibxgu-m.jpg"
+    },
+    {
+      "orden": -240,
+      "id": "brisa",
+      "nombre": "BRISA",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 21,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/brisa-ik745.jpg",
+        "/img/animales/brisa-uomd3.jpg",
+        "/img/animales/brisa-estcf.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/brisa-ik745-m.jpg"
+    },
+    {
+      "orden": -230,
+      "id": "siri",
+      "nombre": "SIRI",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 21,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/siri-1bjcm.jpg",
+        "/img/animales/siri-iqmzy.jpg",
+        "/img/animales/siri-wa3sm.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/siri-1bjcm-m.jpg"
+    },
+    {
+      "orden": -220,
+      "id": "leia",
+      "nombre": "LEIA",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 28,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/leia-8ik8t.jpg",
+        "/img/animales/leia-lkpco.jpg",
+        "/img/animales/leia-v7991.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/leia-8ik8t-m.jpg"
+    },
+    {
+      "orden": -200,
+      "id": "blondie",
+      "nombre": "BLONDIE",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 30,
+      "tamano": "grande",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/blondie-ym94i.jpg",
+        "/img/animales/blondie-i318f.jpg",
+        "/img/animales/blondie-dro8b.jpg",
+        "/img/animales/blondie-72wet.jpg",
+        "/img/animales/blondie-fjlje.jpg",
+        "/img/animales/blondie-175pf.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Blondie es una perrita tímida; solo necesita que le brindes un poco de tu amor y paciencia.",
+        "historia": "Blondie es una perrita miedosa ; le tomó bastante tiempo adaptarse, pero ahora está mucho mejor. Buscamos una familia que le brinde la oportunidad de sentirse segura; con un poco de paciencia, su personalidad cariñosa saldrá a relucir.",
+        "caracter": [
+          "Miedosa",
+          "Tímida",
+          "Noble",
+          "Dulce"
+        ]
+      },
+      "en": {
+        "resumen": "Blondie is a shy little doggy; she just needs you to give her a bit of your love and patience.",
+        "historia": "Blondie is a very timid dog; it took her quite some time to adjust, but she is doing much better now. We are looking for a family that will give her the chance to feel secure—with a bit of patience, her affectionate personality will shine through.",
+        "caracter": [
+          "Fearful",
+          "Shy",
+          "Noble",
+          "Sweet"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/blondie-ym94i-m.jpg"
+    },
+    {
+      "orden": -190,
+      "id": "hunter",
+      "nombre": "HUNTER",
+      "edad": 7,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 28,
+      "tamano": "grande",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/hunter-cp459.jpg",
+        "/img/animales/hunter-bb4g5.jpg",
+        "/img/animales/hunter-h11gf.jpg",
+        "/img/animales/hunter-0elkr.jpg",
+        "/img/animales/hunter-ujf33.jpg",
+        "/img/animales/hunter-009xp.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/hunter-cp459-m.jpg"
+    },
+    {
+      "orden": -180,
+      "id": "perla",
+      "nombre": "PERLA",
+      "edad": 5,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 19,
+      "tamano": "mediano",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/perla-wyx2m.jpg",
+        "/img/animales/perla-kvgxz.jpg",
+        "/img/animales/perla-bjasl.jpg",
+        "/img/animales/perla-hw8z0.jpg",
+        "/img/animales/perla-ezv6g.jpg",
+        "/img/animales/perla-fggc9.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/perla-wyx2m-m.jpg"
+    },
+    {
+      "orden": -170,
+      "id": "harry",
+      "nombre": "HARRY",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 32,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/harry-z4vet.jpg",
+        "/img/animales/harry-aad1e.jpg",
+        "/img/animales/harry-z49dk.jpg",
+        "/img/animales/harry-hwxf9.jpg",
+        "/img/animales/harry-oo0zp.jpg",
+        "/img/animales/harry-vyjjw.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/harry-z4vet-m.jpg"
+    },
+    {
+      "orden": -160,
+      "id": "raksha",
+      "nombre": "RAKSHA",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 18,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/raksha-mxbe9.jpg",
+        "/img/animales/raksha-6wiqy.jpg",
+        "/img/animales/raksha-8ey99.jpg",
+        "/img/animales/raksha-n9ns6.jpg",
+        "/img/animales/raksha-11sxq.jpg",
+        "/img/animales/raksha-myoad.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/raksha-mxbe9-m.jpg"
+    },
+    {
+      "orden": -150,
+      "id": "lana",
+      "nombre": "LANA",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 31,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/lana-y0n78.jpg",
+        "/img/animales/lana-tz8oo.jpg"
+      ],
+      "urgente": false,
+      "adoptado": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/lana-y0n78-m.jpg"
+    },
+    {
+      "orden": -140,
+      "id": "cooper",
+      "nombre": "COOPER",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 28,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/cooper-cdjmr.jpg",
+        "/img/animales/cooper-ud7ku.jpg",
+        "/img/animales/cooper-yox7u.jpg",
+        "/img/animales/cooper-rh8al.jpg",
+        "/img/animales/cooper-za913.jpg",
+        "/img/animales/cooper-7oaff.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/cooper-cdjmr-m.jpg"
+    },
+    {
+      "orden": -130,
+      "id": "nova",
+      "nombre": "NOVA",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 28,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/nova-a9ggl.jpg",
+        "/img/animales/nova-ncsof.jpg",
+        "/img/animales/nova-aml9o.jpg",
+        "/img/animales/nova-zubym.jpg",
+        "/img/animales/nova-gdlw4.jpg",
+        "/img/animales/nova-y6hra.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Nova es muy energética , le gusta mucho los juguetes",
+        "historia": "Fue rescatada tras ser arrastrada durante kilómetros por un mototaxi. sus patas y panza estaban cubiertos de sangre. Afortunadamente, llegaron a tiempo para socorrerla, recibió tratamiento médico y ahora está totalmente lista para conocer a su nueva familia.",
+        "aviso": "tiene que ser perra única",
+        "caracter": [
+          "Enérgica",
+          "fuerte",
+          "Protectora",
+          "Juguetona"
+        ]
+      },
+      "en": {
+        "resumen": "Nova es muy energética , le gusta mucho los juguetes",
+        "historia": "She was rescued after being dragged for kilometers by a motorcycle taxi. Her paws and belly were covered in blood. Fortunately, she was reached in time, received medical treatment, and is now fully ready to meet her new family.",
+        "aviso": "She has to be unique dog.",
+        "caracter": [
+          "Energetic",
+          "strong",
+          "Protective",
+          "Playful"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/nova-a9ggl-m.jpg"
+    },
+    {
+      "orden": -120,
+      "id": "sulley",
+      "nombre": "SULLEY",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 16,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/sulley-019yc.jpg",
+        "/img/animales/sulley-igzrj.jpg",
+        "/img/animales/sulley-1fog4.jpg",
+        "/img/animales/sulley-0d9f3.jpg",
+        "/img/animales/sulley-y7dyy.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/sulley-019yc-m.jpg"
+    },
+    {
+      "orden": -110,
+      "id": "xamir",
+      "nombre": "XAMIR",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 19,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/xamir-b6eq5.jpg",
+        "/img/animales/xamir-n8eoq.jpg",
+        "/img/animales/xamir-z6icq.jpg",
+        "/img/animales/xamir-kjep8.jpg",
+        "/img/animales/xamir-c2aai.jpg",
+        "/img/animales/xamir-u4gip.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/xamir-b6eq5-m.jpg"
+    },
+    {
+      "orden": -100,
+      "id": "sam",
+      "nombre": "SAM",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 20,
+      "tamano": "mediano",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/sam-epxpp.jpg",
+        "/img/animales/sam-3997q.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/sam-epxpp-m.jpg"
+    },
+    {
+      "orden": -90,
+      "id": "cherry",
+      "nombre": "CHERRY",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 14,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/cherry-qri32.jpg",
+        "/img/animales/cherry-opndx.jpg",
+        "/img/animales/cherry-26frc.jpg",
+        "/img/animales/cherry-s2sbt.jpg",
+        "/img/animales/cherry-s8naa.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/cherry-qri32-m.jpg"
+    },
+    {
+      "orden": -80,
+      "id": "cheel",
+      "nombre": "CHEEL",
+      "edad": 5,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 23,
+      "tamano": "mediano",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/cheel-u0atk.jpg",
+        "/img/animales/cheel-h5jdd.jpg",
+        "/img/animales/cheel-sw0ml.jpg",
+        "/img/animales/cheel-9so1u.jpg",
+        "/img/animales/cheel-j6omk.jpg",
+        "/img/animales/cheel-huqqq.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/cheel-u0atk-m.jpg"
+    },
+    {
+      "orden": -70,
+      "id": "spanky",
+      "nombre": "SPANKY",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 27,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/spanky-6q8ke.jpg",
+        "/img/animales/spanky-pj53g.jpg",
+        "/img/animales/spanky-eawvq.jpg",
+        "/img/animales/spanky-3c1ec.jpg",
+        "/img/animales/spanky-dvmzo.jpg",
+        "/img/animales/spanky-nckdl.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/spanky-6q8ke-m.jpg"
+    },
+    {
+      "orden": -60,
+      "id": "shirley",
+      "nombre": "SHIRLEY",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 22,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/shirley-9wz5d.jpg",
+        "/img/animales/shirley-67q85.jpg",
+        "/img/animales/shirley-t8nb9.jpg",
+        "/img/animales/shirley-cwhxg.jpg",
+        "/img/animales/shirley-fj0oh.jpg",
+        "/img/animales/shirley-qx5pu.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/shirley-9wz5d-m.jpg"
+    },
+    {
+      "orden": -50,
+      "id": "rose",
+      "nombre": "ROSE",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 20,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/rose-e2vrt.jpg",
+        "/img/animales/rose-35096.jpg",
+        "/img/animales/rose-6zzuk.jpg",
+        "/img/animales/rose-g0c2a.jpg",
+        "/img/animales/rose-9j8fk.jpg",
+        "/img/animales/rose-aawem.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/rose-e2vrt-m.jpg"
+    },
+    {
+      "orden": -40,
+      "id": "max",
+      "nombre": "MAX",
+      "edad": 5,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 23,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/max-qotzh.jpg",
+        "/img/animales/max-g3asm.jpg",
+        "/img/animales/max-p7ab4.jpg",
+        "/img/animales/max-fmx9s.jpg",
+        "/img/animales/max-1nl1u.jpg",
+        "/img/animales/max-alrr1.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/max-qotzh-m.jpg"
+    },
+    {
+      "orden": -30,
+      "id": "camilo",
+      "nombre": "CAMILO",
+      "edad": 5,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 25,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/camilo-gwel5.jpg",
+        "/img/animales/camilo-2oeip.jpg",
+        "/img/animales/camilo-p7pcn.jpg",
+        "/img/animales/camilo-5iuvh.jpg",
+        "/img/animales/camilo-a5wyv.jpg",
+        "/img/animales/camilo-2tshu.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/camilo-gwel5-m.jpg"
+    },
+    {
+      "orden": -20,
+      "id": "bagheera",
+      "nombre": "BAGHEERA",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 20,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/bagheera-nzrq3.jpg",
+        "/img/animales/bagheera-74akc.jpg",
+        "/img/animales/bagheera-15q4i.jpg",
+        "/img/animales/bagheera-wv5lv.jpg",
+        "/img/animales/bagheera-71glu.jpg",
+        "/img/animales/bagheera-mx65i.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/bagheera-nzrq3-m.jpg"
+    },
+    {
+      "orden": -10,
+      "id": "coffee",
+      "nombre": "COFFEE",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 32,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/coffee-s16v6.jpg",
+        "/img/animales/coffee-chpw9.jpg",
+        "/img/animales/coffee-rzwpa.jpg",
+        "/img/animales/coffee-x22e0.jpg",
+        "/img/animales/coffee-7cobq.jpg",
+        "/img/animales/coffee-3uteu.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/coffee-s16v6-m.jpg"
+    },
+    {
+      "orden": 0,
+      "id": "bruno",
+      "nombre": "BRUNO",
+      "edad": 8,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 22,
+      "tamano": "mediano",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/bruno-zeis9.jpg",
+        "/img/animales/bruno-mfljf.jpg",
+        "/img/animales/bruno-q91bc.jpg"
+      ],
+      "urgente": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/bruno-zeis9-m.jpg"
+    },
+    {
+      "orden": 0,
+      "id": "oso",
+      "nombre": "OSO",
+      "edad": 5,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 22,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/oso-r59ds.jpg",
+        "/img/animales/oso-ubwcy.jpg",
+        "/img/animales/oso-cvccm.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/oso-r59ds-m.jpg"
+    },
+    {
+      "orden": 10,
+      "id": "patas",
+      "nombre": "PATAS",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 25,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/patas-am0is.jpg",
+        "/img/animales/patas-k73ae.jpg",
+        "/img/animales/patas-94rpw.jpg",
+        "/img/animales/patas-s271x.jpg",
+        "/img/animales/patas-d8a88.jpg",
+        "/img/animales/patas-18axu.jpg"
+      ],
+      "urgente": false,
+      "adoptado": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Soy muy cariñoso y estoy lleno de energía; me gusta jugar con otros perros.",
+        "historia": "Fue encontrado junto a otros cuatro perros; dos de ellos no sobrevivieron, ya que estaban esqueléticos y gravemente desnutridos. El dueño padecía una enfermedad mental y también estaba desnutrido; los perros fueron rescatados y el hombre fue trasladado al hospital, pero desconocemos si sobrevivió.",
+        "caracter": [
+          "Cariñoso",
+          "Juguetón",
+          "Sociable",
+          "Amistoso",
+          "Enérgico"
+        ]
+      },
+      "en": {
+        "resumen": "Soy muy cariñoso y estoy lleno de energía; me gusta jugar con otros perros.",
+        "historia": "He was found alongside four other dogs; two of them did not survive, as they were emaciated and severely malnourished. The owner suffered from mental illness and was also malnourished; the dogs were rescued and the man was taken to the hospital, but we do not know if he survived.",
+        "caracter": [
+          "Affectionate",
+          "Playful",
+          "Sociable",
+          "Friendly",
+          "Energetic"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/patas-am0is-m.jpg"
+    },
+    {
+      "orden": 20,
+      "id": "sheruk",
+      "nombre": "SHEROUK",
+      "raza": {
+        "es": "Pastor holandés",
+        "en": "Dutch Shepherd"
+      },
+      "edad": 7,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "edad_texto": {
+        "es": "6-7 años",
+        "en": "6-7 years"
+      },
+      "peso_kg": 32,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/sheruk-2.jpg",
+        "/img/animales/sheruk-4ski3.jpg",
+        "/img/animales/sheruk-977np.jpg",
+        "/img/animales/sheruk-3.jpg",
+        "/img/animales/sheruk-d7j5c.jpg",
+        "/img/animales/sheruk.jpg"
+      ],
+      "urgente": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": true,
+      "es": {
+        "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
+        "historia": "Sherouk fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
+        "aviso": "Es un perro con mucha fuerza. Hace falta ser consciente de ello y estar capacitado para manejar este tipo de perro.",
+        "caracter": [
+          "Tranquilo",
+          "Cariñoso",
+          "Leal",
+          "Obediente",
+          "Independiente"
+        ]
+      },
+      "en": {
+        "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
+        "historia": "Sherouk was a working security dog. When the company shut down, the dogs were left behind. We found him in very poor condition; he is much better now, but he still lives in a cage in the jungle, waiting for a family.",
+        "aviso": "He is a very powerful dog. You need to be aware of that and properly equipped to handle this kind of dog.",
+        "caracter": [
+          "Calm",
+          "Affectionate",
+          "Loyal",
+          "Obedient",
+          "Independent"
+        ]
+      },
+      "color": "arena",
+      "especie": "perro",
+      "miniatura": "/img/animales/sheruk-2-m.jpg"
+    },
+    {
+      "orden": 30,
+      "id": "reo",
+      "nombre": "REO",
+      "raza": {
+        "es": "Pastor",
+        "en": "Shepherd"
+      },
+      "edad": 7,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "edad_texto": {
+        "es": "6-7 años",
+        "en": "6-7 years"
+      },
+      "peso_kg": 35,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/reo3.jpg",
+        "/img/animales/reo2.jpg",
+        "/img/animales/reo-ysen7.jpg",
+        "/img/animales/reo-zfxhg.jpg"
+      ],
+      "urgente": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": true,
+      "es": {
+        "resumen": "Ex perro de seguridad. Tranquilo y cariñoso, pero muy fuerte: necesita manos con experiencia.",
+        "historia": "Reo fue perro de trabajo en seguridad. Cuando la empresa cerró, los perros fueron abandonados. Lo encontramos en muy mala condición; ahora está mucho mejor, pero sigue viviendo en una jaula en la selva, esperando una familia.",
+        "aviso": "Es un perro con mucha fuerza. Hace falta ser consciente de ello y estar capacitado para manejar este tipo de perro.",
+        "caracter": [
+          "Cariñoso",
+          "Juguetón",
+          "Protector",
+          "Leal",
+          "Dulce"
+        ]
+      },
+      "en": {
+        "resumen": "Former security dog. Calm and affectionate, but very powerful: he needs experienced hands.",
+        "historia": "Reo was a working security dog. When the company shut down, the dogs were left behind. We found him in very poor condition; he is much better now, but he still lives in a cage in the jungle, waiting for a family.",
+        "aviso": "He is a very powerful dog. You need to be aware of that and properly equipped to handle this kind of dog",
+        "caracter": [
+          "Affectionate",
+          "Playful",
+          "Protective",
+          "Loyal",
+          "Sweet"
+        ]
+      },
+      "color": "menta",
+      "edad_meses": 80,
+      "especie": "perro",
+      "miniatura": "/img/animales/reo3-m.jpg"
+    },
+    {
+      "orden": 40,
+      "id": "kayla",
+      "nombre": "KAYLA",
+      "edad": 1,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "edad_texto": {
+        "es": "1.4 años",
+        "en": "1.4 years"
+      },
+      "peso_kg": 14,
+      "tamano": "mediano",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/kayla-qikeq.jpg",
+        "/img/animales/kayla-ljxok.jpg",
+        "/img/animales/kayla-rwf5n.jpg",
+        "/img/animales/kayla-02ld5.jpg",
+        "/img/animales/kayla-wvdrz.jpg",
+        "/img/animales/kayla-avxgt.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Un poco tímida al principio, pero muy sonriente una vez que se siente cómoda.",
+        "historia": "Fue abandonada sin motivo, por lo que perdió un poco la confianza en las personas, pero ahora se encuentra en un hogar temporal y ha aprendido a confiar de nuevo. Dale una oportunidad y verás que, una vez que se siente segura, es una perrita increíble que te dará muchísimo amor.",
+        "caracter": [
+          "Tranquila",
+          "Cariñosa",
+          "Juguetona",
+          "Tímida"
+        ]
+      },
+      "en": {
+        "resumen": "A bit shy at first, but very smiley once she feels comfortable.",
+        "historia": "She was abandoned for no reason, which caused her to lose some trust in people, but she is now in a foster home and has learned to trust again. Give her a chance, and you’ll see that once she feels safe, she is an amazing little dog who will give you so much love.",
+        "caracter": [
+          "Calm",
+          "Affectionate",
+          "Playful",
+          "Shy"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/kayla-qikeq-m.jpg"
+    },
+    {
+      "orden": 50,
+      "id": "lucien",
+      "nombre": "LUCIEN",
+      "edad": 3,
+      "edad_unidad": "meses",
+      "sexo": "macho",
+      "fotos": [
+        "/img/animales/lucien-gs925.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": false,
+      "desparasitado": true,
+      "cartilla": false,
+      "microchip": false,
+      "es": {
+        "resumen": "listo para tu familia",
+        "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenia una infección muy grave en los ojos. Ya se recupero por completo y ahora ve perfectamente.",
+        "caracter": [
+          "Juguetón",
+          "Cariñoso",
+          "Activo"
+        ]
+      },
+      "en": {
+        "resumen": "Ready for your family",
+        "historia": "He was abandoned in an empty lot along with his siblings and had a very serious eye infection. He has made a full recovery and can now see perfectly.",
+        "caracter": [
+          "Playful",
+          "Affectionate",
+          "Active"
+        ]
+      },
+      "especie": "gato",
+      "miniatura": "/img/animales/lucien-gs925-m.jpg"
+    },
+    {
+      "orden": 60,
+      "id": "wayu",
+      "nombre": "WAYU",
+      "edad": 1,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "edad_texto": {
+        "es": "1.4 años",
+        "en": "1.4 years"
+      },
+      "peso_kg": 20,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/wayu-3e0p5.jpg",
+        "/img/animales/wayu-qql2g.jpg",
+        "/img/animales/wayu-mt8aj.jpg",
+        "/img/animales/wayu-tjl91.jpg",
+        "/img/animales/wayu-a8teu.jpg",
+        "/img/animales/wayu-2ykcv.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Una segunda oportunidad para un gran compañero",
+        "historia": "Fue adoptado a los 2 meses y feliz durante 1 año... hasta que un viaje des sus dueños lo devolvió al refugio sin culpa suya. Wayu ya sabe lo que es tener un hogar solo le falta una familia que se quede para siempre. Serás tu  escribinos?",
+        "caracter": [
+          "Sociable",
+          "Noble",
+          "Protector"
+        ]
+      },
+      "en": {
+        "resumen": "A second chance for a loyal friend",
+        "historia": "He was adopted at two months old and was happy for a year... until a trip his owners took led to him being returned to the shelter—through no fault of his own. Wayu already knows what it’s like to have a home; all he needs now is a family that will stay with him forever. Could it be you? Write to us!",
+        "caracter": [
+          "Sociable",
+          "Noble",
+          "Protective"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/wayu-3e0p5-m.jpg"
+    },
+    {
+      "orden": 70,
+      "id": "charly",
+      "nombre": "CHARLY",
+      "edad": 7,
+      "edad_unidad": "meses",
+      "sexo": "macho",
+      "peso_kg": 10,
+      "tamano": "chico",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/charly-k48ht.jpg",
+        "/img/animales/charly-rpe3q.jpg",
+        "/img/animales/charly-8rj8s.jpg",
+        "/img/animales/charly-w7bnl.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "un cachorro con todo la energía, se lleva bien con perros y gatos",
+        "historia": "Fue abandonado a muy joven en una caja de tenis, ahora está a salvo en un hogar temporal y convive con gatos y perros. Es un cachorro que simplemente quiere crecer rodeado de amigos y de una familia que lo quiera para siempre.",
+        "caracter": [
+          "Juguetón",
+          "Sociable",
+          "Enérgico",
+          "Travieso"
+        ]
+      },
+      "en": {
+        "resumen": "A high-energy puppy; gets along well with dogs and cats.",
+        "historia": "He was abandoned at a very young age in a shoebox; he is now safe in a foster home and lives alongside cats and dogs. He is a puppy who simply wants to grow up with friends and a family that will love him forever.",
+        "caracter": [
+          "Playful",
+          "Sociable",
+          "Energetic",
+          "Mischievous"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/charly-k48ht-m.jpg"
+    },
+    {
+      "orden": 80,
+      "id": "tigresa",
+      "nombre": "Tigresa",
+      "edad": 3,
+      "edad_unidad": "meses",
+      "sexo": "hembra",
+      "fotos": [
+        "/img/animales/tigresa-1.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": false,
+      "desparasitado": true,
+      "cartilla": false,
+      "microchip": false,
+      "es": {
+        "resumen": "lista para darte mucho amor",
+        "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenía una infección muy grave en los ojos. Ya se recuperó por completo y ahora ve perfectamente.",
+        "caracter": [
+          "Juguetona",
+          "Cariñosa"
+        ]
+      },
+      "en": {
+        "resumen": "Ready to give you lots of love",
+        "historia": "She was abandoned in an empty lot together with her siblings and had a very serious eye infection. She has made a full recovery and can now see perfectly.",
+        "caracter": [
+          "Playful",
+          "Affectionate"
+        ]
+      },
+      "color": "turquesa",
+      "especie": "gato",
+      "miniatura": "/img/animales/tigresa-1-m.jpg"
+    },
+    {
+      "orden": 90,
+      "id": "theodor",
+      "nombre": "THEODOR",
+      "edad": 3,
+      "edad_unidad": "meses",
+      "sexo": "macho",
+      "fotos": [
+        "/img/animales/theodor-z0f8j.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": false,
+      "desparasitado": true,
+      "cartilla": false,
+      "microchip": false,
+      "es": {
+        "resumen": "Listo para tu familia",
+        "historia": "Fue abandonado en un lote baldío junto con sus hermanos y tenía una infección muy grave en los ojos. Ya se recuperó por completo y ahora ve perfectamente.",
+        "caracter": [
+          "Sociable",
+          "Curioso",
+          "Cariñoso"
+        ]
+      },
+      "en": {
+        "resumen": "Ready for your family",
+        "historia": "He was abandoned in an empty lot along with his siblings and had a very serious eye infection. He has made a full recovery and can now see perfectly.",
+        "caracter": [
+          "Sociable",
+          "Curious",
+          "Affectionate"
+        ]
+      },
+      "especie": "gato",
+      "miniatura": "/img/animales/theodor-z0f8j-m.jpg"
+    },
+    {
+      "orden": 100,
+      "id": "pirata",
+      "nombre": "PIRATA",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 23,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/pirata-krz2d.jpg",
+        "/img/animales/pirata-6i8ug.jpg",
+        "/img/animales/pirata-7o7z5.jpg",
+        "/img/animales/pirata-adxdq.jpg",
+        "/img/animales/pirata-37jcs.jpg",
+        "/img/animales/pirata-huvae.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pirata es un perro muy alegre, de temperamento muy tranquilo. Se lleva bien con otros perros como con las personas y niños",
+        "historia": "Disfruta de los paseos,  pasea bien con correa, le encanta que lo acaricien y recibir mimos. Se mantiene tranquilo en lugares y se porta muy bien cuando viaja en coche. 🚗 Es muy limpio, ya que espera a los paseos para hacer sus necesidades.\nTiene un carácter muy dulce y es sumamente inteligente! Le gusta jugar con sus juguetes, sabe sentarse y dar la patita.\nPirata fue rescatado por la calle , un hombre en estado de ebriedad le dio una patada tan violenta que le provocó la pérdida de un ojo 😭",
+        "caracter": [
+          "Tranquilo",
+          "Cariñoso",
+          "Juguetón",
+          "Sociable",
+          "Dulce"
+        ]
+      },
+      "en": {
+        "resumen": "Pirata is a very cheerful dog with a very calm temperament. He gets along well with other dogs, as well as with people and children.",
+        "historia": "He enjoys walks and walks well on a leash; he loves being petted and receiving affection. He stays calm in various settings and behaves very well when traveling by car. 🚗 He is very clean, as he waits until his walks to relieve himself.\nHe has a very sweet temperament and is extremely intelligent! He enjoys playing with his toys, and he knows how to sit and \"shake\" (offer his paw).\nPirata was rescued from the streets; an alcoholic man kicked him so violently that he lost an eye. 😭",
+        "caracter": [
+          "Calm",
+          "Affectionate",
+          "Playful",
+          "Sociable",
+          "Sweet"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/pirata-krz2d-m.jpg"
+    },
+    {
+      "orden": 110,
+      "id": "melvin",
+      "nombre": "MELVIN",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "edad_texto": {
+        "es": "2.5 anos",
+        "en": "2.5 years"
+      },
+      "peso_kg": 30,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/melvin-3ci3y.jpg",
+        "/img/animales/melvin-cuq9y.jpg",
+        "/img/animales/melvin-d82e3.jpg",
+        "/img/animales/melvin-u0lcz.jpg",
+        "/img/animales/melvin-e21n9.jpg",
+        "/img/animales/melvin-i4wtj.jpg"
+      ],
+      "urgente": false,
+      "adoptado": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/melvin-3ci3y-m.jpg"
+    },
+    {
+      "orden": 120,
+      "id": "mar",
+      "nombre": "MAR",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 24,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/mar-m9ht6.jpg",
+        "/img/animales/mar-hp6io.jpg",
+        "/img/animales/mar-s19t6.jpg",
+        "/img/animales/mar-rxoyv.jpg",
+        "/img/animales/mar-jwszf.jpg",
+        "/img/animales/mar-hg6eu.jpg"
+      ],
+      "urgente": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Una chica con mucha energía y ganas de vivir feliz , jugar, y dar mimos",
+        "historia": "Fue abandonada, atada a un árbol en la selva junto a otra perrita llamada Brisa. Afortunadamente, fueron rescatadas, ¡y ahora ella busca una familia que nunca más la vuelva a dejar atrás! Mar es un \"amorcita\" que aún confía en los seres humanos; le gustan los niños —aunque puede ser un poco brusca — y es sociable con otros perros. Dale una oportunidad; no te arrepentirás.",
+        "caracter": [
+          "Cariñosa",
+          "Juguetona",
+          "Sociable",
+          "Enérgica",
+          "fuerte"
+        ]
+      },
+      "en": {
+        "resumen": "A girl full of energy who loves to live happily, play, and give cuddles.",
+        "historia": "She was abandoned, tied to a tree in the jungle alongside another little dog named Brisa. Fortunately, they were rescued, and now she is looking for a family that will never leave her behind again! Mar is a sweetheart who still has faith in humans; she likes children, though she can be a bit boisterous, and she is sociable with other dogs. Give her a chance—you won’t regret it.",
+        "caracter": [
+          "Affectionate",
+          "Playful",
+          "Sociable",
+          "Energetic",
+          "strong "
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/mar-m9ht6-m.jpg"
+    },
+    {
+      "orden": 130,
+      "id": "batman",
+      "nombre": "BATMAN",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 36,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/batman-ujhlt.jpg",
+        "/img/animales/batman-ubm0t.jpg",
+        "/img/animales/batman-ord6c.jpg",
+        "/img/animales/batman-mi0xh.jpg",
+        "/img/animales/batman-xa6he.jpg",
+        "/img/animales/batman-l2cfj.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/batman-ujhlt-m.jpg"
+    },
+    {
+      "orden": 140,
+      "id": "lulu",
+      "nombre": "LULU",
+      "edad": 5,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 21,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/lulu-prq4s.jpg",
+        "/img/animales/lulu-2dk8p.jpg",
+        "/img/animales/lulu-xrfm3.jpg",
+        "/img/animales/lulu-nldgd.jpg",
+        "/img/animales/lulu-gdqxb.jpg",
+        "/img/animales/lulu-z0oat.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/lulu-prq4s-m.jpg"
+    },
+    {
+      "orden": 150,
+      "id": "raffa",
+      "nombre": "RAFFA",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 24,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/raffa-185l6.jpg",
+        "/img/animales/raffa-sqqqn.jpg",
+        "/img/animales/raffa-xd34r.jpg",
+        "/img/animales/raffa-11cx9.jpg",
+        "/img/animales/raffa-4dm83.jpg",
+        "/img/animales/raffa-bhsw2.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/raffa-185l6-m.jpg"
+    },
+    {
+      "orden": 160,
+      "id": "virgilio",
+      "nombre": "VIRGILIO",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 20,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/virgilio-lx8rr.jpg",
+        "/img/animales/virgilio-ikqjo.jpg",
+        "/img/animales/virgilio-dty8p.jpg",
+        "/img/animales/virgilio-3077w.jpg",
+        "/img/animales/virgilio-ttklg.jpg"
+      ],
+      "urgente": false,
+      "adoptado": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": [
+          "Juguetón",
+          "Amistoso"
+        ]
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon",
+        "caracter": [
+          "Playful",
+          "Friendly"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/virgilio-lx8rr-m.jpg"
+    },
+    {
+      "orden": 170,
+      "id": "danny",
+      "nombre": "DANNY",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 23,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/danny-qk4hv.jpg",
+        "/img/animales/danny-r0lyn.jpg",
+        "/img/animales/danny-of7z7.jpg",
+        "/img/animales/danny-tqb9y.jpg",
+        "/img/animales/danny-k423v.jpg",
+        "/img/animales/danny-o5ji4.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/danny-qk4hv-m.jpg"
+    },
+    {
+      "orden": 180,
+      "id": "paloma",
+      "nombre": "PALOMA",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "edad_texto": {
+        "es": "2.5 anos",
+        "en": "2.5 years"
+      },
+      "peso_kg": 30,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/paloma-sxut3.jpg",
+        "/img/animales/paloma-t8bas.jpg",
+        "/img/animales/paloma-v38k7.jpg",
+        "/img/animales/paloma-vmwoi.jpg",
+        "/img/animales/paloma-0kqje.jpg",
+        "/img/animales/paloma-e0h78.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/paloma-sxut3-m.jpg"
+    },
+    {
+      "orden": 190,
+      "id": "krueger",
+      "nombre": "KRUEGER",
+      "edad": 8,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 28,
+      "tamano": "mediano",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/krueger-x73e2.jpg",
+        "/img/animales/krueger-djcml.jpg",
+        "/img/animales/krueger-fdz3u.jpg",
+        "/img/animales/krueger-7zhtw.jpg",
+        "/img/animales/krueger-pp8r1.jpg",
+        "/img/animales/krueger-e15fd.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Es muy fuerte y cariñoso",
+        "historia": "Pronto más información",
+        "caracter": [
+          "Cariñoso",
+          "Leal",
+          "Amistoso"
+        ]
+      },
+      "en": {
+        "resumen": "Es muy fuerte y cariñoso",
+        "historia": "More information coming soon",
+        "caracter": [
+          "Affectionate",
+          "Loyal",
+          "Friendly"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/krueger-x73e2-m.jpg"
+    },
+    {
+      "orden": 200,
+      "id": "mordisco",
+      "nombre": "MORDISCO",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 23,
+      "tamano": "chico",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/mordisco-ugmph.jpg",
+        "/img/animales/mordisco-udqtc.jpg",
+        "/img/animales/mordisco-fsq3v.jpg",
+        "/img/animales/mordisco-ouu8p.jpg",
+        "/img/animales/mordisco-3e1v8.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/mordisco-ugmph-m.jpg"
+    },
+    {
+      "orden": 210,
+      "id": "soya",
+      "nombre": "SOYA",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 17,
+      "tamano": "mediano",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/soya-q8afj.jpg",
+        "/img/animales/soya-iv0us.jpg",
+        "/img/animales/soya-h2kmu.jpg",
+        "/img/animales/soya-p5s11.jpg",
+        "/img/animales/soya-p1wv2.jpg",
+        "/img/animales/soya-6ylgf.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/soya-q8afj-m.jpg"
+    },
+    {
+      "orden": 220,
+      "id": "champagne",
+      "nombre": "CHAMPAGNE",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 15,
+      "tamano": "chico",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/champagne-91pcy.jpg",
+        "/img/animales/champagne-cfd1j.jpg",
+        "/img/animales/champagne-gp04v.jpg",
+        "/img/animales/champagne-12qk8.jpg",
+        "/img/animales/champagne-r8vjh.jpg"
+      ],
+      "urgente": false,
+      "adoptado": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/champagne-91pcy-m.jpg"
+    },
+    {
+      "orden": 230,
+      "id": "candelaria",
+      "nombre": "CANDELARIA",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 23,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/candelaria-9u7a5.jpg",
+        "/img/animales/candelaria-43ebl.jpg",
+        "/img/animales/candelaria-v32uf.jpg",
+        "/img/animales/candelaria-haxcy.jpg",
+        "/img/animales/candelaria-f1vuq.jpg",
+        "/img/animales/candelaria-xcf6a.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/candelaria-9u7a5-m.jpg"
+    },
+    {
+      "orden": 240,
+      "id": "prentis",
+      "nombre": "PRENTIS",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 32,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/prentis-bnznv.jpg",
+        "/img/animales/prentis-uxs7f.jpg",
+        "/img/animales/prentis-ifz8d.jpg",
+        "/img/animales/prentis-qaghq.jpg"
+      ],
+      "urgente": false,
+      "adoptado": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/prentis-bnznv-m.jpg"
+    },
+    {
+      "orden": 250,
+      "id": "yana",
+      "nombre": "YANA",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 19,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/yana-7mkmh.jpg",
+        "/img/animales/yana-43dc2.jpg",
+        "/img/animales/yana-jmgkz.jpg",
+        "/img/animales/yana-6dycl.jpg",
+        "/img/animales/yana-alm5i.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/yana-7mkmh-m.jpg"
+    },
+    {
+      "orden": 260,
+      "id": "gandalf",
+      "nombre": "GANDALF",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 23,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/gandalf-p8zw4.jpg",
+        "/img/animales/gandalf-mefp6.jpg",
+        "/img/animales/gandalf-43lcd.jpg",
+        "/img/animales/gandalf-brxgn.jpg",
+        "/img/animales/gandalf-tyhzz.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/gandalf-p8zw4-m.jpg"
+    },
+    {
+      "orden": 270,
+      "id": "basil",
+      "nombre": "BASIL",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 15,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/basil-w48pe.jpg",
+        "/img/animales/basil-tuipm.jpg",
+        "/img/animales/basil-dat04.jpg",
+        "/img/animales/basil-f7fpn.jpg",
+        "/img/animales/basil-agnhb.jpg",
+        "/img/animales/basil-6iwu7.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/basil-w48pe-m.jpg"
+    },
+    {
+      "orden": 280,
+      "id": "skipper",
+      "nombre": "SKIPPER",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 25,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/skipper-w75kq.jpg",
+        "/img/animales/skipper-5twfm.jpg",
+        "/img/animales/skipper-2zpve.jpg",
+        "/img/animales/skipper-vmp92.jpg",
+        "/img/animales/skipper-kdlf1.jpg",
+        "/img/animales/skipper-osny1.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "informacion pendiente.......  el hace parte de los 3 Pinguinos de Madagascar , pero se puede adoptar solo ;)",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "pending information ... I'm one of the Penguins of Madagascar, but I can be adopted on my own ;)",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/skipper-w75kq-m.jpg"
+    },
+    {
+      "orden": 290,
+      "id": "cabo",
+      "nombre": "CABO",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 26,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/cabo-5blhy.jpg",
+        "/img/animales/cabo-w5b1l.jpg",
+        "/img/animales/cabo-jqnsn.jpg",
+        "/img/animales/cabo-aclyf.jpg",
+        "/img/animales/cabo-wa2p1.jpg",
+        "/img/animales/cabo-8fipd.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "el hace parte de los 3 Pinguinos de Madagascar , pero se puede adoptar solo ;) tengo un poco de sobrepeso , me ayudas con mi dieta",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "I'm one of the 3 Penguins of Madagascar, but I can be adopted on my own ;) I'm a little overweight—will you help me with my diet?",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/cabo-5blhy-m.jpg"
+    },
+    {
+      "orden": 300,
+      "id": "kowalski",
+      "nombre": "KOWALSKI",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 26,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/kowalski-1wl35.jpg",
+        "/img/animales/kowalski-u8wi2.jpg",
+        "/img/animales/kowalski-owc06.jpg",
+        "/img/animales/kowalski-9rwm0.jpg",
+        "/img/animales/kowalski-5idcg.jpg",
+        "/img/animales/kowalski-c3owi.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "información pendiente ............. el hace parte de los 3 Pinguinos de Madagascar , pero se puede adoptar solo ;)",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "pending information ......I'm one of the Penguins of Madagascar, but I can be adopted on my own ;)",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/kowalski-1wl35-m.jpg"
+    },
+    {
+      "orden": 310,
+      "id": "tesla",
+      "nombre": "TESLA",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 17,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/tesla-jyj80.jpg",
+        "/img/animales/tesla-0l7dn.jpg",
+        "/img/animales/tesla-uvbct.jpg",
+        "/img/animales/tesla-qajwi.jpg",
+        "/img/animales/tesla-walrk.jpg",
+        "/img/animales/tesla-u3v56.jpg"
+      ],
+      "urgente": false,
+      "adoptado": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/tesla-jyj80-m.jpg"
+    },
+    {
+      "orden": 320,
+      "id": "tamara",
+      "nombre": "TAMARA",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 16,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/tamara-vkykp.jpg",
+        "/img/animales/tamara-uq7eq.jpg",
+        "/img/animales/tamara-sqxbi.jpg",
+        "/img/animales/tamara-rwf34.jpg",
+        "/img/animales/tamara-o95no.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/tamara-vkykp-m.jpg"
+    },
+    {
+      "orden": 340,
+      "id": "chabacano",
+      "nombre": "CHABACANO",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 27,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/chabacano-0hnlk.jpg",
+        "/img/animales/chabacano-zbj65.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/chabacano-0hnlk-m.jpg"
+    },
+    {
+      "orden": 370,
+      "id": "lucha",
+      "nombre": "LUCHA",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 14,
+      "tamano": "chico",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/lucha-t4sne.jpg",
+        "/img/animales/lucha-163kx.jpg",
+        "/img/animales/lucha-pgdaz.jpg",
+        "/img/animales/lucha-ivtdi.jpg",
+        "/img/animales/lucha-9hqw2.jpg",
+        "/img/animales/lucha-ptdf4.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/lucha-t4sne-m.jpg"
+    },
+    {
+      "orden": 380,
+      "id": "pyroli",
+      "nombre": "PYROLI",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 14,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/pyroli-9skgt.jpg",
+        "/img/animales/pyroli-coh6w.jpg",
+        "/img/animales/pyroli-t9o66.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/pyroli-9skgt-m.jpg"
+    },
+    {
+      "orden": 390,
+      "id": "sidra",
+      "nombre": "SIDRA",
+      "edad": 1,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 18,
+      "tamano": "chico",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/sidra-8npcy.jpg",
+        "/img/animales/sidra-gcz4r.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/sidra-8npcy-m.jpg"
+    },
+    {
+      "orden": 400,
+      "id": "guayaba",
+      "nombre": "GUAYABA",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 13,
+      "tamano": "chico",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/guayaba-w6n1y.jpg",
+        "/img/animales/guayaba-jb84n.jpg",
+        "/img/animales/guayaba-dgtkw.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/guayaba-w6n1y-m.jpg"
+    },
+    {
+      "orden": 410,
+      "id": "queen",
+      "nombre": "QUEEN",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 14,
+      "tamano": "chico",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/queen-y7je1.jpg",
+        "/img/animales/queen-oyufx.jpg",
+        "/img/animales/queen-n6mi1.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/queen-y7je1-m.jpg"
+    },
+    {
+      "orden": 420,
+      "id": "isis",
+      "nombre": "ISIS",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 34,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/isis-0aa23.jpg",
+        "/img/animales/isis-7e5c2.jpg",
+        "/img/animales/isis-knjlq.jpg",
+        "/img/animales/isis-a0x6k.jpg",
+        "/img/animales/isis-dd3t1.jpg",
+        "/img/animales/isis-anv68.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Me encanta jugar a la pelota, ¿vienes a jugar conmigo?",
+        "historia": "Pronto más información",
+        "caracter": [
+          "Cariñosa",
+          "Inteligente",
+          "Activa",
+          "Sociable"
+        ]
+      },
+      "en": {
+        "resumen": "Found on the street fighting with other dogs over a female in heat; today I’m neutered, and with a proper introduction, I love playing with other dogs ;)",
+        "historia": "More information coming soon",
+        "caracter": [
+          "Affectionate",
+          "Smart",
+          "Active",
+          "Sociable"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/isis-0aa23-m.jpg"
+    },
+    {
+      "orden": 430,
+      "id": "dobby",
+      "nombre": "DOBBY",
+      "edad": 5,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 27,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/dobby-zdbyj.jpg",
+        "/img/animales/dobby-yzale.jpg",
+        "/img/animales/dobby-lgpa8.jpg",
+        "/img/animales/dobby-2173f.jpg",
+        "/img/animales/dobby-jlk4c.jpg",
+        "/img/animales/dobby-a3k7y.jpg"
+      ],
+      "urgente": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Años esperando una familia que me cambiara la vida.",
+        "historia": "encontrado en la calle peleando con otros perros por una hembra en celo.  Hoy esta esterilizado y con una buena introducion me gusta jugar con otros perros ;)",
+        "caracter": [
+          "Juguetón",
+          "Cariñoso",
+          "Valiente"
+        ]
+      },
+      "en": {
+        "resumen": "Years spent waiting for a family that would change my life.",
+        "historia": "Found on the street fighting with other dogs over a female in heat. Today I’m neutered, and with a proper introduction, I love playing with other dogs ;)",
+        "caracter": [
+          "Playful",
+          "Affectionate",
+          "Brave"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/dobby-zdbyj-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "bilbao",
+      "nombre": "BILBAO",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 25,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/bilbao-5uwx5.jpg",
+        "/img/animales/bilbao-9lxll.jpg",
+        "/img/animales/bilbao-dm97h.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/bilbao-5uwx5-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "bolillo",
+      "nombre": "BOLILLO",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 24,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/bolillo-b6qei.jpg",
+        "/img/animales/bolillo-kb4kg.jpg",
+        "/img/animales/bolillo-3ivlg.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/bolillo-b6qei-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "cosmo",
+      "nombre": "COSMO",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 32,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/cosmo-3upds.jpg",
+        "/img/animales/cosmo-x9hui.jpg",
+        "/img/animales/cosmo-k7ahz.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/cosmo-3upds-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "david",
+      "nombre": "DAVID",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 22,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/david-bk87z.jpg",
+        "/img/animales/david-atvsk.jpg",
+        "/img/animales/david-m3jxk.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/david-bk87z-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "derek",
+      "nombre": "DEREK",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 27,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/derek-njyse.jpg",
+        "/img/animales/derek-h1e76.jpg",
+        "/img/animales/derek-8mfop.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/derek-njyse-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "ella",
+      "nombre": "ELLA",
+      "edad": 1,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "edad_texto": {
+        "es": "1.5 ANOS",
+        "en": "1.5 YEARS"
+      },
+      "peso_kg": 18,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/ella-vrigm.jpg",
+        "/img/animales/ella-g2ya1.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/ella-vrigm-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "faramir",
+      "nombre": "FARAMIR",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 25,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/faramir-pd533.jpg",
+        "/img/animales/faramir-xgkg9.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/faramir-pd533-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "gonzalo",
+      "nombre": "GONZALO",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 19,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/gonzalo-4vhhe.jpg",
+        "/img/animales/gonzalo-qfizn.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/gonzalo-4vhhe-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "kisin",
+      "nombre": "KISIN",
+      "edad": 4,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 14,
+      "tamano": "mediano",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/kisin-o16dy.jpg",
+        "/img/animales/kisin-ads4r.jpg",
+        "/img/animales/kisin-bkhwh.jpg",
+        "/img/animales/kisin-77wa3.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/kisin-o16dy-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "lexie",
+      "nombre": "LEXIE",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 34,
+      "tamano": "grande",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/lexie-3vaht.jpg",
+        "/img/animales/lexie-peu8e.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/lexie-3vaht-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "melian",
+      "nombre": "MELIAN",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 22,
+      "tamano": "mediano",
+      "energia": "media",
+      "fotos": [
+        "/img/animales/melian-n5gkt.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/melian-n5gkt-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "morlok",
+      "nombre": "MORLOK",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 22,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/morlok-xto57.jpg",
+        "/img/animales/morlok-lyp8a.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/morlok-xto57-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "olivia",
+      "nombre": "OLIVIA",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "hembra",
+      "peso_kg": 26,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/olivia-rsoi0.jpg",
+        "/img/animales/olivia-gbkez.jpg",
+        "/img/animales/olivia-6eulw.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/olivia-rsoi0-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "rambo",
+      "nombre": "RAMBO",
+      "edad": 6,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 14,
+      "tamano": "chico",
+      "energia": "baja",
+      "fotos": [
+        "/img/animales/rambo-7sr0n.jpg",
+        "/img/animales/rambo-48lpu.jpg",
+        "/img/animales/rambo-aph8p.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/rambo-7sr0n-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "ronaldo",
+      "nombre": "RONALDO",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 15,
+      "tamano": "chico",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/ronaldo-bo23h.jpg",
+        "/img/animales/ronaldo-bw7dy.jpg",
+        "/img/animales/ronaldo-86n85.jpg"
+      ],
+      "urgente": false,
+      "adoptado": true,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Ronaldo es un perro hermoso, valiente y muy sociable",
+        "historia": "Tiene mucha energía, le encanta estar rodeado de otros y se lleva muy bien con otros perros. Sería un compañero maravilloso para familias con niños y para personas activas que deseen compartir momentos de juego, cariño y compañía.\nA pesar de las dificultades que ha enfrentado, Ronaldo tiene mucho amor para dar y merece encontrar una familia que lo quiera y lo cuide para siempre. 💙Ronaldo sufrió una lesión en una de sus patas debido a maltratos previos, lo que le dificulta caminar con normalidad.\nNecesita una familia cariñosa y comprensiva que tenga en cuenta su condición, evite las caminatas largas y respete sus límites. Aunque tiene mucha energía y ganas de vivir, es importante cuidar su pata y adaptar las actividades a sus necesidades.\nSi buscas un compañero sociable, valiente y lleno de vida, Ronaldo está esperando su oportunidad para formar parte de tu familia.",
+        "caracter": [
+          "Sociable",
+          "Valiente",
+          "Cariñoso",
+          "Dulce"
+        ]
+      },
+      "en": {
+        "resumen": "Ronaldo is a beautiful, brave, and very sociable dog.",
+        "historia": "He has lots of energy, loves being around others, and gets along very well with other dogs.He would make a wonderful companion for families with children and active people who want to share moments of play, affection, and companionship.\nDespite the difficulties he has faced, Ronaldo has so much love to give and deserves to find a family that will love and care for him forever. 💙Ronaldo suffered an injury to one of his paws due to past abuse, which makes it difficult for him to walk normally. He needs a loving and understanding family who will be mindful of his condition, avoid long walks, and respect his limits. Although he has lots of energy and a zest for life, it is important to take care of his paw and adapt activities to his needs.\nIf you’re looking for a sociable, brave, and lively companion, Ronaldo is waiting for his chance to become part of your family",
+        "caracter": [
+          "Sociable",
+          "Brave",
+          "Affectionate",
+          "Sweet"
+        ]
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/ronaldo-bo23h-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "rowan",
+      "nombre": "ROWAN",
+      "edad": 3,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 35,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/rowan-xdv5p.jpg",
+        "/img/animales/rowan-t7vwd.jpg",
+        "/img/animales/rowan-gg3v1.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/rowan-xdv5p-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "sauron",
+      "nombre": "SAURON",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 23,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/sauron-7qm0l.jpg",
+        "/img/animales/sauron-qdznc.jpg",
+        "/img/animales/sauron-q66vi.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/sauron-7qm0l-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "totol",
+      "nombre": "TOTOL",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 18,
+      "tamano": "grande",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/totol-nt946.jpg",
+        "/img/animales/totol-t7rhj.jpg",
+        "/img/animales/totol-sfm72.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/totol-nt946-m.jpg"
+    },
+    {
+      "orden": 999,
+      "id": "trey",
+      "nombre": "TREY",
+      "edad": 2,
+      "edad_unidad": "anos",
+      "sexo": "macho",
+      "peso_kg": 14,
+      "tamano": "mediano",
+      "energia": "alta",
+      "fotos": [
+        "/img/animales/trey-reg2p.jpg",
+        "/img/animales/trey-8cjvq.jpg",
+        "/img/animales/trey-gqjui.jpg"
+      ],
+      "urgente": false,
+      "esterilizado": true,
+      "vacunado": true,
+      "desparasitado": true,
+      "cartilla": true,
+      "microchip": false,
+      "es": {
+        "resumen": "Pronto más información",
+        "historia": "Pronto más información",
+        "caracter": []
+      },
+      "en": {
+        "resumen": "More information coming soon",
+        "historia": "More information coming soon"
+      },
+      "especie": "perro",
+      "miniatura": "/img/animales/trey-reg2p-m.jpg"
+    }
+  ]
+}
