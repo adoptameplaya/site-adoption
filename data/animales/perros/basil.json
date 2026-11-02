@@ -4,7 +4,7 @@
   "nombre": "BASIL",
   "edad": 2,
   "edad_unidad": "anos",
-  "sexo": "macho",
+  "sexo": "hembra",
   "peso_kg": 15,
   "tamano": "mediano",
   "energia": "alta",
@@ -23,12 +23,25 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "Pronto más información",
-    "historia": "Pronto más información",
-    "caracter": []
+    "resumen": "Es tímida, pero solo al principio; una vez que te conoce y se siente segura, resulta ser toda una aventurera.",
+    "historia": "Al principio, Basil es un poco nerviosa y tímida, pero se vuelve muy cariñosa una vez que se siente cómoda. Es enérgica y le encanta jugar con personas y con otros perros. Sería la compañera ideal para alguien que sea deportista o que disfrute de la aventura.",
+    "caracter": [
+      "Tímida",
+      "Enérgica",
+      "Cariñosa",
+      "Sociable",
+      "Juguetona"
+    ]
   },
   "en": {
-    "resumen": "More information coming soon",
-    "historia": "More information coming soon"
+    "resumen": "She’s shy—but only at first; once she gets to know you and feels secure, she’s quite the adventurer.",
+    "historia": "Basil is a bit nervous and shy at first, but becomes very affectionate once she feels comfortable. She is energetic and loves playing with people and other dogs. She would be a perfect match for someone who is athletic or enjoys adventure.",
+    "caracter": [
+      "Shy",
+      "Energetic",
+      "Affectionate",
+      "Sociable",
+      "Playful"
+    ]
   }
 }
