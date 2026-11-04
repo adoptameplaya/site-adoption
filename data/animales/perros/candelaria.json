@@ -10,11 +10,9 @@
   "energia": "media",
   "fotos": [
     "/img/animales/candelaria-9u7a5.jpg",
-    "/img/animales/candelaria-43ebl.jpg",
-    "/img/animales/candelaria-v32uf.jpg",
-    "/img/animales/candelaria-haxcy.jpg",
     "/img/animales/candelaria-f1vuq.jpg",
-    "/img/animales/candelaria-xcf6a.jpg"
+    "/img/animales/candelaria-xcf6a.jpg",
+    "/img/animales/candelaria-43ebl.jpg"
   ],
   "urgente": false,
   "esterilizado": true,
@@ -25,10 +23,17 @@
   "es": {
     "resumen": "Pronto más información",
     "historia": "Pronto más información",
-    "caracter": []
+    "caracter": [
+      "Juguetona",
+      "Cariñosa"
+    ]
   },
   "en": {
     "resumen": "More information coming soon",
-    "historia": "More information coming soon"
+    "historia": "More information coming soon",
+    "caracter": [
+      "Playful",
+      "Affectionate"
+    ]
   }
 }
