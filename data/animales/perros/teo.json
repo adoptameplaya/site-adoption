@@ -1,0 +1,33 @@
+{
+  "orden": 999,
+  "id": "teo",
+  "nombre": "TEO",
+  "edad": 4,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 12,
+  "tamano": "mediano",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/teo-1z1gb.jpg",
+    "/img/animales/teo-gd9kh.jpg",
+    "/img/animales/teo-rtp4p.jpg",
+    "/img/animales/teo-39f02.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Fue encontrado sangrando en la calle en septiembre de 2026; desde entonces ha recibido tratamiento y está listo para su nueva familia.",
+    "caracter": []
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "He was found bleeding on the street in September 2026; he has since been treated and is ready for his new family."
+  }
+}
