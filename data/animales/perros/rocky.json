@@ -9,10 +9,12 @@
   "tamano": "mediano",
   "energia": "media",
   "fotos": [
-    "/img/animales/rocky-acn6v.jpg"
+    "/img/animales/rocky-gcq2l.jpg",
+    "/img/animales/rocky-acn6v.jpg",
+    "/img/animales/rocky-9kp5l.jpg",
+    "/img/animales/rocky-3kkuq.jpg"
   ],
   "urgente": false,
-  "borrador": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
@@ -20,7 +22,7 @@
   "microchip": false,
   "es": {
     "resumen": "Pronto más información",
-    "historia": "Pronto más información",
+    "historia": "Rocky fue encontrado en la calle en muy mal estado, con una herida en la oreja derecha. Tenía dueño, pero no se ocupaban de él y simplemente lo abandonaron a su suerte. Fue rescatado en julio de 2026, recibió tratamiento médico y ahora está listo para encontrar una nueva familia. Al principio puede mostrarse algo nervioso, pero, una vez que gana confianza, es muy cariñoso.",
     "caracter": [
       "NERVIOSO",
       "Dulce"
@@ -28,6 +30,10 @@
   },
   "en": {
     "resumen": "More information coming soon",
-    "historia": "More information coming soon"
+    "historia": "Rocky was found on the street in very poor condition, with a wound on his right ear. He had an owner, but they did not take care of him and simply abandoned him to his fate. He was rescued in July 2026, received medical treatment, and is now ready for his new family. He can be a bit nervous at first, but once he gains confidence, he is very sweet.",
+    "caracter": [
+      "NERVOUS",
+      "Sweet"
+    ]
   }
 }
