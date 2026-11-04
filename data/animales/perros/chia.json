@@ -1,0 +1,38 @@
+{
+  "orden": 999,
+  "id": "chia",
+  "nombre": "CHÌA",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 19,
+  "tamano": "mediano",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/chia-w38ju.jpg",
+    "/img/animales/chia-bhhfh.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Fue rescatada en agosto de 2026, junto con sus cachorros, de una familia que no podía hacerse cargo de ellos por motivos económicos.",
+    "caracter": [
+      "Docil",
+      "Dulce"
+    ]
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "She was rescued in August 2026, along with her puppies, from a family that could not care for them due to financial reasons.",
+    "caracter": [
+      "Docile",
+      "Sweet"
+    ]
+  }
+}
