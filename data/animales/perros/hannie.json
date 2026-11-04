@@ -1,0 +1,39 @@
+{
+  "orden": 999,
+  "id": "hannie",
+  "nombre": "HANNIE",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 14,
+  "tamano": "mediano",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/hannie-ua4g1.jpg",
+    "/img/animales/hannie-k1rbx.jpg"
+  ],
+  "urgente": false,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": [
+      "Sociable",
+      "Cariñosa",
+      "Amistosa"
+    ]
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon",
+    "caracter": [
+      "Sociable",
+      "Affectionate",
+      "Friendly"
+    ]
+  }
+}
