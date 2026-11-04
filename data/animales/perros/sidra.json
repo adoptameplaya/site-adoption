@@ -2,10 +2,10 @@
   "orden": 390,
   "id": "sidra",
   "nombre": "SIDRA",
-  "edad": 1,
+  "edad": 2,
   "edad_unidad": "anos",
   "sexo": "hembra",
-  "peso_kg": 18,
+  "peso_kg": 14,
   "tamano": "chico",
   "energia": "media",
   "fotos": [
@@ -21,10 +21,21 @@
   "es": {
     "resumen": "Pronto más información",
     "historia": "Pronto más información",
-    "caracter": []
+    "caracter": [
+      "Juguetona",
+      "Cariñosa",
+      "Sociable",
+      "Obediente"
+    ]
   },
   "en": {
     "resumen": "More information coming soon",
-    "historia": "More information coming soon"
+    "historia": "More information coming soon",
+    "caracter": [
+      "Playful",
+      "Affectionate",
+      "Sociable",
+      "Obedient"
+    ]
   }
 }
