@@ -1,0 +1,33 @@
+{
+  "orden": 999,
+  "id": "rocky",
+  "nombre": "ROCKY",
+  "edad": 3,
+  "edad_unidad": "anos",
+  "sexo": "macho",
+  "peso_kg": 13,
+  "tamano": "mediano",
+  "energia": "media",
+  "fotos": [
+    "/img/animales/rocky-acn6v.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Pronto más información",
+    "caracter": [
+      "NERVIOSO",
+      "Dulce"
+    ]
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "More information coming soon"
+  }
+}
