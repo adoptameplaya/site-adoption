@@ -1,0 +1,37 @@
+{
+  "orden": 999,
+  "id": "bombi",
+  "nombre": "BOMBI",
+  "edad": 2,
+  "edad_unidad": "anos",
+  "sexo": "hembra",
+  "peso_kg": 13,
+  "tamano": "chico",
+  "energia": "alta",
+  "fotos": [
+    "/img/animales/bombi-0gxx1.jpg"
+  ],
+  "urgente": false,
+  "borrador": true,
+  "esterilizado": true,
+  "vacunado": true,
+  "desparasitado": true,
+  "cartilla": true,
+  "microchip": false,
+  "es": {
+    "resumen": "Pronto más información",
+    "historia": "Fue rescatada por los bomberos, quienes la encontraron completamente sola y embarazada en la calle.",
+    "caracter": [
+      "Enérgica",
+      "Protectora"
+    ]
+  },
+  "en": {
+    "resumen": "More information coming soon",
+    "historia": "She was rescued by firefighters, who found her all alone and pregnant on the street.",
+    "caracter": [
+      "Energetic",
+      "Protective"
+    ]
+  }
+}
