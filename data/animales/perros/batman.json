@@ -10,11 +10,9 @@
   "energia": "media",
   "fotos": [
     "/img/animales/batman-ujhlt.jpg",
-    "/img/animales/batman-ubm0t.jpg",
-    "/img/animales/batman-ord6c.jpg",
     "/img/animales/batman-mi0xh.jpg",
-    "/img/animales/batman-xa6he.jpg",
-    "/img/animales/batman-l2cfj.jpg"
+    "/img/animales/batman-ord6c.jpg",
+    "/img/animales/batman-ubm0t.jpg"
   ],
   "urgente": false,
   "esterilizado": true,
@@ -24,11 +22,22 @@
   "microchip": false,
   "es": {
     "resumen": "Pronto más información",
-    "historia": "Pronto más información",
-    "caracter": []
+    "historia": "Fue rescatado en abril de 2026; había estado encadenado bajo un árbol. Es un perro muy fuerte, pero muy cariñoso una vez que te conoce.",
+    "caracter": [
+      "Protector",
+      "Fuerte",
+      "Cariñoso",
+      "Juguetón"
+    ]
   },
   "en": {
     "resumen": "More information coming soon",
-    "historia": "More information coming soon"
+    "historia": "He was rescued in April 2026; he had been chained up under a tree. He is a very strong dog, but he is very affectionate once he gets to know you.",
+    "caracter": [
+      "Protective",
+      "Strong",
+      "Affectionate",
+      "Playful"
+    ]
   }
 }
