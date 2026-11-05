@@ -4,17 +4,15 @@
   "nombre": "CHEEL",
   "edad": 5,
   "edad_unidad": "anos",
-  "sexo": "hembra",
+  "sexo": "macho",
   "peso_kg": 23,
   "tamano": "mediano",
   "energia": "baja",
   "fotos": [
-    "/img/animales/cheel-u0atk.jpg",
-    "/img/animales/cheel-h5jdd.jpg",
-    "/img/animales/cheel-sw0ml.jpg",
     "/img/animales/cheel-9so1u.jpg",
+    "/img/animales/cheel-u0atk.jpg",
     "/img/animales/cheel-j6omk.jpg",
-    "/img/animales/cheel-huqqq.jpg"
+    "/img/animales/cheel-sw0ml.jpg"
   ],
   "urgente": false,
   "esterilizado": true,
