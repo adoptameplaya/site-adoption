@@ -12,11 +12,10 @@
     "/img/animales/mar-m9ht6.jpg",
     "/img/animales/mar-hp6io.jpg",
     "/img/animales/mar-s19t6.jpg",
-    "/img/animales/mar-rxoyv.jpg",
-    "/img/animales/mar-jwszf.jpg",
-    "/img/animales/mar-hg6eu.jpg"
+    "/img/animales/mar-jwszf.jpg"
   ],
-  "urgente": true,
+  "urgente": false,
+  "adoptado": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
