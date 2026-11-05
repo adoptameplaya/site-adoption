@@ -10,11 +10,9 @@
   "energia": "media",
   "fotos": [
     "/img/animales/danny-qk4hv.jpg",
+    "/img/animales/danny-o5ji4.jpg",
     "/img/animales/danny-r0lyn.jpg",
-    "/img/animales/danny-of7z7.jpg",
-    "/img/animales/danny-tqb9y.jpg",
-    "/img/animales/danny-k423v.jpg",
-    "/img/animales/danny-o5ji4.jpg"
+    "/img/animales/danny-of7z7.jpg"
   ],
   "urgente": false,
   "esterilizado": true,
@@ -23,12 +21,23 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "Pronto más información",
-    "historia": "Pronto más información",
-    "caracter": []
+    "resumen": "Dani es muy cariñoso , nada reactivo",
+    "historia": "Dani es amable , alegre , dócil , buenos con  niños , bueno con otros perros , energía media , le gusta jugar , amaría un jardín pero seguro se adapta a una casa sin jardín saliendo a sus caminatas.",
+    "caracter": [
+      "Sociable",
+      "Juguetón",
+      "Noble",
+      "Activo"
+    ]
   },
   "en": {
-    "resumen": "More information coming soon",
-    "historia": "More information coming soon"
+    "resumen": "Dani is very affectionate, not reactive at all.",
+    "historia": "Dani is kind, cheerful, and docile; he is good with children and other dogs. He has a medium energy level and enjoys playing. He would love a garden, but he would certainly adapt to a home without one, provided he gets taken out for walks.",
+    "caracter": [
+      "Sociable",
+      "Playful",
+      "Noble",
+      "Active"
+    ]
   }
 }
