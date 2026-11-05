@@ -21,19 +21,22 @@
   "cartilla": true,
   "microchip": false,
   "es": {
-    "resumen": "Pronto más información",
-    "historia": "Rocky fue encontrado en la calle en muy mal estado, con una herida en la oreja derecha. Tenía dueño, pero no se ocupaban de él y simplemente lo abandonaron a su suerte. Fue rescatado en julio de 2026, recibió tratamiento médico y ahora está listo para encontrar una nueva familia. Al principio puede mostrarse algo nervioso, pero, una vez que gana confianza, es muy cariñoso.",
+    "resumen": "Rocky es tímido al principio, tranquilo y no reativo.",
+    "historia": "Rocky es un perrito muy guapo y sumamente tranquilo. Al principio puede ser tímido, pero una vez que se siente a gusto contigo, te brindará toda su lealtad y un amor incondicional. Tiene un tamaño ideal, es muy limpio y es el tipo de compañero que te acompañará encantado mientras observas el amanecer o el atardecer. Rocky es un perro con una esencia muy «zen», capaz de aportar mucha paz, tranquilidad y armonía a tu vida. Tiene un nivel de energía bajo.\nRocky fue reportado por una voluntaria que vive muy cerca de donde él solía estar. Ella lo encontró gravemente herido tras ser atacado por otro perro; su herida estaba sumamente infectada e inflamada. Afortunadamente, fue rescatado con rapidez y pasó dos meses y medio en cuarentena recuperándose de sus lesiones.\nSolía ​​buscar refugio dentro o debajo de un autobús; la realidad es que sí tenía una «familia», pero simplemente lo mantenían siempre en el exterior.",
     "caracter": [
-      "NERVIOSO",
-      "Dulce"
+      "Dulce",
+      "Tímido",
+      "Tranquilo",
+      "Sociable"
     ]
   },
   "en": {
-    "resumen": "More information coming soon",
-    "historia": "Rocky was found on the street in very poor condition, with a wound on his right ear. He had an owner, but they did not take care of him and simply abandoned him to his fate. He was rescued in July 2026, received medical treatment, and is now ready for his new family. He can be a bit nervous at first, but once he gains confidence, he is very sweet.",
+    "historia": "Rocky is a pretty good looking and very calm little boy. He can be shy at first, but once he gets comfortable with you, he will give you all his loyalty and unconditional love. He has perfect size, he is very clean, and the kind of dog who will happily keep you company while watching the sunrise or sunset. Rocky is a very ZEN kind of dog who will bring a lot of peace, tranquility, and harmony into your life. He has a low energy level, He is neutered \nRocky was reported by a volunteer who lives just around the corner from where he used to stay. She found him severely injured after being attacked by another dog. His wound was extremely infected and swollen. Thank God, he was rescued very quickly and spent two and a half months in quarantine, recovering from his injuries.\nHe used to seek shelter inside or underneath a bus, but the reality is that he did have a \"family\" they simply always kept him outside",
     "caracter": [
-      "NERVOUS",
-      "Sweet"
+      "Sweet",
+      "Shy",
+      "Calm",
+      "Sociable"
     ]
   }
 }
