@@ -13,14 +13,15 @@
   "tamano": "mediano",
   "energia": "baja",
   "fotos": [
-    "/img/animales/kayla-qikeq.jpg",
-    "/img/animales/kayla-ljxok.jpg",
     "/img/animales/kayla-rwf5n.jpg",
+    "/img/animales/kayla-ljxok.jpg",
+    "/img/animales/kayla-qikeq.jpg",
     "/img/animales/kayla-02ld5.jpg",
     "/img/animales/kayla-wvdrz.jpg",
     "/img/animales/kayla-avxgt.jpg"
   ],
   "urgente": false,
+  "adoptado": true,
   "esterilizado": true,
   "vacunado": true,
   "desparasitado": true,
