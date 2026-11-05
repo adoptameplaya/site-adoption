@@ -4,16 +4,15 @@
   "nombre": "SULLEY",
   "edad": 2,
   "edad_unidad": "anos",
-  "sexo": "hembra",
+  "sexo": "macho",
   "peso_kg": 16,
   "tamano": "mediano",
   "energia": "media",
   "fotos": [
-    "/img/animales/sulley-019yc.jpg",
-    "/img/animales/sulley-igzrj.jpg",
-    "/img/animales/sulley-1fog4.jpg",
     "/img/animales/sulley-0d9f3.jpg",
-    "/img/animales/sulley-y7dyy.jpg"
+    "/img/animales/sulley-1fog4.jpg",
+    "/img/animales/sulley-igzrj.jpg",
+    "/img/animales/sulley-019yc.jpg"
   ],
   "urgente": false,
   "esterilizado": true,
