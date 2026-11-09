@@ -1,0 +1,5 @@
+# Nada de api/ que no sea un punto de entrada debe poder leerse desde fuera.
+<FilesMatch "^(secrets.*\.php|_.*\.php|\.htaccess)$">
+  Require all denied
+</FilesMatch>
+Options -Indexes

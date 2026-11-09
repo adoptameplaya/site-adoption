@@ -1,0 +1,4 @@
+commit=89cc1f0
+mode=produccion
+destino=o2switch
+construit=2026-11-09T13:48:19Z
