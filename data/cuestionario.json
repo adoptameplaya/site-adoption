@@ -1,0 +1,932 @@
+{
+  "_leeme": "Questionnaire d'adoption, transposé du PDF d'Adopta Me Playa. Modifier une question ici la change sur la page web dans les deux langues. tipo : texto (réponse courte), largo (zone de texte), sino (Sí/No + commentaire), ph (texte du champ commentaire d'une question sino, facultatif), multi (cases à cocher : « opciones » [{es,en}], « opcional »: true si on peut n'en cocher aucune). Le bloc « hogar » est le questionnaire de FAMILLE D'ACCUEIL (hogar temporal), en plus de « perro » et « gato ».",
+  "perro": {
+    "intro": {
+      "es": "Gracias por querer darle un hogar. Responde con calma y sinceridad: no hay respuestas buenas o malas, solo nos ayudan a encontrar la mejor familia para cada animal.",
+      "en": "Thank you for wanting to give a home to one of our animals. Take your time and answer honestly: there are no right or wrong answers, they simply help us find the best family for each animal."
+    },
+    "secciones": [
+      {
+        "id": "basica",
+        "es": "Información básica",
+        "en": "Basic information",
+        "preguntas": [
+          {
+            "n": 1,
+            "tipo": "texto",
+            "es": "Nombre completo",
+            "en": "Full name"
+          },
+          {
+            "n": 2,
+            "tipo": "texto",
+            "es": "Edad",
+            "en": "Age"
+          },
+          {
+            "n": 3,
+            "tipo": "texto",
+            "es": "Dirección",
+            "en": "Address"
+          },
+          {
+            "n": 4,
+            "tipo": "texto",
+            "es": "Teléfono / WhatsApp",
+            "en": "Phone / WhatsApp"
+          },
+          {
+            "n": 5,
+            "tipo": "texto",
+            "es": "Ocupación",
+            "en": "Occupation"
+          },
+          {
+            "n": 6,
+            "tipo": "largo",
+            "es": "Horario de trabajo (entrada y salida), tuyo y de tu pareja o de quien vive contigo",
+            "en": "Work schedule (start and end times), yours and your partner's or whoever lives with you"
+          }
+        ]
+      },
+      {
+        "id": "hogar",
+        "es": "Sobre el hogar",
+        "en": "About your home",
+        "preguntas": [
+          {
+            "n": 7,
+            "tipo": "texto",
+            "es": "¿Vives en casa propia, rentada o con familiares?",
+            "en": "Do you own your home, rent, or live with relatives?"
+          },
+          {
+            "n": 8,
+            "tipo": "texto",
+            "es": "¿Vives en casa o en departamento?",
+            "en": "Do you live in a house or an apartment?"
+          },
+          {
+            "n": 9,
+            "tipo": "largo",
+            "es": "¿Tienes patio, jardín o azotea? ¿Está seguro y cerrado?",
+            "en": "Do you have a yard, garden or rooftop? Is it safe and enclosed?"
+          },
+          {
+            "n": 10,
+            "tipo": "largo",
+            "es": "¿La mascota tendrá acceso al interior de la casa? ¿En qué espacios?",
+            "en": "Will the pet have access to the inside of the house? Which areas?"
+          },
+          {
+            "n": 11,
+            "tipo": "largo",
+            "es": "¿Cuántas personas viven contigo? ¿Hay niños? ¿De qué edades?",
+            "en": "How many people live with you? Are there children? What ages?"
+          },
+          {
+            "n": 12,
+            "tipo": "sino",
+            "es": "¿Algún miembro de la familia tiene alergia a perros o gatos?",
+            "en": "Is anyone in your family allergic to dogs or cats?"
+          },
+          {
+            "n": 13,
+            "tipo": "sino",
+            "es": "En caso de renta, ¿tu contrato permite mascotas?",
+            "en": "If you rent, does your lease allow pets?"
+          }
+        ]
+      },
+      {
+        "id": "tiempo",
+        "es": "Tiempo y ejercicio",
+        "en": "Time and exercise",
+        "preguntas": [
+          {
+            "n": 14,
+            "tipo": "texto",
+            "es": "¿Cuántas veces al día planeas pasearlo?",
+            "en": "How many times a day do you plan to walk the dog?"
+          },
+          {
+            "n": 15,
+            "tipo": "texto",
+            "es": "¿Cuánto tiempo durará cada paseo aproximadamente?",
+            "en": "Approximately how long will each walk last?"
+          },
+          {
+            "n": 16,
+            "tipo": "texto",
+            "es": "¿Quién será el responsable principal de los paseos y cuidados diarios?",
+            "en": "Who will be mainly responsible for walks and daily care?"
+          },
+          {
+            "n": 17,
+            "tipo": "largo",
+            "es": "¿Qué harás si un día no puedes pasearlo?",
+            "en": "What will you do if one day you cannot walk the dog?"
+          },
+          {
+            "n": 18,
+            "tipo": "largo",
+            "es": "¿Planeas llevarlo a parques, actividades al aire libre o a socializar con otros perros?",
+            "en": "Do you plan to take the dog to parks, outdoor activities or to socialize with other dogs?"
+          }
+        ]
+      },
+      {
+        "id": "experiencia",
+        "es": "Experiencia y manejo",
+        "en": "Experience and handling",
+        "preguntas": [
+          {
+            "n": 19,
+            "tipo": "largo",
+            "es": "¿Has tenido mascotas antes? ¿Qué pasó con ellas?",
+            "en": "Have you had pets before? What happened to them?"
+          },
+          {
+            "n": 20,
+            "tipo": "largo",
+            "es": "¿Actualmente tienes otras mascotas? Especifica cuáles, cómo se llevan con otros animales y si están esterilizadas.",
+            "en": "Do you currently have other pets? Specify which ones, how they get along with other animals and whether they are spayed/neutered."
+          },
+          {
+            "n": 21,
+            "tipo": "largo",
+            "es": "¿Has convivido antes con perros medianos o grandes? ¿Cuáles?",
+            "en": "Have you lived with medium or large dogs before? Which ones?"
+          },
+          {
+            "n": 22,
+            "tipo": "largo",
+            "es": "¿Conoces los gastos aproximados de una mascota (alimento, vacunas, desparasitación, veterinario)? Danos una estimación del costo mensual.",
+            "en": "Do you know the approximate costs of a pet (food, vaccines, deworming, vet)? Give us an estimate of the monthly cost."
+          },
+          {
+            "n": 23,
+            "tipo": "largo",
+            "es": "¿Qué tipo de alimentación consideras adecuada para un perro? ¿De qué marca?",
+            "en": "What kind of food do you consider appropriate for a dog? Which brand?"
+          }
+        ]
+      },
+      {
+        "id": "educacion",
+        "es": "Educación y comportamiento",
+        "en": "Training and behavior",
+        "preguntas": [
+          {
+            "n": 24,
+            "tipo": "largo",
+            "es": "¿Qué harías si el perro rompe algo, ladra mucho o hace destrozos por ansiedad?",
+            "en": "What would you do if the dog breaks something, barks a lot or is destructive due to anxiety?"
+          },
+          {
+            "n": 25,
+            "tipo": "sino",
+            "es": "¿Estás dispuesto/a (y puedes económicamente) a invertir en entrenamiento o asesoría conductual si fuera necesario?",
+            "en": "Are you willing (and financially able) to invest in training or behavioral advice if needed?"
+          },
+          {
+            "n": 26,
+            "tipo": "largo",
+            "es": "¿Qué métodos usarías para educarlo?",
+            "en": "What methods would you use to train the dog?"
+          }
+        ]
+      },
+      {
+        "id": "salud",
+        "es": "Salud y cuidados",
+        "en": "Health and care",
+        "preguntas": [
+          {
+            "n": 27,
+            "tipo": "texto",
+            "es": "¿Cuentas con un veterinario de confianza? ¿Cuál?",
+            "en": "Do you have a trusted veterinarian? Which one?"
+          },
+          {
+            "n": 28,
+            "tipo": "sino",
+            "es": "¿Estás dispuesto/a a cubrir emergencias médicas inesperadas?",
+            "en": "Are you willing to cover unexpected medical emergencies?"
+          },
+          {
+            "n": 29,
+            "tipo": "largo",
+            "es": "¿Tienes un plan en caso de gastos veterinarios mayores?",
+            "en": "Do you have a plan in case of major veterinary expenses?"
+          }
+        ]
+      },
+      {
+        "id": "responsabilidad",
+        "es": "Responsabilidad y compromiso",
+        "en": "Responsibility and commitment",
+        "preguntas": [
+          {
+            "n": 30,
+            "tipo": "largo",
+            "es": "¿Por qué quieres adoptar?",
+            "en": "Why do you want to adopt?"
+          },
+          {
+            "n": 31,
+            "tipo": "largo",
+            "es": "¿Dónde estará la mascota durante el día y la noche?",
+            "en": "Where will the pet stay during the day and at night?"
+          },
+          {
+            "n": 32,
+            "tipo": "texto",
+            "es": "¿Cuántas horas al día pasará sola?",
+            "en": "How many hours a day will the pet be alone?"
+          },
+          {
+            "n": 33,
+            "tipo": "largo",
+            "es": "¿Qué harás con tu mascota si tienes que mudarte, cambiar de trabajo o viajar a otra ciudad?",
+            "en": "What will you do with your pet if you have to move, change jobs or travel to another city?"
+          },
+          {
+            "n": 34,
+            "tipo": "largo",
+            "es": "¿Qué harás con tu mascota si hay algún cambio en tu familia (divorcio, nuevo bebé…)?",
+            "en": "What will you do with your pet if there is a change in your family (divorce, new baby…)?"
+          },
+          {
+            "n": 35,
+            "tipo": "largo",
+            "es": "¿Tienes un plan en caso de vacaciones o viajes de trabajo? ¿Qué harás con la mascota?",
+            "en": "Do you have a plan for vacations or business trips? What will you do with the pet?"
+          },
+          {
+            "n": 36,
+            "tipo": "largo",
+            "es": "¿Qué harías si tu mascota se enferma o tiene un accidente?",
+            "en": "What would you do if your pet gets sick or has an accident?"
+          },
+          {
+            "n": 37,
+            "tipo": "sino",
+            "es": "¿Estás dispuesto/a a esterilizarlo/a (si aún no lo está) y mantener sus vacunas al día?",
+            "en": "Are you willing to spay/neuter the pet (if not already done) and keep its vaccines up to date?"
+          },
+          {
+            "n": 38,
+            "tipo": "sino",
+            "es": "¿Aceptas visitas o seguimiento después de la adopción? ¿Aceptas mandar fotos y videos regularmente?",
+            "en": "Do you accept visits or follow-up after the adoption? Do you agree to send photos and videos regularly?"
+          }
+        ]
+      },
+      {
+        "id": "reflexion",
+        "es": "Reflexión personal",
+        "en": "Personal reflection",
+        "preguntas": [
+          {
+            "n": 39,
+            "tipo": "largo",
+            "es": "¿Qué significa para ti tener un perro?",
+            "en": "What does having a dog mean to you?"
+          },
+          {
+            "n": 40,
+            "tipo": "largo",
+            "es": "¿Qué cambios estás dispuesto/a a hacer en tu rutina por su bienestar?",
+            "en": "What changes are you willing to make to your routine for the dog's well-being?"
+          },
+          {
+            "n": 41,
+            "tipo": "largo",
+            "es": "¿Quién cuidará al perro si tú no puedes hacerlo temporalmente?",
+            "en": "Who will take care of the dog if you temporarily cannot?"
+          }
+        ]
+      },
+      {
+        "id": "acuerdo",
+        "es": "Acuerdo final",
+        "en": "Final agreement",
+        "preguntas": [
+          {
+            "n": 42,
+            "tipo": "sino",
+            "es": "¿Entiendes que la adopción es un compromiso de muchos años (10-15 o más)?",
+            "en": "Do you understand that adoption is a commitment of many years (10-15 or more)?"
+          },
+          {
+            "n": 43,
+            "tipo": "sino",
+            "es": "¿Te comprometes a NO regalar, vender o abandonar a la mascota bajo ninguna circunstancia?",
+            "en": "Do you commit to NEVER give away, sell or abandon the pet under any circumstances?"
+          },
+          {
+            "n": 44,
+            "tipo": "sino",
+            "es": "En caso de algún problema con la mascota, ¿te comprometes a ponerte en contacto con nosotros para ver cómo podemos apoyarte?",
+            "en": "If there is ever a problem with the pet, do you commit to contacting us so we can see how to support you?"
+          }
+        ]
+      }
+    ]
+  },
+  "gato": {
+    "intro": {
+      "es": "Gracias por querer darle un hogar. Responde con calma y sinceridad: no hay respuestas buenas o malas, solo nos ayudan a conocerte un poco más y a asegurarnos de que el gatito estará en un lugar seguro, física y moralmente. Al final te pedimos fotos y videos de tu hogar: podrás mandárnoslos por WhatsApp en cuanto envíes el cuestionario.",
+      "en": "Thank you for wanting to give a home to one of our animals. Take your time and answer honestly: there are no right or wrong answers, they simply help us get to know you a little better and make sure the kitten will be in a safe place, physically and emotionally. At the end we ask for photos and videos of your home: you can send them to us on WhatsApp as soon as you submit the questionnaire."
+    },
+    "intro_pdf": {
+      "es": "Gracias por querer darle un hogar. Responde con calma y sinceridad: no hay respuestas buenas o malas, solo nos ayudan a conocerte un poco más y a asegurarnos de que el gatito estará en un lugar seguro, física y moralmente. Al final te pedimos fotos y videos de tu hogar: mándanoslos por WhatsApp junto con el cuestionario.",
+      "en": "Thank you for wanting to give a home to one of our animals. Take your time and answer honestly: there are no right or wrong answers, they simply help us get to know you a little better and make sure the kitten will be in a safe place, physically and emotionally. At the end we ask for photos and videos of your home: please send them to us on WhatsApp together with the questionnaire."
+    },
+    "secciones": [
+      {
+        "id": "basica",
+        "es": "Información básica",
+        "en": "Basic information",
+        "preguntas": [
+          {
+            "n": 1,
+            "tipo": "texto",
+            "es": "Nombre completo",
+            "en": "Full name"
+          },
+          {
+            "n": 2,
+            "tipo": "texto",
+            "es": "Edad",
+            "en": "Age"
+          },
+          {
+            "n": 3,
+            "tipo": "texto",
+            "es": "Dirección",
+            "en": "Address"
+          },
+          {
+            "n": 4,
+            "tipo": "texto",
+            "es": "Teléfono / WhatsApp",
+            "en": "Phone / WhatsApp"
+          },
+          {
+            "n": 5,
+            "tipo": "largo",
+            "es": "Ocupación, tuya y de tu pareja o de quien vive contigo",
+            "en": "Occupation, yours and your partner's or whoever lives with you"
+          },
+          {
+            "n": 6,
+            "tipo": "largo",
+            "es": "Horario de trabajo (entrada y salida) de los dos",
+            "en": "Work schedule (start and end times) for both of you"
+          }
+        ]
+      },
+      {
+        "id": "hogar",
+        "es": "Sobre el hogar",
+        "en": "About your home",
+        "preguntas": [
+          {
+            "n": 7,
+            "tipo": "texto",
+            "es": "¿Vives en casa propia, rentada o con familiares?",
+            "en": "Do you own your home, rent, or live with relatives?"
+          },
+          {
+            "n": 8,
+            "tipo": "texto",
+            "es": "¿Vives en casa o en departamento?",
+            "en": "Do you live in a house or an apartment?"
+          },
+          {
+            "n": 9,
+            "tipo": "largo",
+            "es": "¿Tienes patio, jardín o azotea? ¿Está seguro y cercado? Después de enviar el cuestionario, mándanos por WhatsApp fotos de tu cerca y de tus ventanas, por favor.",
+            "en": "Do you have a yard, garden or rooftop? Is it safe and fenced? After sending the questionnaire, please send us photos of your fence and your windows on WhatsApp."
+          },
+          {
+            "n": 10,
+            "tipo": "largo",
+            "es": "Menciona 5 cosas que tendrás listas antes de la llegada de tu nuevo compañero.",
+            "en": "Name 5 things you will have ready before your new companion arrives."
+          },
+          {
+            "n": 11,
+            "tipo": "largo",
+            "es": "¿Cuántas personas viven contigo? ¿Hay niños? ¿De qué edades?",
+            "en": "How many people live with you? Are there children? What ages?"
+          },
+          {
+            "n": 12,
+            "tipo": "sino",
+            "es": "¿Todas las personas que viven contigo saben de la posible llegada de la mascota?",
+            "en": "Does everyone who lives with you know that a pet may be joining the home?"
+          },
+          {
+            "n": 13,
+            "tipo": "sino",
+            "es": "¿Algún miembro de la familia tiene alergia a perros o gatos?",
+            "en": "Is anyone in your family allergic to dogs or cats?"
+          },
+          {
+            "n": 14,
+            "tipo": "sino",
+            "es": "En caso de renta, ¿tu contrato permite mascotas?",
+            "en": "If you rent, does your lease allow pets?"
+          }
+        ]
+      },
+      {
+        "id": "experiencia",
+        "es": "Experiencia y manejo",
+        "en": "Experience and handling",
+        "preguntas": [
+          {
+            "n": 15,
+            "tipo": "largo",
+            "es": "¿Has tenido mascotas antes? ¿Cuáles? ¿Qué pasó con ellas?",
+            "en": "Have you had pets before? Which ones? What happened to them?"
+          },
+          {
+            "n": 16,
+            "tipo": "largo",
+            "es": "¿Actualmente tienes otras mascotas? Especifica cuáles y cómo se llevan con otros animales.",
+            "en": "Do you currently have other pets? Specify which ones and how they get along with other animals."
+          },
+          {
+            "n": 17,
+            "tipo": "largo",
+            "es": "Menciona algunas enfermedades exclusivas de los felinos y cuéntanos cómo puedes evitar que tu gato se contagie.",
+            "en": "Name some diseases that only affect felines and tell us how you can prevent your cat from catching them."
+          },
+          {
+            "n": 18,
+            "tipo": "largo",
+            "es": "¿Conoces los gastos aproximados de una mascota (alimento, vacunas, desparasitación, veterinario)?",
+            "en": "Do you know the approximate costs of a pet (food, vaccines, deworming, vet)?"
+          },
+          {
+            "n": 19,
+            "tipo": "largo",
+            "es": "¿Qué tipo de alimentación consideras adecuada? ¿De qué marca?",
+            "en": "What kind of food do you consider appropriate? Which brand?"
+          },
+          {
+            "n": 20,
+            "tipo": "largo",
+            "es": "¿Dónde irá al baño?",
+            "en": "Where will the cat go to the toilet?"
+          },
+          {
+            "n": 21,
+            "tipo": "largo",
+            "es": "¿Dónde dormirá?",
+            "en": "Where will the cat sleep?"
+          }
+        ]
+      },
+      {
+        "id": "salud",
+        "es": "Salud y cuidados",
+        "en": "Health and care",
+        "preguntas": [
+          {
+            "n": 22,
+            "tipo": "texto",
+            "es": "¿Cuentas con un veterinario de confianza? ¿Cuál?",
+            "en": "Do you have a trusted veterinarian? Which one?"
+          },
+          {
+            "n": 23,
+            "tipo": "sino",
+            "es": "¿Estás dispuesto/a a cubrir emergencias médicas inesperadas?",
+            "en": "Are you willing to cover unexpected medical emergencies?"
+          },
+          {
+            "n": 24,
+            "tipo": "largo",
+            "es": "¿Tienes un plan en caso de gastos veterinarios mayores?",
+            "en": "Do you have a plan in case of major veterinary expenses?"
+          }
+        ]
+      },
+      {
+        "id": "responsabilidad",
+        "es": "Responsabilidad y compromiso",
+        "en": "Responsibility and commitment",
+        "preguntas": [
+          {
+            "n": 25,
+            "tipo": "largo",
+            "es": "¿Por qué quieres adoptar?",
+            "en": "Why do you want to adopt?"
+          },
+          {
+            "n": 26,
+            "tipo": "largo",
+            "es": "¿Dónde estará la mascota durante el día y la noche?",
+            "en": "Where will the pet stay during the day and at night?"
+          },
+          {
+            "n": 27,
+            "tipo": "texto",
+            "es": "¿Cuántas horas al día pasará sola?",
+            "en": "How many hours a day will the pet be alone?"
+          },
+          {
+            "n": 28,
+            "tipo": "largo",
+            "es": "¿En qué parte de la casa estará mientras esté sola?",
+            "en": "Which part of the home will it be in while it is alone?"
+          },
+          {
+            "n": 29,
+            "tipo": "largo",
+            "es": "¿Qué harás con tu mascota si tienes que mudarte, cambiar de trabajo o viajar?",
+            "en": "What will you do with your pet if you have to move, change jobs or travel?"
+          },
+          {
+            "n": 30,
+            "tipo": "largo",
+            "es": "¿Qué harás con tu mascota en caso de que te separes de tu pareja?",
+            "en": "What will you do with your pet if you and your partner separate?"
+          },
+          {
+            "n": 31,
+            "tipo": "sino",
+            "es": "¿Estás de acuerdo en que el gato NUNCA saldrá a la calle?",
+            "en": "Do you agree that the cat will NEVER go outside onto the street?"
+          }
+        ]
+      },
+      {
+        "id": "pedimos",
+        "es": "Lo que te pedimos",
+        "en": "What we ask of you",
+        "preguntas": [
+          {
+            "n": 32,
+            "tipo": "sino",
+            "es": "¿Te comprometes a mandarnos por WhatsApp fotos y videos del hogar donde vivirá la mascota?",
+            "en": "Do you commit to sending us photos and videos of the home where the pet will live, on WhatsApp?"
+          },
+          {
+            "n": 33,
+            "tipo": "sino",
+            "es": "¿Te comprometes a tener todo lo necesario para recibir al gatito (arenero, arena, alimento, comederos, transportadora y juguetes) y a mandarnos una foto de todo esto antes de la entrega?",
+            "en": "Do you commit to having everything needed to welcome the kitten (litter box, litter, food, bowls, carrier and toys) and to sending us a photo of it all before the handover?"
+          },
+          {
+            "n": 34,
+            "tipo": "sino",
+            "es": "¿Te comprometes a mandarnos foto del carnet con sus vacunas, conforme les corresponda?",
+            "en": "Do you commit to sending us a photo of its vaccination card as each vaccine falls due?"
+          },
+          {
+            "n": 35,
+            "tipo": "sino",
+            "es": "¿Te comprometes a darnos un reporte mensual del estado de salud del gatito, por WhatsApp o Messenger, durante los primeros 6 meses?",
+            "en": "Do you commit to giving us a monthly report on the kitten's health, on WhatsApp or Messenger, for the first 6 months?"
+          },
+          {
+            "n": 36,
+            "tipo": "sino",
+            "es": "Sabemos que eres una persona responsable y que vas a considerar a la mascota parte de la familia. Aun así, en caso de cualquier emergencia, ¿te comprometes a ponerte en contacto con nosotros para ver si podemos apoyarte o, en último caso, recibirla de vuelta?",
+            "en": "We know you are a responsible person and will treat the pet as part of the family. Even so, in case of any emergency, do you commit to contacting us so we can see whether we can support you or, as a last resort, take the pet back?"
+          }
+        ]
+      }
+    ]
+  },
+  "hogar": {
+    "intro": {
+      "es": "Muchas gracias por tu interés en abrir las puertas de tu hogar a un animal rescatado. Este cuestionario nos ayuda a conocer tu rutina, espacio y preferencias para encontrar al compañero temporal ideal para ti y asegurar una experiencia hermosa para ambas partes.",
+      "en": "Thank you so much for your interest in opening your home to a rescued animal. This questionnaire helps us get to know your routine, space and preferences so we can find the ideal temporary companion for you and make sure it is a wonderful experience for both of you."
+    },
+    "secciones": [
+      {
+        "id": "basica",
+        "es": "Información básica",
+        "en": "Basic information",
+        "preguntas": [
+          {
+            "n": 1,
+            "tipo": "texto",
+            "es": "Nombre completo",
+            "en": "Full name"
+          },
+          {
+            "n": 2,
+            "tipo": "texto",
+            "es": "Edad",
+            "en": "Age"
+          },
+          {
+            "n": 3,
+            "tipo": "largo",
+            "es": "Dirección completa",
+            "en": "Full address"
+          },
+          {
+            "n": 4,
+            "tipo": "texto",
+            "es": "Teléfono / WhatsApp de contacto",
+            "en": "Contact phone / WhatsApp number"
+          },
+          {
+            "n": 5,
+            "tipo": "texto",
+            "es": "Ocupación o profesión",
+            "en": "Occupation or profession"
+          },
+          {
+            "n": 6,
+            "tipo": "largo",
+            "es": "Horario de trabajo o actividades fuera de casa (entrada y salida), tuyo y de las personas que viven contigo",
+            "en": "Work schedule or activities outside the home (start and end times), yours and those of the people who live with you"
+          }
+        ]
+      },
+      {
+        "id": "hogar",
+        "es": "Sobre el hogar y el entorno",
+        "en": "About your home and surroundings",
+        "preguntas": [
+          {
+            "n": 7,
+            "tipo": "largo",
+            "es": "¿Vives en casa propia, rentada o con familiares? En caso de ser rentada, ¿tu contrato o propietario permite la estancia de mascotas temporalmente?",
+            "en": "Do you own your home, rent it, or live with family? If you rent, does your lease or landlord allow pets to stay temporarily?"
+          },
+          {
+            "n": 8,
+            "tipo": "texto",
+            "es": "¿Tu vivienda es casa o departamento?",
+            "en": "Is your home a house or an apartment?"
+          },
+          {
+            "n": 9,
+            "tipo": "largo",
+            "es": "¿Tienes patio, jardín, terraza o azotea? Por favor, precisa si está completamente asegurado, cercado o bardeado para evitar cualquier riesgo de escape o caída",
+            "en": "Do you have a yard, garden, terrace or rooftop? Please say whether it is fully secured, fenced or walled to prevent any risk of escape or falls"
+          },
+          {
+            "n": 10,
+            "tipo": "largo",
+            "es": "¿El animal tendrá acceso al interior de la vivienda? ¿En qué espacios específicos podrá estar?",
+            "en": "Will the animal have access to the inside of the home? Which specific areas will it be allowed in?"
+          },
+          {
+            "n": 11,
+            "tipo": "largo",
+            "es": "¿Cuántas personas viven en el hogar actualmente? ¿Hay niños? En caso afirmativo, indica sus edades",
+            "en": "How many people currently live in the household? Are there children? If so, please give their ages"
+          },
+          {
+            "n": 12,
+            "tipo": "sino",
+            "es": "¿Algún miembro de la familia o habitante de la casa tiene alergias conocidas a los perros o gatos?",
+            "en": "Does anyone in the household have a known allergy to dogs or cats?"
+          }
+        ]
+      },
+      {
+        "id": "convivencia",
+        "es": "Experiencia y convivencia con otros animales",
+        "en": "Experience and living with other animals",
+        "preguntas": [
+          {
+            "n": 13,
+            "tipo": "largo",
+            "es": "¿Actualmente tienes otras mascotas en casa? (Especifica especie, raza, edad, temperamento y si están esterilizadas y con vacunas al día)",
+            "en": "Do you currently have other pets at home? (Please give species, breed, age, temperament, and whether they are spayed/neutered and up to date on vaccines)"
+          },
+          {
+            "n": 14,
+            "tipo": "largo",
+            "es": "¿Tus mascotas actuales son sociables y aceptan de buena manera que otros animales entren a su territorio?",
+            "en": "Are your current pets sociable, and do they accept other animals coming into their territory well?"
+          },
+          {
+            "n": 15,
+            "tipo": "sino",
+            "es": "¿Cuentas con un espacio independiente o habitación donde puedas aislar o separar al animal temporal si fuera necesario? (Por ejemplo: por un tema de salud, celo o durante los primeros días de adaptación)",
+            "en": "Do you have a separate space or room where you can isolate the foster animal if needed? (For example: for health reasons, heat, or during the first days of adjustment)"
+          }
+        ]
+      },
+      {
+        "id": "limites",
+        "es": "Límites, comportamiento y perfil del animal",
+        "en": "Limits, behavior and the animal's profile",
+        "preguntas": [
+          {
+            "n": 16,
+            "tipo": "multi",
+            "es": "¿Qué comportamientos estás dispuesto/a a tolerar y trabajar con paciencia durante el periodo de adaptación? (Marca todas las opciones con las que te sientas cómodo/a)",
+            "en": "Which behaviors are you willing to tolerate and work on patiently during the adjustment period? (Tick all the options you feel comfortable with)",
+            "opciones": [
+              {
+                "es": "Accidentes de baño dentro de la casa (pipí o popó fuera de lugar mientras aprende)",
+                "en": "Toilet accidents inside the house (pee or poop in the wrong place while it learns)"
+              },
+              {
+                "es": "Ladridos excesivos, llantos o aullidos (por ejemplo, al quedarse solo o en las noches)",
+                "en": "Excessive barking, crying or howling (for example, when left alone or at night)"
+              },
+              {
+                "es": "Morder objetos inapropiados (muebles, zapatos, ropa, plantas, cables)",
+                "en": "Chewing inappropriate things (furniture, shoes, clothes, plants, cables)"
+              },
+              {
+                "es": "Miedo extremo o timidez extrema hacia las personas",
+                "en": "Extreme fear or extreme shyness around people"
+              },
+              {
+                "es": "Hiperactividad o falta de educación básica (saltar sobre la gente, jalar mucho la correa al pasear)",
+                "en": "Hyperactivity or lack of basic training (jumping on people, pulling hard on the leash during walks)"
+              },
+              {
+                "es": "Ansiedad por separación ligera",
+                "en": "Mild separation anxiety"
+              },
+              {
+                "es": "Animales convalecientes (que requieran cuidados médicos sencillos, toma de medicamentos o reposo)",
+                "en": "Convalescing animals (needing simple medical care, medication or rest)"
+              }
+            ],
+            "opcional": true
+          },
+          {
+            "n": 17,
+            "tipo": "largo",
+            "es": "¿Existe algún comportamiento o situación que definitivamente NO puedas o no quieras manejar en tu hogar?",
+            "en": "Is there any behavior or situation that you definitely CANNOT or do not want to handle in your home?"
+          }
+        ]
+      },
+      {
+        "id": "rutina",
+        "es": "Tiempo, ejercicio y rutina diaria",
+        "en": "Time, exercise and daily routine",
+        "preguntas": [
+          {
+            "n": 18,
+            "tipo": "texto",
+            "es": "¿Cuántas horas al día, aproximadamente, pasará el animal solo en casa?",
+            "en": "Approximately how many hours a day will the animal be alone at home?"
+          },
+          {
+            "n": 19,
+            "tipo": "largo",
+            "es": "En el caso de los perros, ¿cuántas veces al día planeas pasearlo y cuánto durará cada paseo aproximadamente?",
+            "en": "For dogs, how many times a day do you plan to walk them, and roughly how long will each walk last?"
+          },
+          {
+            "n": 20,
+            "tipo": "largo",
+            "es": "¿Quién o quiénes serán los responsables principales de proporcionarle los paseos, la limpieza y los cuidados diarios?",
+            "en": "Who will be mainly responsible for the walks, cleaning and daily care?"
+          },
+          {
+            "n": 21,
+            "tipo": "largo",
+            "es": "¿Qué medidas tomarías si el animal muestra conductas destructivas por estrés o ansiedad durante los primeros días de adaptación?",
+            "en": "What would you do if the animal shows destructive behavior due to stress or anxiety during the first days of adjustment?"
+          }
+        ]
+      },
+      {
+        "id": "modalidades",
+        "es": "Horarios, modalidades y disponibilidad de tiempo",
+        "en": "Schedules, fostering options and availability",
+        "preguntas": [
+          {
+            "n": 22,
+            "tipo": "multi",
+            "es": "¿En qué modalidad o modalidades de hogar temporal te gustaría apoyarnos? (Puedes marcar más de una opción)",
+            "en": "Which fostering option(s) would you like to help us with? (You may tick more than one)",
+            "opciones": [
+              {
+                "es": "Opción A – Corto plazo (preparación para viaje internacional): resguardo corto de 2 a 3 semanas mientras el animal completa su protocolo de salud, vacunas y documentación legal antes de volar a su hogar definitivo en el extranjero (generalmente a Canadá). ¡Es una modalidad ideal si cuentas con tiempos acotados!",
+                "en": "Option A – Short term (preparing for international travel): a short stay of 2 to 3 weeks while the animal completes its health protocol, vaccines and legal paperwork before flying to its forever home abroad (usually in Canada). It is an ideal option if your time is limited!"
+              },
+              {
+                "es": "Opción B – Transición activa (hasta su adopción local): resguardo del animal mientras el equipo de la asociación trabaja de forma activa en su difusión diaria para encontrarle un hogar definitivo. El tiempo aquí es variable, pero tú te vuelves una pieza clave para conocer su personalidad y ayudarnos a promoverlo.",
+                "en": "Option B – Active transition (until a local adoption): housing the animal while the association's team actively promotes it every day to find it a forever home. The time frame varies, but you become a key piece in getting to know its personality and helping us promote it."
+              },
+              {
+                "es": "Opción C – Convalecencia o recuperación de salud: resguardo enfocado estrictamente en la recuperación de un animal que ha sido herido, post-operado o que cursa una enfermedad. El tiempo dependerá enteramente de su alta médica (desde unos días hasta un par de semanas) y requiere apoyo con medicamentos o reposo.",
+                "en": "Option C – Convalescence or health recovery: care focused strictly on the recovery of an animal that has been injured, has had surgery or is going through an illness. The length depends entirely on its medical discharge (from a few days to a couple of weeks) and requires help with medication or rest."
+              }
+            ]
+          },
+          {
+            "n": 23,
+            "tipo": "sino",
+            "es": "Flexibilidad en las fechas (muy importante para la Opción A de viaje internacional): a veces los vuelos comerciales, las condiciones climáticas o los trámites gubernamentales pueden retrasarse unos días por causas ajenas a la asociación. ¿Tendrías flexibilidad de extender el cuidado unos días adicionales si fuera totalmente necesario? Si tienes una fecha límite estricta e inamovible en la que debas entregar al animal (viajes familiares, motivos laborales, mudanzas, etc.), indícala en el comentario: fecha exacta o periodo máximo disponible.",
+            "en": "Flexibility with dates (very important for Option A, international travel): sometimes commercial flights, weather or government paperwork can be delayed by a few days for reasons beyond the association's control. Would you be flexible enough to extend the care by a few extra days if absolutely necessary? If you have a strict, non-negotiable deadline by which you must hand the animal over (family trips, work reasons, moving, etc.), please give it in the comment: exact date or latest available period.",
+            "ph": {
+              "es": "Fecha límite estricta, si la tienes (fecha exacta o periodo máximo)",
+              "en": "Strict deadline, if you have one (exact date or latest period)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "logistica",
+        "es": "Logística, visitas y proceso de adopción",
+        "en": "Logistics, visits and the adoption process",
+        "preguntas": [
+          {
+            "n": 24,
+            "tipo": "sino",
+            "es": "Para los animales en adopción local (Opción B): ¿estás de acuerdo en recibir visitas en tu hogar de posibles adoptantes interesados, siempre bajo previa coordinación con el equipo de la asociación?",
+            "en": "For animals up for local adoption (Option B): do you agree to receive visits at your home from potential adopters, always coordinated beforehand with the association's team?"
+          },
+          {
+            "n": 25,
+            "tipo": "sino",
+            "es": "¿Estás dispuesto/a a tomar y enviarnos fotos y videos cortos, y a darnos actualizaciones periódicas de su comportamiento? (Esto es vital para difundir al animal en redes sociales y agilizar su adopción)",
+            "en": "Are you willing to take photos and short videos and send them to us, and to give us regular updates on its behavior? (This is vital to promote the animal on social media and speed up its adoption)"
+          },
+          {
+            "n": 26,
+            "tipo": "sino",
+            "es": "Sabemos perfectamente que es muy fácil encariñarse. ¿Te sientes preparado/a emocionalmente para dejar ir al animal con alegría cuando llegue el momento de viajar o ser entregado a su familia definitiva?",
+            "en": "We know very well that it is easy to get attached. Do you feel emotionally ready to let the animal go happily when the time comes for it to travel or be handed over to its forever family?"
+          },
+          {
+            "n": 27,
+            "tipo": "sino",
+            "es": "En caso de que durante el cuidado decidas que deseas adoptar formal y definitivamente a tu protegido temporal, ¿entiendes y aceptas que debes avisar de inmediato a la asociación y realizar el proceso de adopción regular? (Nota: excepto los perros previstos para viaje internacional, ya que para ellos no hay posibilidad de adopción local con el foster debido a que ya tienen una familia adoptiva esperándolos en Canadá)",
+            "en": "If, while fostering, you decide that you want to formally and permanently adopt your foster animal, do you understand and accept that you must tell the association right away and go through the regular adoption process? (Note: except for dogs planned for international travel, since a local adoption by the foster is not possible for them: they already have an adoptive family waiting in Canada)"
+          }
+        ]
+      },
+      {
+        "id": "salud",
+        "es": "Salud, cuidados y administración de medicamentos",
+        "en": "Health, care and giving medication",
+        "preguntas": [
+          {
+            "n": 28,
+            "tipo": "sino",
+            "es": "¿Cuentas con la total responsabilidad, compromiso y disponibilidad de tiempo para administrar puntualmente los medicamentos o tratamientos indicados por el veterinario según el esquema del animal?",
+            "en": "Do you have the full responsibility, commitment and time to give the medications or treatments prescribed by the vet on schedule, according to the animal's plan?"
+          },
+          {
+            "n": 29,
+            "tipo": "sino",
+            "es": "¿Cuentas con disponibilidad de tiempo, medio de transporte o facilidad de traslado para llevar al animal a la clínica de la asociación en caso de citas programadas o alguna emergencia médica?",
+            "en": "Do you have the time, a means of transport or an easy way to take the animal to the association's clinic for scheduled appointments or a medical emergency?"
+          },
+          {
+            "n": 30,
+            "tipo": "sino",
+            "es": "¿Tienes un plan de apoyo con algún familiar, vecino o amigo de confianza en caso de que tú sufras un imprevisto, enfermedad o viaje urgente y necesites que alguien atienda al animal temporal por ti?",
+            "en": "Do you have a backup plan with a trusted relative, neighbor or friend in case something unexpected happens, you fall ill or you have to travel urgently, and you need someone to look after the foster animal for you?"
+          },
+          {
+            "n": 31,
+            "tipo": "sino",
+            "es": "¿Entiendes y estás de acuerdo en que cualquier tratamiento médico, cambio de alimentación o decisión de salud debe ser estrictamente aprobada y coordinada de manera previa por la asociación?",
+            "en": "Do you understand and agree that any medical treatment, change in diet or health decision must be strictly approved and coordinated beforehand with the association?"
+          }
+        ]
+      },
+      {
+        "id": "compromiso",
+        "es": "Compromiso y acuerdos de seguridad finales",
+        "en": "Commitment and final safety agreements",
+        "preguntas": [
+          {
+            "n": 32,
+            "tipo": "sino",
+            "es": "¿Te comprometes formalmente a mantener al perro SIEMPRE con su correa bien sujeta durante los paseos en la calle y a NO soltarlo bajo ninguna circunstancia (ni en parques abiertos) para prevenir pérdidas o accidentes?",
+            "en": "Do you formally commit to ALWAYS keeping the dog securely on its leash during walks and NOT letting it off under any circumstances (not even in open parks), to prevent loss or accidents?"
+          },
+          {
+            "n": 33,
+            "tipo": "sino",
+            "es": "En caso de que surja una situación extrema de fuerza mayor por la cual ya no puedas mantener al animal bajo tu cuidado, ¿te comprometes a devolverlo única y exclusivamente a la asociación y jamás entregarlo a terceros, familiares o desconocidos?",
+            "en": "If an extreme situation beyond your control means you can no longer keep the animal in your care, do you commit to returning it solely and exclusively to the association and never handing it over to third parties, relatives or strangers?"
+          },
+          {
+            "n": 34,
+            "tipo": "sino",
+            "es": "¿Aceptas que la asociación realice visitas de seguimiento o llamadas periódicas para conocer el estado y evolución del animal en tu hogar?",
+            "en": "Do you accept that the association may make follow-up visits or periodic calls to check on the animal's condition and progress in your home?"
+          }
+        ]
+      }
+    ]
+  }
+}
