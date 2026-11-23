@@ -1,0 +1,4 @@
+commit=b423422
+mode=produccion
+destino=o2switch
+construit=2026-11-23T15:52:09Z
